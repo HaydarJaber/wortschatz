@@ -85,7 +85,11 @@ Map<String, int> alphabets = {
   'W': 0,
   'X': 0,
   'Y': 0,
-  'Z': 0
+  'Z': 0,
+  'Ä': 0,
+  'Ö': 0,
+  'Ü': 0,
+  'ß': 0
 };
 
 List images = [

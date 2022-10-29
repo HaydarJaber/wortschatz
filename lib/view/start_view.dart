@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:wortschatz/model/db_helper.dart';
-import 'dummy_data.dart';
+import '../model/dummy_data.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -63,7 +63,7 @@ class _StartScreenState extends State<StartScreen> {
       decoration:
       BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
       alignment: Alignment.center,
-      width: 40,
+      width: 50,
       child: Text(
         name,
         style: const TextStyle(

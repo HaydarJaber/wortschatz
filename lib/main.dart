@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wortschatz/view/highscore_view.dart';
-import 'package:wortschatz/view/dummy_data.dart';
+import 'package:wortschatz/model/dummy_data.dart';
 import 'package:wortschatz/view/home_view.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
