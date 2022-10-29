@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Center(
-                      child: Text("HANGMAN",
+                      child: Text("Wortschatz",
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: "PatrickHand",
