@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                               fontFamily: "Modak",
                               fontSize: 50)),
                     ),
-                    Image.asset("assets/images/gallow.png"),
+                    Image.asset("assets/images/Homescreen_BIG.png"),
                     // const SizedBox(
                     //   height: 40,
                     // ),
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        backgroundColor: Colors.deepPurple.shade900,
+        backgroundColor: const Color(0xFFFFFFFF),
       ),
     );
   }

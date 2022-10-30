@@ -70,7 +70,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - assets/android12splash.png
     - assets/images/0.png
     - assets/images/2.png
     - assets/images/3.png
@@ -78,7 +77,7 @@ flutter:
     - assets/images/5.png
     - assets/images/6.png
     - assets/images/1.png
-    - assets/images/gallow.png
+    - assets/images/Homescreen_BIG.png
     - assets/terms.json
     - assets/images/apploading.mp4
 
