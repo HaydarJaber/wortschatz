@@ -5,14 +5,12 @@ import 'package:wortschatz/model/dummy_data.dart';
 import 'package:wortschatz/view/home_view.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wortschatz/view/splash_view.dart';
 import 'package:wortschatz/view/terms_view.dart';
 
 int? isviewed;
 
 Future<void> main() async{
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   isviewed  = await prefs.getInt("onBoard");
@@ -25,6 +23,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode (SystemUiMode.manual, overlays: []);
     return ChangeNotifierProvider.value(
       value: HighScoreItems(),
       child: MaterialApp(
@@ -34,8 +33,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const HomeScreen(),
-        initialRoute: isviewed != 0 ? "terms" : "home",
+        initialRoute: isviewed != 0 ? "terms" : "splash",
         routes: {
+          'splash': (context) => const SplashScreen(),
           'terms': (context) => const Terms(),
           'home': (context) => const HomeScreen(),
           'score': (context) => const HighScoreScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wortschatz/view/highscore_view.dart';
 import 'package:wortschatz/view/start_view.dart';
 
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
-            fontFamily: "PatrickHand",
+            fontFamily: "Modak",
           ),
         ),
       ),
@@ -45,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                       child: Text("Wortschatz",
                           style: TextStyle(
                               color: Colors.white,
-                              fontFamily: "PatrickHand",
+                              fontFamily: "Modak",
                               fontSize: 50)),
                     ),
                     Image.asset("assets/images/gallow.png"),
