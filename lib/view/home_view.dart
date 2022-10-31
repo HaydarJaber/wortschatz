@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wortschatz/view/highscore_view.dart';
 import 'package:wortschatz/view/start_view.dart';
@@ -6,21 +7,38 @@ import 'package:wortschatz/view/start_view.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  Widget createButton(BuildContext context, String buttonName, func) {
+  Widget createButton(BuildContext context, String buttonName,int iconCodePoint, func) {
     return SizedBox(
-      height: 45,
-      width: 120,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: Colors.blue.shade600,
-        ),
+      height: 70,
+      width: 300,
+      child: FloatingActionButton.extended(
+        splashColor: Colors.lightGreen,
+        backgroundColor: Color(0xFF00DFFF),
+        icon: Icon(
+            shadows: const <Shadow>[
+             Shadow(
+               offset: Offset(0.0, 0.0),
+                blurRadius: 5.0,
+                color: Colors.black,
+              ),
+            ],
+            size: 50,
+            color: Colors.white,
+            IconData(iconCodePoint,fontFamily: 'MaterialIcons')),
         onPressed: () => Navigator.push(
             context, MaterialPageRoute(builder: (context) => func)),
-        child: Text(
+        label: Text(
           buttonName,
           style: const TextStyle(
+            shadows: <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 5.0,
+                color: Colors.black,
+              ),
+            ],
             color: Colors.white,
-            fontSize: 20,
+            fontSize: 30,
             fontFamily: "Modak",
           ),
         ),
@@ -42,27 +60,20 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Center(
-                      child: Text("Wortschatz",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Modak",
-                              fontSize: 50)),
-                    ),
                     Image.asset("assets/images/Homescreen_BIG.png"),
-                    // const SizedBox(
-                    //   height: 40,
-                    // ),
-                    createButton(context, "Start", const StartScreen()),
+                    createButton(context, "Start", 0xf2af, const StartScreen()),
                     // const SizedBox(
                     //   height: 30,
                     // ),
-                    createButton(context, "High Score", const HighScoreScreen())
+                    createButton(context, "Fortschritt",0xf05ae, const HighScoreScreen()),
+                    createButton(context, "Anleitung",0xe309, const HighScoreScreen()),
+                    createButton(context, "Einstellung",0xe57f, const HighScoreScreen()),
+                    createButton(context, "Impressum",0xe33c, const HighScoreScreen())
                   ]),
             ),
           ),
         ),
-        backgroundColor: const Color(0xFFFFFFFF),
+        backgroundColor: Colors.white,
       ),
     );
   }
