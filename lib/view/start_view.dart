@@ -1,16 +1,20 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:wortschatz/model/db_helper.dart';
+import '../model/constants/categories.dart';
 import '../model/dummy_data.dart';
+import 'categories_view.dart';
 
 class StartScreen extends StatefulWidget {
-  const StartScreen({Key? key}) : super(key: key);
+  final String category;
+  const StartScreen({Key? key, required this.category}) : super(key: key);
 
   @override
   State<StartScreen> createState() => _StartScreenState();
 }
 
 class _StartScreenState extends State<StartScreen> {
+  late final String category;
   final _name = TextEditingController();
   late String stored;
   int lives = 3;
@@ -19,6 +23,7 @@ class _StartScreenState extends State<StartScreen> {
   List sword = [];
   late int randomIndex;
   late String randomWord;
+
   void newGame() {
     setState(() {
       alphabets.updateAll((key, value) => value = 0);
@@ -39,6 +44,7 @@ class _StartScreenState extends State<StartScreen> {
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     print(randomWord);
+    print('as');
     super.initState();
   }
 
@@ -78,7 +84,7 @@ class _StartScreenState extends State<StartScreen> {
   Widget createButton(var name) {
     return alphabets[name] == 0
         ? InkWell(
-      // splashColor: Colors.deepOrange,
+       //splashColor: Colors.deepOrange,
         onTap: () {
           setState(() {
             if (alphabets[name] == 0) {
@@ -279,7 +285,7 @@ class _StartScreenState extends State<StartScreen> {
                     ),
                     GridView.builder(
                       shrinkWrap: true,
-                      itemCount: 26,
+                      itemCount: 30,
                       gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
                           mainAxisSpacing: 10, crossAxisCount: 7),

@@ -36,27 +36,6 @@ List word = [
   'altitude',
   'area',
   'breadth',
-  'depth',
-  'height',
-  'rise',
-  'space',
-  'volume',
-  'width',
-  'extension',
-  'extent',
-  'cast',
-  'range',
-  'reach',
-  'scope',
-  'shot',
-  'sweep',
-  'throw',
-  'drop',
-  'fall',
-  'flight',
-  'haul',
-  'berth',
-  'clearance'
 ];
 
 Map<String, int> alphabets = {
