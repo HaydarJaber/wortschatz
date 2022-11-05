@@ -1,20 +1,20 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:wortschatz/model/db_helper.dart';
+import 'package:wortschatz/viewmodels/router/app_router.dart';
 import '../model/constants/categories.dart';
 import '../model/dummy_data.dart';
 import 'categories_view.dart';
 
 class StartScreen extends StatefulWidget {
+
   final String category;
   const StartScreen({Key? key, required this.category}) : super(key: key);
-
   @override
   State<StartScreen> createState() => _StartScreenState();
 }
 
 class _StartScreenState extends State<StartScreen> {
-  late final String category;
   final _name = TextEditingController();
   late String stored;
   int lives = 3;
@@ -24,6 +24,8 @@ class _StartScreenState extends State<StartScreen> {
   late int randomIndex;
   late String randomWord;
 
+
+  //Nächstes Wort
   void newGame() {
     setState(() {
       alphabets.updateAll((key, value) => value = 0);
@@ -36,7 +38,7 @@ class _StartScreenState extends State<StartScreen> {
     });
   }
 
-  @override
+  @override //Erstes Wort
   void initState() {
     alphabets.updateAll((key, value) => value = 0);
     randomIndex = Random().nextInt(word.length);
@@ -44,26 +46,28 @@ class _StartScreenState extends State<StartScreen> {
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     print(randomWord);
-    print('as');
     super.initState();
   }
 
+  //refresh die Seite
   void refresh() {
     Navigator.of(context).pop();
     return;
   }
 
+  //Unterstrich
   Widget underscore(String chr) {
     return Text(
       "$chr ",
       style: const TextStyle(
         // fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Color(0xff00DFFF),
           fontFamily: "PatrickHand",
-          fontSize: 30),
+          fontSize: 40),
     );
   }
 
+  //Buchstaben-Buttons
   Widget alphaContainer(var name, Color color) {
     return Container(
       decoration:
@@ -73,14 +77,15 @@ class _StartScreenState extends State<StartScreen> {
       child: Text(
         name,
         style: const TextStyle(
-          // fontWeight: FontWeight.bold,
+           fontWeight: FontWeight.w100,
             color: Colors.white,
-            fontFamily: "PatrickHand",
+            fontFamily: "Modak",
             fontSize: 30),
       ),
     );
   }
 
+  //erstelle Buttons
   Widget createButton(var name) {
     return alphabets[name] == 0
         ? InkWell(
@@ -121,14 +126,14 @@ class _StartScreenState extends State<StartScreen> {
                                       stored.toString(),
                                       style: const TextStyle(
                                           color: Colors.green,
-                                          fontFamily: "PatrickHand",
+                                          fontFamily: "Modak",
                                           fontSize: 50),
                                     ),
                                     IconButton(
                                         icon: const Icon(
                                           Icons.arrow_circle_right,
                                           size: 40,
-                                          color: Colors.white,
+                                          color: Color(0xff00DFFF),
                                         ),
                                         onPressed: () {
                                           newGame();
@@ -184,7 +189,7 @@ class _StartScreenState extends State<StartScreen> {
                                         icon: const Icon(
                                           Icons.arrow_circle_right,
                                           size: 40,
-                                          color: Colors.white,
+                                          color: Color(0xff00DFFF),
                                         ),
                                         onPressed: () {
                                           if (_name.text.isEmpty &&
@@ -216,17 +221,18 @@ class _StartScreenState extends State<StartScreen> {
         },
         child: alphaContainer(
           name,
-          Colors.blue.shade600,
+          const Color(0xff00DFFF),
         ))
         : alphaContainer(name, Colors.blueGrey);
   }
 
+  //Haupt build Widget
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.deepPurple.shade900,
+          backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -248,13 +254,13 @@ class _StartScreenState extends State<StartScreen> {
                           icon: const Icon(
                             Icons.home,
                             size: 35,
-                            color: Colors.white,
+                            color: Color(0xff00DFFF),
                           ),
                         ),
                         Text(
                           score.toString(),
                           style: const TextStyle(
-                              color: Colors.white,
+                              color: Color(0xff00DFFF),
                               fontSize: 35,
                               fontFamily: "PatrickHand"),
                         ),
@@ -262,7 +268,7 @@ class _StartScreenState extends State<StartScreen> {
                           const Icon(
                             Icons.favorite,
                             size: 35,
-                            color: Colors.white,
+                            color: Color(0xff00DFFF),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(13, 6, 0, 0),
@@ -275,6 +281,17 @@ class _StartScreenState extends State<StartScreen> {
                         ])
                       ],
                     ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child:
+                        Text(
+                          ("Kategorie: ${widget.category}"),
+                          style: const TextStyle(
+                              color: Color(0xff00DFFF),
+                              fontFamily: "PatrickHand",
+                              fontSize: 30),
+                        ),
+                      ),
                     images[index],
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -288,7 +305,7 @@ class _StartScreenState extends State<StartScreen> {
                       itemCount: 30,
                       gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisSpacing: 10, crossAxisCount: 7),
+                          mainAxisSpacing: 10, crossAxisCount: 6),
                       itemBuilder: (context, index) {
                         return Row(children: [
                           createButton(alphabets.keys.toList()[index])

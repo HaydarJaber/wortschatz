@@ -33,9 +33,8 @@ class HighScoreItems with ChangeNotifier {
 }
 
 List word = [
-  'altitude',
+  'spaß',
   'area',
-  'breadth',
 ];
 
 Map<String, int> alphabets = {
@@ -73,37 +72,37 @@ Map<String, int> alphabets = {
 
 List images = [
   Image.asset(
-    "assets/images/0.png",
+    "assets/images/7.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/1.png",
+    "assets/images/6.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/2.png",
+    "assets/images/5.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/3.png",
+    "assets/images/4.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/4.png",
+    "assets/images/3.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/5.png",
+    "assets/images/2.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/6.png",
+    "assets/images/1.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
