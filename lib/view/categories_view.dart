@@ -21,37 +21,37 @@ class Categories extends StatelessWidget {
                   const Text('Kategorien', style: TextStyle(fontSize: 60)),
                   Column(children: const [
                     MenuButton(
-                        label: Category.all,
+                        label: Category.All,
                         route: Routes.newGame,
                         iconCodePoint: 0xf2af,
                         color: Colors.blue),
                     MenuButton(
-                        label: Category.autoteile,
+                        label: Category.Autoteile,
                         route: Routes.newGame,
                         iconCodePoint: 0xf2af,
                         color: Colors.green),
                     MenuButton(
-                        label: Category.food,
+                        label: Category.Food,
                         route: Routes.newGame,
                         iconCodePoint: 0xf2af,
                         color: Colors.yellow),
                     MenuButton(
-                        label: Category.cinema,
+                        label: Category.Cinema,
                         route: Routes.newGame,
                         iconCodePoint: 0xf2af,
                         color: Colors.orange),
                     MenuButton(
-                        label: Category.sport,
+                        label: Category.Sport,
                         route: Routes.newGame,
                         iconCodePoint: 0xf2af,
                         color: Colors.red),
                     MenuButton(
-                        label: Category.music,
+                        label: Category.Music,
                         route: Routes.newGame,
                         iconCodePoint: 0xf2af,
                         color: Colors.pink),
                     MenuButton(
-                        label: Category.animals,
+                        label: Category.Animals,
                         route: Routes.newGame,
                         iconCodePoint: 0xf2af,
                         color: Colors.purple),
@@ -81,7 +81,7 @@ class Categories extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const MenuButton(
-                            label: Category.all,
+                            label: Category.All,
                             route: Routes.newGame,
                             iconCodePoint: 0xf2af,
                             color: Colors.blue),
@@ -90,17 +90,17 @@ class Categories extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 MenuButton(
-                                    label: Category.autoteile,
+                                    label: Category.Autoteile,
                                     route: Routes.newGame,
                                     iconCodePoint: 0xf2af,
                                     color: Colors.green),
                                 MenuButton(
-                                    label: Category.food,
+                                    label: Category.Food,
                                     route: Routes.newGame,
                                     iconCodePoint: 0xf2af,
                                     color: Colors.yellow),
                                 MenuButton(
-                                    label: Category.cinema,
+                                    label: Category.Cinema,
                                     route: Routes.newGame,
                                     iconCodePoint: 0xf2af,
                                     color: Colors.orange),
@@ -109,17 +109,17 @@ class Categories extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 MenuButton(
-                                    label: Category.sport,
+                                    label: Category.Sport,
                                     route: Routes.newGame,
                                     iconCodePoint: 0xf2af,
                                     color: Colors.red),
                                 MenuButton(
-                                    label: Category.music,
+                                    label: Category.Music,
                                     route: Routes.newGame,
                                     iconCodePoint: 0xf2af,
                                     color: Colors.pink),
                                 MenuButton(
-                                    label: Category.animals,
+                                    label: Category.Animals,
                                     route: Routes.newGame,
                                     iconCodePoint: 0xf2af,
                                     color: Colors.purple),

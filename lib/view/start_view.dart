@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:wortschatz/model/words/hf_words.dart';
+import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/model/db_helper.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import '../model/constants/categories.dart';
@@ -30,19 +32,85 @@ class _StartScreenState extends State<StartScreen> {
     setState(() {
       alphabets.updateAll((key, value) => value = 0);
       index = 0;
-      randomIndex = Random().nextInt(word.length);
-      randomWord = word[randomIndex];
+      getCategory();
       sword = List.generate(randomWord.length, (index) => "_");
       stored = randomWord;
       print(randomWord);
     });
   }
 
+  void getCategory(){
+    switch(widget.category){
+      case Category.All:
+        randomIndex = Random().nextInt(hfall.length);
+        randomWord = hfall[randomIndex];
+        break;
+      case Category.Autoteile:
+        randomIndex = Random().nextInt(hfAutoteile.length);
+        randomWord = hfAutoteile[randomIndex];
+        break;
+     /* case Category.Badezimmer:
+        randomIndex = Random().nextInt(hfBadezimmer.length);
+        randomWord = hfBadezimmer[randomIndex];
+        break;
+      case Category.Bauernhof:
+        return ;
+      case Category.Berufe:
+        return ;
+      case Category.DeutscheStädte:
+        return ;
+      case Category.Fahrzeuge:
+        return ;
+      case Category.Garten:
+        return ;
+      case Category.Gemüse:
+        return ;
+      case Category.Getränke:
+        return ;
+      case Category.Hauptstädte:
+      return ;
+      case Category.Hausbau:
+        return ;
+      case Category.Hobbys:
+        return ;
+      case Category.Kleidung:
+        return ;
+      case Category.Körperteile:
+      return ;
+      case Category.Küche:
+      return ;
+      case Category.Länder:
+      return ;
+      case Category.Möbel:
+      return ;
+      case Category.Musikinstrumente:
+        return ;
+      case Category.Obst:
+        return ;
+      case Category.Pflanzen:
+        return ;
+      case Category.Resteraunt:
+        return ;
+      case Category.Sportarten:
+        return ;
+      case Category.Straßenverkehr:
+        return ;
+      case Category.Supermarkt:
+        return ;
+      case Category.Tiere:
+        return ;
+      case Category.Werkzeuge:
+        randomIndex = Random().nextInt(word.length);
+        randomWord = word[randomIndex]; */
+    }
+  }
+
+
+
   @override //Erstes Wort
   void initState() {
     alphabets.updateAll((key, value) => value = 0);
-    randomIndex = Random().nextInt(word.length);
-    randomWord = word[randomIndex];
+    getCategory();
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     print(randomWord);
@@ -94,11 +162,22 @@ class _StartScreenState extends State<StartScreen> {
           setState(() {
             if (alphabets[name] == 0) {
               var chr = name.toString().toLowerCase();
-              if (randomWord.contains(chr)) {
-                while (randomWord.contains(chr)) {
-                  int getIndex = randomWord.indexOf((chr));
-                  randomWord = randomWord.replaceFirst(chr, '_');
-                  sword[getIndex] = chr;
+              var chrUP = name.toString();
+              print(chr);
+              print(chrUP);
+              if (randomWord.contains(chr) || randomWord.contains(chrUP)) {
+                if(randomWord.contains(chr)){
+                  while (randomWord.contains(chr)) {
+                    int getIndex = randomWord.indexOf((chr));
+                    randomWord = randomWord.replaceFirst(chr, '_');
+                    sword[getIndex] = chr;
+                  }
+                }else{
+                  while (randomWord.contains(chrUP)) {
+                    int getIndex = randomWord.indexOf((chrUP));
+                    randomWord = randomWord.replaceFirst(chrUP, '_');
+                    sword[getIndex] = chrUP;
+                  }
                 }
                 if (!randomWord.contains(RegExp(r'[a-z]'))) {
                   score = score + 1;
@@ -120,14 +199,14 @@ class _StartScreenState extends State<StartScreen> {
                                     const Icon(
                                       Icons.check_circle_outlined,
                                       color: Colors.green,
-                                      size: 70,
+                                      size: 60,
                                     ),
                                     Text(
                                       stored.toString(),
                                       style: const TextStyle(
                                           color: Colors.green,
                                           fontFamily: "Modak",
-                                          fontSize: 50),
+                                          fontSize: 20),
                                     ),
                                     IconButton(
                                         icon: const Icon(
