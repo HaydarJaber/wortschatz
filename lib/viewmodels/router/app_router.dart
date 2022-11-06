@@ -29,9 +29,7 @@ class AppRouter {
       //    reverseTransitionDuration: Duration.zero,
      //   );
       case Routes.settings:
-        return MaterialPageRoute(
-          builder: (_) => const Text("In Work"),
-        );
+        return CustomPageRoute(child: const Settings(), settings: settings);
    //   case Routes.terms:
       //  return MaterialPageRoute(
          // builder: (_) => const Terms(),

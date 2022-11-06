@@ -39,6 +39,16 @@ class _StartScreenState extends State<StartScreen> {
     });
   }
 
+  @override //Erstes Wort
+  void initState() {
+    alphabets.updateAll((key, value) => value = 0);
+    getCategory();
+    sword = List.generate(randomWord.length, (index) => "_");
+    stored = randomWord;
+    print(randomWord);
+    super.initState();
+  }
+
   void getCategory(){
     switch(widget.category){
       case Category.All:
@@ -49,7 +59,7 @@ class _StartScreenState extends State<StartScreen> {
         randomIndex = Random().nextInt(hfAutoteile.length);
         randomWord = hfAutoteile[randomIndex];
         break;
-     /* case Category.Badezimmer:
+    /* case Category.Badezimmer:
         randomIndex = Random().nextInt(hfBadezimmer.length);
         randomWord = hfBadezimmer[randomIndex];
         break;
@@ -105,17 +115,6 @@ class _StartScreenState extends State<StartScreen> {
     }
   }
 
-
-
-  @override //Erstes Wort
-  void initState() {
-    alphabets.updateAll((key, value) => value = 0);
-    getCategory();
-    sword = List.generate(randomWord.length, (index) => "_");
-    stored = randomWord;
-    print(randomWord);
-    super.initState();
-  }
 
   //refresh die Seite
   void refresh() {
