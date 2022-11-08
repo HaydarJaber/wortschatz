@@ -9,7 +9,6 @@ import '../model/dummy_data.dart';
 import 'categories_view.dart';
 
 class StartScreen extends StatefulWidget {
-
   final String category;
   const StartScreen({Key? key, required this.category}) : super(key: key);
   @override
@@ -25,6 +24,7 @@ class _StartScreenState extends State<StartScreen> {
   List sword = [];
   late int randomIndex;
   late String randomWord;
+  int iconCode = 0xf144;
 
 
   //Nächstes Wort
@@ -59,62 +59,196 @@ class _StartScreenState extends State<StartScreen> {
         randomIndex = Random().nextInt(hfAutoteile.length);
         randomWord = hfAutoteile[randomIndex];
         break;
-    /* case Category.Badezimmer:
+     case Category.Badezimmer:
         randomIndex = Random().nextInt(hfBadezimmer.length);
         randomWord = hfBadezimmer[randomIndex];
         break;
       case Category.Bauernhof:
-        return ;
+        randomIndex = Random().nextInt(hfBauernhof.length);
+        randomWord = hfBauernhof[randomIndex];
+        break ;
       case Category.Berufe:
-        return ;
-      case Category.DeutscheStädte:
-        return ;
+        randomIndex = Random().nextInt(hfBerufe.length);
+        randomWord = hfBerufe[randomIndex];
+        break ;
+      case Category.DeutscheStaedte:
+        randomIndex = Random().nextInt(hfDeutscheStaedte.length);
+        randomWord = hfDeutscheStaedte[randomIndex];
+        break ;
       case Category.Fahrzeuge:
-        return ;
+        randomIndex = Random().nextInt(hfFahrzeuge.length);
+        randomWord = hfFahrzeuge[randomIndex];
+        break ;
       case Category.Garten:
-        return ;
-      case Category.Gemüse:
-        return ;
-      case Category.Getränke:
-        return ;
-      case Category.Hauptstädte:
-      return ;
+        randomIndex = Random().nextInt(hfGarten.length);
+        randomWord = hfGarten[randomIndex];
+        break ;
+      case Category.Gemuese:
+        randomIndex = Random().nextInt(hfGemuese.length);
+        randomWord = hfGemuese[randomIndex];
+        break ;
+      case Category.Getraenke:
+        randomIndex = Random().nextInt(hfGetraenke.length);
+        randomWord = hfGetraenke[randomIndex];
+        break ;
+      case Category.Hauptstaedte:
+        randomIndex = Random().nextInt(hfHauptstaedte.length);
+        randomWord = hfHauptstaedte[randomIndex];
+        break ;
       case Category.Hausbau:
-        return ;
+        randomIndex = Random().nextInt(hfHausbau.length);
+        randomWord = hfHausbau[randomIndex];
+        break ;
       case Category.Hobbys:
-        return ;
+        randomIndex = Random().nextInt(hfHobbys.length);
+        randomWord = hfHobbys[randomIndex];
+        break ;
       case Category.Kleidung:
-        return ;
-      case Category.Körperteile:
-      return ;
-      case Category.Küche:
-      return ;
-      case Category.Länder:
-      return ;
-      case Category.Möbel:
-      return ;
+        randomIndex = Random().nextInt(hfKleidung.length);
+        randomWord = hfKleidung[randomIndex];
+        break ;
+      case Category.Koerperteile:
+        randomIndex = Random().nextInt(hfKoerperteile.length);
+        randomWord = hfKoerperteile[randomIndex];
+        break ;
+      case Category.Kueche:
+        randomIndex = Random().nextInt(hfKueche.length);
+        randomWord = hfKueche[randomIndex];
+        break ;
+      case Category.Laender:
+        randomIndex = Random().nextInt(hfLaender.length);
+        randomWord = hfLaender[randomIndex];
+        break ;
+      case Category.Moebel:
+        randomIndex = Random().nextInt(hfMoebel.length);
+        randomWord = hfMoebel[randomIndex];
+        break ;
       case Category.Musikinstrumente:
-        return ;
+        randomIndex = Random().nextInt(hfMusikinstrumente.length);
+        randomWord = hfMusikinstrumente[randomIndex];
+        break ;
       case Category.Obst:
-        return ;
+        randomIndex = Random().nextInt(hfObst.length);
+        randomWord = hfObst[randomIndex];
+        break ;
       case Category.Pflanzen:
-        return ;
+        randomIndex = Random().nextInt(hfPflanzen.length);
+        randomWord = hfPflanzen[randomIndex];
+        break ;
       case Category.Resteraunt:
-        return ;
+        randomIndex = Random().nextInt(hfResteraunt.length);
+        randomWord = hfResteraunt[randomIndex];
+        break ;
       case Category.Sportarten:
-        return ;
-      case Category.Straßenverkehr:
-        return ;
+        randomIndex = Random().nextInt(hfSportarten.length);
+        randomWord = hfSportarten[randomIndex];
+        break ;
+      case Category.Strassenverkehr:
+        randomIndex = Random().nextInt(hfStrassenverkehr.length);
+        randomWord = hfStrassenverkehr[randomIndex];
+        break ;
       case Category.Supermarkt:
-        return ;
+        randomIndex = Random().nextInt(hfSupermarkt.length);
+        randomWord = hfSupermarkt[randomIndex];
+        break ;
       case Category.Tiere:
-        return ;
+        randomIndex = Random().nextInt(hfTiere.length);
+        randomWord = hfTiere[randomIndex];
+        break ;
       case Category.Werkzeuge:
-        randomIndex = Random().nextInt(word.length);
-        randomWord = word[randomIndex]; */
+        randomIndex = Random().nextInt(hfWerkzeuge.length);
+        randomWord = hfWerkzeuge[randomIndex];
+        break;
     }
   }
 
+  int getIcon() {
+      switch(widget.category)
+      {
+        case Category.All:
+          iconCode = 0xf144;
+         return iconCode;
+        case Category.Autoteile:
+          iconCode = 0xf1b9;
+          return iconCode;
+        case Category.Badezimmer:
+          iconCode = 0xf2cd;
+          return iconCode;
+        case Category.Bauernhof:
+          iconCode = 0xe2cd;
+          return iconCode;
+        case Category.Berufe:
+          iconCode = 0xf85e;
+          return iconCode;
+        case Category.DeutscheStaedte:
+          iconCode = 0xf64f;
+          return iconCode;
+        case Category.Fahrzeuge:
+          iconCode = 0xf21c;
+          return iconCode;
+        case Category.Garten:
+          iconCode = 0xf1bb;
+          return iconCode;
+        case Category.Gemuese:
+          iconCode = 0xf787;
+          return iconCode;
+        case Category.Getraenke:
+          iconCode = 0xf000;
+          return iconCode;
+        case Category.Hauptstaedte:
+          iconCode = 0xf64f;
+          return iconCode;
+        case Category.Hausbau:
+          iconCode = 0xf015;
+          return iconCode;
+        case Category.Hobbys:
+          iconCode = 0xf554;
+          return iconCode;
+        case Category.Kleidung:
+          iconCode = 0xf553;
+          return iconCode;
+        case Category.Koerperteile:
+          iconCode = 0xf06e;
+          return iconCode;
+        case Category.Kueche:
+          iconCode = 0xe51a;
+          return iconCode;
+        case Category.Laender:
+          iconCode = 0xf024;
+          return iconCode;
+        case Category.Moebel:
+          iconCode = 0xf4b8;
+          return iconCode;
+        case Category.Musikinstrumente:
+          iconCode = 0xf001;
+          return iconCode;
+        case Category.Obst:
+          iconCode = 0xf5d1;
+          return iconCode;
+        case Category.Pflanzen:
+          iconCode = 0xe5aa;
+          return iconCode;
+        case Category.Resteraunt:
+          iconCode = 0xf2e7;
+          return iconCode;
+        case Category.Sportarten:
+          iconCode = 0xf1e3;
+          return iconCode;
+        case Category.Strassenverkehr:
+          iconCode = 0xf018;
+          return iconCode;
+        case Category.Supermarkt:
+          iconCode = 0xf54f;
+          return iconCode;
+        case Category.Tiere:
+          iconCode = 0xf6f0;
+          return iconCode;
+        case Category.Werkzeuge:
+          iconCode = 0xf7d9;
+          return iconCode;
+      }
+      return iconCode;
+  }
 
   //refresh die Seite
   void refresh() {
@@ -128,7 +262,7 @@ class _StartScreenState extends State<StartScreen> {
       "$chr ",
       style: const TextStyle(
         // fontWeight: FontWeight.bold,
-          color: Color(0xff00DFFF),
+          color: Colors.blue,
           fontFamily: "PatrickHand",
           fontSize: 40),
     );
@@ -211,7 +345,7 @@ class _StartScreenState extends State<StartScreen> {
                                         icon: const Icon(
                                           Icons.arrow_circle_right,
                                           size: 40,
-                                          color: Color(0xff00DFFF),
+                                          color: Colors.blue,
                                         ),
                                         onPressed: () {
                                           newGame();
@@ -267,7 +401,7 @@ class _StartScreenState extends State<StartScreen> {
                                         icon: const Icon(
                                           Icons.arrow_circle_right,
                                           size: 40,
-                                          color: Color(0xff00DFFF),
+                                          color: Colors.blue,
                                         ),
                                         onPressed: () {
                                           if (_name.text.isEmpty &&
@@ -299,7 +433,7 @@ class _StartScreenState extends State<StartScreen> {
         },
         child: alphaContainer(
           name,
-          const Color(0xff00DFFF),
+          Colors.blue,
         ))
         : alphaContainer(name, Colors.blueGrey);
   }
@@ -332,13 +466,13 @@ class _StartScreenState extends State<StartScreen> {
                           icon: const Icon(
                             Icons.home,
                             size: 35,
-                            color: Color(0xff00DFFF),
+                            color: Colors.blue,
                           ),
                         ),
                         Text(
                           score.toString(),
                           style: const TextStyle(
-                              color: Color(0xff00DFFF),
+                              color: Colors.blue,
                               fontSize: 35,
                               fontFamily: "PatrickHand"),
                         ),
@@ -346,7 +480,7 @@ class _StartScreenState extends State<StartScreen> {
                           const Icon(
                             Icons.favorite,
                             size: 35,
-                            color: Color(0xff00DFFF),
+                            color: Colors.blue,
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(13, 6, 0, 0),
@@ -359,17 +493,42 @@ class _StartScreenState extends State<StartScreen> {
                         ])
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child:
-                        Text(
-                          ("Kategorie: ${widget.category}"),
-                          style: const TextStyle(
-                              color: Color(0xff00DFFF),
-                              fontFamily: "PatrickHand",
-                              fontSize: 30),
-                        ),
-                      ),
+                    Padding(padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: Row(
+                        children: [
+                          const Text(
+                            ("Kategorie: "),
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontFamily: "Modak",
+                                fontSize: 20),
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            (widget.category),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontFamily: "Modak",
+                                fontSize: 25),
+                          ),
+                          const SizedBox(width: 10),
+                          Icon(
+                              shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 5.0,
+                                  color: Colors.black,
+                                ),
+                              ],
+                              size: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.03,
+                              color: Colors.black,
+                              IconData(getIcon(), fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                          ),]
+                    ),
+                    ),
                     images[index],
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -397,4 +556,6 @@ class _StartScreenState extends State<StartScreen> {
           )),
     );
   }
+
+
 }

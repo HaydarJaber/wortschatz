@@ -1,9 +1,29 @@
 class Category {
-  static const String All = 'All';
-  static const String Autoteile = 'autoteile';
-  static const String Food = 'Food';
-  static const String Cinema = 'Cinema';
-  static const String Sport = 'Sport';
-  static const String Music = 'Music';
-  static const String Animals = 'Animals';
+  static const String All = 'Alle Kategorien';
+  static const String Autoteile = 'Autoteile';
+  static const String Badezimmer = 'Badezimmer';
+  static const String Bauernhof = 'Bauernhof';
+  static const String Berufe = 'Berufe';
+  static const String DeutscheStaedte = 'Deutsche Städte';
+  static const String Fahrzeuge = 'Fahrzeuge';
+  static const String Garten = 'Garten';
+  static const String Gemuese = 'Gemüse';
+  static const String Getraenke = 'Getränke';
+  static const String Hauptstaedte = 'Hauptstädte';
+  static const String Hausbau = 'Hausbau';
+  static const String Hobbys = 'Hobbys';
+  static const String Kleidung = 'Kleidung';
+  static const String Koerperteile = 'Körperteile';
+  static const String Kueche = 'Küche';
+  static const String Laender = 'Länder';
+  static const String Moebel = 'Möbel';
+  static const String Musikinstrumente = 'Musikinstrumente';
+  static const String Obst = 'Obst';
+  static const String Pflanzen = 'Pflanzen';
+  static const String Resteraunt = 'Resteraunt';
+  static const String Sportarten = 'Sportarten';
+  static const String Strassenverkehr = 'Straßenverkehr';
+  static const String Supermarkt = 'Supermarkt';
+  static const String Tiere = 'Tiere';
+  static const String Werkzeuge = 'Werkzeuge';
 }

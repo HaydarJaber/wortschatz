@@ -40,7 +40,7 @@ List hfBauernhof = [
 ];
 
 List hfBerufe = [
-'Arzt', 'Lehrer', 'Maler', 'Politker', 'Sekretär', 'Schauspieler', 'Sänger', 'Koch', 'Anwalt', 'Erzieher', 'Gärtner', 'Dolmetscher', 'Polizist', 'Bäcker', 'Friseur',
+'Arzt', 'Lehrer', 'Maler', 'Politker', 'Sekretär', 'Schauspieler', 'Sänger', 'Koch', 'Anwalt', 'Erzieher', 'Gärtner', 'Dolmetscher', 'Polizist', 'Bäcker', 'Friseur'
 ];
 
 List hfDeutscheStaedte = [

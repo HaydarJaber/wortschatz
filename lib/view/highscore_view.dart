@@ -50,7 +50,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> {
                       onPressed: () => Navigator.of(context).pop(),
                       icon: const Icon(
                         Icons.home,
-                        color: Colors.white,
+                        color: Colors.blue,
                         size: 30,
                       )),
                   const Text(

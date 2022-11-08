@@ -4,9 +4,11 @@ import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/view/categories_view.dart';
 import 'package:wortschatz/view/start_view.dart';
 import 'package:wortschatz/viewmodels/router/custom_page_route.dart';
+import 'package:wortschatz/view/settings_view.dart';
 
 
 import '../../main.dart';
+import '../../view/highscore_view.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -34,6 +36,8 @@ class AppRouter {
       //  return MaterialPageRoute(
          // builder: (_) => const Terms(),
       //  );
+      case Routes.progress:
+        return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
       default:
         return null;
     }
