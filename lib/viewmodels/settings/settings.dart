@@ -10,8 +10,6 @@ import 'package:wortschatz/model/settings/settings_persistence.dart';
 class SettingsController {
   final SettingsPersistence _persistence;
 
-  /// Whether or not the sound is on at all. This overrides both music
-  /// and sound.
   ValueNotifier<bool> muted = ValueNotifier(false);
 
   ValueNotifier<String> playerName = ValueNotifier('Player');
@@ -19,6 +17,8 @@ class SettingsController {
   ValueNotifier<bool> soundsOn = ValueNotifier(false);
 
   ValueNotifier<bool> musicOn = ValueNotifier(false);
+
+  ValueNotifier<String> frequency = ValueNotifier('Alle Wörter');
 
   /// Creates a new instance of [SettingsController] backed by [persistence].
   SettingsController({required SettingsPersistence persistence})
@@ -28,15 +28,18 @@ class SettingsController {
   Future<void> loadStateFromPersistence() async {
     await Future.wait([
       _persistence
-      // On the web, sound can only start after user interaction, so
-      // we start muted there.
-      // On any other platform, we start unmuted.
           .getMuted(defaultValue: kIsWeb)
           .then((value) => muted.value = value),
       _persistence.getSoundsOn().then((value) => soundsOn.value = value),
       _persistence.getMusicOn().then((value) => musicOn.value = value),
       _persistence.getPlayerName().then((value) => playerName.value = value),
+      _persistence.getFrequency().then((value) => frequency.value = value),
     ]);
+  }
+
+  void setFrequency(String name) {
+    frequency.value = name;
+    _persistence.saveFrequency(frequency.value);
   }
 
   void setPlayerName(String name) {

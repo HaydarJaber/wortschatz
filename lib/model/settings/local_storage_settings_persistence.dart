@@ -8,6 +8,7 @@ class LocalStorageSettingsPersistence extends SettingsPersistence {
   final Future<SharedPreferences> instanceFuture =
   SharedPreferences.getInstance();
 
+  ///GET
   @override
   Future<bool> getMusicOn() async {
     final prefs = await instanceFuture;
@@ -33,6 +34,13 @@ class LocalStorageSettingsPersistence extends SettingsPersistence {
   }
 
   @override
+  Future<String> getFrequency() async{
+    final prefs = await instanceFuture;
+    return prefs.getString('frequency') ?? 'Alle Wörter';
+  }
+
+  ///SAVE
+  @override
   Future<void> saveMusicOn(bool value) async {
     final prefs = await instanceFuture;
     await prefs.setBool('musicOn', value);
@@ -54,5 +62,11 @@ class LocalStorageSettingsPersistence extends SettingsPersistence {
   Future<void> saveSoundsOn(bool value) async {
     final prefs = await instanceFuture;
     await prefs.setBool('soundsOn', value);
+  }
+
+  @override
+  Future<void> saveFrequency(String value) async {
+    final prefs = await instanceFuture;
+    await prefs.setString('frequency', value);
   }
 }

@@ -25,6 +25,8 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: palette.backgroundSettings,
+
       ),
       backgroundColor: palette.backgroundSettings,
       body: ResponsiveScreen(
@@ -32,7 +34,7 @@ class Settings extends StatelessWidget {
           children: [
             _gap,
             const Text(
-              'Settings',
+              'Einstellungen',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Permanent Marker',
@@ -60,6 +62,7 @@ class Settings extends StatelessWidget {
                 onSelected: () => settings.toggleMusicOn(),
               ),
             ),
+            _FrequenzChangeLine('Frequenz der Wörter'),
             _SettingsLine(
               'Reset progress',
               const Icon(Icons.delete),
@@ -86,6 +89,7 @@ class Settings extends StatelessWidget {
     );
   }
 }
+
 
 void showCustomNameDialog(BuildContext context) {
   showGeneralDialog(
@@ -168,15 +172,18 @@ class _NameChangeLine extends StatelessWidget {
       onTap: () => showCustomNameDialog(context),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Row(
+              children: [
             Text(title,
-                style: const TextStyle(
-                  fontFamily: 'Permanent Marker',
-                  fontSize: 30,
-                )),
-            const Spacer(),
+            style: const TextStyle(
+              fontFamily: 'Modak',
+              fontSize: 30,
+            )),
+              ]
+            ),
             ValueListenableBuilder(
               valueListenable: settings.playerName,
               builder: (context, name, child) => Text(
@@ -186,6 +193,63 @@ class _NameChangeLine extends StatelessWidget {
                   fontSize: 30,
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FrequenzChangeLine extends StatelessWidget {
+  final String title;
+  final List<String> frequenz = ['Alle Wörter','Hochfrequente Wörter', 'Niedrigfrequente Wörter'];
+
+  _FrequenzChangeLine(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    final settings = context.watch<SettingsController>();
+
+    return InkResponse(
+      highlightShape: BoxShape.rectangle,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+                children: [
+                  Text(title,
+                      style: const TextStyle(
+                        fontFamily: 'Permanent Marker',
+                        fontSize: 30,
+                      )),
+                ]
+            ),
+            ValueListenableBuilder(
+              valueListenable: settings.frequency,
+              builder: (context, value, child) =>
+                  DropdownButton<String>(
+                    value: value,
+                    icon: const Icon(Icons.arrow_downward),
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.blue),
+                    underline: Container(
+                      height: 2,
+                      color: Colors.deepPurpleAccent,
+                    ),
+                    onChanged: (value) {
+                      // This is called when the user selects an item.
+                      context.read<SettingsController>().setFrequency(value!);
+                    },
+                    items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )
             ),
           ],
         ),

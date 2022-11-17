@@ -32,10 +32,6 @@ class HighScoreItems with ChangeNotifier {
   }
 }
 
-List word = [
-  'spaß',
-  'area',
-];
 
 Map<String, int> alphabets = {
   'A': 0,

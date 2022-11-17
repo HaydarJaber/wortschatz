@@ -38,7 +38,6 @@ class ResponsiveScreen extends StatelessWidget {
         // This widget wants to fill the whole screen.
         final size = constraints.biggest;
         final padding = EdgeInsets.all(size.shortestSide / 30);
-
         if (size.height >= size.width) {
           // "Portrait" / "mobile" mode.
           return Column(

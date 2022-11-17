@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wortschatz/model/styles/palette.dart';
 import 'package:wortschatz/viewmodels/widgets/CategoryButton.dart';
 import 'package:wortschatz/viewmodels/widgets/menuButton.dart';
 import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/model/constants/categories.dart';
 import 'package:wortschatz/model/styles/palette.dart';
+
+import '../viewmodels/settings/settings.dart';
 
 
 
@@ -13,7 +16,8 @@ List<Widget> items = [
       label: Category.All,
       route: Routes.newGame,
       iconCodePoint: 0xf144,
-      color: Colors.blue),
+      color: Colors.blue
+  ),
   const CategoryButton(
       label: Category.Autoteile,
       route: Routes.newGame,

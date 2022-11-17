@@ -1,16 +1,21 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wortschatz/model/words/hf_words.dart';
 import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/model/db_helper.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import '../model/constants/categories.dart';
 import '../model/dummy_data.dart';
+import '../model/words/all_words.dart';
+import '../model/words/nf_words.dart';
+import '../viewmodels/settings/settings.dart';
 import 'categories_view.dart';
 
 class StartScreen extends StatefulWidget {
   final String category;
   const StartScreen({Key? key, required this.category}) : super(key: key);
+
   @override
   State<StartScreen> createState() => _StartScreenState();
 }
@@ -41,73 +46,146 @@ class _StartScreenState extends State<StartScreen> {
 
   @override //Erstes Wort
   void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     alphabets.updateAll((key, value) => value = 0);
     getCategory();
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     print(randomWord);
-    super.initState();
   }
 
+
+
   void getCategory(){
+    final settings = context.read<SettingsController>().frequency;
     switch(widget.category){
       case Category.All:
-        randomIndex = Random().nextInt(hfall.length);
-        randomWord = hfall[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(all.length);
+          randomWord = all[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfall.length);
+          randomWord = hfall[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfall.length);
+          randomWord = nfall[randomIndex];
+          break;
+        }
         break;
       case Category.Autoteile:
-        randomIndex = Random().nextInt(hfAutoteile.length);
-        randomWord = hfAutoteile[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(autoteile.length);
+          randomWord = autoteile[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfAutoteile.length);
+          randomWord = hfAutoteile[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfAutoteile.length);
+          randomWord = nfAutoteile[randomIndex];
+          break;
+        }
         break;
      case Category.Badezimmer:
+       if(settings.value == 'Alle Wörter'){}
+       if(true){}
+       if(true){}
         randomIndex = Random().nextInt(hfBadezimmer.length);
         randomWord = hfBadezimmer[randomIndex];
         break;
       case Category.Bauernhof:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfBauernhof.length);
         randomWord = hfBauernhof[randomIndex];
         break ;
       case Category.Berufe:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfBerufe.length);
         randomWord = hfBerufe[randomIndex];
         break ;
       case Category.DeutscheStaedte:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfDeutscheStaedte.length);
         randomWord = hfDeutscheStaedte[randomIndex];
         break ;
       case Category.Fahrzeuge:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfFahrzeuge.length);
         randomWord = hfFahrzeuge[randomIndex];
         break ;
       case Category.Garten:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfGarten.length);
         randomWord = hfGarten[randomIndex];
         break ;
       case Category.Gemuese:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfGemuese.length);
         randomWord = hfGemuese[randomIndex];
         break ;
       case Category.Getraenke:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfGetraenke.length);
         randomWord = hfGetraenke[randomIndex];
         break ;
       case Category.Hauptstaedte:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfHauptstaedte.length);
         randomWord = hfHauptstaedte[randomIndex];
         break ;
       case Category.Hausbau:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfHausbau.length);
         randomWord = hfHausbau[randomIndex];
         break ;
       case Category.Hobbys:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfHobbys.length);
         randomWord = hfHobbys[randomIndex];
         break ;
       case Category.Kleidung:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfKleidung.length);
         randomWord = hfKleidung[randomIndex];
         break ;
       case Category.Koerperteile:
+        if(settings.value == 'Alle Wörter'){}
+        if(true){}
+        if(true){}
         randomIndex = Random().nextInt(hfKoerperteile.length);
         randomWord = hfKoerperteile[randomIndex];
         break ;
@@ -441,6 +519,7 @@ class _StartScreenState extends State<StartScreen> {
   //Haupt build Widget
   @override
   Widget build(BuildContext context) {
+    final settings = context.watch<SettingsController>();
     return SafeArea(
       child: Scaffold(
           resizeToAvoidBottomInset: false,
