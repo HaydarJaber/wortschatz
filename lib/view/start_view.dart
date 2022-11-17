@@ -99,143 +99,429 @@ class _StartScreenState extends State<StartScreen> {
         }
         break;
      case Category.Badezimmer:
-       if(settings.value == 'Alle Wörter'){}
-       if(true){}
-       if(true){}
-        randomIndex = Random().nextInt(hfBadezimmer.length);
-        randomWord = hfBadezimmer[randomIndex];
-        break;
+       if(settings.value == 'Alle Wörter'){
+         randomIndex = Random().nextInt(badezimmer.length);
+         randomWord = badezimmer[randomIndex];
+         break;
+       }
+       if(settings.value == 'Hochfrequente Wörter'){
+         randomIndex = Random().nextInt(hfBadezimmer.length);
+         randomWord = hfBadezimmer[randomIndex];
+         break;
+       }
+       if(settings.value == 'Niedrigfrequente Wörter'){
+         randomIndex = Random().nextInt(nfBadezimmer.length);
+         randomWord = nfBadezimmer[randomIndex];
+         break;
+       }
+       break;
       case Category.Bauernhof:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfBauernhof.length);
-        randomWord = hfBauernhof[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(bauernhof.length);
+          randomWord = bauernhof[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfBauernhof.length);
+          randomWord = hfBauernhof[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfBauernhof.length);
+          randomWord = nfBauernhof[randomIndex];
+          break;
+        }
         break ;
       case Category.Berufe:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfBerufe.length);
-        randomWord = hfBerufe[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(berufe.length);
+          randomWord = berufe[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfBerufe.length);
+          randomWord = hfBerufe[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfBerufe.length);
+          randomWord = nfBerufe[randomIndex];
+          break;
+        }
         break ;
       case Category.DeutscheStaedte:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfDeutscheStaedte.length);
-        randomWord = hfDeutscheStaedte[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(deutscheStaedte.length);
+          randomWord = deutscheStaedte[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfDeutscheStaedte.length);
+          randomWord = hfDeutscheStaedte[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfDeutscheStaedte.length);
+          randomWord = nfDeutscheStaedte[randomIndex];
+          break;
+        }
         break ;
       case Category.Fahrzeuge:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfFahrzeuge.length);
-        randomWord = hfFahrzeuge[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(fahrzeuge.length);
+          randomWord = fahrzeuge[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfFahrzeuge.length);
+          randomWord = hfFahrzeuge[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfFahrzeuge.length);
+          randomWord = nfFahrzeuge[randomIndex];
+          break;
+        }
         break ;
       case Category.Garten:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfGarten.length);
-        randomWord = hfGarten[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(garten.length);
+          randomWord = garten[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfGarten.length);
+          randomWord = hfGarten[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfGarten.length);
+          randomWord = nfGarten[randomIndex];
+          break;
+        }
         break ;
       case Category.Gemuese:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfGemuese.length);
-        randomWord = hfGemuese[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(gemuese.length);
+          randomWord = gemuese[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfGemuese.length);
+          randomWord = hfGemuese[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfGemuese.length);
+          randomWord = nfGemuese[randomIndex];
+          break;
+        }
         break ;
       case Category.Getraenke:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfGetraenke.length);
-        randomWord = hfGetraenke[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(getraenke.length);
+          randomWord = getraenke[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfGetraenke.length);
+          randomWord = hfGetraenke[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfGetraenke.length);
+          randomWord = nfGetraenke[randomIndex];
+          break;
+        }
         break ;
       case Category.Hauptstaedte:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfHauptstaedte.length);
-        randomWord = hfHauptstaedte[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(hauptstaedte.length);
+          randomWord = hauptstaedte[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfHauptstaedte.length);
+          randomWord = hfHauptstaedte[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfHauptstaedte.length);
+          randomWord = nfHauptstaedte[randomIndex];
+          break;
+        }
         break ;
       case Category.Hausbau:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfHausbau.length);
-        randomWord = hfHausbau[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(hausbau.length);
+          randomWord = hausbau[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfHausbau.length);
+          randomWord = hfHausbau[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfHausbau.length);
+          randomWord = nfHausbau[randomIndex];
+          break;
+        }
         break ;
       case Category.Hobbys:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfHobbys.length);
-        randomWord = hfHobbys[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(hobbys.length);
+          randomWord = hobbys[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfHobbys.length);
+          randomWord = hfHobbys[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfHobbys.length);
+          randomWord = nfHobbys[randomIndex];
+          break;
+        }
         break ;
       case Category.Kleidung:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfKleidung.length);
-        randomWord = hfKleidung[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(kleidung.length);
+          randomWord = kleidung[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfKleidung.length);
+          randomWord = hfKleidung[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfKleidung.length);
+          randomWord = nfKleidung[randomIndex];
+          break;
+        }
         break ;
       case Category.Koerperteile:
-        if(settings.value == 'Alle Wörter'){}
-        if(true){}
-        if(true){}
-        randomIndex = Random().nextInt(hfKoerperteile.length);
-        randomWord = hfKoerperteile[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(koerperteile.length);
+          randomWord = koerperteile[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfKoerperteile.length);
+          randomWord = hfKoerperteile[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfKoerperteile.length);
+          randomWord = nfKoerperteile[randomIndex];
+          break;
+        }
         break ;
       case Category.Kueche:
-        randomIndex = Random().nextInt(hfKueche.length);
-        randomWord = hfKueche[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(kueche.length);
+          randomWord = kueche[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfKueche.length);
+          randomWord = hfKueche[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfKueche.length);
+          randomWord = nfKueche[randomIndex];
+          break;
+        }
         break ;
       case Category.Laender:
-        randomIndex = Random().nextInt(hfLaender.length);
-        randomWord = hfLaender[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(laender.length);
+          randomWord = laender[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfLaender.length);
+          randomWord = hfLaender[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfLaender.length);
+          randomWord = nfLaender[randomIndex];
+          break;
+        }
         break ;
       case Category.Moebel:
-        randomIndex = Random().nextInt(hfMoebel.length);
-        randomWord = hfMoebel[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(moebel.length);
+          randomWord = moebel[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfMoebel.length);
+          randomWord = hfMoebel[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfMoebel.length);
+          randomWord = nfMoebel[randomIndex];
+          break;
+        }
         break ;
       case Category.Musikinstrumente:
-        randomIndex = Random().nextInt(hfMusikinstrumente.length);
-        randomWord = hfMusikinstrumente[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(musikinstrumente.length);
+          randomWord = musikinstrumente[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfMusikinstrumente.length);
+          randomWord = hfMusikinstrumente[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfMusikinstrumente.length);
+          randomWord = nfMusikinstrumente[randomIndex];
+          break;
+        }
         break ;
       case Category.Obst:
-        randomIndex = Random().nextInt(hfObst.length);
-        randomWord = hfObst[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(obst.length);
+          randomWord = obst[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfObst.length);
+          randomWord = hfObst[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfObst.length);
+          randomWord = nfObst[randomIndex];
+          break;
+        }
         break ;
       case Category.Pflanzen:
-        randomIndex = Random().nextInt(hfPflanzen.length);
-        randomWord = hfPflanzen[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(pflanzen.length);
+          randomWord = pflanzen[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfPflanzen.length);
+          randomWord = hfPflanzen[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfPflanzen.length);
+          randomWord = nfPflanzen[randomIndex];
+          break;
+        }
         break ;
       case Category.Resteraunt:
-        randomIndex = Random().nextInt(hfResteraunt.length);
-        randomWord = hfResteraunt[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(resteraunt.length);
+          randomWord = resteraunt[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfResteraunt.length);
+          randomWord = hfResteraunt[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfResteraunt.length);
+          randomWord = nfResteraunt[randomIndex];
+          break;
+        }
         break ;
       case Category.Sportarten:
-        randomIndex = Random().nextInt(hfSportarten.length);
-        randomWord = hfSportarten[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(sportarten.length);
+          randomWord = sportarten[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfSportarten.length);
+          randomWord = hfSportarten[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfSportarten.length);
+          randomWord = nfSportarten[randomIndex];
+          break;
+        }
         break ;
       case Category.Strassenverkehr:
-        randomIndex = Random().nextInt(hfStrassenverkehr.length);
-        randomWord = hfStrassenverkehr[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(strassenverkehr.length);
+          randomWord = strassenverkehr[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfStrassenverkehr.length);
+          randomWord = hfStrassenverkehr[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfStrassenverkehr.length);
+          randomWord = nfStrassenverkehr[randomIndex];
+          break;
+        }
         break ;
       case Category.Supermarkt:
-        randomIndex = Random().nextInt(hfSupermarkt.length);
-        randomWord = hfSupermarkt[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(supermarkt.length);
+          randomWord = supermarkt[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfSupermarkt.length);
+          randomWord = hfSupermarkt[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfSupermarkt.length);
+          randomWord = nfSupermarkt[randomIndex];
+          break;
+        }
         break ;
       case Category.Tiere:
-        randomIndex = Random().nextInt(hfTiere.length);
-        randomWord = hfTiere[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(tiere.length);
+          randomWord = tiere[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfTiere.length);
+          randomWord = hfTiere[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfTiere.length);
+          randomWord = nfTiere[randomIndex];
+          break;
+        }
         break ;
       case Category.Werkzeuge:
-        randomIndex = Random().nextInt(hfWerkzeuge.length);
-        randomWord = hfWerkzeuge[randomIndex];
+        if(settings.value == 'Alle Wörter'){
+          randomIndex = Random().nextInt(werkzeuge.length);
+          randomWord = werkzeuge[randomIndex];
+          break;
+        }
+        if(settings.value == 'Hochfrequente Wörter'){
+          randomIndex = Random().nextInt(hfWerkzeuge.length);
+          randomWord = hfWerkzeuge[randomIndex];
+          break;
+        }
+        if(settings.value == 'Niedrigfrequente Wörter'){
+          randomIndex = Random().nextInt(nfWerkzeuge.length);
+          randomWord = nfWerkzeuge[randomIndex];
+          break;
+        }
         break;
     }
   }

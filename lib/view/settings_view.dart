@@ -68,7 +68,6 @@ class Settings extends StatelessWidget {
               const Icon(Icons.delete),
               onSelected: () {
                 context.read<PlayerProgress>().reset();
-
                 final messenger = ScaffoldMessenger.of(context);
                 messenger.showSnackBar(
                   const SnackBar(
