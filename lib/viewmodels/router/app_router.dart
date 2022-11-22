@@ -36,7 +36,7 @@ class AppRouter {
       //  return MaterialPageRoute(
          // builder: (_) => const Terms(),
       //  );
-      case Routes.progress:
+      case Routes.rank:
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
       default:
         return null;

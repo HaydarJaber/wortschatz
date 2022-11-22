@@ -54,7 +54,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> {
                         size: 30,
                       )),
                   const Text(
-                    '      High Scores',
+                    '      Rangliste',
                     style: TextStyle(
                         fontFamily: "PatrickHand",
                         fontSize: 35,
@@ -69,7 +69,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Rank',
+                        'Platz',
                         style: txt,
                       ),
                       Text(
@@ -77,7 +77,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> {
                         style: txt,
                       ),
                       Text(
-                        'Score',
+                        'Punkte',
                         style: txt,
                       )
                     ],
@@ -96,7 +96,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> {
                             child: Center(
                               // child: CircularProgressIndicator(),
                               child: Text(
-                                'Got no players yet!',
+                                'Keine Spieler gefunden!',
                                 style: txt,
                               ),
                             ),

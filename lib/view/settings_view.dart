@@ -1,6 +1,5 @@
-// Anzeige Wörter in einem Intervall
-// Frequenz der Wörter
-// mit oder ohne Hilfe
+// Frequenz der Wörter (DONE)
+///TODO: mit oder ohne Hilfe
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:provider/provider.dart';
 import '../model/styles/responsive_screen.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
-
 import '../viewmodels/player_progress/player_progress.dart';
 
 class Settings extends StatelessWidget {
@@ -43,28 +41,28 @@ class Settings extends StatelessWidget {
               ),
             ),
             _gap,
-            const _NameChangeLine(
+          /*  const _NameChangeLine(
               'Name',
-            ),
-            ValueListenableBuilder<bool>(
+            ), */
+         /*   ValueListenableBuilder<bool>(
               valueListenable: settings.soundsOn,
               builder: (context, soundsOn, child) => _SettingsLine(
                 'Sound FX',
                 Icon(soundsOn ? Icons.graphic_eq : Icons.volume_off),
                 onSelected: () => settings.toggleSoundsOn(),
               ),
-            ),
-            ValueListenableBuilder<bool>(
+            ), */
+       /*     ValueListenableBuilder<bool>(
               valueListenable: settings.musicOn,
               builder: (context, musicOn, child) => _SettingsLine(
                 'Music',
                 Icon(musicOn ? Icons.music_note : Icons.music_off),
                 onSelected: () => settings.toggleMusicOn(),
               ),
-            ),
+            ), */
             _FrequenzChangeLine('Frequenz der Wörter'),
             _SettingsLine(
-              'Reset progress',
+              'Fortschritt zurücksetzen',
               const Icon(Icons.delete),
               onSelected: () {
                 context.read<PlayerProgress>().reset();

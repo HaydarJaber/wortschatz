@@ -1,0 +1,15 @@
+List Sitz = ['direkt sichtbar','Stoff oder Leder','es gibt oft vier davon','man nimmt darauf Platz'];
+List Dach = [];
+List Motor = [];
+List Rad = [];
+List Achse = [];
+List Batterie = [];
+List Reifen = [];
+List Scheinwerfer = [];
+List Lenkrad = [];
+List Kupplung = [];
+List Zuendung = [];
+List Kofferraum = [];
+List Rueckspiegel = [];
+List Handbremse = [];
+List Felge = [];

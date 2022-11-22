@@ -59,8 +59,6 @@ class _StartScreenState extends State<StartScreen> {
     print(randomWord);
   }
 
-
-
   void getCategory(){
     final settings = context.read<SettingsController>().frequency;
     switch(widget.category){
@@ -755,11 +753,11 @@ class _StartScreenState extends State<StartScreen> {
                                     if (lives == 0)
                                       TextFormField(
                                         validator: (value) => value!.isEmpty
-                                            ? "please enter your name"
+                                            ? "Name"
                                             : null,
                                         controller: _name,
                                         decoration: const InputDecoration(
-                                            hintText: "Enter your name"),
+                                            hintText: "Bitte Namen eingeben"),
                                       ),
                                     IconButton(
                                         icon: const Icon(
@@ -805,7 +803,6 @@ class _StartScreenState extends State<StartScreen> {
   //Haupt build Widget
   @override
   Widget build(BuildContext context) {
-    final settings = context.watch<SettingsController>();
     return SafeArea(
       child: Scaffold(
           resizeToAvoidBottomInset: false,
@@ -840,6 +837,57 @@ class _StartScreenState extends State<StartScreen> {
                               color: Colors.blue,
                               fontSize: 35,
                               fontFamily: "PatrickHand"),
+                        ),
+                        IconButton(
+                          onPressed: (() {
+                            showDialog(
+                                barrierDismissible: true,
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return WillPopScope(
+                                    onWillPop: () async => false,
+                                    child: AlertDialog(
+                                      backgroundColor:
+                                      const Color.fromARGB(255, 29, 3, 142),
+                                      content: SizedBox(
+                                        height: 200,
+                                        child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                            children: [
+                                              const Icon(
+                                                Icons.check_circle_outlined,
+                                                color: Colors.green,
+                                                size: 60,
+                                              ),
+                                              Text(
+                                                stored.toString(),
+                                                style: const TextStyle(
+                                                    color: Colors.green,
+                                                    fontFamily: "Modak",
+                                                    fontSize: 20),
+                                              ),
+                                              IconButton(
+                                                  icon: const Icon(
+                                                    Icons.arrow_circle_right,
+                                                    size: 40,
+                                                    color: Colors.blue,
+                                                  ),
+                                                  onPressed: () {
+                                                    newGame();
+                                                    Navigator.of(context).pop();
+                                                  })
+                                            ]),
+                                      ),
+                                    ),
+                                  );
+                                });
+                          }),
+                          icon: const Icon(
+                            Icons.lightbulb,
+                            size: 35,
+                            color: Colors.blue,
+                          ),
                         ),
                         Stack(children: [
                           const Icon(
@@ -921,6 +969,4 @@ class _StartScreenState extends State<StartScreen> {
           )),
     );
   }
-
-
 }
