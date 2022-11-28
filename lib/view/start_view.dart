@@ -29,6 +29,8 @@ class _StartScreenState extends State<StartScreen> {
   List sword = [];
   late int randomIndex;
   late String randomWord;
+  late List wordList = List.filled(0, int,growable: true);
+  late int wordListCounter = 0;
   int iconCode = 0xf144;
 
 
@@ -41,6 +43,7 @@ class _StartScreenState extends State<StartScreen> {
       sword = List.generate(randomWord.length, (index) => "_");
       stored = randomWord;
       print(randomWord);
+      print(wordList);
     });
   }
 
@@ -57,6 +60,7 @@ class _StartScreenState extends State<StartScreen> {
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     print(randomWord);
+    print(wordList);
   }
 
   void getCategory(){
@@ -81,13 +85,23 @@ class _StartScreenState extends State<StartScreen> {
         break;
       case Category.Autoteile:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(autoteile.length);
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfAutoteile.length);
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
@@ -675,49 +689,101 @@ class _StartScreenState extends State<StartScreen> {
                   }
                 }
                 if (!randomWord.contains(RegExp(r'[a-z]'))) {
-                  score = score + 1;
-                  showDialog(
-                      barrierDismissible: true,
-                      context: context,
-                      builder: (BuildContext context) {
-                        return WillPopScope(
-                          onWillPop: () async => false,
-                          child: AlertDialog(
-                            backgroundColor:
-                            const Color.fromARGB(255, 29, 3, 142),
-                            content: SizedBox(
-                              height: 200,
-                              child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
-                                  children: [
-                                    const Icon(
-                                      Icons.check_circle_outlined,
-                                      color: Colors.green,
-                                      size: 60,
-                                    ),
-                                    Text(
-                                      stored.toString(),
-                                      style: const TextStyle(
-                                          color: Colors.green,
-                                          fontFamily: "Modak",
-                                          fontSize: 20),
-                                    ),
-                                    IconButton(
-                                        icon: const Icon(
-                                          Icons.arrow_circle_right,
-                                          size: 40,
-                                          color: Colors.blue,
-                                        ),
-                                        onPressed: () {
-                                          newGame();
-                                          Navigator.of(context).pop();
-                                        })
-                                  ]),
+                  if(wordListCounter == wordList.length){
+                    showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return WillPopScope(
+                            onWillPop: () async => false,
+                            child: AlertDialog(
+                              backgroundColor:
+                              const Color.fromARGB(255, 29, 3, 142),
+                              content: SizedBox(
+                                height: 200,
+                                child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [
+                                      const Icon(
+                                        Icons.check_circle_outlined,
+                                        color: Colors.green,
+                                        size: 60,
+                                      ),
+                                      const Text(
+                                        "GESCHAFFT!",
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Modak",
+                                            fontSize: 20),
+                                      ),
+                                      const Text(
+                                        "Keine weiteren Wörter vorhanden.",
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Modak",
+                                            fontSize: 20),
+                                      ),
+                                      IconButton(
+                                          icon: const Icon(
+                                            Icons.arrow_circle_right,
+                                            size: 40,
+                                            color: Colors.blue,
+                                          ),
+                                          onPressed: () {
+                                            refresh();
+                                            refresh();
+                                          })
+                                    ]),
+                              ),
                             ),
-                          ),
-                        );
-                      });
+                          );
+                        });
+                  }else{
+                    score = score + 1;
+                    showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return WillPopScope(
+                            onWillPop: () async => false,
+                            child: AlertDialog(
+                              backgroundColor:
+                              const Color.fromARGB(255, 29, 3, 142),
+                              content: SizedBox(
+                                height: 200,
+                                child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [
+                                      const Icon(
+                                        Icons.check_circle_outlined,
+                                        color: Colors.green,
+                                        size: 60,
+                                      ),
+                                      Text(
+                                        stored.toString(),
+                                        style: const TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Modak",
+                                            fontSize: 20),
+                                      ),
+                                      IconButton(
+                                          icon: const Icon(
+                                            Icons.arrow_circle_right,
+                                            size: 40,
+                                            color: Colors.blue,
+                                          ),
+                                          onPressed: () {
+                                            newGame();
+                                            Navigator.of(context).pop();
+                                          })
+                                    ]),
+                              ),
+                            ),
+                          );
+                        });
+                  }
                 }
               } else {
                 if (index == 11) {
