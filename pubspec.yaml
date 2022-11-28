@@ -71,13 +71,19 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - assets/images/1.gif
-    - assets/images/2.gif
-    - assets/images/3.gif
-    - assets/images/4.gif
-    - assets/images/5.gif
-    - assets/images/6.gif
-    - assets/images/7.gif
+    - assets/images/coins0.gif
+    - assets/images/coins1.gif
+    - assets/images/coins2.gif
+    - assets/images/coins3.gif
+    - assets/images/coins4.gif
+    - assets/images/coins5.gif
+    - assets/images/coins6.gif
+    - assets/images/coins7.gif
+    - assets/images/coins8.gif
+    - assets/images/coins9.gif
+    - assets/images/coins10.gif
+    - assets/images/coins11.gif
+    - assets/images/coins12.gif
     - assets/images/Homescreen_BIG.png
     - assets/terms.json
     - assets/images/apploading.mp4

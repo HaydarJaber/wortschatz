@@ -68,37 +68,67 @@ Map<String, int> alphabets = {
 
 List images = [
   Image.asset(
-    "assets/images/7.gif",
+    "assets/images/coins12.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/6.gif",
+    "assets/images/coins11.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/5.gif",
+    "assets/images/coins10.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/4.gif",
+    "assets/images/coins9.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/3.gif",
+    "assets/images/coins8.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/2.gif",
+    "assets/images/coins7.gif",
     height: 230,
     fit: BoxFit.cover,
   ),
   Image.asset(
-    "assets/images/1.gif",
+    "assets/images/coins6.gif",
+    height: 230,
+    fit: BoxFit.cover,
+  ),
+  Image.asset(
+    "assets/images/coins5.gif",
+    height: 230,
+    fit: BoxFit.cover,
+  ),
+  Image.asset(
+    "assets/images/coins4.gif",
+    height: 230,
+    fit: BoxFit.cover,
+  ),
+  Image.asset(
+    "assets/images/coins3.gif",
+    height: 230,
+    fit: BoxFit.cover,
+  ),
+  Image.asset(
+    "assets/images/coins2.gif",
+    height: 230,
+    fit: BoxFit.cover,
+  ),
+  Image.asset(
+    "assets/images/coins1.gif",
+    height: 230,
+    fit: BoxFit.cover,
+  ),
+  Image.asset(
+    "assets/images/coins0.gif",
     height: 230,
     fit: BoxFit.cover,
   ),

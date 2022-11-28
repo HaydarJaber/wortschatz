@@ -720,7 +720,7 @@ class _StartScreenState extends State<StartScreen> {
                       });
                 }
               } else {
-                if (index == 5) {
+                if (index == 11) {
                   index = index + 1;
                   lives -= 1;
                   showDialog(
