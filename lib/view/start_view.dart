@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wortschatz/model/words/hf_words.dart';
 import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/model/db_helper.dart';
+import 'package:wortschatz/view/settings_view.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import '../model/constants/categories.dart';
 import '../model/dummy_data.dart';
@@ -21,6 +22,7 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
+  late AssetImage _imageToShow;
   final _name = TextEditingController();
   late String stored;
   int lives = 3;
@@ -42,6 +44,7 @@ class _StartScreenState extends State<StartScreen> {
       getCategory();
       sword = List.generate(randomWord.length, (index) => "_");
       stored = randomWord;
+      _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
       print(randomWord);
       print(wordList);
     });
@@ -59,6 +62,7 @@ class _StartScreenState extends State<StartScreen> {
     getCategory();
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
+    _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
     print(randomWord);
     print(wordList);
   }
@@ -68,18 +72,33 @@ class _StartScreenState extends State<StartScreen> {
     switch(widget.category){
       case Category.All:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(all.length);
+          if(!(wordList.length == all.length)){
+            wordList = List<int>.generate(all.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = all[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfall.length);
+          if(!(wordList.length == hfall.length)){
+            wordList = List<int>.generate(hfall.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = hfall[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfall.length);
-          randomWord = nfall[randomIndex];
+          if(!(wordList.length == nfall.length)){
+            wordList = List<int>.generate(nfall.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         break;
@@ -105,433 +124,813 @@ class _StartScreenState extends State<StartScreen> {
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfAutoteile.length);
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         break;
      case Category.Badezimmer:
        if(settings.value == 'Alle Wörter'){
-         randomIndex = Random().nextInt(badezimmer.length);
+         if(!(wordList.length == badezimmer.length)){
+           wordList = List<int>.generate(badezimmer.length, (int index) => index);
+           wordList.shuffle();
+         }
+         randomIndex = wordList[wordListCounter];
          randomWord = badezimmer[randomIndex];
+         wordListCounter++;
          break;
        }
        if(settings.value == 'Hochfrequente Wörter'){
-         randomIndex = Random().nextInt(hfBadezimmer.length);
+         if(!(wordList.length == hfBadezimmer.length)){
+           wordList = List<int>.generate(hfBadezimmer.length, (int index) => index);
+           wordList.shuffle();
+         }
+         randomIndex = wordList[wordListCounter];
          randomWord = hfBadezimmer[randomIndex];
+         wordListCounter++;
          break;
        }
        if(settings.value == 'Niedrigfrequente Wörter'){
-         randomIndex = Random().nextInt(nfBadezimmer.length);
+         if(!(wordList.length == nfBadezimmer.length)){
+           wordList = List<int>.generate(nfBadezimmer.length, (int index) => index);
+           wordList.shuffle();
+         }
+         randomIndex = wordList[wordListCounter];
          randomWord = nfBadezimmer[randomIndex];
+         wordListCounter++;
          break;
        }
        break;
       case Category.Bauernhof:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(bauernhof.length);
+          if(!(wordList.length == bauernhof.length)){
+            wordList = List<int>.generate(bauernhof.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = bauernhof[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfBauernhof.length);
+          if(!(wordList.length == hfBauernhof.length)){
+            wordList = List<int>.generate(hfBauernhof.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = hfBauernhof[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfBauernhof.length);
+          if(!(wordList.length == nfBauernhof.length)){
+            wordList = List<int>.generate(nfBauernhof.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = nfBauernhof[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Berufe:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(berufe.length);
+          if(!(wordList.length == berufe.length)){
+            wordList = List<int>.generate(berufe.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = berufe[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfBerufe.length);
+          if(!(wordList.length == hfBerufe.length)){
+            wordList = List<int>.generate(hfBerufe.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = hfBerufe[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfBerufe.length);
+          if(!(wordList.length == nfBerufe.length)){
+            wordList = List<int>.generate(nfBerufe.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = nfBerufe[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.DeutscheStaedte:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(deutscheStaedte.length);
+          if(!(wordList.length == deutscheStaedte.length)){
+            wordList = List<int>.generate(deutscheStaedte.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = deutscheStaedte[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfDeutscheStaedte.length);
+          if(!(wordList.length == hfDeutscheStaedte.length)){
+            wordList = List<int>.generate(hfDeutscheStaedte.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = hfDeutscheStaedte[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfDeutscheStaedte.length);
+          if(!(wordList.length == nfDeutscheStaedte.length)){
+            wordList = List<int>.generate(nfDeutscheStaedte.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = nfDeutscheStaedte[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Fahrzeuge:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(fahrzeuge.length);
+          if(!(wordList.length == fahrzeuge.length)){
+            wordList = List<int>.generate(fahrzeuge.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = fahrzeuge[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfFahrzeuge.length);
+          if(!(wordList.length == hfFahrzeuge.length)){
+            wordList = List<int>.generate(hfFahrzeuge.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = hfFahrzeuge[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfFahrzeuge.length);
+          if(!(wordList.length == nfFahrzeuge.length)){
+            wordList = List<int>.generate(nfFahrzeuge.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = nfFahrzeuge[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Garten:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(garten.length);
+          if(!(wordList.length == garten.length)){
+            wordList = List<int>.generate(garten.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = garten[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfGarten.length);
+          if(!(wordList.length == hfGarten.length)){
+            wordList = List<int>.generate(hfGarten.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = hfGarten[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfGarten.length);
+          if(!(wordList.length == nfGarten.length)){
+            wordList = List<int>.generate(nfGarten.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
           randomWord = nfGarten[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Gemuese:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(gemuese.length);
-          randomWord = gemuese[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfGemuese.length);
-          randomWord = hfGemuese[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfGemuese.length);
-          randomWord = nfGemuese[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Getraenke:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(getraenke.length);
-          randomWord = getraenke[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfGetraenke.length);
-          randomWord = hfGetraenke[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfGetraenke.length);
-          randomWord = nfGetraenke[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Hauptstaedte:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(hauptstaedte.length);
-          randomWord = hauptstaedte[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfHauptstaedte.length);
-          randomWord = hfHauptstaedte[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfHauptstaedte.length);
-          randomWord = nfHauptstaedte[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Hausbau:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(hausbau.length);
-          randomWord = hausbau[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfHausbau.length);
-          randomWord = hfHausbau[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfHausbau.length);
-          randomWord = nfHausbau[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Hobbys:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(hobbys.length);
-          randomWord = hobbys[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfHobbys.length);
-          randomWord = hfHobbys[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfHobbys.length);
-          randomWord = nfHobbys[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Kleidung:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(kleidung.length);
-          randomWord = kleidung[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfKleidung.length);
-          randomWord = hfKleidung[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfKleidung.length);
-          randomWord = nfKleidung[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Koerperteile:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(koerperteile.length);
-          randomWord = koerperteile[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfKoerperteile.length);
-          randomWord = hfKoerperteile[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfKoerperteile.length);
-          randomWord = nfKoerperteile[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Kueche:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(kueche.length);
-          randomWord = kueche[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfKueche.length);
-          randomWord = hfKueche[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfKueche.length);
-          randomWord = nfKueche[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Laender:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(laender.length);
-          randomWord = laender[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfLaender.length);
-          randomWord = hfLaender[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfLaender.length);
-          randomWord = nfLaender[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Moebel:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(moebel.length);
-          randomWord = moebel[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfMoebel.length);
-          randomWord = hfMoebel[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfMoebel.length);
-          randomWord = nfMoebel[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Musikinstrumente:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(musikinstrumente.length);
-          randomWord = musikinstrumente[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfMusikinstrumente.length);
-          randomWord = hfMusikinstrumente[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfMusikinstrumente.length);
-          randomWord = nfMusikinstrumente[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Obst:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(obst.length);
-          randomWord = obst[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfObst.length);
-          randomWord = hfObst[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfObst.length);
-          randomWord = nfObst[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Pflanzen:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(pflanzen.length);
-          randomWord = pflanzen[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfPflanzen.length);
-          randomWord = hfPflanzen[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfPflanzen.length);
-          randomWord = nfPflanzen[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Resteraunt:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(resteraunt.length);
-          randomWord = resteraunt[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfResteraunt.length);
-          randomWord = hfResteraunt[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfResteraunt.length);
-          randomWord = nfResteraunt[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Sportarten:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(sportarten.length);
-          randomWord = sportarten[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfSportarten.length);
-          randomWord = hfSportarten[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfSportarten.length);
-          randomWord = nfSportarten[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Strassenverkehr:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(strassenverkehr.length);
-          randomWord = strassenverkehr[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfStrassenverkehr.length);
-          randomWord = hfStrassenverkehr[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfStrassenverkehr.length);
-          randomWord = nfStrassenverkehr[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Supermarkt:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(supermarkt.length);
-          randomWord = supermarkt[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfSupermarkt.length);
-          randomWord = hfSupermarkt[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfSupermarkt.length);
-          randomWord = nfSupermarkt[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Tiere:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(tiere.length);
-          randomWord = tiere[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfTiere.length);
-          randomWord = hfTiere[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfTiere.length);
-          randomWord = nfTiere[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
-        break ;
+        break;
       case Category.Werkzeuge:
         if(settings.value == 'Alle Wörter'){
-          randomIndex = Random().nextInt(werkzeuge.length);
-          randomWord = werkzeuge[randomIndex];
+          if(!(wordList.length == autoteile.length)){
+            wordList = List<int>.generate(autoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = autoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          randomIndex = Random().nextInt(hfWerkzeuge.length);
-          randomWord = hfWerkzeuge[randomIndex];
+          if(!(wordList.length == hfAutoteile.length)){
+            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = hfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          randomIndex = Random().nextInt(nfWerkzeuge.length);
-          randomWord = nfWerkzeuge[randomIndex];
+          if(!(wordList.length == nfAutoteile.length)){
+            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+            wordList.shuffle();
+          }
+          randomIndex = wordList[wordListCounter];
+          randomWord = nfAutoteile[randomIndex];
+          wordListCounter++;
           break;
         }
         break;
@@ -675,19 +1074,16 @@ class _StartScreenState extends State<StartScreen> {
               print(chr);
               print(chrUP);
               if (randomWord.contains(chr) || randomWord.contains(chrUP)) {
-                if(randomWord.contains(chr)){
                   while (randomWord.contains(chr)) {
                     int getIndex = randomWord.indexOf((chr));
                     randomWord = randomWord.replaceFirst(chr, '_');
                     sword[getIndex] = chr;
                   }
-                }else{
                   while (randomWord.contains(chrUP)) {
                     int getIndex = randomWord.indexOf((chrUP));
                     randomWord = randomWord.replaceFirst(chrUP, '_');
                     sword[getIndex] = chrUP;
                   }
-                }
                 if (!randomWord.contains(RegExp(r'[a-z]'))) {
                   if(wordListCounter == wordList.length){
                     showDialog(
@@ -700,46 +1096,80 @@ class _StartScreenState extends State<StartScreen> {
                               backgroundColor:
                               const Color.fromARGB(255, 29, 3, 142),
                               content: SizedBox(
-                                height: 200,
+                                height: 800,
                                 child: Column(
                                     mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                     children: [
+                                      Container(
+                                          padding: EdgeInsets.only(left: 10.0),
+                                          height: MediaQuery.of(context).size.height * 0.5,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: _imageToShow,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )),
                                       const Icon(
                                         Icons.check_circle_outlined,
                                         color: Colors.green,
-                                        size: 60,
+                                        size: 50,
                                       ),
+                                      Text(
+                                        stored.toString(),
+                                        style: const TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Modak",
+                                            fontSize: 20),
+                                      ),
+                                      const SizedBox(height: 10),
                                       const Text(
-                                        "GESCHAFFT!",
+                                        "Glückwunsch!",
                                         style: TextStyle(
                                             color: Colors.green,
                                             fontFamily: "Modak",
                                             fontSize: 20),
                                       ),
                                       const Text(
-                                        "Keine weiteren Wörter vorhanden.",
+                                        "Durchlauf beendet",
                                         style: TextStyle(
                                             color: Colors.green,
                                             fontFamily: "Modak",
                                             fontSize: 20),
                                       ),
-                                      IconButton(
-                                          icon: const Icon(
-                                            Icons.arrow_circle_right,
-                                            size: 40,
-                                            color: Colors.blue,
-                                          ),
-                                          onPressed: () {
-                                            refresh();
-                                            refresh();
-                                          })
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          IconButton(
+                                              icon: const Icon(
+                                                Icons.arrow_circle_right,
+                                                size: 40,
+                                                color: Colors.blue,
+                                              ),
+                                              onPressed: () {
+                                                refresh();
+                                                refresh();
+                                              }),
+                                          IconButton(
+                                              icon: const Icon(
+                                                Icons.info,
+                                                size: 40,
+                                                color: Colors.blue,
+                                              ),
+                                              onPressed: () {
+                                                refresh();
+                                                refresh();
+                                              }),
+                                        ],
+                                      ),
                                     ]),
                               ),
                             ),
                           );
                         });
-                  }else{
+                  }
+                  else{
                     score = score + 1;
                     showDialog(
                         barrierDismissible: true,
@@ -751,11 +1181,20 @@ class _StartScreenState extends State<StartScreen> {
                               backgroundColor:
                               const Color.fromARGB(255, 29, 3, 142),
                               content: SizedBox(
-                                height: 200,
+                                height: 600,
                                 child: Column(
                                     mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                     children: [
+                                          Container(
+                                          padding: EdgeInsets.only(left: 10.0),
+                                            height: MediaQuery.of(context).size.height * 0.5,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: _imageToShow,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            )),
                                       const Icon(
                                         Icons.check_circle_outlined,
                                         color: Colors.green,
@@ -789,68 +1228,222 @@ class _StartScreenState extends State<StartScreen> {
                 if (index == 11) {
                   index = index + 1;
                   lives -= 1;
-                  showDialog(
-                      barrierDismissible: false,
-                      context: context,
-                      builder: (BuildContext context) {
-                        return WillPopScope(
-                          onWillPop: () async => false,
-                          child: AlertDialog(
-                            backgroundColor:
-                            const Color.fromARGB(255, 29, 3, 142),
-                            content: SizedBox(
-                              height: 250,
-                              child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
-                                  children: [
-                                    const Icon(
-                                      Icons.remove_circle_outline_outlined,
-                                      color: Colors.red,
-                                      size: 70,
-                                    ),
-                                    Text(
-                                      stored.toString(),
-                                      style: const TextStyle(
-                                          color: Colors.red,
-                                          fontFamily: "PatrickHand",
-                                          fontSize: 40),
-                                    ),
-                                    if (lives == 0)
-                                      TextFormField(
-                                        validator: (value) => value!.isEmpty
-                                            ? "Name"
-                                            : null,
-                                        controller: _name,
-                                        decoration: const InputDecoration(
-                                            hintText: "Bitte Namen eingeben"),
+                  if(lives == 0){
+                    showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return WillPopScope(
+                            onWillPop: () async => false,
+                            child: AlertDialog(
+                              backgroundColor:
+                              const Color.fromARGB(255, 29, 3, 142),
+                              content: SizedBox(
+                                height: 200,
+                                child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [
+                                      const Icon(
+                                        Icons.remove_circle_outline_outlined,
+                                        color: Colors.red,
+                                        size: 40,
                                       ),
-                                    IconButton(
-                                        icon: const Icon(
-                                          Icons.arrow_circle_right,
-                                          size: 40,
-                                          color: Colors.blue,
-                                        ),
-                                        onPressed: () {
-                                          if (_name.text.isEmpty &&
-                                              lives == 0) {
-                                            return;
-                                          }
-                                          newGame();
-                                          Navigator.of(context).pop();
-                                          if (lives == 0) {
-                                            DBHelper.insert('SCORE', {
-                                              'date': _name.text,
-                                              'score': score
-                                            });
-                                            refresh();
-                                          }
-                                        })
-                                  ]),
+                                      Text(
+                                        stored.toString(),
+                                        style: const TextStyle(
+                                            color: Colors.red,
+                                            fontFamily: "PatrickHand",
+                                            fontSize: 30),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      const Text(
+                                        "Keine Leben mehr",
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Modak",
+                                            fontSize: 20),
+                                      ),
+                                      const Text(
+                                        "Versuche es nochmal!",
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Modak",
+                                            fontSize: 20),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          IconButton(
+                                              icon: const Icon(
+                                                Icons.arrow_circle_right,
+                                                size: 40,
+                                                color: Colors.blue,
+                                              ),
+                                              onPressed: () {
+                                                refresh();
+                                                refresh();
+                                              }),
+                                          IconButton(
+                                              icon: const Icon(
+                                                Icons.info,
+                                                size: 40,
+                                                color: Colors.blue,
+                                              ),
+                                              onPressed: () {
+                                                refresh();
+                                                refresh();
+                                              }),
+                                        ],
+                                      ),
+                                    ]),
+                              ),
                             ),
-                          ),
-                        );
-                      });
+                          );
+                        });
+                  }
+                  else {
+                    if(wordListCounter == wordList.length){
+                      showDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return WillPopScope(
+                              onWillPop: () async => false,
+                              child: AlertDialog(
+                                backgroundColor:
+                                const Color.fromARGB(255, 29, 3, 142),
+                                content: SizedBox(
+                                  height: 200,
+                                  child: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const Icon(
+                                          Icons.check_circle_outlined,
+                                          color: Colors.red,
+                                          size: 40,
+                                        ),
+                                        Text(
+                                          stored.toString(),
+                                          style: const TextStyle(
+                                              color: Colors.red,
+                                              fontFamily: "PatrickHand",
+                                              fontSize: 30),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        const Text(
+                                          "Glückwunsch!",
+                                          style: TextStyle(
+                                              color: Colors.green,
+                                              fontFamily: "Modak",
+                                              fontSize: 20),
+                                        ),
+                                        const Text(
+                                          "Durchlauf beendet",
+                                          style: TextStyle(
+                                              color: Colors.green,
+                                              fontFamily: "Modak",
+                                              fontSize: 20),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                          children: [
+                                            IconButton(
+                                                icon: const Icon(
+                                                  Icons.arrow_circle_right,
+                                                  size: 40,
+                                                  color: Colors.blue,
+                                                ),
+                                                onPressed: () {
+                                                  refresh();
+                                                  refresh();
+                                                }),
+                                            IconButton(
+                                                icon: const Icon(
+                                                  Icons.info,
+                                                  size: 40,
+                                                  color: Colors.blue,
+                                                ),
+                                                onPressed: () {
+                                                  refresh();
+                                                  refresh();
+                                                }),
+                                          ],
+                                        ),
+                                      ]),
+                                ),
+                              ),
+                            );
+                          });
+                    }
+                    else{
+                      showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return WillPopScope(
+                              onWillPop: () async => false,
+                              child: AlertDialog(
+                                backgroundColor:
+                                const Color.fromARGB(255, 29, 3, 142),
+                                content: SizedBox(
+                                  height: 250,
+                                  child: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const Icon(
+                                          Icons.remove_circle_outline_outlined,
+                                          color: Colors.red,
+                                          size: 70,
+                                        ),
+                                        Text(
+                                          stored.toString(),
+                                          style: const TextStyle(
+                                              color: Colors.red,
+                                              fontFamily: "PatrickHand",
+                                              fontSize: 40),
+                                        ),
+                             /*           if (lives == 0)
+                                          TextFormField(
+                                            validator: (value) => value!.isEmpty
+                                                ? "Name"
+                                                : null,
+                                            controller: _name,
+                                            decoration: const InputDecoration(
+                                                hintText: "Bitte Namen eingeben"),
+                                          ), */
+                                        IconButton(
+                                            icon: const Icon(
+                                              Icons.arrow_circle_right,
+                                              size: 40,
+                                              color: Colors.blue,
+                                            ),
+                                            onPressed: () {
+                                              /*     if (_name.text.isEmpty &&
+                                                lives == 0) {
+                                              return;
+                                            } */
+                                              newGame();
+                                              Navigator.of(context).pop();
+                                              /*      if (lives == 0) {
+                                              DBHelper.insert('SCORE', {
+                                                'date': _name.text,
+                                                'score': score
+                                              });
+                                              refresh();
+                                            } */
+                                            })
+                                      ]),
+                                ),
+                              ),
+                            );
+                          });
+                    }
+                  }
                 } else {
                   index += 1;
                 }

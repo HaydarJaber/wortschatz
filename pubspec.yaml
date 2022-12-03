@@ -87,6 +87,11 @@ flutter:
     - assets/images/Homescreen_BIG.png
     - assets/terms.json
     - assets/images/apploading.mp4
+    #Wörter
+    - assets/images/Wörter/Rad.jpg
+    - assets/images/Wörter/Motor.jpg
+    - assets/images/Wörter/Sitz.jpg
+    - assets/images/Wörter/Dach.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

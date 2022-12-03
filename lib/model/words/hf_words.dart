@@ -28,9 +28,9 @@ List hfall = [
 ];
 
 List hfAutoteile = [
-'Sitz','Dach','Motor','Rad', 'Achse', 'Batterie', 'Reifen', 'Scheinwerfer', 'Lenkrad', 'Kupplung', 'Zündung', 'Kofferraum', 'Rückspiegel', 'Handbremse', 'Felge'
+'Sitz','Dach','Motor','Rad',
 ];
-
+//'Achse', 'Batterie', 'Reifen', 'Scheinwerfer', 'Lenkrad', 'Kupplung', 'Zündung', 'Kofferraum', 'Rückspiegel', 'Handbremse', 'Felge'
 List hfBadezimmer = [
 'Spiegel','Kalk','Seife','Toilette','Handtuch','Badewanne','Waschbecken','Schminke','Dusche','Creme','Fön','Zahnbürste','Wasserhahn','Waschlappen','Zahnpasta',
 ];
