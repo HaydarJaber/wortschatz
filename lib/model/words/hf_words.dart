@@ -24,13 +24,13 @@ List hfall = [
 'Polizei','Auto', 'Kurve','Straßenbahn','Fahrrad','Baustelle','Feuerwehr','Kreuzung','Autobahn','Bus', 'Taxi','Fahrbahn', 'Fußgänger','Motorrad','Asphalt'
 'Wein', 'Kaffee', 'Milch', 'Bier', 'Zeitschrift', 'Tee', 'Ei', 'Eis', 'Blume', 'Käse', 'Reis', 'Schokolade', 'Salat', 'Saft', 'Apfel'
 'Hund', 'Pferd', 'Vogel', 'Fisch', 'Wolf', 'Katze', 'Fuchs', 'Schwein', 'Esel', 'Kuh', 'Tiger', 'Maus', 'Bär', 'Löwe', 'Huhn'
-'Leiter', 'Hammer', 'Haken', 'Nagel', 'Pinsel', 'Seil', 'Bit', 'Besen', 'Schere', 'Zange', 'Schraube', 'Meißel', 'Pinzette', 'Feile', 'Schraubenschlüssel'
+'Leiter', 'Hammer', 'Haken', 'Nagel', 'Pinsel', 'Seil', 'Bit', 'Besen', 'Schere', 'Zange', 'Schraube', 'Mzahnpastaeißel', 'Pinzette', 'Feile', 'Schraubenschlüssel'
 ];
 
 List hfAutoteile = [
-'Sitz','Dach','Motor','Rad',
+'Sitz','Dach','Motor','Rad','Achse', 'Batterie', 'Reifen', 'Scheinwerfer', 'Lenkrad', 'Kupplung', 'Zündung', 'Kofferraum', 'Rückspiegel', 'Handbremse', 'Felge'
 ];
-//'Achse', 'Batterie', 'Reifen', 'Scheinwerfer', 'Lenkrad', 'Kupplung', 'Zündung', 'Kofferraum', 'Rückspiegel', 'Handbremse', 'Felge'
+
 List hfBadezimmer = [
 'Spiegel','Kalk','Seife','Toilette','Handtuch','Badewanne','Waschbecken','Schminke','Dusche','Creme','Fön','Zahnbürste','Wasserhahn','Waschlappen','Zahnpasta',
 ];
@@ -40,7 +40,7 @@ List hfBauernhof = [
 ];
 
 List hfBerufe = [
-'Arzt', 'Lehrer', 'Maler', 'Politker', 'Sekretär', 'Schauspieler', 'Sänger', 'Koch', 'Anwalt', 'Erzieher', 'Gärtner', 'Dolmetscher', 'Polizist', 'Bäcker', 'Friseur'
+'Arzt', 'Lehrer', 'Maler', 'Politiker', 'Sekretär', 'Schauspieler', 'Sänger', 'Koch', 'Anwalt', 'Erzieher', 'Gärtner', 'Dolmetscher', 'Polizist', 'Bäcker', 'Friseur'
 ];
 
 List hfDeutscheStaedte = [
@@ -52,7 +52,7 @@ List hfFahrzeuge = [
 ];
 
 List hfGarten = [
-'Bank', 'Mauer', 'Baum', 'Gemüse', 'Blume', 'Zaun', 'Topf', 'Schuppen', 'Laub', 'Rasen', 'Unkraut', 'Kräuter', 'Spaten', 'Schere', 'Handschuh',
+'Bank', 'Mauer', 'Baum', 'Gemüse', 'Blume', 'Zaun', 'Blumentopf', 'Schuppen', 'Laub', 'Rasen', 'Unkraut', 'Kräuter', 'Spaten', 'Schere', 'Handschuh',
 ];
 
 List hfGemuese = [
@@ -68,7 +68,7 @@ List hfHauptstaedte = [
 ];
 
 List hfHausbau = [
-'Farbe', 'Holz', 'Ingenieur', 'Hammer', 'Architekt', 'Rohr', 'Lastwagen', 'Maurer', 'Helm', 'Beton', 'Gerüst', 'Besen', 'Schutt', 'Tapete', 'Zement',
+'Farbe', 'Holz', 'Ingenieur', 'Hammer', 'Architekt', 'Rohr', 'Lastkraftwagen', 'Maurer', 'Helm', 'Beton', 'Gerüst', 'Besen', 'Schutt', 'Tapete', 'Zement',
 ];
 
 List hfHobbys = [
@@ -76,7 +76,7 @@ List hfHobbys = [
 ];
 
 List hfKleidung = [
-'Hut', 'Rock','Kleid','Tuch','Hemd','Anzug','Mütze','Stiefel','Hose','Jacke','Gürtel','Schuh','Bluse','Weste','Handschuh',
+'Hut', 'Rock','Kleid','Tuch','Hemd','Anzug','Mütze','Stiefel','Hose','Jacke','Gürtel','Schuh','Bluse','Weste','Handschuhe',
 ];
 
 List hfKoerperteile = [

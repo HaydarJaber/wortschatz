@@ -88,12 +88,445 @@ flutter:
     - assets/terms.json
     - assets/images/apploading.mp4
     #Wörter
-    - assets/images/Wörter/Rad.jpg
-    - assets/images/Wörter/Motor.jpg
-    - assets/images/Wörter/Sitz.jpg
+    #Autoteile
+    - assets/images/Wörter/Achse.jpg
+    - assets/images/Wörter/Batterie.jpg
     - assets/images/Wörter/Dach.jpg
+    - assets/images/Wörter/Felge.jpg
+    - assets/images/Wörter/Handbremse.jpg
+    - assets/images/Wörter/Kofferraum.jpg
+    - assets/images/Wörter/Kupplung.jpg
+    - assets/images/Wörter/Lenkrad.jpg
+    - assets/images/Wörter/Motor.jpg
+    - assets/images/Wörter/Rad.jpg
+    - assets/images/Wörter/Reifen.jpg
+    - assets/images/Wörter/Rückspiegel.jpg
+    - assets/images/Wörter/Scheinwerfer.jpg
+    - assets/images/Wörter/Sitz.jpg
+    - assets/images/Wörter/Zündung.jpg
+    #Badezimmer
+    - assets/images/Wörter/Badewanne.jpg
+    - assets/images/Wörter/Creme.jpg
+    - assets/images/Wörter/Dusche.jpg
+    - assets/images/Wörter/Fön.jpg
+    - assets/images/Wörter/Handtuch.jpg
+    - assets/images/Wörter/Kalk.jpg
+    - assets/images/Wörter/Schminke.jpg
+    - assets/images/Wörter/Seife.jpg
+    - assets/images/Wörter/Toilette.jpg
+    - assets/images/Wörter/Spiegel.jpg
+    - assets/images/Wörter/Waschbecken.jpg
+    - assets/images/Wörter/Waschlappen.jpg
+    - assets/images/Wörter/Wasserhahn.jpg
+    - assets/images/Wörter/Zahnbürste.jpg
+    - assets/images/Wörter/Zahnpasta.jpg
+    #Bauernhof
+    - assets/images/Wörter/Hund.jpg
+    - assets/images/Wörter/Milch.jpg
+    - assets/images/Wörter/Pferd.jpg
+    - assets/images/Wörter/Bauer.jpg
+    - assets/images/Wörter/Eier.jpg
+    - assets/images/Wörter/Hahn.jpg
+    - assets/images/Wörter/Wiese.jpg
+    - assets/images/Wörter/Katze.jpg
+    - assets/images/Wörter/Getreide.jpg
+    - assets/images/Wörter/Stall.jpg
+    - assets/images/Wörter/Käse.jpg
+    - assets/images/Wörter/Futter.jpg
+    - assets/images/Wörter/Schwein.jpg
+    - assets/images/Wörter/Zaun.jpg
+    - assets/images/Wörter/Kuh.jpg
+    #Berufe
+    - assets/images/Wörter/Arzt.jpg
+    - assets/images/Wörter/Lehrer.jpg
+    - assets/images/Wörter/Maler.jpg
+    - assets/images/Wörter/Politiker.jpg
+    - assets/images/Wörter/Sekretär.jpg
+    - assets/images/Wörter/Schauspieler.jpg
+    - assets/images/Wörter/Sänger.jpg
+    - assets/images/Wörter/Koch.jpg
+    - assets/images/Wörter/Anwalt.jpg
+    - assets/images/Wörter/Erzieher.jpg
+    - assets/images/Wörter/Gärtner.jpg
+    - assets/images/Wörter/Dolmetscher.jpg
+    - assets/images/Wörter/Bäcker.jpg
+    - assets/images/Wörter/Friseur.jpg
+    - assets/images/Wörter/Polizist.jpg
+    #DeutscheStaedte
+    - assets/images/Wörter/Berlin.jpg
+    - assets/images/Wörter/München.jpg
+    - assets/images/Wörter/Leipzig.jpg
+    - assets/images/Wörter/Hamburg.jpg
+    - assets/images/Wörter/Essen.jpg
+    - assets/images/Wörter/Dresden.jpg
+    - assets/images/Wörter/Frankfurt.jpg
+    - assets/images/Wörter/Köln.jpg
+    - assets/images/Wörter/Stuttgart.jpg
+    - assets/images/Wörter/Hannover.jpg
+    - assets/images/Wörter/Düsseldorf.jpg
+    - assets/images/Wörter/Bremen.jpg
+    - assets/images/Wörter/Potsdam.jpg
+    - assets/images/Wörter/Weimar.jpg
+    - assets/images/Wörter/Münster.jpg
+    #Fahrzeuge
+    - assets/images/Wörter/Zug.jpg
+    - assets/images/Wörter/Schiff.jpg
+    - assets/images/Wörter/Auto.jpg
+    - assets/images/Wörter/Panzer.jpg
+    - assets/images/Wörter/Straßenbahn.jpg
+    - assets/images/Wörter/Fahrrad.jpg
+    - assets/images/Wörter/Bus.jpg
+    - assets/images/Wörter/Taxi.jpg
+    - assets/images/Wörter/Motorrad.jpg
+    - assets/images/Wörter/Lastkraftwagen.jpg
+    - assets/images/Wörter/Fähre.jpg
+    - assets/images/Wörter/UBahn.jpg
+    - assets/images/Wörter/Transporter.jpg
+    - assets/images/Wörter/Bagger.jpg
+    - assets/images/Wörter/Limousine.jpg
+    #Garten
+    - assets/images/Wörter/Bank.jpg
+    - assets/images/Wörter/Mauer.jpg
+    - assets/images/Wörter/Baum.jpg
+    - assets/images/Wörter/Gemüse.jpg
+    - assets/images/Wörter/Blume.jpg
+    - assets/images/Wörter/Zaun.jpg
+    - assets/images/Wörter/Topf.jpg
+    - assets/images/Wörter/Schuppen.jpg
+    - assets/images/Wörter/Laub.jpg
+    - assets/images/Wörter/Rasen.jpg
+    - assets/images/Wörter/Unkraut.jpg
+    - assets/images/Wörter/Kräuter.jpg
+    - assets/images/Wörter/Schere.jpg
+    - assets/images/Wörter/Handschuh.jpg
+    - assets/images/Wörter/Spaten.jpg
+    #Gemüse
+    - assets/images/Wörter/Salat.jpg
+    - assets/images/Wörter/Mais.jpg
+    - assets/images/Wörter/Zwiebel.jpg
+    - assets/images/Wörter/Linse.jpg
+    - assets/images/Wörter/Kartoffel.jpg
+    - assets/images/Wörter/Paprika.jpg
+    - assets/images/Wörter/Pilz.jpg
+    - assets/images/Wörter/Spinat.jpg
+    - assets/images/Wörter/Spargel.jpg
+    - assets/images/Wörter/Knoblauch.jpg
+    - assets/images/Wörter/Gurke.jpg
+    - assets/images/Wörter/Sellerie.jpg
+    - assets/images/Wörter/Tomate.jpg
+    - assets/images/Wörter/Bohne.jpg
+    - assets/images/Wörter/Blumenkohl.jpg
+    #Getränke
+    - assets/images/Wörter/Wasser.jpg
+    - assets/images/Wörter/Kaffee.jpg
+    - assets/images/Wörter/Milch.jpg
+    - assets/images/Wörter/Bier.jpg
+    - assets/images/Wörter/Tee.jpg
+    - assets/images/Wörter/Sekt.jpg
+    - assets/images/Wörter/Rotwein.jpg
+    - assets/images/Wörter/Rum.jpg
+    - assets/images/Wörter/Kakao.jpg
+    - assets/images/Wörter/Champagner.jpg
+    - assets/images/Wörter/Weißwein.jpg
+    - assets/images/Wörter/Likör.jpg
+    - assets/images/Wörter/Limonade.jpg
+    - assets/images/Wörter/Nektar.jpg
+    - assets/images/Wörter/Cola.jpg
+    #Hauptstädte
+    - assets/images/Wörter/Berlin.jpg
+    - assets/images/Wörter/Paris.jpg
+    - assets/images/Wörter/Wien.jpg
+    - assets/images/Wörter/London.jpg
+    - assets/images/Wörter/Rom.jpg
+    - assets/images/Wörter/Moskau.jpg
+    - assets/images/Wörter/Prag.jpg
+    - assets/images/Wörter/Washington.jpg
+    - assets/images/Wörter/Athen.jpg
+    - assets/images/Wörter/Brüssel.jpg
+    - assets/images/Wörter/Kopenhagen.jpg
+    - assets/images/Wörter/Madrid.jpg
+    - assets/images/Wörter/Budapest.jpg
+    - assets/images/Wörter/Peking.jpg
+    - assets/images/Wörter/Stockholm.jpg
+    #Hausbau
+    - assets/images/Wörter/Farbe.jpg
+    - assets/images/Wörter/Holz.jpg
+    - assets/images/Wörter/Ingenieur.jpg
+    - assets/images/Wörter/Hammer.jpg
+    - assets/images/Wörter/Architekt.jpg
+    - assets/images/Wörter/Rohr.jpg
+    - assets/images/Wörter/Lastkraftwagen.jpg
+    - assets/images/Wörter/Maurer.jpg
+    - assets/images/Wörter/Helm.jpg
+    - assets/images/Wörter/Beton.jpg
+    - assets/images/Wörter/Gerüst.jpg
+    - assets/images/Wörter/Schutt.jpg
+    - assets/images/Wörter/Tapete.jpg
+    - assets/images/Wörter/Zement.jpg
+    - assets/images/Wörter/Besen.jpg
+    #Hobbys
+    - assets/images/Wörter/Musik.jpg
+    - assets/images/Wörter/Theater.jpg
+    - assets/images/Wörter/Garten.jpg
+    - assets/images/Wörter/Schreiben.jpg
+    - assets/images/Wörter/Reisen.jpg
+    - assets/images/Wörter/Museum.jpg
+    - assets/images/Wörter/Tanz.jpg
+    - assets/images/Wörter/Sport.jpg
+    - assets/images/Wörter/Gesang.jpg
+    - assets/images/Wörter/Fernsehen.jpg
+    - assets/images/Wörter/Computer.jpg
+    - assets/images/Wörter/Lesen.jpg
+    - assets/images/Wörter/Kino.jpg
+    - assets/images/Wörter/Spielen.jpg
+    - assets/images/Wörter/Schwimmen.jpg
+    #Kleidung
+    - assets/images/Wörter/Hut.jpg
+    - assets/images/Wörter/Rock.jpg
+    - assets/images/Wörter/Kleid.jpg
+    - assets/images/Wörter/Tuch.jpg
+    - assets/images/Wörter/Hemd.jpg
+    - assets/images/Wörter/Anzug.jpg
+    - assets/images/Wörter/Mütze.jpg
+    - assets/images/Wörter/Stiefel.jpg
+    - assets/images/Wörter/Hose.jpg
+    - assets/images/Wörter/Jacke.jpg
+    - assets/images/Wörter/Gürtel.jpg
+    - assets/images/Wörter/Schuh.jpg
+    - assets/images/Wörter/Bluse.jpg
+    - assets/images/Wörter/Weste.jpg
+    - assets/images/Wörter/Handschuhe.jpg
+    #Körperteile
+    - assets/images/Wörter/Hand.jpg
+    - assets/images/Wörter/Auge.jpg
+    - assets/images/Wörter/Kopf.jpg
+    - assets/images/Wörter/Herz.jpg
+    - assets/images/Wörter/Mund.jpg
+    - assets/images/Wörter/Arm.jpg
+    - assets/images/Wörter/Rücken.jpg
+    - assets/images/Wörter/Brust.jpg
+    - assets/images/Wörter/Haut.jpg
+    - assets/images/Wörter/Fuß.jpg
+    - assets/images/Wörter/Finger.jpg
+    - assets/images/Wörter/Nase.jpg
+    - assets/images/Wörter/Stirn.jpg
+    - assets/images/Wörter/Hals.jpg
+    - assets/images/Wörter/Ohr.jpg
+    #Küche
+    - assets/images/Wörter/Glas.jpg
+    - assets/images/Wörter/Messer.jpg
+    - assets/images/Wörter/Teller.jpg
+    - assets/images/Wörter/Tasse.jpg
+    - assets/images/Wörter/Gabel.jpg
+    - assets/images/Wörter/Löffel.jpg
+    - assets/images/Wörter/Herd.jpg
+    - assets/images/Wörter/Topf.jpg
+    - assets/images/Wörter/Schüssel.jpg
+    - assets/images/Wörter/Pfanne.jpg
+    - assets/images/Wörter/Kühlschrank.jpg
+    - assets/images/Wörter/Sieb.jpg
+    - assets/images/Wörter/Schwamm.jpg
+    - assets/images/Wörter/Backofen.jpg
+    - assets/images/Wörter/Wasserhahn.jpg
+    #Länder
+    - assets/images/Wörter/Deutschland.jpg
+    - assets/images/Wörter/Frankreich.jpg
+    - assets/images/Wörter/USA.jpg
+    - assets/images/Wörter/England.jpg
+    - assets/images/Wörter/Italien.jpg
+    - assets/images/Wörter/Polen.jpg
+    - assets/images/Wörter/Österreich.jpg
+    - assets/images/Wörter/China.jpg
+    - assets/images/Wörter/Japan.jpg
+    - assets/images/Wörter/Schweiz.jpg
+    - assets/images/Wörter/Schweden.jpg
+    - assets/images/Wörter/Türkei.jpg
+    - assets/images/Wörter/Griechenland.jpg
+    - assets/images/Wörter/Dänemark.jpg
+    - assets/images/Wörter/Niederlande.jpg
+    #Möbel
+    - assets/images/Wörter/Tisch.jpg
+    - assets/images/Wörter/Bett.jpg
+    - assets/images/Wörter/Spiegel.jpg
+    - assets/images/Wörter/Stuhl.jpg
+    - assets/images/Wörter/Schreibtisch.jpg
+    - assets/images/Wörter/Sessel.jpg
+    - assets/images/Wörter/Lampe.jpg
+    - assets/images/Wörter/Schrank.jpg
+    - assets/images/Wörter/Sofa.jpg
+    - assets/images/Wörter/Garderobe.jpg
+    - assets/images/Wörter/Schemel.jpg
+    - assets/images/Wörter/Regal.jpg
+    - assets/images/Wörter/Kommode.jpg
+    - assets/images/Wörter/Truhe.jpg
+    - assets/images/Wörter/Nachttisch.jpg
+    #Musikinstrumente
+    - assets/images/Wörter/Klavier.jpg
+    - assets/images/Wörter/Orgel.jpg
+    - assets/images/Wörter/Trommel.jpg
+    - assets/images/Wörter/Becken.jpg
+    - assets/images/Wörter/Geige.jpg
+    - assets/images/Wörter/Bass.jpg
+    - assets/images/Wörter/Trompete.jpg
+    - assets/images/Wörter/Schlagzeug.jpg
+    - assets/images/Wörter/Gitarre.jpg
+    - assets/images/Wörter/Harfe.jpg
+    - assets/images/Wörter/Mundharmonika.jpg
+    - assets/images/Wörter/Pauke.jpg
+    - assets/images/Wörter/Posaune.jpg
+    - assets/images/Wörter/Klarinette.jpg
+    - assets/images/Wörter/Cello.jpg
+    #Obst
+    - assets/images/Wörter/Apfel.jpg
+    - assets/images/Wörter/Zitrone.jpg
+    - assets/images/Wörter/Orange.jpg
+    - assets/images/Wörter/Birne.jpg
+    - assets/images/Wörter/Ananas.jpg
+    - assets/images/Wörter/Traube.jpg
+    - assets/images/Wörter/Banane.jpg
+    - assets/images/Wörter/Kirsche.jpg
+    - assets/images/Wörter/Pfirsich.jpg
+    - assets/images/Wörter/Melone.jpg
+    - assets/images/Wörter/Feige.jpg
+    - assets/images/Wörter/Mandarine.jpg
+    - assets/images/Wörter/Erdbeere.jpg
+    - assets/images/Wörter/Quitte.jpg
+    - assets/images/Wörter/Aprikose.jpg
+    #Pflanzen
+    - assets/images/Wörter/Buche.jpg
+    - assets/images/Wörter/Rose.jpg
+    - assets/images/Wörter/Klee.jpg
+    - assets/images/Wörter/Kiefer.jpg
+    - assets/images/Wörter/Petersilie.jpg
+    - assets/images/Wörter/Linde.jpg
+    - assets/images/Wörter/Eiche.jpg
+    - assets/images/Wörter/Veilchen.jpg
+    - assets/images/Wörter/Palme.jpg
+    - assets/images/Wörter/Lorbeer.jpg
+    - assets/images/Wörter/Flieder.jpg
+    - assets/images/Wörter/Birke.jpg
+    - assets/images/Wörter/Efeu.jpg
+    - assets/images/Wörter/Hanf.jpg
+    - assets/images/Wörter/Tanne.jpg
+    #Resteraunt
+    - assets/images/Wörter/Geld.jpg
+    - assets/images/Wörter/Musik.jpg
+    - assets/images/Wörter/Tisch.jpg
+    - assets/images/Wörter/Preis.jpg
+    - assets/images/Wörter/Glas.jpg
+    - assets/images/Wörter/Rechnung.jpg
+    - assets/images/Wörter/Küche.jpg
+    - assets/images/Wörter/Gast.jpg
+    - assets/images/Wörter/Tafel.jpg
+    - assets/images/Wörter/Messer.jpg
+    - assets/images/Wörter/Teller.jpg
+    - assets/images/Wörter/Kellner.jpg
+    - assets/images/Wörter/Wirt.jpg
+    - assets/images/Wörter/Speisen.jpg
+    - assets/images/Wörter/Koch.jpg
+    #Sportarten
+    - assets/images/Wörter/Fußball.jpg
+    - assets/images/Wörter/Tanzen.jpg
+    - assets/images/Wörter/Schwimmen.jpg
+    - assets/images/Wörter/Gymnastik.jpg
+    - assets/images/Wörter/Reiten.jpg
+    - assets/images/Wörter/Turnen.jpg
+    - assets/images/Wörter/Tennis.jpg
+    - assets/images/Wörter/Boxen.jpg
+    - assets/images/Wörter/Rudern.jpg
+    - assets/images/Wörter/Leichtathletik.jpg
+    - assets/images/Wörter/Klettern.jpg
+    - assets/images/Wörter/Fechten.jpg
+    - assets/images/Wörter/Yoga.jpg
+    - assets/images/Wörter/Tauchen.jpg
+    - assets/images/Wörter/Tischtennis.jpg
+    #Strassenverkehr
+    - assets/images/Wörter/Polizei.jpg
+    - assets/images/Wörter/Auto.jpg
+    - assets/images/Wörter/Kurve.jpg
+    - assets/images/Wörter/Straßenbahn.jpg
+    - assets/images/Wörter/Fahrrad.jpg
+    - assets/images/Wörter/Baustelle.jpg
+    - assets/images/Wörter/Feuerwehr.jpg
+    - assets/images/Wörter/Kreuzung.jpg
+    - assets/images/Wörter/Autobahn.jpg
+    - assets/images/Wörter/Bus.jpg
+    - assets/images/Wörter/Taxi.jpg
+    - assets/images/Wörter/Fahrbahn.jpg
+    - assets/images/Wörter/Fußgänger.jpg
+    - assets/images/Wörter/Motorrad.jpg
+    - assets/images/Wörter/Asphalt.jpg
+    #Supermarkt
+    - assets/images/Wörter/Wein.jpg
+    - assets/images/Wörter/Kaffee.jpg
+    - assets/images/Wörter/Milch.jpg
+    - assets/images/Wörter/Bier.jpg
+    - assets/images/Wörter/Zeitschrift.jpg
+    - assets/images/Wörter/Tee.jpg
+    - assets/images/Wörter/Ei.jpg
+    - assets/images/Wörter/Eis.jpg
+    - assets/images/Wörter/Blume.jpg
+    - assets/images/Wörter/Käse.jpg
+    - assets/images/Wörter/Reis.jpg
+    - assets/images/Wörter/Schokolade.jpg
+    - assets/images/Wörter/Salat.jpg
+    - assets/images/Wörter/Saft.jpg
+    - assets/images/Wörter/Apfel.jpg
+    #Tiere
+    - assets/images/Wörter/Hund.jpg
+    - assets/images/Wörter/Pferd.jpg
+    - assets/images/Wörter/Vogel.jpg
+    - assets/images/Wörter/Fisch.jpg
+    - assets/images/Wörter/Wolf.jpg
+    - assets/images/Wörter/Katze.jpg
+    - assets/images/Wörter/Fuchs.jpg
+    - assets/images/Wörter/Schwein.jpg
+    - assets/images/Wörter/Esel.jpg
+    - assets/images/Wörter/Kuh.jpg
+    - assets/images/Wörter/Tiger.jpg
+    - assets/images/Wörter/Maus.jpg
+    - assets/images/Wörter/Bär.jpg
+    - assets/images/Wörter/Löwe.jpg
+    - assets/images/Wörter/Huhn.jpg
+    #Werkzeuge
+    - assets/images/Wörter/Leiter.jpg
+    - assets/images/Wörter/Hammer.jpg
+    - assets/images/Wörter/Haken.jpg
+    - assets/images/Wörter/Nagel.jpg
+    - assets/images/Wörter/Pinsel.jpg
+    - assets/images/Wörter/Seil.jpg
+    - assets/images/Wörter/Bit.jpg
+    - assets/images/Wörter/Besen.jpg
+    - assets/images/Wörter/Schere.jpg
+    - assets/images/Wörter/Zange.jpg
+    - assets/images/Wörter/Schraube.jpg
+    - assets/images/Wörter/Meißel.jpg
+    - assets/images/Wörter/Pinzette.jpg
+    - assets/images/Wörter/Feile.jpg
+    - assets/images/Wörter/Schraubenschlüssel.jpg
 
-  # An image asset can refer to one or more resolution-specific "variants", see
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see

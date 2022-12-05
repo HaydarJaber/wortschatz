@@ -45,7 +45,7 @@ List nfGemuese = ['Rhabarber','Rosenkohl','Weißkohl','Ingwer','Rotkohl','Grünk
 
 List nfGetraenke = ['Orangensaft','Apfelsaft','Glühwein','Apfelwein','Tomatensaft','Radler','Fanta','Kirschsaft','Whiskey','Ananassaft','Karottensaft','Eistee','Bowle','Hefeweizen','Cappuccino'];
 
-List nfHauptstaedte = ['Helsinki','Tokio','Lissabon','Ankara','Oslo','Kiew','Teheran','Bagdad','Dublin','Hanoi','Havanna','Bangkok','Ottawa','Nairobi','Neu-Delhi'];
+List nfHauptstaedte = ['Helsinki','Tokio','Lissabon','Ankara','Oslo','Kiew','Teheran','Bagdad','Dublin','Hanoi','Havanna','Bangkok','Ottawa','Nairobi','NeuDelhi'];
 
 List nfHausbau = ['Kran','Bagger','Polier','Rohbau','Dachdecker','Schubkarre','Installateur','Schutzbrille','Wasserwaage','Bohrmaschine','Bauzeichnung','Stichsäge','Gerüstbauer','Gehörschutz','Abdeckfolie'];
 
