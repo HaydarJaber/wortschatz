@@ -504,10 +504,116 @@ flutter:
     - assets/images/Wörter/Pinzette.jpg
     - assets/images/Wörter/Feile.jpg
     - assets/images/Wörter/Schraubenschlüssel.jpg
-
-
-
-
+    #Autoteile
+    - assets/images/Wörter/Scheibenwischer.jpg
+    - assets/images/Wörter/Auspuff.jpg
+    - assets/images/Wörter/Stoßstange.jpg
+    - assets/images/Wörter/Klimaanlage.jpg
+    - assets/images/Wörter/Tachometer.jpg
+    - assets/images/Wörter/Gangschaltung.jpg
+    - assets/images/Wörter/Bremspedal.jpg
+    - assets/images/Wörter/Handschuhfach.jpg
+    - assets/images/Wörter/Zündkerze.jpg
+    - assets/images/Wörter/Wagenheber.jpg
+    - assets/images/Wörter/Rückbank.jpg
+    - assets/images/Wörter/Autotür.jpg
+    - assets/images/Wörter/Sicherheitsgurt.jpg
+    - assets/images/Wörter/Heckscheibe.jpg
+    - assets/images/Wörter/Benzintank.jpg
+    - assets/images/Wörter/Schiebedach.jpg
+    - assets/images/Wörter/Kopfstütze.jpg
+    #Badezimmer
+    - assets/images/Wörter/Nagellack.jpg
+    - assets/images/Wörter/Nagelschere.jpg
+    - assets/images/Wörter/Shampoo.jpg
+    - assets/images/Wörter/Duschkabine.jpg
+    - assets/images/Wörter/Fliese.jpg
+    - assets/images/Wörter/Handtuchhalter.jpg
+    - assets/images/Wörter/Duschvorhang.jpg
+    - assets/images/Wörter/Zahnseide.jpg
+    - assets/images/Wörter/Badezimmerschrank.jpg
+    - assets/images/Wörter/Klobürste.jpg
+    - assets/images/Wörter/Zahnputzbecher.jpg
+    - assets/images/Wörter/Duschgel.jpg
+    - assets/images/Wörter/Badematte.jpg
+    - assets/images/Wörter/Duschhaube.jpg
+    - assets/images/Wörter/Duschkopf.jpg
+  #Bauernhof
+    - assets/images/Wörter/Huhn.jpg
+    - assets/images/Wörter/Scheune.jpg
+    - assets/images/Wörter/Spaten.jpg
+    - assets/images/Wörter/Teich.jpg
+    - assets/images/Wörter/Schaf.jpg
+    - assets/images/Wörter/Kartoffel.jpg
+    - assets/images/Wörter/Ziege.jpg
+    - assets/images/Wörter/Beet.jpg
+    - assets/images/Wörter/Traktor.jpg
+    - assets/images/Wörter/Rechen.jpg
+    - assets/images/Wörter/Hundehütte.jpg
+    - assets/images/Wörter/Gummistiefel.jpg
+    - assets/images/Wörter/Milchkanne.jpg
+    - assets/images/Wörter/Mistgabel.jpg
+    - assets/images/Wörter/Latzhose.jpg
+  #Berufe
+    - assets/images/Wörter/Therapeut.jpg
+    - assets/images/Wörter/Fotograf.jpg
+    - assets/images/Wörter/Kassierer.jpg
+    - assets/images/Wörter/Uhrmacher.jpg
+    - assets/images/Wörter/Klempner.jpg
+    - assets/images/Wörter/Elektriker.jpg
+    - assets/images/Wörter/Informatiker.jpg
+    - assets/images/Wörter/Masseur.jpg
+    - assets/images/Wörter/Dachdecker.jpg
+    - assets/images/Wörter/Konditor.jpg
+    - assets/images/Wörter/Tierpfleger.jpg
+    - assets/images/Wörter/Flugbegleiter.jpg
+    - assets/images/Wörter/Hotelkaufmann.jpg
+    - assets/images/Wörter/Bademeister.jpg
+    - assets/images/Wörter/Müllmann.jpg
+  #DeutscheStaedte
+  List nfDeutscheStaedte = ['Lübeck','Regensburg','Tübingen','Aachen','Mannheim','Trier','Dortmund','Koblenz','Ulm','Chemnitz','Erlangen','Bochum','Ludwigshafen','Solingen','Idstein'];
+  #Fahrzeuge
+  List nfFahrzeuge = ['Tandem','Motorroller','Gabelstapler','Cabriolet','Hundeschlitten','Dreirad','Dampfwalze','Mofa','Polizeiauto','Feuerwehrauto','Dampflokomotive','Bollerwagen','Einrad','Abschleppwagen','Seifenkiste'];
+  #Garten
+  List nfGarten = ['Liegestuhl','Sonnenschirm','Grill','Gießkanne','Hängematte','Sandkasten','Harke','Rechen','Regentonne','Rasenmäher','Vogelhaus','Rutsche','Wasserschlauch','Setzling','Blumenerde'];
+  #Gemuese
+  List nfGemuese = ['Rhabarber','Rosenkohl','Weißkohl','Ingwer','Rotkohl','Grünkohl','Artischocke','Lauch','Wirsing','Karotte','Brokkoli','Aubergine','Peperoni','Süßkartoffel','Zucchini'];
+  #Getraenke
+  List nfGetraenke = ['Orangensaft','Apfelsaft','Glühwein','Apfelwein','Tomatensaft','Radler','Fanta','Kirschsaft','Whiskey','Ananassaft','Karottensaft','Eistee','Bowle','Hefeweizen','Cappuccino'];
+  #Hauptstaedte
+  List nfHauptstaedte = ['Helsinki','Tokio','Lissabon','Ankara','Oslo','Kiew','Teheran','Bagdad','Dublin','Hanoi','Havanna','Bangkok','Ottawa','Nairobi','NeuDelhi'];
+  #Hausbau
+  List nfHausbau = ['Kran','Bagger','Polier','Rohbau','Dachdecker','Schubkarre','Installateur','Schutzbrille','Wasserwaage','Bohrmaschine','Bauzeichnung','Stichsäge','Gerüstbauer','Gehörschutz','Abdeckfolie'];
+  #Hobbys
+  List nfHobbys = ['Einkaufen','Nähen','Wintersport','Disco','Basteln','Kreuzworträtsel','Häkeln','Camping','Jodeln','Töpfern','Kampfsport','Fitness','Modelleisenbahn','Aerobic','Heimwerken'];
+  #Kleidung
+  List nfKleidung = ['Unterhemd','Dirndl','BH','Gummistiefel','Anorak','Blazer','Strumpfhose','Hausschuh','Latzhose','Poncho','Korsage','Turnschuh','Leggings','Jogginghose','Pullunder'];
+  #Koerperteile
+  List nfKoerperteile = ['Ellenbogen','Wirbelsäule','Handgelenk','Wimper','Lippe','Gesäß','Knöchel','Niere','Wade','Fingernagel','Schlüsselbein','Lid','Augenbraue','Gebiss','Fußnagel'];
+  #Kueche
+  List nfKueche = ['Arbeitsplatte','Toaster','Spülmittel','Tauchsieder','Mikrowelle','Spülmaschine','Flaschenöffner','Eieruhr','Küchenrolle','Küchenhandtuch','Gefrierfach','Dosenöffner','Schneidebrett','Messerblock','Dunstabzugshaube'];
+  #Laender
+  List nfLaender = ['Island','Tunesien','Malta','Peru','Bolivien','Mongolei','Namibia','Kroatien','Kenia','Ecuador','Nepal','Haiti','Russland','Jamaika','Tansania'];
+  #Moebel
+  List nfMoebel = ['Stehlampe','Standuhr','Sitzbank','Barhocker','Servierwagen','Schirmständer','Raumteiler','Hollywoodschaukel','Handtuchhalter','Zeitungsständer','Wickelkommode','Sideboard','Schuhschrank','Stockbett','Sitzsack'];
+  #Musikinstrumente
+  List nfMusikinstrumente = ['Saxophon','Akkordeon','Tuba','Triangel','Bratsche','Dudelsack','Xylophon','Waldhorn','Blockflöte','Tamburin','Drehleier','Querflöte','Balalaika','Ukulele','Kontrabass'];
+  #Obst
+  List nfObst = ['Grapefruit','Kiwi','Granatapfel','Heidelbeere','Stachelbeere','Johannisbeere','Zwetschge','Mango','Physalis','Preiselbeere','Mirabelle','Papaya','Litschi','Kokusnuss','Maracuja'];
+  #Pflanzen
+  List nfPflanzen = ['Eberesche','Hortensie','Zypresse','Koriander','Hyazinthe','Geranie','Schlehe','Mammutbaum','Oregano','Ringelblume','Vergissmeinnicht','Löwenmäulchen','Brennnessel','Bärlauch'];
+  #Resteraunt
+  List nfResteraunt = ['Trinkgeld','Besteck','Menü','Speisekarte','Tresen','Vorspeise','Tischdecke','Dessert','Aperitif','Hauptgang','Weinkarte','Zapfhahn','Tageskarte','Reservierung','Digestif'];
+  #Sportarte
+  List nfSportarten = ['Basketball','Eiskunstlauf','Marathonlauf','Baseball','Volleyball','Badminton','Joggen','Judo','Karate','Walken','Squash','Biathlon','Skisprung','Aerobic','Snowboard'];
+  #Strassenverkehr
+  List nfStrassenverkehr = ['Tankstelle','Ampel','Krankenwagen','Stau','Bushaltestelle','Fußgängerzone','Gehweg','Bordstein','Zebrastreifen','Kreisverkehr','Radweg','Verkehrsschild','Leitplanke','Blitzer','Mittelstreifen'];
+  #Supermarkt
+  List nfSupermarkt = ['Nudeln','Kaugummi','Leberwurst','Eierlikör','Heidelbeeren','Pizza','Apfelwein','Mettwurst','Klopapier','Spülmittel','Shampoo','Eiskaffee','Geschenkpapier','Rasierer','Eistee'];
+  #Tiere
+  List nfTiere = ['Schildkröte','Krokodil','Meerschweinchen','Leopard','Jaguar','Wiesel','Luchs','Hamster','Lama','Otter','Elch','Robbe','Pinguin','Alpaka','Delfin'];
+  #Werkzeuge
+  List nfWerkzeuge = ['Zollstock','Kreissäge','Dübel','Wasserwaage','Bohrmaschine','Lötkolben','Kabeltrommel','Drahtbürste','Winkelmesser','Verlängerungskabel','Motorsäge','Handbohrer','Schweißgerät','Schleifpapier','Lüsterklemme'];
 
 
 
