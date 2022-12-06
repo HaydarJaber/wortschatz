@@ -41,7 +41,7 @@ class CategoryButton extends StatelessWidget {
               size: MediaQuery
                   .of(context)
                   .size
-                  .height * 0.05,
+                  .height * 0.03,
               color: Colors.white,
               IconData(iconCodePoint, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
           ),
@@ -51,16 +51,16 @@ class CategoryButton extends StatelessWidget {
               shadows: const <Shadow>[
                 Shadow(
                   offset: Offset(0.0, 0.0),
-                  blurRadius: 20.0,
+                  blurRadius: 2.0,
                   color: Colors.black,
                 ),
               ],
-              color: Colors.white,
+              color: Colors.black,
               fontSize: MediaQuery
                   .of(context)
                   .size
                   .height * 0.03,
-              fontFamily: "Modak",
+              fontFamily: "Qaz",
             ),
           ),
         ));

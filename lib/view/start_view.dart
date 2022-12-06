@@ -1036,10 +1036,17 @@ class _StartScreenState extends State<StartScreen> {
     return Text(
       "$chr ",
       style: const TextStyle(
+          shadows: <Shadow>[
+            Shadow(
+              offset: Offset(0.0, 0.0),
+              blurRadius: 2.0,
+              color: Colors.black,
+            ),
+          ],
         // fontWeight: FontWeight.bold,
-          color: Colors.blue,
-          fontFamily: "PatrickHand",
-          fontSize: 40),
+          color: Colors.black,
+          fontFamily: "PlatNomo",
+          fontSize: 30),
     );
   }
 
@@ -1047,15 +1054,28 @@ class _StartScreenState extends State<StartScreen> {
   Widget alphaContainer(var name, Color color) {
     return Container(
       decoration:
-      BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
+      BoxDecoration(color: color, borderRadius: BorderRadius.circular(15),  boxShadow:  const <BoxShadow>[
+      BoxShadow(
+      offset: Offset(0.0, 0.0),
+      blurRadius: 2.0,
+      color: Colors.black,
+    ),
+    ],),
       alignment: Alignment.center,
       width: 50,
       child: Text(
         name,
         style: const TextStyle(
-           fontWeight: FontWeight.w100,
-            color: Colors.white,
-            fontFamily: "Modak",
+            shadows: <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 2.0,
+                color: Colors.black,
+              ),
+            ],
+           //fontWeight: FontWeight.w100,
+            color: Colors.black,
+            fontFamily: "Qaz",
             fontSize: 30),
       ),
     );
@@ -1119,7 +1139,7 @@ class _StartScreenState extends State<StartScreen> {
                                         stored.toString(),
                                         style: const TextStyle(
                                             color: Colors.green,
-                                            fontFamily: "Modak",
+                                            fontFamily: "Qaz",
                                             fontSize: 20),
                                       ),
                                       const SizedBox(height: 10),
@@ -1127,14 +1147,14 @@ class _StartScreenState extends State<StartScreen> {
                                         "Glückwunsch!",
                                         style: TextStyle(
                                             color: Colors.green,
-                                            fontFamily: "Modak",
+                                            fontFamily: "Qaz",
                                             fontSize: 20),
                                       ),
                                       const Text(
                                         "Durchlauf beendet",
                                         style: TextStyle(
                                             color: Colors.green,
-                                            fontFamily: "Modak",
+                                            fontFamily: "Qaz",
                                             fontSize: 20),
                                       ),
                                       Row(
@@ -1288,7 +1308,7 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.arrow_circle_right,
                                                 size: 40,
-                                                color: Colors.blue,
+                                                color: Colors.lightBlueAccent,
                                               ),
                                               onPressed: () {
                                                 refresh();
@@ -1298,7 +1318,7 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.info,
                                                 size: 40,
-                                                color: Colors.blue,
+                                                color: Colors.lightBlueAccent,
                                               ),
                                               onPressed: () {
                                                 refresh();
@@ -1373,7 +1393,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 icon: const Icon(
                                                   Icons.arrow_circle_right,
                                                   size: 40,
-                                                  color: Colors.blue,
+                                                  color: Colors.lightBlueAccent,
                                                 ),
                                                 onPressed: () {
                                                   refresh();
@@ -1383,7 +1403,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 icon: const Icon(
                                                   Icons.info,
                                                   size: 40,
-                                                  color: Colors.blue,
+                                                  color: Colors.lightBlueAccent,
                                                 ),
                                                 onPressed: () {
                                                   refresh();
@@ -1431,7 +1451,7 @@ class _StartScreenState extends State<StartScreen> {
                                           stored.toString(),
                                           style: const TextStyle(
                                               color: Colors.red,
-                                              fontFamily: "PatrickHand",
+                                              fontFamily: "Qaz",
                                               fontSize: 40),
                                         ),
                              /*           if (lives == 0)
@@ -1447,7 +1467,7 @@ class _StartScreenState extends State<StartScreen> {
                                             icon: const Icon(
                                               Icons.arrow_circle_right,
                                               size: 40,
-                                              color: Colors.blue,
+                                              color: Colors.lightBlueAccent,
                                             ),
                                             onPressed: () {
                                               /*     if (_name.text.isEmpty &&
@@ -1481,7 +1501,7 @@ class _StartScreenState extends State<StartScreen> {
         },
         child: alphaContainer(
           name,
-          Colors.blue,
+          Colors.lightBlueAccent,
         ))
         : alphaContainer(name, Colors.blueGrey);
   }
@@ -1512,17 +1532,31 @@ class _StartScreenState extends State<StartScreen> {
                             Navigator.of(context).pop();
                           }),
                           icon: const Icon(
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
                             Icons.home,
                             size: 35,
-                            color: Colors.blue,
+                            color: Colors.black,
                           ),
                         ),
                         Text(
                           score.toString(),
                           style: const TextStyle(
-                              color: Colors.blue,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 2.0,
+                                  color: Colors.lightBlueAccent,
+                                ),
+                              ],
+                              color: Colors.lightBlueAccent,
                               fontSize: 35,
-                              fontFamily: "PatrickHand"),
+                              fontFamily: "Qaz"),
                         ),
                         IconButton(
                           onPressed: (() {
@@ -1550,7 +1584,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 stored.toString(),
                                                 style: const TextStyle(
                                                     color: Colors.green,
-                                                    fontFamily: "Modak",
+                                                    fontFamily: "Qaz",
                                                     fontSize: 20),
                                               ),
                                               IconButton(
@@ -1570,23 +1604,47 @@ class _StartScreenState extends State<StartScreen> {
                                 });
                           }),
                           icon: const Icon(
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
                             Icons.lightbulb,
                             size: 35,
-                            color: Colors.blue,
+                            color: Colors.black,
                           ),
                         ),
                         Stack(children: [
                           const Icon(
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.lightBlueAccent,
+                              ),
+                            ],
                             Icons.favorite,
                             size: 35,
-                            color: Colors.blue,
+                            color: Colors.lightBlueAccent,
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(13, 6, 0, 0),
                             child: Text(
                               lives.toString(),
                               style: const TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 1.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                color: Colors.black,
+                                  fontFamily: "Qaz",
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold),
                             ),
                           )
                         ])
@@ -1598,16 +1656,30 @@ class _StartScreenState extends State<StartScreen> {
                           const Text(
                             ("Kategorie: "),
                             style: TextStyle(
-                                color: Colors.blue,
-                                fontFamily: "Modak",
-                                fontSize: 20),
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 2.0,
+                                    color: Colors.lightBlueAccent,
+                                  ),
+                                ],
+                                color: Colors.lightBlueAccent,
+                                fontFamily: "Qaz",
+                                fontSize: 25),
                           ),
                           const SizedBox(width: 10),
                           Text(
                             (widget.category),
                             style: const TextStyle(
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 2.0,
+                                    color: Colors.black,
+                                  ),
+                                ],
                                 color: Colors.black,
-                                fontFamily: "Modak",
+                                fontFamily: "Qaz",
                                 fontSize: 25),
                           ),
                           const SizedBox(width: 10),
@@ -1615,7 +1687,7 @@ class _StartScreenState extends State<StartScreen> {
                               shadows: const <Shadow>[
                                 Shadow(
                                   offset: Offset(0.0, 0.0),
-                                  blurRadius: 5.0,
+                                  blurRadius: 0.0,
                                   color: Colors.black,
                                 ),
                               ],

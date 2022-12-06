@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/model/styles/palette.dart';
+import 'package:wortschatz/view/settings_view.dart';
 import 'package:wortschatz/viewmodels/widgets/CategoryButton.dart';
 import 'package:wortschatz/viewmodels/widgets/menuButton.dart';
 import 'package:wortschatz/model/constants/routes.dart';
@@ -170,16 +171,31 @@ class Categories extends StatelessWidget {
                       IconButton(
                           onPressed: () => Navigator.of(context).pop(),
                           icon: const Icon(
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
                             Icons.home,
-                            color: Colors.blueGrey,
-                            size: 30,
+                            color: Colors.black,
+                            size: 35,
                           )),
+                      const SizedBox(width: 60),
                       const Text(
-                        '      Kategorien',
+                        'Kategorien',
                         style: TextStyle(
-                            fontFamily: "Modak",
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            fontFamily: "Qaz",
                             fontSize: 35,
-                            color: Colors.blueGrey),
+                            color: Colors.black),
                       )
                     ],
                   ),

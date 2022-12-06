@@ -10,8 +10,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Center(
-            child: OrientationBuilder(builder: (context, orientation) {
+        body: Container(
+         decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background.png"),
+            ),
+          ),
+          child: OrientationBuilder(builder: (context, orientation) {
               if (orientation == Orientation.portrait) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

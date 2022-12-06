@@ -87,6 +87,7 @@ flutter:
     - assets/images/Homescreen_BIG.png
     - assets/terms.json
     - assets/images/apploading.mp4
+    - assets/images/background.png
     #Wörter
     #Autoteile
     - assets/images/Wörter/Achse.jpg
@@ -571,50 +572,357 @@ flutter:
     - assets/images/Wörter/Bademeister.jpg
     - assets/images/Wörter/Müllmann.jpg
   #DeutscheStaedte
-  List nfDeutscheStaedte = ['Lübeck','Regensburg','Tübingen','Aachen','Mannheim','Trier','Dortmund','Koblenz','Ulm','Chemnitz','Erlangen','Bochum','Ludwigshafen','Solingen','Idstein'];
+    - assets/images/Wörter/Lübeck.jpg
+    - assets/images/Wörter/Regensburg.jpg
+    - assets/images/Wörter/Tübingen.jpg
+    - assets/images/Wörter/Aachen.jpg
+    - assets/images/Wörter/Mannheim.jpg
+    - assets/images/Wörter/Trier.jpg
+    - assets/images/Wörter/Dortmund.jpg
+    - assets/images/Wörter/Koblenz.jpg
+    - assets/images/Wörter/Ulm.jpg
+    - assets/images/Wörter/Chemnitz.jpg
+    - assets/images/Wörter/Erlangen.jpg
+    - assets/images/Wörter/Bochum.jpg
+    - assets/images/Wörter/Ludwigshafen.jpg
+    - assets/images/Wörter/Solingen.jpg
+    - assets/images/Wörter/Idstein.jpg
   #Fahrzeuge
-  List nfFahrzeuge = ['Tandem','Motorroller','Gabelstapler','Cabriolet','Hundeschlitten','Dreirad','Dampfwalze','Mofa','Polizeiauto','Feuerwehrauto','Dampflokomotive','Bollerwagen','Einrad','Abschleppwagen','Seifenkiste'];
+    - assets/images/Wörter/Tandem.jpg
+    - assets/images/Wörter/Motorroller.jpg
+    - assets/images/Wörter/Gabelstapler.jpg
+    - assets/images/Wörter/Cabriolet.jpg
+    - assets/images/Wörter/Hundeschlitten.jpg
+    - assets/images/Wörter/Dreirad.jpg
+    - assets/images/Wörter/Dampfwalze.jpg
+    - assets/images/Wörter/Mofa.jpg
+    - assets/images/Wörter/Polizeiauto.jpg
+    - assets/images/Wörter/Feuerwehrauto.jpg
+    - assets/images/Wörter/Dampflokomotive.jpg
+    - assets/images/Wörter/Bollerwagen.jpg
+    - assets/images/Wörter/Einrad.jpg
+    - assets/images/Wörter/Abschleppwagen.jpg
+    - assets/images/Wörter/Seifenkiste.jpg
   #Garten
-  List nfGarten = ['Liegestuhl','Sonnenschirm','Grill','Gießkanne','Hängematte','Sandkasten','Harke','Rechen','Regentonne','Rasenmäher','Vogelhaus','Rutsche','Wasserschlauch','Setzling','Blumenerde'];
+    - assets/images/Wörter/Liegestuhl.jpg
+    - assets/images/Wörter/Sonnenschirm.jpg
+    - assets/images/Wörter/Grill.jpg
+    - assets/images/Wörter/Gießkanne.jpg
+    - assets/images/Wörter/Hängematte.jpg
+    - assets/images/Wörter/Sandkasten.jpg
+    - assets/images/Wörter/Harke.jpg
+    - assets/images/Wörter/Rechen.jpg
+    - assets/images/Wörter/Regentonne.jpg
+    - assets/images/Wörter/Rasenmäher.jpg
+    - assets/images/Wörter/Vogelhaus.jpg
+    - assets/images/Wörter/Rutsche.jpg
+    - assets/images/Wörter/Wasserschlauch.jpg
+    - assets/images/Wörter/Setzling.jpg
+    - assets/images/Wörter/Blumenerde.jpg
   #Gemuese
-  List nfGemuese = ['Rhabarber','Rosenkohl','Weißkohl','Ingwer','Rotkohl','Grünkohl','Artischocke','Lauch','Wirsing','Karotte','Brokkoli','Aubergine','Peperoni','Süßkartoffel','Zucchini'];
+    - assets/images/Wörter/Rhabarber.jpg
+    - assets/images/Wörter/Rosenkohl.jpg
+    - assets/images/Wörter/Weißkohl.jpg
+    - assets/images/Wörter/Ingwer.jpg
+    - assets/images/Wörter/Rotkohl.jpg
+    - assets/images/Wörter/Grünkohl.jpg
+    - assets/images/Wörter/Artischocke.jpg
+    - assets/images/Wörter/Lauch.jpg
+    - assets/images/Wörter/Wirsing.jpg
+    - assets/images/Wörter/Karotte.jpg
+    - assets/images/Wörter/Brokkoli.jpg
+    - assets/images/Wörter/Aubergine.jpg
+    - assets/images/Wörter/Peperoni.jpg
+    - assets/images/Wörter/Süßkartoffel.jpg
+    - assets/images/Wörter/Zucchini.jpg
   #Getraenke
-  List nfGetraenke = ['Orangensaft','Apfelsaft','Glühwein','Apfelwein','Tomatensaft','Radler','Fanta','Kirschsaft','Whiskey','Ananassaft','Karottensaft','Eistee','Bowle','Hefeweizen','Cappuccino'];
+    - assets/images/Wörter/Orangensaft.jpg
+    - assets/images/Wörter/Apfelsaft.jpg
+    - assets/images/Wörter/Glühwein.jpg
+    - assets/images/Wörter/Apfelwein.jpg
+    - assets/images/Wörter/Tomatensaft.jpg
+    - assets/images/Wörter/Radler.jpg
+    - assets/images/Wörter/Fanta.jpg
+    - assets/images/Wörter/Kirschsaft.jpg
+    - assets/images/Wörter/Whiskey.jpg
+    - assets/images/Wörter/Ananassaft.jpg
+    - assets/images/Wörter/Karottensaft.jpg
+    - assets/images/Wörter/Eistee.jpg
+    - assets/images/Wörter/Bowle.jpg
+    - assets/images/Wörter/Hefeweizen.jpg
+    - assets/images/Wörter/Cappuccino.jpg
   #Hauptstaedte
-  List nfHauptstaedte = ['Helsinki','Tokio','Lissabon','Ankara','Oslo','Kiew','Teheran','Bagdad','Dublin','Hanoi','Havanna','Bangkok','Ottawa','Nairobi','NeuDelhi'];
+    - assets/images/Wörter/Helsinki.jpg
+    - assets/images/Wörter/Tokio.jpg
+    - assets/images/Wörter/Lissabon.jpg
+    - assets/images/Wörter/Ankara.jpg
+    - assets/images/Wörter/Oslo.jpg
+    - assets/images/Wörter/Kiew.jpg
+    - assets/images/Wörter/Teheran.jpg
+    - assets/images/Wörter/Bagdad.jpg
+    - assets/images/Wörter/Dublin.jpg
+    - assets/images/Wörter/Hanoi.jpg
+    - assets/images/Wörter/Havanna.jpg
+    - assets/images/Wörter/Bangkok.jpg
+    - assets/images/Wörter/Ottawa.jpg
+    - assets/images/Wörter/Nairobi.jpg
+    - assets/images/Wörter/NeuDelhi.jpg
   #Hausbau
-  List nfHausbau = ['Kran','Bagger','Polier','Rohbau','Dachdecker','Schubkarre','Installateur','Schutzbrille','Wasserwaage','Bohrmaschine','Bauzeichnung','Stichsäge','Gerüstbauer','Gehörschutz','Abdeckfolie'];
+    - assets/images/Wörter/Kran.jpg
+    - assets/images/Wörter/Bagger.jpg
+    - assets/images/Wörter/Polier.jpg
+    - assets/images/Wörter/Rohbau.jpg
+    - assets/images/Wörter/Dachdecker.jpg
+    - assets/images/Wörter/Schubkarre.jpg
+    - assets/images/Wörter/Installateur.jpg
+    - assets/images/Wörter/Schutzbrille.jpg
+    - assets/images/Wörter/Wasserwaage.jpg
+    - assets/images/Wörter/Bohrmaschine.jpg
+    - assets/images/Wörter/Bauzeichnung.jpg
+    - assets/images/Wörter/Stichsäge.jpg
+    - assets/images/Wörter/Gerüstbauer.jpg
+    - assets/images/Wörter/Gehörschutz.jpg
+    - assets/images/Wörter/Abdeckfolie.jpg
   #Hobbys
-  List nfHobbys = ['Einkaufen','Nähen','Wintersport','Disco','Basteln','Kreuzworträtsel','Häkeln','Camping','Jodeln','Töpfern','Kampfsport','Fitness','Modelleisenbahn','Aerobic','Heimwerken'];
+    - assets/images/Wörter/Einkaufen.jpg
+    - assets/images/Wörter/Nähen.jpg
+    - assets/images/Wörter/Wintersport.jpg
+    - assets/images/Wörter/Disco.jpg
+    - assets/images/Wörter/Basteln.jpg
+    - assets/images/Wörter/Kreuzworträtsel.jpg
+    - assets/images/Wörter/Häkeln.jpg
+    - assets/images/Wörter/Camping.jpg
+    - assets/images/Wörter/Jodeln.jpg
+    - assets/images/Wörter/Töpfern.jpg
+    - assets/images/Wörter/Fitness.jpg
+    - assets/images/Wörter/Modelleisenbahn.jpg
+    - assets/images/Wörter/Aerobic.jpg
+    - assets/images/Wörter/Heimwerken.jpg
+    - assets/images/Wörter/Kampfsport.jpg
   #Kleidung
-  List nfKleidung = ['Unterhemd','Dirndl','BH','Gummistiefel','Anorak','Blazer','Strumpfhose','Hausschuh','Latzhose','Poncho','Korsage','Turnschuh','Leggings','Jogginghose','Pullunder'];
+    - assets/images/Wörter/Unterhemd.jpg
+    - assets/images/Wörter/Dirndl.jpg
+    - assets/images/Wörter/BH.jpg
+    - assets/images/Wörter/Gummistiefel.jpg
+    - assets/images/Wörter/Anorak.jpg
+    - assets/images/Wörter/Blazer.jpg
+    - assets/images/Wörter/Strumpfhose.jpg
+    - assets/images/Wörter/Hausschuh.jpg
+    - assets/images/Wörter/Latzhose.jpg
+    - assets/images/Wörter/Poncho.jpg
+    - assets/images/Wörter/Korsage.jpg
+    - assets/images/Wörter/Turnschuh.jpg
+    - assets/images/Wörter/Leggings.jpg
+    - assets/images/Wörter/Jogginghose.jpg
+    - assets/images/Wörter/Pullunder.jpg
   #Koerperteile
-  List nfKoerperteile = ['Ellenbogen','Wirbelsäule','Handgelenk','Wimper','Lippe','Gesäß','Knöchel','Niere','Wade','Fingernagel','Schlüsselbein','Lid','Augenbraue','Gebiss','Fußnagel'];
+    - assets/images/Wörter/Ellenbogen.jpg
+    - assets/images/Wörter/Wirbelsäule.jpg
+    - assets/images/Wörter/Handgelenk.jpg
+    - assets/images/Wörter/Wimper.jpg
+    - assets/images/Wörter/Lippe.jpg
+    - assets/images/Wörter/Gesäß.jpg
+    - assets/images/Wörter/Knöchel.jpg
+    - assets/images/Wörter/Niere.jpg
+    - assets/images/Wörter/Wade.jpg
+    - assets/images/Wörter/Fingernagel.jpg
+    - assets/images/Wörter/Schlüsselbein.jpg
+    - assets/images/Wörter/Lid.jpg
+    - assets/images/Wörter/Augenbraue.jpg
+    - assets/images/Wörter/Gebiss.jpg
+    - assets/images/Wörter/Fußnagel.jpg
   #Kueche
-  List nfKueche = ['Arbeitsplatte','Toaster','Spülmittel','Tauchsieder','Mikrowelle','Spülmaschine','Flaschenöffner','Eieruhr','Küchenrolle','Küchenhandtuch','Gefrierfach','Dosenöffner','Schneidebrett','Messerblock','Dunstabzugshaube'];
+    - assets/images/Wörter/Arbeitsplatte.jpg
+    - assets/images/Wörter/Toaster.jpg
+    - assets/images/Wörter/Spülmittel.jpg
+    - assets/images/Wörter/Tauchsieder.jpg
+    - assets/images/Wörter/Mikrowelle.jpg
+    - assets/images/Wörter/Spülmaschine.jpg
+    - assets/images/Wörter/Flaschenöffner.jpg
+    - assets/images/Wörter/Eieruhr.jpg
+    - assets/images/Wörter/Küchenrolle.jpg
+    - assets/images/Wörter/Küchenhandtuch.jpg
+    - assets/images/Wörter/Gefrierfach.jpg
+    - assets/images/Wörter/Dosenöffner.jpg
+    - assets/images/Wörter/Schneidebrett.jpg
+    - assets/images/Wörter/Messerblock.jpg
+    - assets/images/Wörter/Dunstabzugshaube.jpg
   #Laender
-  List nfLaender = ['Island','Tunesien','Malta','Peru','Bolivien','Mongolei','Namibia','Kroatien','Kenia','Ecuador','Nepal','Haiti','Russland','Jamaika','Tansania'];
+    - assets/images/Wörter/Island.jpg
+    - assets/images/Wörter/Tunesien.jpg
+    - assets/images/Wörter/Malta.jpg
+    - assets/images/Wörter/Peru.jpg
+    - assets/images/Wörter/Bolivien.jpg
+    - assets/images/Wörter/Mongolei.jpg
+    - assets/images/Wörter/Namibia.jpg
+    - assets/images/Wörter/Kroatien.jpg
+    - assets/images/Wörter/Kenia.jpg
+    - assets/images/Wörter/Ecuador.jpg
+    - assets/images/Wörter/Nepal.jpg
+    - assets/images/Wörter/Haiti.jpg
+    - assets/images/Wörter/Russland.jpg
+    - assets/images/Wörter/Jamaika.jpg
+    - assets/images/Wörter/Tansania.jpg
   #Moebel
-  List nfMoebel = ['Stehlampe','Standuhr','Sitzbank','Barhocker','Servierwagen','Schirmständer','Raumteiler','Hollywoodschaukel','Handtuchhalter','Zeitungsständer','Wickelkommode','Sideboard','Schuhschrank','Stockbett','Sitzsack'];
+    - assets/images/Wörter/Stehlampe.jpg
+    - assets/images/Wörter/Standuhr.jpg
+    - assets/images/Wörter/Sitzbank.jpg
+    - assets/images/Wörter/Barhocker.jpg
+    - assets/images/Wörter/Servierwagen.jpg
+    - assets/images/Wörter/Schirmständer.jpg
+    - assets/images/Wörter/Raumteiler.jpg
+    - assets/images/Wörter/Hollywoodschaukel.jpg
+    - assets/images/Wörter/Handtuchhalter.jpg
+    - assets/images/Wörter/Zeitungsständer.jpg
+    - assets/images/Wörter/Wickelkommode.jpg
+    - assets/images/Wörter/Sideboard.jpg
+    - assets/images/Wörter/Schuhschrank.jpg
+    - assets/images/Wörter/Stockbett.jpg
+    - assets/images/Wörter/Sitzsack.jpg
   #Musikinstrumente
-  List nfMusikinstrumente = ['Saxophon','Akkordeon','Tuba','Triangel','Bratsche','Dudelsack','Xylophon','Waldhorn','Blockflöte','Tamburin','Drehleier','Querflöte','Balalaika','Ukulele','Kontrabass'];
+    - assets/images/Wörter/Saxophon.jpg
+    - assets/images/Wörter/Akkordeon.jpg
+    - assets/images/Wörter/Tuba.jpg
+    - assets/images/Wörter/Triangel.jpg
+    - assets/images/Wörter/Bratsche.jpg
+    - assets/images/Wörter/Dudelsack.jpg
+    - assets/images/Wörter/Xylophon.jpg
+    - assets/images/Wörter/Waldhorn.jpg
+    - assets/images/Wörter/Blockflöte.jpg
+    - assets/images/Wörter/Tamburin.jpg
+    - assets/images/Wörter/Drehleier.jpg
+    - assets/images/Wörter/Querflöte.jpg
+    - assets/images/Wörter/Balalaika.jpg
+    - assets/images/Wörter/Ukulele.jpg
+    - assets/images/Wörter/Kontrabass.jpg
   #Obst
-  List nfObst = ['Grapefruit','Kiwi','Granatapfel','Heidelbeere','Stachelbeere','Johannisbeere','Zwetschge','Mango','Physalis','Preiselbeere','Mirabelle','Papaya','Litschi','Kokusnuss','Maracuja'];
+    - assets/images/Wörter/Grapefruit.jpg
+    - assets/images/Wörter/Kiwi.jpg
+    - assets/images/Wörter/Granatapfel.jpg
+    - assets/images/Wörter/Heidelbeere.jpg
+    - assets/images/Wörter/Stachelbeere.jpg
+    - assets/images/Wörter/Johannisbeere.jpg
+    - assets/images/Wörter/Zwetschge.jpg
+    - assets/images/Wörter/Mango.jpg
+    - assets/images/Wörter/Physalis.jpg
+    - assets/images/Wörter/Preiselbeere.jpg
+    - assets/images/Wörter/Mirabelle.jpg
+    - assets/images/Wörter/Papaya.jpg
+    - assets/images/Wörter/Litschi.jpg
+    - assets/images/Wörter/Kokusnuss.jpg
+    - assets/images/Wörter/Maracuja.jpg
   #Pflanzen
-  List nfPflanzen = ['Eberesche','Hortensie','Zypresse','Koriander','Hyazinthe','Geranie','Schlehe','Mammutbaum','Oregano','Ringelblume','Vergissmeinnicht','Löwenmäulchen','Brennnessel','Bärlauch'];
+    - assets/images/Wörter/Eberesche.jpg
+    - assets/images/Wörter/Hortensie.jpg
+    - assets/images/Wörter/Zypresse.jpg
+    - assets/images/Wörter/Koriander.jpg
+    - assets/images/Wörter/Hyazinthe.jpg
+    - assets/images/Wörter/Geranie.jpg
+    - assets/images/Wörter/Schlehe.jpg
+    - assets/images/Wörter/Mammutbaum.jpg
+    - assets/images/Wörter/Oregano.jpg
+    - assets/images/Wörter/Ringelblume.jpg
+    - assets/images/Wörter/Vergissmeinnicht.jpg
+    - assets/images/Wörter/Löwenmäulchen.jpg
+    - assets/images/Wörter/Peperoni.jpg
+    - assets/images/Wörter/Brennnessel.jpg
+    - assets/images/Wörter/Bärlauch.jpg
   #Resteraunt
-  List nfResteraunt = ['Trinkgeld','Besteck','Menü','Speisekarte','Tresen','Vorspeise','Tischdecke','Dessert','Aperitif','Hauptgang','Weinkarte','Zapfhahn','Tageskarte','Reservierung','Digestif'];
+    - assets/images/Wörter/Trinkgeld.jpg
+    - assets/images/Wörter/Besteck.jpg
+    - assets/images/Wörter/Menü.jpg
+    - assets/images/Wörter/Speisekarte.jpg
+    - assets/images/Wörter/Tresen.jpg
+    - assets/images/Wörter/Vorspeise.jpg
+    - assets/images/Wörter/Tischdecke.jpg
+    - assets/images/Wörter/Dessert.jpg
+    - assets/images/Wörter/Aperitif.jpg
+    - assets/images/Wörter/Hauptgang.jpg
+    - assets/images/Wörter/Weinkarte.jpg
+    - assets/images/Wörter/Zapfhahn.jpg
+    - assets/images/Wörter/Tageskarte.jpg
+    - assets/images/Wörter/Reservierung.jpg
+    - assets/images/Wörter/Digestif.jpg
   #Sportarte
-  List nfSportarten = ['Basketball','Eiskunstlauf','Marathonlauf','Baseball','Volleyball','Badminton','Joggen','Judo','Karate','Walken','Squash','Biathlon','Skisprung','Aerobic','Snowboard'];
+    - assets/images/Wörter/Basketball.jpg
+    - assets/images/Wörter/Eiskunstlauf.jpg
+    - assets/images/Wörter/Marathonlauf.jpg
+    - assets/images/Wörter/Baseball.jpg
+    - assets/images/Wörter/Volleyball.jpg
+    - assets/images/Wörter/Badminton.jpg
+    - assets/images/Wörter/Joggen.jpg
+    - assets/images/Wörter/Judo.jpg
+    - assets/images/Wörter/Karate.jpg
+    - assets/images/Wörter/Walken.jpg
+    - assets/images/Wörter/Squash.jpg
+    - assets/images/Wörter/Biathlon.jpg
+    - assets/images/Wörter/Skisprung.jpg
+    - assets/images/Wörter/Aerobic.jpg
+    - assets/images/Wörter/Snowboard.jpg
   #Strassenverkehr
-  List nfStrassenverkehr = ['Tankstelle','Ampel','Krankenwagen','Stau','Bushaltestelle','Fußgängerzone','Gehweg','Bordstein','Zebrastreifen','Kreisverkehr','Radweg','Verkehrsschild','Leitplanke','Blitzer','Mittelstreifen'];
+    - assets/images/Wörter/Tankstelle.jpg
+    - assets/images/Wörter/Ampel.jpg
+    - assets/images/Wörter/Krankenwagen.jpg
+    - assets/images/Wörter/Stau.jpg
+    - assets/images/Wörter/Bushaltestelle.jpg
+    - assets/images/Wörter/Fußgängerzone.jpg
+    - assets/images/Wörter/Mittelstreifen.jpg
+    - assets/images/Wörter/Gehweg.jpg
+    - assets/images/Wörter/Bordstein.jpg
+    - assets/images/Wörter/Zebrastreifen.jpg
+    - assets/images/Wörter/Kreisverkehr.jpg
+    - assets/images/Wörter/Radweg.jpg
+    - assets/images/Wörter/Verkehrsschild.jpg
+    - assets/images/Wörter/Leitplanke.jpg
+    - assets/images/Wörter/Blitzer.jpg
   #Supermarkt
-  List nfSupermarkt = ['Nudeln','Kaugummi','Leberwurst','Eierlikör','Heidelbeeren','Pizza','Apfelwein','Mettwurst','Klopapier','Spülmittel','Shampoo','Eiskaffee','Geschenkpapier','Rasierer','Eistee'];
+    - assets/images/Wörter/Nudeln.jpg
+    - assets/images/Wörter/Kaugummi.jpg
+    - assets/images/Wörter/Leberwurst.jpg
+    - assets/images/Wörter/Eierlikör.jpg
+    - assets/images/Wörter/Heidelbeeren.jpg
+    - assets/images/Wörter/Pizza.jpg
+    - assets/images/Wörter/Mettwurst.jpg
+    - assets/images/Wörter/Klopapier.jpg
+    - assets/images/Wörter/Spülmittel.jpg
+    - assets/images/Wörter/Karotte.jpg
+    - assets/images/Wörter/Shampoo.jpg
+    - assets/images/Wörter/Eiskaffee.jpg
+    - assets/images/Wörter/Geschenkpapier.jpg
+    - assets/images/Wörter/Rasierer.jpg
+    - assets/images/Wörter/Eistee.jpg
   #Tiere
-  List nfTiere = ['Schildkröte','Krokodil','Meerschweinchen','Leopard','Jaguar','Wiesel','Luchs','Hamster','Lama','Otter','Elch','Robbe','Pinguin','Alpaka','Delfin'];
+    - assets/images/Wörter/Schildkröte.jpg
+    - assets/images/Wörter/Krokodil.jpg
+    - assets/images/Wörter/Meerschweinchen.jpg
+    - assets/images/Wörter/Leopard.jpg
+    - assets/images/Wörter/Jaguar.jpg
+    - assets/images/Wörter/Wiesel.jpg
+    - assets/images/Wörter/Luchs.jpg
+    - assets/images/Wörter/Hamster.jpg
+    - assets/images/Wörter/Lama.jpg
+    - assets/images/Wörter/Otter.jpg
+    - assets/images/Wörter/Elch.jpg
+    - assets/images/Wörter/Robbe.jpg
+    - assets/images/Wörter/Pinguin.jpg
+    - assets/images/Wörter/Alpaka.jpg
+    - assets/images/Wörter/Delfin.jpg
   #Werkzeuge
-  List nfWerkzeuge = ['Zollstock','Kreissäge','Dübel','Wasserwaage','Bohrmaschine','Lötkolben','Kabeltrommel','Drahtbürste','Winkelmesser','Verlängerungskabel','Motorsäge','Handbohrer','Schweißgerät','Schleifpapier','Lüsterklemme'];
-
+    - assets/images/Wörter/Zollstock.jpg
+    - assets/images/Wörter/Kreissäge.jpg
+    - assets/images/Wörter/Dübel.jpg
+    - assets/images/Wörter/Wasserwaage.jpg
+    - assets/images/Wörter/Bohrmaschine.jpg
+    - assets/images/Wörter/Lötkolben.jpg
+    - assets/images/Wörter/Kabeltrommel.jpg
+    - assets/images/Wörter/Drahtbürste.jpg
+    - assets/images/Wörter/Winkelmesser.jpg
+    - assets/images/Wörter/Verlängerungskabel.jpg
+    - assets/images/Wörter/Motorsäge.jpg
+    - assets/images/Wörter/Handbohrer.jpg
+    - assets/images/Wörter/Schweißgerät.jpg
+    - assets/images/Wörter/Schleifpapier.jpg
+    - assets/images/Wörter/Lüsterklemme.jpg
 
 
 
@@ -647,6 +955,12 @@ flutter:
     - family: Modak
       fonts:
        - asset: assets/fonts/Modak.ttf
+    - family: PlatNomor
+      fonts:
+        - asset: assets/fonts/PlatNomor.ttf
+    - family: Qaz
+      fonts:
+        - asset: assets/fonts/Qaz.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -10,7 +10,7 @@ class MenuButton extends StatelessWidget {
     required this.label,
     required this.route,
     required this.iconCodePoint,
-    this.color = Colors.transparent})
+    this.color = Colors.lightBlueAccent})
       : super(key: key);
 
   @override
@@ -32,14 +32,14 @@ class MenuButton extends StatelessWidget {
               shadows: const <Shadow>[
                 Shadow(
                   offset: Offset(0.0, 0.0),
-                  blurRadius: 5.0,
+                  blurRadius: 10.0,
                   color: Colors.black,
                 ),
               ],
               size: MediaQuery
                   .of(context)
                   .size
-                  .height * 0.10,
+                  .height * 0.08,
               color: Colors.white,
               IconData(iconCodePoint, fontFamily: 'MaterialIcons')),
           label: Text(label,
@@ -47,16 +47,16 @@ class MenuButton extends StatelessWidget {
               shadows: const <Shadow>[
                 Shadow(
                   offset: Offset(0.0, 0.0),
-                  blurRadius: 5.0,
+                  blurRadius: 2.0,
                   color: Colors.black,
                 ),
               ],
-              color: Colors.white,
+              color: Colors.black,
               fontSize: MediaQuery
                   .of(context)
                   .size
                   .height * 0.04,
-              fontFamily: "Modak",
+              fontFamily: "Qaz",
             ),
           ),
         ));
