@@ -11,9 +11,11 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Container(
+          constraints: const BoxConstraints.expand(),
          decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/background.png"),
+              image: AssetImage("assets/images/Hintergrund.jpg"),
+              fit: BoxFit.cover
             ),
           ),
           child: OrientationBuilder(builder: (context, orientation) {
@@ -117,12 +119,10 @@ class HomeScreen extends StatelessWidget {
                           ],
                          ),
                       ]
-
                 );
               }
             }),
           ),
-        backgroundColor: Colors.white,
       ),
     );
   }

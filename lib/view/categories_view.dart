@@ -17,138 +17,138 @@ List<Widget> items = [
       label: Category.All,
       route: Routes.newGame,
       iconCodePoint: 0xf144,
-      color: Colors.blue
+      color: Colors.lightBlueAccent
   ),
   const CategoryButton(
       label: Category.Autoteile,
       route: Routes.newGame,
       iconCodePoint: 0xf1b9,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Badezimmer,
       route: Routes.newGame,
       iconCodePoint: 0xf2cd,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Bauernhof,
       route: Routes.newGame,
       iconCodePoint: 0xe2cd,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Berufe,
       route: Routes.newGame,
       iconCodePoint: 0xf85e,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.DeutscheStaedte,
       route: Routes.newGame,
       iconCodePoint: 0xf64f,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Fahrzeuge,
       route: Routes.newGame,
       iconCodePoint: 0xf21c,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Garten,
       route: Routes.newGame,
       iconCodePoint: 0xf1bb,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Gemuese,
       route: Routes.newGame,
       iconCodePoint: 0xf787,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Getraenke,
       route: Routes.newGame,
       iconCodePoint: 0xf000,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Hauptstaedte,
       route: Routes.newGame,
       iconCodePoint: 0xf64f,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Hausbau,
       route: Routes.newGame,
       iconCodePoint: 0xf015,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Hobbys,
       route: Routes.newGame,
       iconCodePoint: 0xf554,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Kleidung,
       route: Routes.newGame,
       iconCodePoint: 0xf553,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Koerperteile,
       route: Routes.newGame,
       iconCodePoint: 0xf06e,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Kueche,
       route: Routes.newGame,
       iconCodePoint: 0xe51a,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Laender,
       route: Routes.newGame,
       iconCodePoint: 0xf024,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Moebel,
       route: Routes.newGame,
       iconCodePoint: 0xf4b8,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Musikinstrumente,
       route: Routes.newGame,
       iconCodePoint: 0xf001,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Obst,
       route: Routes.newGame,
       iconCodePoint: 0xf5d1,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Pflanzen,
       route: Routes.newGame,
       iconCodePoint: 0xe5aa,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Resteraunt,
       route: Routes.newGame,
       iconCodePoint: 0xf2e7,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Sportarten,
       route: Routes.newGame,
       iconCodePoint: 0xf1e3,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Strassenverkehr,
       route: Routes.newGame,
       iconCodePoint: 0xf018,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Supermarkt,
       route: Routes.newGame,
       iconCodePoint: 0xf54f,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Tiere,
       route: Routes.newGame,
       iconCodePoint: 0xf6f0,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
   const CategoryButton(
       label: Category.Werkzeuge,
       route: Routes.newGame,
       iconCodePoint: 0xf7d9,
-      color: Colors.blue),
+      color: Colors.lightBlueAccent),
 ];
 
 class Categories extends StatelessWidget {
@@ -158,7 +158,14 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
+        body: Container(
+          constraints: const BoxConstraints.expand(),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/Hintergrund.jpg"),
+                fit: BoxFit.cover
+            ),
+          ),
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
           child: OrientationBuilder(builder: (context, orientation) {
             if (orientation == Orientation.portrait) {
@@ -231,7 +238,7 @@ class Categories extends StatelessWidget {
                             label: Category.All,
                             route: Routes.newGame,
                             iconCodePoint: 0xf2af,
-                            color: Colors.blue),
+                            color: Colors.lightBlueAccent),
                         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                           Column(
                               mainAxisAlignment: MainAxisAlignment.center,

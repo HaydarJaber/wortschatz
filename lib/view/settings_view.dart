@@ -41,9 +41,9 @@ class Settings extends StatelessWidget {
               ),
             ),
             _gap,
-          /*  const _NameChangeLine(
+            const _NameChangeLine(
               'Name',
-            ), */
+            ),
          /*   ValueListenableBuilder<bool>(
               valueListenable: settings.soundsOn,
               builder: (context, soundsOn, child) => _SettingsLine(
@@ -135,7 +135,7 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: const Text('OK'),
           ),
         ],
       ),
@@ -176,7 +176,7 @@ class _NameChangeLine extends StatelessWidget {
               children: [
             Text(title,
             style: const TextStyle(
-              fontFamily: 'Modak',
+              fontFamily: 'Qaz',
               fontSize: 30,
             )),
               ]
@@ -186,7 +186,7 @@ class _NameChangeLine extends StatelessWidget {
               builder: (context, name, child) => Text(
                 '‘$name’',
                 style: const TextStyle(
-                  fontFamily: 'Permanent Marker',
+                  fontFamily: 'Qaz',
                   fontSize: 30,
                 ),
               ),
@@ -231,7 +231,7 @@ class _FrequenzChangeLine extends StatelessWidget {
                     value: value,
                     icon: const Icon(Icons.arrow_downward),
                     elevation: 16,
-                    style: const TextStyle(color: Colors.blue),
+                    style: const TextStyle(color: Colors.lightBlueAccent),
                     underline: Container(
                       height: 2,
                       color: Colors.deepPurpleAccent,

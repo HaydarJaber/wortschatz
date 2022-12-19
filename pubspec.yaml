@@ -88,6 +88,7 @@ flutter:
     - assets/terms.json
     - assets/images/apploading.mp4
     - assets/images/background.png
+    - assets/images/Hintergrund.jpg
     #Wörter
     #Autoteile
     - assets/images/Wörter/Achse.jpg

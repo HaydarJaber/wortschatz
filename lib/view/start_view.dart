@@ -2,16 +2,20 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/model/words/hf_words.dart';
+import 'package:wortschatz/model/settings/local_storage_settings_persistence.dart';
+import 'package:wortschatz/model/settings/settings_persistence.dart';
+import 'package:wortschatz/model/settings/memory_settings_persistence.dart';
 import 'package:wortschatz/model/constants/routes.dart';
-import 'package:wortschatz/model/db_helper.dart';
+import 'package:wortschatz/model/highscore/db_helper.dart';
 import 'package:wortschatz/view/settings_view.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import '../model/constants/categories.dart';
-import '../model/dummy_data.dart';
+import '../model/highscore/dummy_data.dart';
 import '../model/words/all_words.dart';
 import '../model/words/nf_words.dart';
 import '../viewmodels/settings/settings.dart';
 import 'categories_view.dart';
+
 
 class StartScreen extends StatefulWidget {
   final String category;
@@ -1165,9 +1169,13 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.arrow_circle_right,
                                                 size: 40,
-                                                color: Colors.blue,
+                                                color: Colors.lightBlueAccent,
                                               ),
                                               onPressed: () {
+                                                DBHelper.insert('SCORE', {
+                                                  'date': context.read<SettingsController>().playerName.value,
+                                                  'score': score
+                                                });
                                                 refresh();
                                                 refresh();
                                               }),
@@ -1175,9 +1183,13 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.info,
                                                 size: 40,
-                                                color: Colors.blue,
+                                                color: Colors.lightBlueAccent,
                                               ),
                                               onPressed: () {
+                                                DBHelper.insert('SCORE', {
+                                                  'date': context.read<SettingsController>().playerName.value,
+                                                  'score': score
+                                                });
                                                 refresh();
                                                 refresh();
                                               }),
@@ -1231,7 +1243,7 @@ class _StartScreenState extends State<StartScreen> {
                                           icon: const Icon(
                                             Icons.arrow_circle_right,
                                             size: 40,
-                                            color: Colors.blue,
+                                            color: Colors.lightBlueAccent,
                                           ),
                                           onPressed: () {
                                             newGame();
@@ -1311,6 +1323,10 @@ class _StartScreenState extends State<StartScreen> {
                                                 color: Colors.lightBlueAccent,
                                               ),
                                               onPressed: () {
+                                                DBHelper.insert('SCORE', {
+                                                  'date': context.read<SettingsController>().playerName.value,
+                                                  'score': score
+                                                });
                                                 refresh();
                                                 refresh();
                                               }),
@@ -1321,6 +1337,10 @@ class _StartScreenState extends State<StartScreen> {
                                                 color: Colors.lightBlueAccent,
                                               ),
                                               onPressed: () {
+                                                DBHelper.insert('SCORE', {
+                                                  'date': context.read<SettingsController>().playerName.value,
+                                                  'score': score
+                                                });
                                                 refresh();
                                                 refresh();
                                               }),
@@ -1396,6 +1416,10 @@ class _StartScreenState extends State<StartScreen> {
                                                   color: Colors.lightBlueAccent,
                                                 ),
                                                 onPressed: () {
+                                                  DBHelper.insert('SCORE', {
+                                                    'date': context.read<SettingsController>().playerName.value,
+                                                    'score': score
+                                                  });
                                                   refresh();
                                                   refresh();
                                                 }),
@@ -1406,6 +1430,10 @@ class _StartScreenState extends State<StartScreen> {
                                                   color: Colors.lightBlueAccent,
                                                 ),
                                                 onPressed: () {
+                                                  DBHelper.insert('SCORE', {
+                                                    'date': context.read<SettingsController>().playerName.value,
+                                                    'score': score
+                                                  });
                                                   refresh();
                                                   refresh();
                                                 }),
@@ -1470,19 +1498,8 @@ class _StartScreenState extends State<StartScreen> {
                                               color: Colors.lightBlueAccent,
                                             ),
                                             onPressed: () {
-                                              /*     if (_name.text.isEmpty &&
-                                                lives == 0) {
-                                              return;
-                                            } */
                                               newGame();
                                               Navigator.of(context).pop();
-                                              /*      if (lives == 0) {
-                                              DBHelper.insert('SCORE', {
-                                                'date': _name.text,
-                                                'score': score
-                                              });
-                                              refresh();
-                                            } */
                                             })
                                       ]),
                                 ),
@@ -1513,7 +1530,14 @@ class _StartScreenState extends State<StartScreen> {
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
-          body: SingleChildScrollView(
+          body: Container(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/Hintergrund.jpg"),
+                  fit: BoxFit.cover
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
               child: SizedBox(
@@ -1591,7 +1615,7 @@ class _StartScreenState extends State<StartScreen> {
                                                   icon: const Icon(
                                                     Icons.arrow_circle_right,
                                                     size: 40,
-                                                    color: Colors.blue,
+                                                    color: Colors.lightBlueAccent,
                                                   ),
                                                   onPressed: () {
                                                     newGame();

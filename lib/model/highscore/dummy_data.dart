@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wortschatz/model/db_helper.dart';
+import 'package:wortschatz/model/highscore/db_helper.dart';
 
 class HighScore {
   String date;

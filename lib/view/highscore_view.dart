@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wortschatz/model/dummy_data.dart';
+import 'package:wortschatz/model/highscore/dummy_data.dart';
 
 class HighScoreScreen extends StatefulWidget {
   // final List<HighScore> scores;
@@ -50,7 +50,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> {
                       onPressed: () => Navigator.of(context).pop(),
                       icon: const Icon(
                         Icons.home,
-                        color: Colors.blue,
+                        color: Colors.lightBlueAccent,
                         size: 30,
                       )),
                   const Text(
