@@ -15,6 +15,7 @@ import '../model/words/all_words.dart';
 import '../model/words/nf_words.dart';
 import '../viewmodels/settings/settings.dart';
 import 'categories_view.dart';
+import 'package:wortschatz/model/wordshelp/autoteile/autoteile_words_help.dart';
 
 
 class StartScreen extends StatefulWidget {
@@ -29,9 +30,11 @@ class _StartScreenState extends State<StartScreen> {
   late AssetImage _imageToShow;
   final _name = TextEditingController();
   late String stored;
+  var entryList = [];
   int lives = 3;
   int score = 0;
   var index = 0;
+  List help = [];
   List sword = [];
   late int randomIndex;
   late String randomWord;
@@ -67,9 +70,15 @@ class _StartScreenState extends State<StartScreen> {
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
+
     print(randomWord);
     print(wordList);
   }
+
+  void getHelper(){
+
+  }
+
 
   void getCategory(){
     final settings = context.read<SettingsController>().frequency;
@@ -118,12 +127,13 @@ class _StartScreenState extends State<StartScreen> {
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfAutoteile.length)){
-            wordList = List<int>.generate(hfAutoteile.length, (int index) => index);
+          if(!(wordList.length == hfAutoteileMAP.length)){
+            wordList = List<int>.generate(hfAutoteileMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfAutoteile[randomIndex];
+          entryList = hfAutoteileMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }

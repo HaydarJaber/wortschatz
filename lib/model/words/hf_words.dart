@@ -27,6 +27,25 @@ List hfall = [
 'Leiter', 'Hammer', 'Haken', 'Nagel', 'Pinsel', 'Seil', 'Bit', 'Besen', 'Schere', 'Zange', 'Schraube', 'Mzahnpastaeißel', 'Pinzette', 'Feile', 'Schraubenschlüssel'
 ];
 
+
+final Map hfAutoteileMAP = {
+  'Sitz': ['direkt sichtbar','Stoff oder Leder','es gibt oft vier davon','man nimmt darauf Platz'],
+  'Dach': ['direkt sichtbar','Metall und Stoff','oben','verhindert das Hineinregnen'],
+  'Motor': ['direkt sichtbar','Metall und Kunststoff','vorne','bewegt das Auto'],
+  'Rad': ['direkt sichtbar','Stahl oder Aluminium','vorne und hinten je zwei','besteht aus Felge und Reifen'],
+  'Achse':['nicht direkt sichtbar','Metall','eine ist vorne und eine hinten','bewegliche Verbindung zwischen Fahrzeug und Rädern'],
+  'Batterie': ['nicht direkt sichtbar','Blei','im Motorraum','wenn sie leer ist, braucht man Starthilfe'],
+  'Reifen':['direkt sichtbar','Gummi','vorne und hinten je zwei','werden auf die Räder aufgezogen'],
+  'Scheinwerfer':['direkt sichtbar','Lampe und Glas','vorne rechts und links','sorgen für Licht auf der Straße'],
+  'Lenkrad':['direkt sichtbar','Metall mit Kunststoff oder Leder','vorne links','ringförmiges Objekt zur Drehung der Vorderräder'],
+  'Kupplung':['teilweise sichtbar','Metall','verbindet Motor und Getriebe','damit kann man die Gänge schalten'],
+  'Zündung':['teilweise sichtbar','Metall','im Motorraum mit Verbindung zum Innenraum','wird mit Autoschlüssel oder Knopf betätigt'],
+  'Kofferraum': ['direkt sichtbar','Metall mit Stoff','hinten','zum Transport größerer Gegenstände',],
+  'Rückspiegel': ['direkt sichtbar','Glas mit Aluminium oder Silber','vorne oben in der Mitte','zum Beobachten des Verkehrsgeschehens hinter dem Auto'],
+  'Handbremse': ['direkt sichtbar','Metall mit Kunststoff oder Leder','rechts vom Fahrer','zur Sicherung des Autos v.a. auf schräger Fläche'],
+  'Felge':['direkt sichtbar','Stahl oder Aluminium','vorne und hinten je zwei','äußerer Ring des Rades']
+};
+
 List hfAutoteile = [
 'Sitz','Dach','Motor','Rad','Achse', 'Batterie', 'Reifen', 'Scheinwerfer', 'Lenkrad', 'Kupplung', 'Zündung', 'Kofferraum', 'Rückspiegel', 'Handbremse', 'Felge'
 ];
