@@ -35,6 +35,10 @@ class _StartScreenState extends State<StartScreen> {
   int score = 0;
   var index = 0;
   List help = [];
+  bool _isButtonAufgeklappt1 = false;
+  bool _isButtonAufgeklappt2 = false;
+  bool _isButtonAufgeklappt3 = false;
+  bool _isButtonAufgeklappt4 = false;
   List sword = [];
   late int randomIndex;
   late String randomWord;
@@ -51,6 +55,10 @@ class _StartScreenState extends State<StartScreen> {
       getCategory();
       sword = List.generate(randomWord.length, (index) => "_");
       stored = randomWord;
+      _isButtonAufgeklappt1 = false;
+      _isButtonAufgeklappt2 = false;
+      _isButtonAufgeklappt3 = false;
+      _isButtonAufgeklappt4 = false;
       _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
       print(randomWord);
       print(wordList);
@@ -70,15 +78,38 @@ class _StartScreenState extends State<StartScreen> {
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
-
     print(randomWord);
     print(wordList);
   }
 
-  void getHelper(){
 
+
+  void _tippAngezeigt(){
+    if (_isButtonAufgeklappt1 = false ){
+      setState(() {
+        _isButtonAufgeklappt1 = true;
+      });
+      return;
+    }
+    if(_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
+      setState(() {
+        _isButtonAufgeklappt2 = true;
+      });
+      return;
+    }
+    if(_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
+      setState(() {
+        _isButtonAufgeklappt3 = true;
+      });
+      return;
+    }
+    if(_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt3 == false){
+      setState(() {
+        _isButtonAufgeklappt4 = true;
+      });
+      return;
+    }
   }
-
 
   void getCategory(){
     final settings = context.read<SettingsController>().frequency;
@@ -1601,37 +1632,287 @@ class _StartScreenState extends State<StartScreen> {
                                   return WillPopScope(
                                     onWillPop: () async => false,
                                     child: AlertDialog(
-                                      backgroundColor:
-                                      const Color.fromARGB(255, 29, 3, 142),
-                                      content: SizedBox(
-                                        height: 200,
-                                        child: Column(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                            children: [
-                                              const Icon(
-                                                Icons.check_circle_outlined,
-                                                color: Colors.green,
-                                                size: 60,
-                                              ),
-                                              Text(
-                                                stored.toString(),
-                                                style: const TextStyle(
-                                                    color: Colors.green,
-                                                    fontFamily: "Qaz",
-                                                    fontSize: 20),
-                                              ),
-                                              IconButton(
-                                                  icon: const Icon(
-                                                    Icons.arrow_circle_right,
-                                                    size: 40,
-                                                    color: Colors.lightBlueAccent,
-                                                  ),
-                                                  onPressed: () {
-                                                    newGame();
-                                                    Navigator.of(context).pop();
-                                                  })
-                                            ]),
+                                    icon: const Icon(
+                                      shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 2.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],
+                                      Icons.lightbulb,
+                                      size: 50,
+                                      color: Colors.black,
+                                    ),
+                                      backgroundColor: Colors.grey,
+                                      content: StatefulBuilder(
+                                        builder: (BuildContext context, StateSetter setState){
+                                          return  SizedBox(
+                                            height: 800,
+                                            child: Column(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                                children: <Widget>[
+                                                  _isButtonAufgeklappt1 ?
+                                                      Column(
+                                                        children: [
+                                                          Row(
+                                                            children:  const [
+                                                              Text(
+                                                                "Tipp 1:",
+                                                                style: TextStyle(
+                                                                    shadows: <Shadow>[
+                                                                      Shadow(
+                                                                        offset: Offset(0.0, 0.0),
+                                                                        blurRadius: 2.0,
+                                                                        color: Colors.black,
+                                                                      ),
+                                                                    ],
+                                                                    // fontWeight: FontWeight.bold,
+                                                                    color: Colors.black,
+                                                                    fontFamily: "Qaz",
+                                                                    fontSize: 20),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Text(
+                                                            entryList[randomIndex].value[0],
+                                                            style: const TextStyle(
+                                                                backgroundColor: Colors.blue,
+                                                                shadows: <Shadow>[
+                                                                  Shadow(
+                                                                    offset: Offset(0.0, 0.0),
+                                                                    blurRadius: 2.0,
+                                                                    color: Colors.black,
+                                                                  ),
+                                                                ],
+                                                                // fontWeight: FontWeight.bold,
+                                                                color: Colors.black,
+                                                                fontFamily: "Qaz",
+                                                                fontSize: 25),
+                                                            textAlign: TextAlign.center,
+                                                          ),
+                                                        ]
+                                                  ): Container(),
+                                                  _isButtonAufgeklappt2 ?
+                                                      Column(
+                                                      children: [
+                                                        Row(
+                                                          children:  const [
+                                                            Text(
+                                                              "Tipp 2:",
+                                                              style: TextStyle(
+                                                                  shadows: <Shadow>[
+                                                                    Shadow(
+                                                                      offset: Offset(0.0, 0.0),
+                                                                      blurRadius: 2.0,
+                                                                      color: Colors.black,
+                                                                    ),
+                                                                  ],
+                                                                  // fontWeight: FontWeight.bold,
+                                                                  color: Colors.black,
+                                                                  fontFamily: "Qaz",
+                                                                  fontSize: 20),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Text(
+                                                          entryList[randomIndex].value[1],
+                                                          style: const TextStyle(
+                                                              backgroundColor: Colors.blue,
+                                                              shadows: <Shadow>[
+                                                                Shadow(
+                                                                  offset: Offset(0.0, 0.0),
+                                                                  blurRadius: 2.0,
+                                                                  color: Colors.black,
+                                                                ),
+                                                              ],
+                                                              // fontWeight: FontWeight.bold,
+                                                              color: Colors.black,
+                                                              fontFamily: "Qaz",
+                                                              fontSize: 25),
+                                                          textAlign: TextAlign.center,
+                                                        ),
+                                                      ]
+                                                  ): Container(),
+                                                  _isButtonAufgeklappt3 ?
+                                                  Column(
+                                                      children: [
+                                                        Row(
+                                                          children:  const [
+                                                            Text(
+                                                              "Tipp 3:",
+                                                              style: TextStyle(
+                                                                  shadows: <Shadow>[
+                                                                    Shadow(
+                                                                      offset: Offset(0.0, 0.0),
+                                                                      blurRadius: 2.0,
+                                                                      color: Colors.black,
+                                                                    ),
+                                                                  ],
+                                                                  // fontWeight: FontWeight.bold,
+                                                                  color: Colors.black,
+                                                                  fontFamily: "Qaz",
+                                                                  fontSize: 20),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Text(
+                                                          entryList[randomIndex].value[2],
+                                                          style: const TextStyle(
+                                                              backgroundColor: Colors.blue,
+                                                              shadows: <Shadow>[
+                                                                Shadow(
+                                                                  offset: Offset(0.0, 0.0),
+                                                                  blurRadius: 2.0,
+                                                                  color: Colors.black,
+                                                                ),
+                                                              ],
+                                                              // fontWeight: FontWeight.bold,
+                                                              color: Colors.black,
+                                                              fontFamily: "Qaz",
+                                                              fontSize: 25),
+                                                          textAlign: TextAlign.center,
+                                                        ),
+                                                      ]
+                                                  ): Container(),
+                                                  _isButtonAufgeklappt4 ?
+                                                  Column(
+                                                      children: [
+                                                        Row(
+                                                          children:  const [
+                                                            Text(
+                                                              "Tipp 4:",
+                                                              style: TextStyle(
+                                                                  shadows: <Shadow>[
+                                                                    Shadow(
+                                                                      offset: Offset(0.0, 0.0),
+                                                                      blurRadius: 2.0,
+                                                                      color: Colors.black,
+                                                                    ),
+                                                                  ],
+                                                                  // fontWeight: FontWeight.bold,
+                                                                  color: Colors.black,
+                                                                  fontFamily: "Qaz",
+                                                                  fontSize: 20),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Text(
+                                                          entryList[randomIndex].value[3],
+                                                          style: const TextStyle(
+                                                              backgroundColor: Colors.blue,
+                                                              shadows: <Shadow>[
+                                                                Shadow(
+                                                                  offset: Offset(0.0, 0.0),
+                                                                  blurRadius: 2.0,
+                                                                  color: Colors.black,
+                                                                ),
+                                                              ],
+                                                              // fontWeight: FontWeight.bold,
+                                                              color: Colors.black,
+                                                              fontFamily: "Qaz",
+                                                              fontSize: 25),
+                                                          textAlign: TextAlign.center,
+                                                        ),
+                                                      ]
+                                                  ): Container(),
+                                                  _isButtonAufgeklappt4 == false && _isButtonAufgeklappt1 == false ?
+                                                   ElevatedButton(
+                                                    onPressed: () {
+                                                      setState((){
+                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt4 == false){
+                                                          _isButtonAufgeklappt4 = true;
+                                                        }
+                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
+                                                          _isButtonAufgeklappt3 = true;
+                                                        }
+                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
+                                                          _isButtonAufgeklappt2 = true;
+                                                        }
+                                                        if (_isButtonAufgeklappt1 == false){
+                                                          _isButtonAufgeklappt1 = true;
+                                                        }
+                                                      });
+                                                    },
+                                                    style: ButtonStyle(
+                                                        alignment: Alignment.centerLeft,
+                                                        backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                        return Colors.white;
+                                                        }),
+                                                        shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                        side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                                    child: const Text(
+                                                      "Tipp anzeigen",
+                                                      style: TextStyle(
+                                                          shadows: <Shadow>[
+                                                            Shadow(
+                                                              offset: Offset(0.0, 0.0),
+                                                              blurRadius: 2.0,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ],
+                                                          // fontWeight: FontWeight.bold,
+                                                          color: Colors.black,
+                                                          fontFamily: "Qaz",
+                                                          fontSize: 30),
+                                                    ),
+                                                  ) : Container(),
+                                                  _isButtonAufgeklappt1 == true && _isButtonAufgeklappt4 == false ?
+                                                  ElevatedButton(
+                                                    onPressed: () {
+                                                      setState((){
+                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt4 == false){
+                                                          _isButtonAufgeklappt4 = true;
+                                                        }
+                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
+                                                          _isButtonAufgeklappt3 = true;
+                                                        }
+                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
+                                                          _isButtonAufgeklappt2 = true;
+                                                        }
+                                                        if (_isButtonAufgeklappt1 == false){
+                                                          _isButtonAufgeklappt1 = true;
+                                                        }
+                                                      });
+                                                    },
+                                                    style: ButtonStyle(
+                                                        alignment: Alignment.centerLeft,
+                                                        backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                          if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                          return Colors.white;
+                                                        }),
+                                                        shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                        side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                                    child: const Text(
+                                                      "nächster Tipp",
+                                                      style: TextStyle(
+                                                          shadows: <Shadow>[
+                                                            Shadow(
+                                                              offset: Offset(0.0, 0.0),
+                                                              blurRadius: 2.0,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ],
+                                                          // fontWeight: FontWeight.bold,
+                                                          color: Colors.black,
+                                                          fontFamily: "Qaz",
+                                                          fontSize: 30),
+                                                    ),
+                                                  ): Container(),
+                                                  IconButton(
+                                                      icon: const Icon(
+                                                        Icons.cancel,
+                                                        size: 50,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.of(context).pop();
+                                                      })
+                                                ]),
+                                          );
+                                        },
                                       ),
                                     ),
                                   );
