@@ -1158,8 +1158,7 @@ class _StartScreenState extends State<StartScreen> {
                           return WillPopScope(
                             onWillPop: () async => false,
                             child: AlertDialog(
-                              backgroundColor:
-                              const Color.fromARGB(255, 29, 3, 142),
+                              backgroundColor: Colors.blueGrey,
                               content: SizedBox(
                                 height: 800,
                                 child: Column(
@@ -1185,20 +1184,20 @@ class _StartScreenState extends State<StartScreen> {
                                         style: const TextStyle(
                                             color: Colors.green,
                                             fontFamily: "Qaz",
-                                            fontSize: 20),
+                                            fontSize: 40),
                                       ),
                                       const SizedBox(height: 10),
                                       const Text(
                                         "Glückwunsch!",
                                         style: TextStyle(
-                                            color: Colors.green,
+                                            color: Colors.black,
                                             fontFamily: "Qaz",
                                             fontSize: 20),
                                       ),
                                       const Text(
                                         "Durchlauf beendet",
                                         style: TextStyle(
-                                            color: Colors.green,
+                                            color: Colors.black,
                                             fontFamily: "Qaz",
                                             fontSize: 20),
                                       ),
@@ -1210,7 +1209,7 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.arrow_circle_right,
                                                 size: 40,
-                                                color: Colors.lightBlueAccent,
+                                                color: Colors.white,
                                               ),
                                               onPressed: () {
                                                 DBHelper.insert('SCORE', {
@@ -1224,7 +1223,7 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.info,
                                                 size: 40,
-                                                color: Colors.lightBlueAccent,
+                                                color: Colors.white,
                                               ),
                                               onPressed: () {
                                                 DBHelper.insert('SCORE', {
@@ -1251,8 +1250,7 @@ class _StartScreenState extends State<StartScreen> {
                           return WillPopScope(
                             onWillPop: () async => false,
                             child: AlertDialog(
-                              backgroundColor:
-                              const Color.fromARGB(255, 29, 3, 142),
+                              backgroundColor: Colors.blueGrey,
                               content: SizedBox(
                                 height: 800,
                                 child: Column(
@@ -1277,14 +1275,14 @@ class _StartScreenState extends State<StartScreen> {
                                         stored.toString(),
                                         style: const TextStyle(
                                             color: Colors.green,
-                                            fontFamily: "Modak",
-                                            fontSize: 20),
+                                            fontFamily: "Qaz",
+                                            fontSize: 40),
                                       ),
                                       IconButton(
                                           icon: const Icon(
                                             Icons.arrow_circle_right,
                                             size: 40,
-                                            color: Colors.lightBlueAccent,
+                                            color: Colors.white,
                                           ),
                                           onPressed: () {
                                             newGame();
@@ -1310,7 +1308,7 @@ class _StartScreenState extends State<StartScreen> {
                             onWillPop: () async => false,
                             child: AlertDialog(
                               backgroundColor:
-                              const Color.fromARGB(255, 29, 3, 142),
+                              Colors.blueGrey,
                               content: SizedBox(
                                 height: 800,
                                 child: Column(
@@ -1318,7 +1316,7 @@ class _StartScreenState extends State<StartScreen> {
                                     MainAxisAlignment.spaceAround,
                                     children: [
                                       Container(
-                                          padding: EdgeInsets.only(left: 10.0),
+                                          padding: const EdgeInsets.only(left: 10.0),
                                           height: MediaQuery.of(context).size.height * 0.5,
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
@@ -1335,7 +1333,7 @@ class _StartScreenState extends State<StartScreen> {
                                         stored.toString(),
                                         style: const TextStyle(
                                             color: Colors.red,
-                                            fontFamily: "PatrickHand",
+                                            fontFamily: "Qaz",
                                             fontSize: 30),
                                       ),
                                       const SizedBox(height: 10),
@@ -1343,14 +1341,14 @@ class _StartScreenState extends State<StartScreen> {
                                         "Keine Leben mehr",
                                         style: TextStyle(
                                             color: Colors.green,
-                                            fontFamily: "Modak",
+                                            fontFamily: "Qaz",
                                             fontSize: 20),
                                       ),
                                       const Text(
                                         "Versuche es nochmal!",
                                         style: TextStyle(
                                             color: Colors.green,
-                                            fontFamily: "Modak",
+                                            fontFamily: "Qaz",
                                             fontSize: 20),
                                       ),
                                       Row(
@@ -1361,7 +1359,7 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.arrow_circle_right,
                                                 size: 40,
-                                                color: Colors.lightBlueAccent,
+                                                color: Colors.white,
                                               ),
                                               onPressed: () {
                                                 DBHelper.insert('SCORE', {
@@ -1375,7 +1373,7 @@ class _StartScreenState extends State<StartScreen> {
                                               icon: const Icon(
                                                 Icons.info,
                                                 size: 40,
-                                                color: Colors.lightBlueAccent,
+                                                color: Colors.white,
                                               ),
                                               onPressed: () {
                                                 DBHelper.insert('SCORE', {
@@ -1403,7 +1401,7 @@ class _StartScreenState extends State<StartScreen> {
                               onWillPop: () async => false,
                               child: AlertDialog(
                                 backgroundColor:
-                                const Color.fromARGB(255, 29, 3, 142),
+                                Colors.blueGrey,
                                 content: SizedBox(
                                   height: 800,
                                   child: Column(
@@ -1428,22 +1426,22 @@ class _StartScreenState extends State<StartScreen> {
                                           stored.toString(),
                                           style: const TextStyle(
                                               color: Colors.red,
-                                              fontFamily: "PatrickHand",
-                                              fontSize: 30),
+                                              fontFamily: "Qaz",
+                                              fontSize: 40),
                                         ),
                                         const SizedBox(height: 10),
                                         const Text(
                                           "Glückwunsch!",
                                           style: TextStyle(
-                                              color: Colors.green,
-                                              fontFamily: "Modak",
+                                              color: Colors.black,
+                                              fontFamily: "Qaz",
                                               fontSize: 20),
                                         ),
                                         const Text(
                                           "Durchlauf beendet",
                                           style: TextStyle(
-                                              color: Colors.green,
-                                              fontFamily: "Modak",
+                                              color: Colors.black,
+                                              fontFamily: "Qaz",
                                               fontSize: 20),
                                         ),
                                         Row(
@@ -1454,7 +1452,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 icon: const Icon(
                                                   Icons.arrow_circle_right,
                                                   size: 40,
-                                                  color: Colors.lightBlueAccent,
+                                                  color: Colors.white,
                                                 ),
                                                 onPressed: () {
                                                   DBHelper.insert('SCORE', {
@@ -1468,7 +1466,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 icon: const Icon(
                                                   Icons.info,
                                                   size: 40,
-                                                  color: Colors.lightBlueAccent,
+                                                  color: Colors.white,
                                                 ),
                                                 onPressed: () {
                                                   DBHelper.insert('SCORE', {
@@ -1494,8 +1492,7 @@ class _StartScreenState extends State<StartScreen> {
                             return WillPopScope(
                               onWillPop: () async => false,
                               child: AlertDialog(
-                                backgroundColor:
-                                const Color.fromARGB(255, 29, 3, 142),
+                                backgroundColor: Colors.blueGrey,
                                 content: SizedBox(
                                   height: 800,
                                   child: Column(
@@ -1503,7 +1500,7 @@ class _StartScreenState extends State<StartScreen> {
                                       MainAxisAlignment.spaceAround,
                                       children: [
                                         Container(
-                                            padding: EdgeInsets.only(left: 10.0),
+                                            padding: const EdgeInsets.only(left: 10.0),
                                             height: MediaQuery.of(context).size.height * 0.5,
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
@@ -1536,7 +1533,7 @@ class _StartScreenState extends State<StartScreen> {
                                             icon: const Icon(
                                               Icons.arrow_circle_right,
                                               size: 40,
-                                              color: Colors.lightBlueAccent,
+                                              color: Colors.white,
                                             ),
                                             onPressed: () {
                                               newGame();
@@ -1644,7 +1641,7 @@ class _StartScreenState extends State<StartScreen> {
                                       size: 50,
                                       color: Colors.black,
                                     ),
-                                      backgroundColor: Colors.grey,
+                                      backgroundColor: Colors.blueGrey,
                                       content: StatefulBuilder(
                                         builder: (BuildContext context, StateSetter setState){
                                           return  SizedBox(
@@ -1678,7 +1675,6 @@ class _StartScreenState extends State<StartScreen> {
                                                           Text(
                                                             entryList[randomIndex].value[0],
                                                             style: const TextStyle(
-                                                                backgroundColor: Colors.blue,
                                                                 shadows: <Shadow>[
                                                                   Shadow(
                                                                     offset: Offset(0.0, 0.0),
@@ -1719,7 +1715,6 @@ class _StartScreenState extends State<StartScreen> {
                                                         Text(
                                                           entryList[randomIndex].value[1],
                                                           style: const TextStyle(
-                                                              backgroundColor: Colors.blue,
                                                               shadows: <Shadow>[
                                                                 Shadow(
                                                                   offset: Offset(0.0, 0.0),
@@ -1760,7 +1755,6 @@ class _StartScreenState extends State<StartScreen> {
                                                         Text(
                                                           entryList[randomIndex].value[2],
                                                           style: const TextStyle(
-                                                              backgroundColor: Colors.blue,
                                                               shadows: <Shadow>[
                                                                 Shadow(
                                                                   offset: Offset(0.0, 0.0),
@@ -1801,7 +1795,6 @@ class _StartScreenState extends State<StartScreen> {
                                                         Text(
                                                           entryList[randomIndex].value[3],
                                                           style: const TextStyle(
-                                                              backgroundColor: Colors.blue,
                                                               shadows: <Shadow>[
                                                                 Shadow(
                                                                   offset: Offset(0.0, 0.0),
@@ -1902,10 +1895,18 @@ class _StartScreenState extends State<StartScreen> {
                                                     ),
                                                   ): Container(),
                                                   IconButton(
+                                                    style: ButtonStyle(
+                                                        alignment: Alignment.centerLeft,
+                                                        backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                          if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                          return Colors.white;
+                                                        }),
+                                                        shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                        side: MaterialStateProperty.all(const BorderSide(width: 2))),
                                                       icon: const Icon(
                                                         Icons.cancel,
                                                         size: 50,
-                                                        color: Colors.black,
+                                                        color: Colors.white,
                                                       ),
                                                       onPressed: () {
                                                         Navigator.of(context).pop();
