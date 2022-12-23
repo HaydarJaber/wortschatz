@@ -116,44 +116,48 @@ class _StartScreenState extends State<StartScreen> {
     switch(widget.category){
       case Category.All:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == all.length)){
-            wordList = List<int>.generate(all.length, (int index) => index);
+          if(!(wordList.length == allMAP.length)){
+            wordList = List<int>.generate(allMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = all[randomIndex];
+          entryList = allMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfall.length)){
-            wordList = List<int>.generate(hfall.length, (int index) => index);
+          if(!(wordList.length == hfallMAP.length)){
+            wordList = List<int>.generate(hfallMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfall[randomIndex];
+          entryList = hfallMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfall.length)){
-            wordList = List<int>.generate(nfall.length, (int index) => index);
+          if(!(wordList.length == nfallMAP.length)){
+            wordList = List<int>.generate(nfallMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfAutoteile[randomIndex];
+          entryList = nfallMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Autoteile:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == autoteile.length)){
-            wordList = List<int>.generate(autoteile.length, (int index) => index);
+          if(!(wordList.length == autoteileMAP.length)){
+            wordList = List<int>.generate(autoteileMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = autoteile[randomIndex];
+          entryList = autoteileMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
@@ -169,812 +173,887 @@ class _StartScreenState extends State<StartScreen> {
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfAutoteile.length)){
-            wordList = List<int>.generate(nfAutoteile.length, (int index) => index);
+          if(!(wordList.length == nfAutoteileMAP.length)){
+            wordList = List<int>.generate(nfAutoteileMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfAutoteile[randomIndex];
+          entryList = nfAutoteileMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
      case Category.Badezimmer:
        if(settings.value == 'Alle Wörter'){
-         if(!(wordList.length == badezimmer.length)){
-           wordList = List<int>.generate(badezimmer.length, (int index) => index);
+         if(!(wordList.length == badezimmerMAP.length)){
+           wordList = List<int>.generate(badezimmerMAP.length, (int index) => index);
            wordList.shuffle();
          }
          randomIndex = wordList[wordListCounter];
-         randomWord = badezimmer[randomIndex];
+         entryList = badezimmerMAP.entries.toList();
+         randomWord = entryList[randomIndex].key;
          wordListCounter++;
          break;
        }
        if(settings.value == 'Hochfrequente Wörter'){
-         if(!(wordList.length == hfBadezimmer.length)){
-           wordList = List<int>.generate(hfBadezimmer.length, (int index) => index);
+         if(!(wordList.length == hfBadezimmerMAP.length)){
+           wordList = List<int>.generate(hfBadezimmerMAP.length, (int index) => index);
            wordList.shuffle();
          }
          randomIndex = wordList[wordListCounter];
-         randomWord = hfBadezimmer[randomIndex];
+         entryList = hfBadezimmerMAP.entries.toList();
+         randomWord = entryList[randomIndex].key;
          wordListCounter++;
          break;
        }
        if(settings.value == 'Niedrigfrequente Wörter'){
-         if(!(wordList.length == nfBadezimmer.length)){
-           wordList = List<int>.generate(nfBadezimmer.length, (int index) => index);
+         if(!(wordList.length == nfBadezimmerMAP.length)){
+           wordList = List<int>.generate(nfBadezimmerMAP.length, (int index) => index);
            wordList.shuffle();
          }
          randomIndex = wordList[wordListCounter];
-         randomWord = nfBadezimmer[randomIndex];
+         entryList = nfBadezimmerMAP.entries.toList();
+         randomWord = entryList[randomIndex].key;
          wordListCounter++;
          break;
        }
        break;
       case Category.Bauernhof:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == bauernhof.length)){
-            wordList = List<int>.generate(bauernhof.length, (int index) => index);
+          if(!(wordList.length == bauernhofMAP.length)){
+            wordList = List<int>.generate(bauernhofMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = bauernhof[randomIndex];
+          entryList = bauernhofMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfBauernhof.length)){
-            wordList = List<int>.generate(hfBauernhof.length, (int index) => index);
+          if(!(wordList.length == hfBauernhofMAP.length)){
+            wordList = List<int>.generate(hfBauernhofMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfBauernhof[randomIndex];
+          entryList = hfBauernhofMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfBauernhof.length)){
-            wordList = List<int>.generate(nfBauernhof.length, (int index) => index);
+          if(!(wordList.length == nfBauernhofMAP.length)){
+            wordList = List<int>.generate(nfBauernhofMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfBauernhof[randomIndex];
+          entryList = nfBauernhofMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Berufe:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == berufe.length)){
-            wordList = List<int>.generate(berufe.length, (int index) => index);
+          if(!(wordList.length == berufeMAP.length)){
+            wordList = List<int>.generate(berufeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = berufe[randomIndex];
+          entryList = berufeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfBerufe.length)){
-            wordList = List<int>.generate(hfBerufe.length, (int index) => index);
+          if(!(wordList.length == hfBerufeMAP.length)){
+            wordList = List<int>.generate(hfBerufeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfBerufe[randomIndex];
+          entryList = hfBerufeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfBerufe.length)){
-            wordList = List<int>.generate(nfBerufe.length, (int index) => index);
+          if(!(wordList.length == nfBerufeMAP.length)){
+            wordList = List<int>.generate(nfBerufeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfBerufe[randomIndex];
+          entryList = nfBerufeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.DeutscheStaedte:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == deutscheStaedte.length)){
-            wordList = List<int>.generate(deutscheStaedte.length, (int index) => index);
+          if(!(wordList.length == deutscheStaedteMAP.length)){
+            wordList = List<int>.generate(deutscheStaedteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = deutscheStaedte[randomIndex];
+          entryList = deutscheStaedteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfDeutscheStaedte.length)){
-            wordList = List<int>.generate(hfDeutscheStaedte.length, (int index) => index);
+          if(!(wordList.length == hfDeutscheStaedteMAP.length)){
+            wordList = List<int>.generate(hfDeutscheStaedteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfDeutscheStaedte[randomIndex];
+          entryList = hfDeutscheStaedteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfDeutscheStaedte.length)){
-            wordList = List<int>.generate(nfDeutscheStaedte.length, (int index) => index);
+          if(!(wordList.length == nfDeutscheStaedteMAP.length)){
+            wordList = List<int>.generate(nfDeutscheStaedteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfDeutscheStaedte[randomIndex];
+          entryList = nfDeutscheStaedteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Fahrzeuge:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == fahrzeuge.length)){
-            wordList = List<int>.generate(fahrzeuge.length, (int index) => index);
+          if(!(wordList.length == fahrzeugeMAP.length)){
+            wordList = List<int>.generate(fahrzeugeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = fahrzeuge[randomIndex];
+          entryList = fahrzeugeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfFahrzeuge.length)){
-            wordList = List<int>.generate(hfFahrzeuge.length, (int index) => index);
+          if(!(wordList.length == hfFahrzeugeMAP.length)){
+            wordList = List<int>.generate(hfFahrzeugeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfFahrzeuge[randomIndex];
+          entryList = hfFahrzeugeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfFahrzeuge.length)){
-            wordList = List<int>.generate(nfFahrzeuge.length, (int index) => index);
+          if(!(wordList.length == nfFahrzeugeMAP.length)){
+            wordList = List<int>.generate(nfFahrzeugeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfFahrzeuge[randomIndex];
+          entryList = nfFahrzeugeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Garten:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == garten.length)){
-            wordList = List<int>.generate(garten.length, (int index) => index);
+          if(!(wordList.length == gartenMAP.length)){
+            wordList = List<int>.generate(gartenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = garten[randomIndex];
+          entryList = gartenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfGarten.length)){
-            wordList = List<int>.generate(hfGarten.length, (int index) => index);
+          if(!(wordList.length == hfGartenMAP.length)){
+            wordList = List<int>.generate(hfGartenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfGarten[randomIndex];
+          entryList = hfGartenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfGarten.length)){
-            wordList = List<int>.generate(nfGarten.length, (int index) => index);
+          if(!(wordList.length == nfGartenMAP.length)){
+            wordList = List<int>.generate(nfGartenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfGarten[randomIndex];
+          entryList = nfGartenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Gemuese:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == gemuese.length)){
-            wordList = List<int>.generate(gemuese.length, (int index) => index);
+          if(!(wordList.length == gemueseMAP.length)){
+            wordList = List<int>.generate(gemueseMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = gemuese[randomIndex];
+          entryList = gemueseMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfGemuese.length)){
-            wordList = List<int>.generate(hfGemuese.length, (int index) => index);
+          if(!(wordList.length == hfGemueseMAP.length)){
+            wordList = List<int>.generate(hfGemueseMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfGemuese[randomIndex];
+          entryList = hfGemueseMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfGemuese.length)){
-            wordList = List<int>.generate(nfGemuese.length, (int index) => index);
+          if(!(wordList.length == nfGemueseMAP.length)){
+            wordList = List<int>.generate(nfGemueseMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfGemuese[randomIndex];
+          entryList = nfGemueseMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Getraenke:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == getraenke.length)){
-            wordList = List<int>.generate(getraenke.length, (int index) => index);
+          if(!(wordList.length == getraenkeMAP.length)){
+            wordList = List<int>.generate(getraenkeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = getraenke[randomIndex];
+          entryList = getraenkeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfGetraenke.length)){
-            wordList = List<int>.generate(hfGetraenke.length, (int index) => index);
+          if(!(wordList.length == hfGetraenkeMAP.length)){
+            wordList = List<int>.generate(hfGetraenkeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfGetraenke[randomIndex];
+          entryList = hfGetraenkeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfGetraenke.length)){
-            wordList = List<int>.generate(nfGetraenke.length, (int index) => index);
+          if(!(wordList.length == nfGetraenkeMAP.length)){
+            wordList = List<int>.generate(nfGetraenkeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfGetraenke[randomIndex];
+          entryList = nfGetraenkeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Hauptstaedte:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == hauptstaedte.length)){
-            wordList = List<int>.generate(hauptstaedte.length, (int index) => index);
+          if(!(wordList.length == hauptstaedteMAP.length)){
+            wordList = List<int>.generate(hauptstaedteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hauptstaedte[randomIndex];
+          entryList = hauptstaedteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfHauptstaedte.length)){
-            wordList = List<int>.generate(hfHauptstaedte.length, (int index) => index);
+          if(!(wordList.length == hfHauptstaedteMAP.length)){
+            wordList = List<int>.generate(hfHauptstaedteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfHauptstaedte[randomIndex];
+          entryList = hfHauptstaedteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfHauptstaedte.length)){
-            wordList = List<int>.generate(nfHauptstaedte.length, (int index) => index);
+          if(!(wordList.length == nfHauptstaedteMAP.length)){
+            wordList = List<int>.generate(nfHauptstaedteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfHauptstaedte[randomIndex];
+          entryList = nfHauptstaedteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Hausbau:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == hausbau.length)){
-            wordList = List<int>.generate(hausbau.length, (int index) => index);
+          if(!(wordList.length == hausbauMAP.length)){
+            wordList = List<int>.generate(hausbauMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hausbau[randomIndex];
+          entryList = hausbauMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfHausbau.length)){
-            wordList = List<int>.generate(hfHausbau.length, (int index) => index);
+          if(!(wordList.length == hfHausbauMAP.length)){
+            wordList = List<int>.generate(hfHausbauMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfHausbau[randomIndex];
+          entryList = hfHausbauMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfHausbau.length)){
-            wordList = List<int>.generate(nfHausbau.length, (int index) => index);
+          if(!(wordList.length == nfHausbauMAP.length)){
+            wordList = List<int>.generate(nfHausbauMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfHausbau[randomIndex];
+          entryList = nfHausbauMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Hobbys:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == hobbys.length)){
-            wordList = List<int>.generate(hobbys.length, (int index) => index);
+          if(!(wordList.length == hobbysMAP.length)){
+            wordList = List<int>.generate(hobbysMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hobbys[randomIndex];
+          entryList = hobbysMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfHobbys.length)){
-            wordList = List<int>.generate(hfHobbys.length, (int index) => index);
+          if(!(wordList.length == hfHobbysMAP.length)){
+            wordList = List<int>.generate(hfHobbysMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfHobbys[randomIndex];
+          entryList = hfHobbysMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfHobbys.length)){
-            wordList = List<int>.generate(nfHobbys.length, (int index) => index);
+          if(!(wordList.length == nfHobbysMAP.length)){
+            wordList = List<int>.generate(nfHobbysMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfHobbys[randomIndex];
+          entryList = nfHobbysMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Kleidung:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == kleidung.length)){
-            wordList = List<int>.generate(kleidung.length, (int index) => index);
+          if(!(wordList.length == kleidungMAP.length)){
+            wordList = List<int>.generate(kleidungMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = kleidung[randomIndex];
+          entryList = kleidungMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfKleidung.length)){
-            wordList = List<int>.generate(hfKleidung.length, (int index) => index);
+          if(!(wordList.length == hfKleidungMAP.length)){
+            wordList = List<int>.generate(hfKleidungMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfKleidung[randomIndex];
+          entryList = hfKleidungMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfKleidung.length)){
-            wordList = List<int>.generate(nfKleidung.length, (int index) => index);
+          if(!(wordList.length == nfKleidungMAP.length)){
+            wordList = List<int>.generate(nfKleidungMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfKleidung[randomIndex];
+          entryList = nfKleidungMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Koerperteile:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == koerperteile.length)){
-            wordList = List<int>.generate(koerperteile.length, (int index) => index);
+          if(!(wordList.length == koerperteileMAP.length)){
+            wordList = List<int>.generate(koerperteileMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = koerperteile[randomIndex];
+          entryList = koerperteileMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfKoerperteile.length)){
-            wordList = List<int>.generate(hfKoerperteile.length, (int index) => index);
+          if(!(wordList.length == hfKoerperteileMAP.length)){
+            wordList = List<int>.generate(hfKoerperteileMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfKoerperteile[randomIndex];
+          entryList = hfKoerperteileMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfKoerperteile.length)){
-            wordList = List<int>.generate(nfKoerperteile.length, (int index) => index);
+          if(!(wordList.length == nfKoerperteileMAP.length)){
+            wordList = List<int>.generate(nfKoerperteileMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfKoerperteile[randomIndex];
+          entryList = nfKoerperteileMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Kueche:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == kueche.length)){
-            wordList = List<int>.generate(kueche.length, (int index) => index);
+          if(!(wordList.length == kuecheMAP.length)){
+            wordList = List<int>.generate(kuecheMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = kueche[randomIndex];
+          entryList = kuecheMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfKueche.length)){
-            wordList = List<int>.generate(hfKueche.length, (int index) => index);
+          if(!(wordList.length == hfKuecheMAP.length)){
+            wordList = List<int>.generate(hfKuecheMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfKueche[randomIndex];
+          entryList = hfKuecheMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfKueche.length)){
-            wordList = List<int>.generate(nfKueche.length, (int index) => index);
+          if(!(wordList.length == nfKuecheMAP.length)){
+            wordList = List<int>.generate(nfKuecheMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfKueche[randomIndex];
+          entryList = nfKuecheMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Laender:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == laender.length)){
-            wordList = List<int>.generate(laender.length, (int index) => index);
+          if(!(wordList.length == laenderMAP.length)){
+            wordList = List<int>.generate(laenderMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = laender[randomIndex];
+          entryList = laenderMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfLaender.length)){
-            wordList = List<int>.generate(hfLaender.length, (int index) => index);
+          if(!(wordList.length == hfLaenderMAP.length)){
+            wordList = List<int>.generate(hfLaenderMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfLaender[randomIndex];
+          entryList = hfLaenderMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfLaender.length)){
-            wordList = List<int>.generate(nfLaender.length, (int index) => index);
+          if(!(wordList.length == nfLaenderMAP.length)){
+            wordList = List<int>.generate(nfLaenderMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfLaender[randomIndex];
+          entryList = nfLaenderMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Moebel:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == moebel.length)){
-            wordList = List<int>.generate(moebel.length, (int index) => index);
+          if(!(wordList.length == moebelMAP.length)){
+            wordList = List<int>.generate(moebelMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = moebel[randomIndex];
+          entryList = moebelMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfMoebel.length)){
-            wordList = List<int>.generate(hfMoebel.length, (int index) => index);
+          if(!(wordList.length == hfMoebelMAP.length)){
+            wordList = List<int>.generate(hfMoebelMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfMoebel[randomIndex];
+          entryList = hfMoebelMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfMoebel.length)){
-            wordList = List<int>.generate(nfMoebel.length, (int index) => index);
+          if(!(wordList.length == nfMoebelMAP.length)){
+            wordList = List<int>.generate(nfMoebelMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfMoebel[randomIndex];
+          entryList = nfMoebelMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Musikinstrumente:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == musikinstrumente.length)){
-            wordList = List<int>.generate(musikinstrumente.length, (int index) => index);
+          if(!(wordList.length == musikinstrumenteMAP.length)){
+            wordList = List<int>.generate(musikinstrumenteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = musikinstrumente[randomIndex];
+          entryList = musikinstrumenteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfMusikinstrumente.length)){
-            wordList = List<int>.generate(hfMusikinstrumente.length, (int index) => index);
+          if(!(wordList.length == hfMusikinstrumenteMAP.length)){
+            wordList = List<int>.generate(hfMusikinstrumenteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfMusikinstrumente[randomIndex];
+          entryList = hfMusikinstrumenteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfMusikinstrumente.length)){
-            wordList = List<int>.generate(nfMusikinstrumente.length, (int index) => index);
+          if(!(wordList.length == nfMusikinstrumenteMAP.length)){
+            wordList = List<int>.generate(nfMusikinstrumenteMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfMusikinstrumente[randomIndex];
+          entryList = nfMusikinstrumenteMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Obst:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == obst.length)){
-            wordList = List<int>.generate(obst.length, (int index) => index);
+          if(!(wordList.length == obstMAP.length)){
+            wordList = List<int>.generate(obstMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = obst[randomIndex];
+          entryList = obstMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfObst.length)){
-            wordList = List<int>.generate(hfObst.length, (int index) => index);
+          if(!(wordList.length == hfObstMAP.length)){
+            wordList = List<int>.generate(hfObstMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfObst[randomIndex];
+          entryList = hfObstMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfObst.length)){
-            wordList = List<int>.generate(nfObst.length, (int index) => index);
+          if(!(wordList.length == nfObstMAP.length)){
+            wordList = List<int>.generate(nfObstMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfObst[randomIndex];
+          entryList = nfObstMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Pflanzen:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == pflanzen.length)){
-            wordList = List<int>.generate(pflanzen.length, (int index) => index);
+          if(!(wordList.length == pflanzenMAP.length)){
+            wordList = List<int>.generate(pflanzenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = pflanzen[randomIndex];
+          entryList = pflanzenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfPflanzen.length)){
-            wordList = List<int>.generate(hfPflanzen.length, (int index) => index);
+          if(!(wordList.length == hfPflanzenMAP.length)){
+            wordList = List<int>.generate(hfPflanzenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfPflanzen[randomIndex];
+          entryList = hfPflanzenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfPflanzen.length)){
-            wordList = List<int>.generate(nfPflanzen.length, (int index) => index);
+          if(!(wordList.length == nfPflanzenMAP.length)){
+            wordList = List<int>.generate(nfPflanzenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfPflanzen[randomIndex];
+          entryList = nfPflanzenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Resteraunt:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == resteraunt.length)){
-            wordList = List<int>.generate(resteraunt.length, (int index) => index);
+          if(!(wordList.length == resterauntMAP.length)){
+            wordList = List<int>.generate(resterauntMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = resteraunt[randomIndex];
+          entryList = resterauntMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfResteraunt.length)){
-            wordList = List<int>.generate(hfResteraunt.length, (int index) => index);
+          if(!(wordList.length == hfResterauntMAP.length)){
+            wordList = List<int>.generate(hfResterauntMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfResteraunt[randomIndex];
+          entryList = hfResterauntMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfResteraunt.length)){
-            wordList = List<int>.generate(nfResteraunt.length, (int index) => index);
+          if(!(wordList.length == nfResterauntMAP.length)){
+            wordList = List<int>.generate(nfResterauntMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfResteraunt[randomIndex];
+          entryList = nfResterauntMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Sportarten:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == sportarten.length)){
-            wordList = List<int>.generate(sportarten.length, (int index) => index);
+          if(!(wordList.length == sportartenMAP.length)){
+            wordList = List<int>.generate(sportartenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = sportarten[randomIndex];
+          entryList = sportartenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfSportarten.length)){
-            wordList = List<int>.generate(hfSportarten.length, (int index) => index);
+          if(!(wordList.length == hfSportartenMAP.length)){
+            wordList = List<int>.generate(hfSportartenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfSportarten[randomIndex];
+          entryList = hfSportartenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfSportarten.length)){
-            wordList = List<int>.generate(nfSportarten.length, (int index) => index);
+          if(!(wordList.length == nfSportartenMAP.length)){
+            wordList = List<int>.generate(nfSportartenMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfSportarten[randomIndex];
+          entryList = nfSportartenMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Strassenverkehr:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == strassenverkehr.length)){
-            wordList = List<int>.generate(strassenverkehr.length, (int index) => index);
+          if(!(wordList.length == strassenverkehrMAP.length)){
+            wordList = List<int>.generate(strassenverkehrMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = strassenverkehr[randomIndex];
+          entryList = strassenverkehrMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfStrassenverkehr.length)){
-            wordList = List<int>.generate(hfStrassenverkehr.length, (int index) => index);
+          if(!(wordList.length == hfStrassenverkehrMAP.length)){
+            wordList = List<int>.generate(hfStrassenverkehrMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfStrassenverkehr[randomIndex];
+          entryList = hfStrassenverkehrMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfStrassenverkehr.length)){
-            wordList = List<int>.generate(nfStrassenverkehr.length, (int index) => index);
+          if(!(wordList.length == nfStrassenverkehrMAP.length)){
+            wordList = List<int>.generate(nfStrassenverkehrMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfStrassenverkehr[randomIndex];
+          entryList = nfStrassenverkehrMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Supermarkt:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == supermarkt.length)){
-            wordList = List<int>.generate(supermarkt.length, (int index) => index);
+          if(!(wordList.length == supermarktMAP.length)){
+            wordList = List<int>.generate(supermarktMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = supermarkt[randomIndex];
+          entryList = supermarktMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfSupermarkt.length)){
-            wordList = List<int>.generate(hfSupermarkt.length, (int index) => index);
+          if(!(wordList.length == hfSupermarktMAP.length)){
+            wordList = List<int>.generate(hfSupermarktMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfSupermarkt[randomIndex];
+          entryList = hfSupermarktMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfSupermarkt.length)){
-            wordList = List<int>.generate(nfSupermarkt.length, (int index) => index);
+          if(!(wordList.length == nfSupermarktMAP.length)){
+            wordList = List<int>.generate(nfSupermarktMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfSupermarkt[randomIndex];
+          entryList = nfSupermarktMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Tiere:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == tiere.length)){
-            wordList = List<int>.generate(tiere.length, (int index) => index);
+          if(!(wordList.length == tiereMAP.length)){
+            wordList = List<int>.generate(tiereMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = tiere[randomIndex];
+          entryList = tiereMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfTiere.length)){
-            wordList = List<int>.generate(hfTiere.length, (int index) => index);
+          if(!(wordList.length == hfTiereMAP.length)){
+            wordList = List<int>.generate(hfTiereMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfTiere[randomIndex];
+          entryList = hfTiereMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfTiere.length)){
-            wordList = List<int>.generate(nfTiere.length, (int index) => index);
+          if(!(wordList.length == nfTiereMAP.length)){
+            wordList = List<int>.generate(nfTiereMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfTiere[randomIndex];
+          entryList = nfTiereMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         break;
       case Category.Werkzeuge:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == werkzeuge.length)){
-            wordList = List<int>.generate(werkzeuge.length, (int index) => index);
+          if(!(wordList.length == werkzeugeMAP.length)){
+            wordList = List<int>.generate(werkzeugeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = werkzeuge[randomIndex];
+          entryList = werkzeugeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Hochfrequente Wörter'){
-          if(!(wordList.length == hfWerkzeuge.length)){
-            wordList = List<int>.generate(hfWerkzeuge.length, (int index) => index);
+          if(!(wordList.length == hfWerkzeugeMAP.length)){
+            wordList = List<int>.generate(hfWerkzeugeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = hfWerkzeuge[randomIndex];
+          entryList = hfWerkzeugeMAP.entries.toList();
+          randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Niedrigfrequente Wörter'){
-          if(!(wordList.length == nfWerkzeuge.length)){
-            wordList = List<int>.generate(nfWerkzeuge.length, (int index) => index);
+          if(!(wordList.length == nfWerkzeugeMAP.length)){
+            wordList = List<int>.generate(nfWerkzeugeMAP.length, (int index) => index);
             wordList.shuffle();
           }
           randomIndex = wordList[wordListCounter];
-          randomWord = nfWerkzeuge[randomIndex];
+          randomWord = nfWerkzeugeMAP[randomIndex];
           wordListCounter++;
           break;
         }
