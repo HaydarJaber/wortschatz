@@ -20,31 +20,65 @@ class Settings extends StatelessWidget {
     final settings = context.watch<SettingsController>();
     final palette = context.watch<Palette>();
 
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: palette.backgroundSettings,
-
-      ),
-      backgroundColor: palette.backgroundSettings,
-      body: ResponsiveScreen(
-        squarishMainArea: ListView(
-          children: [
-            _gap,
-            const Text(
-              'Einstellungen',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Permanent Marker',
-                fontSize: 55,
-                height: 1,
+    return SafeArea(
+        child: Scaffold(
+            body: Container(
+              constraints: const BoxConstraints.expand(),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/Hintergrund.jpg"),
+                    fit: BoxFit.cover
+                ),
               ),
-            ),
-            _gap,
-            const _NameChangeLine(
-              'Name',
-            ),
-         /*   ValueListenableBuilder<bool>(
+              padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+              child: OrientationBuilder(builder: (context, orientation) {
+                if (orientation == Orientation.portrait) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 2.0,
+                                    color: Colors.black,
+                                  ),
+                                ],
+                                Icons.home,
+                                color: Colors.black,
+                                size: 35,
+                              )),
+                          const SizedBox(width: 60),
+                          const Text(
+                            'Einstellungen',
+                            style: TextStyle(
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 2.0,
+                                    color: Colors.black,
+                                  ),
+                                ],
+                                fontFamily: "Qaz",
+                                fontSize: 35,
+                                color: Colors.black),
+                          )
+                        ],
+                      ),
+                      //const Text('Kategorien', style: TextStyle(fontSize: 60,fontFamily: "Modak")
+                      Expanded(
+                          child: ListView(
+                      children: [
+                      _gap,
+                      const _NameChangeLine(
+                      'Name:',
+                      ),
+                      /*   ValueListenableBuilder<bool>(
               valueListenable: settings.soundsOn,
               builder: (context, soundsOn, child) => _SettingsLine(
                 'Sound FX',
@@ -52,7 +86,7 @@ class Settings extends StatelessWidget {
                 onSelected: () => settings.toggleSoundsOn(),
               ),
             ), */
-       /*     ValueListenableBuilder<bool>(
+                      /*     ValueListenableBuilder<bool>(
               valueListenable: settings.musicOn,
               builder: (context, musicOn, child) => _SettingsLine(
                 'Music',
@@ -60,30 +94,50 @@ class Settings extends StatelessWidget {
                 onSelected: () => settings.toggleMusicOn(),
               ),
             ), */
-            _FrequenzChangeLine('Frequenz der Wörter'),
-            _SettingsLine(
-              'Fortschritt zurücksetzen',
-              const Icon(Icons.delete),
-              onSelected: () {
-                context.read<PlayerProgress>().reset();
-                final messenger = ScaffoldMessenger.of(context);
-                messenger.showSnackBar(
-                  const SnackBar(
+                        _gap,
+                      _FrequenzChangeLine('Frequenz der Wörter:'),
+            /*          _SettingsLine(
+                      'Fortschritt zurücksetzen',
+                      const Icon(Icons.delete),
+                      onSelected: () {
+                      context.read<PlayerProgress>().reset();
+                      final messenger = ScaffoldMessenger.of(context);
+                      messenger.showSnackBar(
+                      const SnackBar(
                       content: Text('Player progress has been reset.')),
-                );
-              },
-            ),
-            _gap,
-          ],
-        ),
-     /*   rectangularMenuArea: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text('Back'),
-        ), */
-      ),
-    );
+                      );
+                      },
+                ), */
+                _gap,
+                ],
+                ),)
+                    ],
+                  );
+                } else {
+                  return Row(
+                    children: [
+                      /*  Align(
+                alignment: Alignment.bottomLeft,
+                child: IconButton(
+                    iconSize: 35,
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
+              ),*/
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              }),
+            )));
   }
 }
 
@@ -175,19 +229,41 @@ class _NameChangeLine extends StatelessWidget {
             Row(
               children: [
             Text(title,
-            style: const TextStyle(
-              fontFamily: 'Qaz',
-              fontSize: 30,
-            )),
+            style: TextStyle(
+              shadows: const <Shadow>[
+                Shadow(
+                  offset: Offset(0.0, 0.0),
+                  blurRadius: 2.0,
+                  color: Colors.black,
+                ),
+              ],
+              color: Colors.black,
+              fontSize: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 0.03,
+              fontFamily: "Qaz",
+            ),),
               ]
             ),
             ValueListenableBuilder(
               valueListenable: settings.playerName,
               builder: (context, name, child) => Text(
                 '‘$name’',
-                style: const TextStyle(
-                  fontFamily: 'Qaz',
-                  fontSize: 30,
+                style: TextStyle(
+                  shadows: const <Shadow>[
+                    Shadow(
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 2.0,
+                      color: Colors.black,
+                    ),
+                  ],
+                  color: Colors.black,
+                  fontSize: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.07,
+                  fontFamily: "Qaz",
                 ),
               ),
             ),
@@ -197,6 +273,7 @@ class _NameChangeLine extends StatelessWidget {
     );
   }
 }
+
 
 class _FrequenzChangeLine extends StatelessWidget {
   final String title;
@@ -218,10 +295,21 @@ class _FrequenzChangeLine extends StatelessWidget {
             Row(
                 children: [
                   Text(title,
-                      style: const TextStyle(
-                        fontFamily: 'Permanent Marker',
-                        fontSize: 30,
-                      )),
+                      style: TextStyle(
+                        shadows: const <Shadow>[
+                          Shadow(
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 2.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                        color: Colors.black,
+                        fontSize: MediaQuery
+                            .of(context)
+                            .size
+                            .height * 0.03,
+                        fontFamily: "Qaz",
+                      ),),
                 ]
             ),
             ValueListenableBuilder(
@@ -231,10 +319,24 @@ class _FrequenzChangeLine extends StatelessWidget {
                     value: value,
                     icon: const Icon(Icons.arrow_downward),
                     elevation: 16,
-                    style: const TextStyle(color: Colors.lightBlueAccent),
+                    style: TextStyle(
+                      shadows: const <Shadow>[
+                        Shadow(
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 2.0,
+                          color: Colors.black,
+                        ),
+                      ],
+                      color: Colors.black,
+                      fontSize: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.03,
+                      fontFamily: "Qaz",
+                    ),
                     underline: Container(
                       height: 2,
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.black,
                     ),
                     onChanged: (value) {
                       // This is called when the user selects an item.

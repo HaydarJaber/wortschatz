@@ -19,7 +19,8 @@ class MenuButton extends StatelessWidget {
         padding: const EdgeInsets.all(3.0),
         child: ElevatedButton.icon(
           style: ButtonStyle(
-              minimumSize: MaterialStateProperty.all(const Size(200, 50)),
+              minimumSize: MaterialStateProperty.all(const Size(300, 50)),
+              alignment: Alignment.centerLeft,
               backgroundColor: MaterialStateProperty.resolveWith((state) {
                 if (state.contains(MaterialState.pressed)) return Colors.grey;
                 return color;
