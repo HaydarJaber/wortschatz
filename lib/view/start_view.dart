@@ -84,33 +84,6 @@ class _StartScreenState extends State<StartScreen> {
 
 
 
-  void _tippAngezeigt(){
-    if (_isButtonAufgeklappt1 = false ){
-      setState(() {
-        _isButtonAufgeklappt1 = true;
-      });
-      return;
-    }
-    if(_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
-      setState(() {
-        _isButtonAufgeklappt2 = true;
-      });
-      return;
-    }
-    if(_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
-      setState(() {
-        _isButtonAufgeklappt3 = true;
-      });
-      return;
-    }
-    if(_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt3 == false){
-      setState(() {
-        _isButtonAufgeklappt4 = true;
-      });
-      return;
-    }
-  }
-
   void getCategory(){
     final settings = context.read<SettingsController>().frequency;
     switch(widget.category){
@@ -1250,7 +1223,7 @@ class _StartScreenState extends State<StartScreen> {
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                               image: _imageToShow,
-                                              fit: BoxFit.cover,
+                                              fit: BoxFit.contain,
                                             ),
                                           )),
                                       const Icon(
@@ -1342,7 +1315,7 @@ class _StartScreenState extends State<StartScreen> {
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
                                                 image: _imageToShow,
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                               ),
                                             )),
                                       const Icon(
@@ -1400,7 +1373,7 @@ class _StartScreenState extends State<StartScreen> {
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                               image: _imageToShow,
-                                              fit: BoxFit.cover,
+                                              fit: BoxFit.contain,
                                             ),
                                           )),
                                       const Icon(
@@ -1493,7 +1466,7 @@ class _StartScreenState extends State<StartScreen> {
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
                                                 image: _imageToShow,
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                               ),
                                             )),
                                         const Icon(
@@ -1584,7 +1557,7 @@ class _StartScreenState extends State<StartScreen> {
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
                                                 image: _imageToShow,
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                               ),
                                             )),
                                         const Icon(
