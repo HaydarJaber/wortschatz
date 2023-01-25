@@ -254,11 +254,11 @@ class _NameChangeLine extends StatelessWidget {
                   shadows: const <Shadow>[
                     Shadow(
                       offset: Offset(0.0, 0.0),
-                      blurRadius: 2.0,
+                      blurRadius: 5.0,
                       color: Colors.black,
                     ),
                   ],
-                  color: Colors.black,
+                  color: Colors.lightBlueAccent,
                   fontSize: MediaQuery
                       .of(context)
                       .size
@@ -323,15 +323,15 @@ class _FrequenzChangeLine extends StatelessWidget {
                       shadows: const <Shadow>[
                         Shadow(
                           offset: Offset(0.0, 0.0),
-                          blurRadius: 2.0,
+                          blurRadius: 0.0,
                           color: Colors.black,
                         ),
                       ],
-                      color: Colors.black,
+                      color: Colors.lightBlueAccent,
                       fontSize: MediaQuery
                           .of(context)
                           .size
-                          .height * 0.03,
+                          .height * 0.035,
                       fontFamily: "Qaz",
                     ),
                     underline: Container(
