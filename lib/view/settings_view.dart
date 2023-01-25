@@ -258,7 +258,7 @@ class _NameChangeLine extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ],
-                  color: Colors.lightBlueAccent,
+                  color: Colors.black,
                   fontSize: MediaQuery
                       .of(context)
                       .size
@@ -327,7 +327,7 @@ class _FrequenzChangeLine extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ],
-                      color: Colors.lightBlueAccent,
+                      color: Colors.black,
                       fontSize: MediaQuery
                           .of(context)
                           .size
