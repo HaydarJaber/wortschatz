@@ -9,6 +9,7 @@ import 'package:wortschatz/view/settings_view.dart';
 
 import '../../main.dart';
 import '../../view/highscore_view.dart';
+import '../../view/imprint_view.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -38,6 +39,8 @@ class AppRouter {
       //  );
       case Routes.rank:
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
+      case Routes.imprint:
+        return CustomPageRoute(child: const Imprint(), settings: settings);
       default:
         return null;
     }

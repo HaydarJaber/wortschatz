@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "type": "h2",
+    "content": "1. Kontakt"
+  },
+  {
+    "id": 1,
+    "type": "p",
+    "content": "Ansprechpartner für fachliche Fragen\nProf. Dr. Norina Lauer\n\t\t\t\t\t\t\t\tE-Mail: lauer@hs-fresenius.de\nProf. Dr. Tanja Grewe\n\t\t\t\t\t\t\t\tE-Mail: grewe@hs-fresenius.de\n\t\t\t\t\t\t\t\tTelefon: 06126 - 93 52 0\n\t\t\t\t\t\t\t\tTelefax: 06126 - 93 52 10\nWeitere Informationen zum Studium:\nhttp://www.hs-fresenius.de/studium/school-of-therapy-social-work/studiengaenge/logopaedie-bsc/idstein/bachelor-vollzeit/"
+  },
+  {
+    "id": 2,
+    "type": "h2",
+    "content": "2. Mitwirkende"
+  },
+  {
+    "id": 3,
+    "type": "p",
+    "content": "Projektmanagement\n\t\t\t\t\t\t\t\t-\tPatrick Leitinger, HS Fresenius\n\t\t\t\t\t\t\t\t-\tLydia Pott, COGNOS AG\nFachliche Leitung\n\t\t\t\t\t\t\t\t-\tProf. Dr. Norina Lauer, HS Fresenius\n\t\t\t\t\t\t\t\t-\tProf. Dr. Tanja Grewe, HS Fresenius\nFachliche Konzeption\n\t\t\t\t\t\t\t\t-\tJessica Hofmann,\tAbsolventin des\n\t\t\t\t\t\t\t\t\t\tBachelor-Studiengangs Logopädie,\n\t\t\t\t\t\t\t\t\t\tPreisträgerin Förderpreis 2015 des\n\t\t\t\t\t\t\t\t\t\tFonds der Arzneimittelfirmen\n\t\t\t\t\t\t\t\t\t\tHessen/Rheinland-Pfalz/Saarland e.V.\n\t\t\t\t\t\t\t\t\t\tfür die Konzeption dieser\n\t\t\t\t\t\t\t\t\t\tLogopädie-App\n\t\t\t\t\t\t\t\t-\tProf. Dr. Norina Lauer, HS Fresenius\n\t\t\t\t\t\t\t\t-\tProf. Dr. Tanja Grewe, HS Fresenius\nApp-Design\n\t\t\t\t\t\t\t\t-\tJeanette Pigulla, HS Fresenius\nEntwicklung\n\t\t\t\t\t\t\t\t-\tAccelerate Media Solutions GmbH\n\t\t\t\t\t\t\t\t\t\tNeue Maastrichter Str. 13\n\t\t\t\t\t\t\t\t\t\t50672 Köln\n\t\t\t\t\t\t\t\t\t\twww.accelerate.de"
+  },
+  {
+    "id": 4,
+    "type": "h2",
+    "content": "3. Impressum"
+  },
+  {
+    "id": 5,
+    "type": "p",
+    "content": "Hochschule Fresenius gGmbH\nGeschäftsführung:\n\t\t\t\t\t\t\t\t-\tDr. Matthias Afting\n\t\t\t\t\t\t\t\t-\tSascha Kappes\nLimburger Str. 2 D-65510 Idstein\nUmsatzsteuer-ID: DE196697659\nRegistergericht: Amtsgericht Wiesbaden\nRegisternummer: HRB 19044\nhttp://www.hs-fresenius.de/studium/school-of-therapy-social-work"
+  }
+]
