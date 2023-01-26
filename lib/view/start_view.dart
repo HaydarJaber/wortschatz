@@ -1282,7 +1282,8 @@ class _StartScreenState extends State<StartScreen> {
                                                   'date': context.read<SettingsController>().playerName.value,
                                                   'score': score
                                                 });
-                                                refresh();
+                                                refresh();   //INFOSEITE
+                                                //CustomPageRoute(child: const Imprint(), settings: settings);
                                                 refresh();
                                               }),
                                         ],
