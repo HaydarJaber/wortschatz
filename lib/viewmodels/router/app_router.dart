@@ -8,6 +8,7 @@ import 'package:wortschatz/view/settings_view.dart';
 
 
 import '../../main.dart';
+import '../../view/Infopage_view.dart';
 import '../../view/highscore_view.dart';
 import '../../view/imprint_view.dart';
 
@@ -41,6 +42,8 @@ class AppRouter {
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
       case Routes.imprint:
         return CustomPageRoute(child: const Imprint(), settings: settings);
+      case Routes.infopage:
+        return CustomPageRoute(child: Infopage(getProgress: settings.arguments as Map), settings: settings);
       default:
         return null;
     }

@@ -7,6 +7,7 @@ import 'package:wortschatz/model/settings/settings_persistence.dart';
 import 'package:wortschatz/model/settings/memory_settings_persistence.dart';
 import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/model/highscore/db_helper.dart';
+import 'package:wortschatz/view/Infopage_view.dart';
 import 'package:wortschatz/view/settings_view.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import '../model/constants/categories.dart';
@@ -15,7 +16,6 @@ import '../model/words/all_words.dart';
 import '../model/words/nf_words.dart';
 import '../viewmodels/settings/settings.dart';
 import 'categories_view.dart';
-import 'package:wortschatz/model/wordshelp/autoteile/autoteile_words_help.dart';
 
 
 class StartScreen extends StatefulWidget {
@@ -27,6 +27,7 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
+  Map<String, List<int>> progressSafer = {};
   late AssetImage _imageToShow;
   final _name = TextEditingController();
   late String stored;
@@ -54,14 +55,16 @@ class _StartScreenState extends State<StartScreen> {
       index = 0;
       getCategory();
       sword = List.generate(randomWord.length, (index) => "_");
+      checkForHelp();
       stored = randomWord;
+      progressSafer[randomWord] = [0,0];          //erster eintrag richtig/falsch, zweiter wie viele Hilfen benötigt
       _isButtonAufgeklappt1 = false;
       _isButtonAufgeklappt2 = false;
       _isButtonAufgeklappt3 = false;
       _isButtonAufgeklappt4 = false;
       _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
       print(randomWord);
-      print(wordList);
+      print(progressSafer);
     });
   }
 
@@ -77,13 +80,55 @@ class _StartScreenState extends State<StartScreen> {
     getCategory();
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
+    progressSafer[randomWord] = [0,0];
     _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
     print(randomWord);
-    print(wordList);
+    print(progressSafer);
   }
 
+  void checkForHelp(){
+    if(_isButtonAufgeklappt4 == true){
+      progressSafer.update(stored, (list) {
+        list[1] = 4;
+        return list;
+      });
+      print("vier Hilfen");
+      return;
+    }
+    if (_isButtonAufgeklappt3 == true){
+      progressSafer.update(stored, (list) {
+        list[1] = 3;
+        return list;
+      });
+      print("drei Hilfen");
+      return;
+    }
+    if(_isButtonAufgeklappt2 == true){
+      progressSafer.update(stored, (list) {
+        list[1] = 2;
+        return list;
+      });
+      print("zwei Hilfen");
+      return;
+    }
+    if(_isButtonAufgeklappt1 == true) {
+      progressSafer.update(stored, (list) {
+        list[1] = 1;
+        return list;
+      });
+      print("eine Hilfe");
+      return;
+    }else{
+      return;
+    }
+  }
 
-
+  void getMissingWords(){
+    while(wordListCounter != wordList.length){
+      getCategory();
+      progressSafer[randomWord] = [2,0];
+    }
+  }
   void getCategory(){
     final settings = context.read<SettingsController>().frequency;
     switch(widget.category){
@@ -1190,7 +1235,7 @@ class _StartScreenState extends State<StartScreen> {
               var chrUP = name.toString();
               print(chr);
               print(chrUP);
-              if (randomWord.contains(chr) || randomWord.contains(chrUP)) {
+              if (randomWord.contains(chr) || randomWord.contains(chrUP)) {                 //Wenn Buchstabe im Wort vorhanden..
                   while (randomWord.contains(chr)) {
                     int getIndex = randomWord.indexOf((chr));
                     randomWord = randomWord.replaceFirst(chr, '_');
@@ -1201,8 +1246,8 @@ class _StartScreenState extends State<StartScreen> {
                     randomWord = randomWord.replaceFirst(chrUP, '_');
                     sword[getIndex] = chrUP;
                   }
-                if (!randomWord.contains(RegExp(r'[a-z]'))) {
-                  if(wordListCounter == wordList.length){
+                if (!randomWord.contains(RegExp(r'[a-z]'))) {                             //und dieser Buchstabe der letzte Buchstabe der Wortes ist..
+                  if(wordListCounter == wordList.length){                                 //und dieses Wort das letzte Wort aus der Liste ist..
                     showDialog(
                         barrierDismissible: true,
                         context: context,
@@ -1218,7 +1263,7 @@ class _StartScreenState extends State<StartScreen> {
                                     MainAxisAlignment.spaceAround,
                                     children: [
                                       Container(
-                                          padding: EdgeInsets.only(left: 10.0),
+                                          padding: const EdgeInsets.only(left: 10.0),
                                           height: MediaQuery.of(context).size.height * 0.5,
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
@@ -1259,7 +1304,7 @@ class _StartScreenState extends State<StartScreen> {
                                         children: [
                                           IconButton(
                                               icon: const Icon(
-                                                Icons.arrow_circle_right,
+                                                Icons.arrow_back,
                                                 size: 40,
                                                 color: Colors.white,
                                               ),
@@ -1282,9 +1327,9 @@ class _StartScreenState extends State<StartScreen> {
                                                   'date': context.read<SettingsController>().playerName.value,
                                                   'score': score
                                                 });
-                                                refresh();   //INFOSEITE
-                                                //CustomPageRoute(child: const Imprint(), settings: settings);
-                                                refresh();
+                                                progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
+                                                checkForHelp();                                    //check wie viele Hilfen benötigt
+                                                Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                               }),
                                         ],
                                       ),
@@ -1294,7 +1339,7 @@ class _StartScreenState extends State<StartScreen> {
                           );
                         });
                   }
-                  else{
+                  else{                                                                   //und diseses Wort NICHT das letzte Wort aus der Liste ist..
                     score = score + 1;
                     showDialog(
                         barrierDismissible: true,
@@ -1311,7 +1356,7 @@ class _StartScreenState extends State<StartScreen> {
                                     MainAxisAlignment.spaceAround,
                                     children: [
                                           Container(
-                                          padding: EdgeInsets.only(left: 10.0),
+                                          padding: const EdgeInsets.only(left: 10.0),
                                             height: MediaQuery.of(context).size.height * 0.5,
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
@@ -1338,6 +1383,7 @@ class _StartScreenState extends State<StartScreen> {
                                             color: Colors.white,
                                           ),
                                           onPressed: () {
+                                            progressSafer.update(stored, (value) => [1,0]);            //korektes Wort (azahl hilfe ist in newGame())
                                             newGame();
                                             Navigator.of(context).pop();
                                           })
@@ -1348,11 +1394,11 @@ class _StartScreenState extends State<StartScreen> {
                         });
                   }
                 }
-              } else {
-                if (index == 11) {
+              } else {                        //Wenn Buchstabe im Wort NICHT vorhanden
+                if (index == 11) {                                                                              //und keine Münzen mehr verfügbar..
                   index = index + 1;
                   lives -= 1;
-                  if(lives == 0){
+                  if(lives == 0){                                                                               //und dadurch Leben auf 0 geht
                     showDialog(
                         barrierDismissible: true,
                         context: context,
@@ -1410,7 +1456,7 @@ class _StartScreenState extends State<StartScreen> {
                                         children: [
                                           IconButton(
                                               icon: const Icon(
-                                                Icons.arrow_circle_right,
+                                                Icons.arrow_back,
                                                 size: 40,
                                                 color: Colors.white,
                                               ),
@@ -1433,8 +1479,11 @@ class _StartScreenState extends State<StartScreen> {
                                                   'date': context.read<SettingsController>().playerName.value,
                                                   'score': score
                                                 });
-                                                refresh();
-                                                refresh();
+                                                checkForHelp();
+                                                print(progressSafer);
+                                                getMissingWords();
+                                                print(progressSafer);
+                                                Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                               }),
                                         ],
                                       ),
@@ -1445,7 +1494,7 @@ class _StartScreenState extends State<StartScreen> {
                         });
                   }
                   else {
-                    if(wordListCounter == wordList.length){
+                    if(wordListCounter == wordList.length){                                                   //oder es das letzte Wort ist auch wenn man noch Leben hat
                       showDialog(
                           barrierDismissible: true,
                           context: context,
@@ -1503,7 +1552,7 @@ class _StartScreenState extends State<StartScreen> {
                                           children: [
                                             IconButton(
                                                 icon: const Icon(
-                                                  Icons.arrow_circle_right,
+                                                  Icons.arrow_back,
                                                   size: 40,
                                                   color: Colors.white,
                                                 ),
@@ -1526,8 +1575,8 @@ class _StartScreenState extends State<StartScreen> {
                                                     'date': context.read<SettingsController>().playerName.value,
                                                     'score': score
                                                   });
-                                                  refresh();
-                                                  refresh();
+                                                  checkForHelp();
+                                                  Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                 }),
                                           ],
                                         ),
@@ -1654,7 +1703,7 @@ class _StartScreenState extends State<StartScreen> {
                                 color: Colors.black,
                               ),
                             ],
-                            Icons.home,
+                            Icons.arrow_back_ios_new,
                             size: 35,
                             color: Colors.black,
                           ),

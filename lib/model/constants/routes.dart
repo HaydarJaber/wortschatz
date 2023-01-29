@@ -9,4 +9,5 @@ class Routes {
   static const String progress = '/progress';
   static const String imprint = '/imprint';
   static const String terms = '/terms';
+  static const String infopage = '/infopage';
 }
