@@ -30,7 +30,7 @@ class _InfopageState extends State<Infopage> {
   bool rememberMe = false;
   bool? newValue = false;
   bool showErrorMessage = false;
-  static const _gap = SizedBox(height: 60);
+  static const _gap = SizedBox(width: 20);
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,9 @@ class _InfopageState extends State<Infopage> {
     late MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     Map ProgresMap = ModalRoute.of(context)?.settings.arguments as Map;
+    final richtig = ProgresMap.entries.where((e) => e.value[0] == 1).toList().length;
+    final falsch = ProgresMap.entries.where((e) => e.value[0] == 0).toList().length;
+    final offen = ProgresMap.entries.where((e) => e.value[0] == 2).toList().length;
     return SafeArea(
         child: Scaffold(
             body: Container(
@@ -85,7 +88,7 @@ class _InfopageState extends State<Infopage> {
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children:[
                 Text(
                   'Richtig',
                   style: TextStyle(shadows: <Shadow>[
@@ -96,9 +99,8 @@ class _InfopageState extends State<Infopage> {
                     ),
                   ], fontFamily: "Qaz", fontSize: 35, color: Colors.green),
                 ),
-                SizedBox(width: 80),
-                Text(
-                  'Falsch',
+                _gap,
+                Text("Falsch",
                   style: TextStyle(shadows: <Shadow>[
                     Shadow(
                       offset: Offset(0.0, 0.0),
@@ -106,6 +108,51 @@ class _InfopageState extends State<Infopage> {
                       color: Colors.black,
                     ),
                   ], fontFamily: "Qaz", fontSize: 35, color: Colors.red),
+                ),
+                _gap,
+                Text("Offen",
+                  style: TextStyle(shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 1.0,
+                      color: Colors.black,
+                    ),
+                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.grey),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children:[
+                Text(
+                  richtig.toString(),
+                  style: const TextStyle(shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 1.0,
+                      color: Colors.black,
+                    ),
+                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.green),
+                ),
+                _gap,
+                Text(falsch.toString(),
+                  style: const TextStyle(shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 1.0,
+                      color: Colors.black,
+                    ),
+                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.red),
+                ),
+                _gap,
+                Text(offen.toString(),
+                  style: const TextStyle(shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 1.0,
+                      color: Colors.black,
+                    ),
+                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.grey),
                 ),
               ],
             ),
@@ -119,7 +166,10 @@ class _InfopageState extends State<Infopage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       (ProgresMap.entries.toList()[index].value[0].toString() == "1")
-                          ? Card(
+                          ?
+                      Container(
+                        color: Colors.green[600],
+                        child: Card(
                               child: ListTile(
                               title: Text(
                                 ProgresMap.entries.toList()[index].key,
@@ -136,11 +186,9 @@ class _InfopageState extends State<Infopage> {
                                     color: Colors.green),
                               ),
                               subtitle: Text(
-                                "Hilfen: " +
-                                    ProgresMap.entries
+                                "Hilfen: ${ProgresMap.entries
                                         .toList()[index]
-                                        .value[1]
-                                        .toString(),
+                                        .value[1]}",
                                 style: const TextStyle(
                                     shadows: <Shadow>[
                                       Shadow(
@@ -158,49 +206,49 @@ class _InfopageState extends State<Infopage> {
                                       'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
                                   radius: 40),
                               // trailing: Icon(Icons.star)
-                            ))
+                            )))
                           : (ProgresMap.entries.toList()[index].value[0].toString() == "0") ?
-                           Card(
-                              child: ListTile(
-                              title: Text(
-                                ProgresMap.entries.toList()[index].key,
-                                style: const TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
-                                    fontFamily: "Qaz",
-                                    fontSize: 40,
-                                    color: Colors.red),
-                              ),
-                              subtitle: Text(
-                                "Hilfen: " +
-                                    ProgresMap.entries
-                                        .toList()[index]
-                                        .value[1]
-                                        .toString(),
-                                style: const TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
-                                    fontFamily: "Qaz",
-                                    fontSize: 30,
-                                    color: Colors.black),
-                              ),
-                              leading: CircleAvatar(
-                                  backgroundImage: AssetImage(
-                                      'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
-                                  radius: 40),
-                              // trailing: Icon(Icons.star)
-                            )):
-                           Card(
+                      Container(
+                                  color: Colors.red[600],
+                                  child: Card(
+                                      child: ListTile(
+                                    title: Text(
+                                      ProgresMap.entries.toList()[index].key,
+                                      style: const TextStyle(
+                                          shadows: <Shadow>[
+                                            Shadow(
+                                              offset: Offset(0.0, 0.0),
+                                              blurRadius: 2.0,
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                          fontFamily: "Qaz",
+                                          fontSize: 40,
+                                          color: Colors.red),
+                                    ),
+                                    subtitle: Text(
+                                      "Hilfen: ${ProgresMap.entries
+                                              .toList()[index]
+                                              .value[1]}",
+                                      style: const TextStyle(
+                                          shadows: <Shadow>[
+                                            Shadow(
+                                              offset: Offset(0.0, 0.0),
+                                              blurRadius: 2.0,
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                          fontFamily: "Qaz",
+                                          fontSize: 30,
+                                          color: Colors.black),
+                                    ),
+                                    leading: CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                            'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
+                                        radius: 40),
+                                    // trailing: Icon(Icons.star)
+                                  )))
+                              : Card(
                           child: ListTile(
                             title: Text(
                               ProgresMap.entries.toList()[index].key,
