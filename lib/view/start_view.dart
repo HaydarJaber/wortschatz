@@ -1313,7 +1313,7 @@ class _StartScreenState extends State<StartScreen> {
                                       color: Colors.transparent,
                                       child: Ink(
                                           width: MediaQuery.of(context).size.width * 0.8,
-                                          height: MediaQuery.of(context).size.height * 0.2,
+                                          height: MediaQuery.of(context).size.height * 0.1,
                                           decoration: const ShapeDecoration(
                                               color: Colors.white,
                                               shape: RoundedRectangleBorder(
@@ -1332,7 +1332,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     fontSize: 40),
                                               ),
                                               Container(
-                                                  height: MediaQuery.of(context).size.height * 0.1
+                                                  height: MediaQuery.of(context).size.height * 0.01
                                               ),
                                               const Text(
                                                 "Alle Wörter durchgespielt!",
@@ -1580,7 +1580,7 @@ class _StartScreenState extends State<StartScreen> {
                                       color: Colors.transparent,
                                       child: Ink(
                                           width: MediaQuery.of(context).size.width * 0.8,
-                                          height: MediaQuery.of(context).size.height * 0.2,
+                                          height: MediaQuery.of(context).size.height * 0.1,
                                           decoration: const ShapeDecoration(
                                               color: Colors.white,
                                               shape: RoundedRectangleBorder(
@@ -1599,7 +1599,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     fontSize: 40),
                                               ),
                                               Container(
-                                                  height: MediaQuery.of(context).size.height * 0.1
+                                                  height: MediaQuery.of(context).size.height * 0.01
                                               ),
                                               const Text(
                                                 "Alle Herzen aufgebraucht!",
@@ -1749,7 +1749,7 @@ class _StartScreenState extends State<StartScreen> {
                                         color: Colors.transparent,
                                         child: Ink(
                                             width: MediaQuery.of(context).size.width * 0.8,
-                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            height: MediaQuery.of(context).size.height * 0.1,
                                             decoration: const ShapeDecoration(
                                                 color: Colors.white,
                                                 shape: RoundedRectangleBorder(
@@ -1768,7 +1768,7 @@ class _StartScreenState extends State<StartScreen> {
                                                       fontSize: 40),
                                                 ),
                                                 Container(
-                                                    height: MediaQuery.of(context).size.height * 0.1
+                                                    height: MediaQuery.of(context).size.height * 0.01
                                                 ),
                                                 const Text(
                                                   "Alle Wörter durchgespielt!",
