@@ -1254,88 +1254,164 @@ class _StartScreenState extends State<StartScreen> {
                         builder: (BuildContext context) {
                           return WillPopScope(
                             onWillPop: () async => false,
-                            child: AlertDialog(
-                              backgroundColor: Colors.blueGrey,
-                              content: SizedBox(
-                                height: 800,
-                                child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Container(
-                                          padding: const EdgeInsets.only(left: 10.0),
-                                          height: MediaQuery.of(context).size.height * 0.5,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: _imageToShow,
-                                              fit: BoxFit.contain,
-                                            ),
-                                          )),
-                                      const Icon(
-                                        Icons.check_circle_outlined,
-                                        color: Colors.green,
-                                        size: 50,
+                            child:
+                            AlertDialog(
+                              backgroundColor: Colors.lightBlueAccent,
+                              shape: const RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 3,
+                                      color: Colors.black)),
+                              content: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Container(
+                                      height: MediaQuery.of(context).size.height * 0.3,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover, image: _imageToShow),
+                                        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                                        color: Colors.black,
                                       ),
-                                      Text(
-                                        stored.toString(),
-                                        style: const TextStyle(
-                                            color: Colors.green,
-                                            fontFamily: "Qaz",
-                                            fontSize: 40),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      const Text(
-                                        "Glückwunsch!",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: "Qaz",
-                                            fontSize: 20),
-                                      ),
-                                      const Text(
-                                        "Durchlauf beendet",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: "Qaz",
-                                            fontSize: 20),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                        children: [
-                                          IconButton(
-                                              icon: const Icon(
-                                                Icons.arrow_back,
+                                    ),
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: Ink(
+                                          width: MediaQuery.of(context).size.width * 0.6,
+                                          height: MediaQuery.of(context).size.height * 0.13,
+                                          decoration: const ShapeDecoration(
+                                              color: Colors.lightGreenAccent,
+                                              shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      width: 3,
+                                                      color: Colors.black)
+                                              )
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              const Icon(
+                                                Icons.check_circle_outlined,
+                                                color: Colors.black,
                                                 size: 40,
-                                                color: Colors.white,
                                               ),
-                                              onPressed: () {
-                                                DBHelper.insert('SCORE', {
-                                                  'date': context.read<SettingsController>().playerName.value,
-                                                  'score': score
-                                                });
-                                                refresh();
-                                                refresh();
-                                              }),
-                                          IconButton(
-                                              icon: const Icon(
-                                                Icons.info,
-                                                size: 40,
-                                                color: Colors.white,
+                                              Container(
+                                                  height: MediaQuery.of(context).size.height * 0.01
                                               ),
-                                              onPressed: () {
-                                                DBHelper.insert('SCORE', {
-                                                  'date': context.read<SettingsController>().playerName.value,
-                                                  'score': score
-                                                });
-                                                progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
-                                                checkForHelp();                                    //check wie viele Hilfen benötigt
-                                                Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
-                                              }),
-                                        ],
+                                              Text(
+                                                stored.toString(),
+                                                style: const TextStyle(
+                                                  fontFamily: "Qaz",
+                                                  fontSize: 40,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ],
+                                          )
                                       ),
-                                    ]),
-                              ),
-                            ),
+                                    ),
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: Ink(
+                                          width: MediaQuery.of(context).size.width * 0.8,
+                                          height: MediaQuery.of(context).size.height * 0.2,
+                                          decoration: const ShapeDecoration(
+                                              color: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      width: 3,
+                                                      color: Colors.black)
+                                              )
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              const Text(
+                                                "Glückwunsch",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 40),
+                                              ),
+                                              Container(
+                                                  height: MediaQuery.of(context).size.height * 0.1
+                                              ),
+                                              const Text(
+                                                "Alle Wörter durchgespielt!",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 20),
+                                              ),
+                                            ],
+                                          )
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: CircleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.home,
+                                                    size: 30,
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPressed: () {
+                                                    DBHelper.insert('SCORE', {
+                                                      'date': context.read<SettingsController>().playerName.value,
+                                                      'score': score
+                                                    });
+                                                    refresh();
+                                                    refresh();
+                                                  })
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: CircleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.info_outlined,
+                                                    size: 30,
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPressed: () {
+                                                    DBHelper.insert('SCORE', {
+                                                      'date': context.read<SettingsController>().playerName.value,
+                                                      'score': score
+                                                    });
+                                                    progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
+                                                    checkForHelp();                                    //check wie viele Hilfen benötigt
+                                                    Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                  })
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]),
+                            )
                           );
                         });
                   }
@@ -1347,48 +1423,88 @@ class _StartScreenState extends State<StartScreen> {
                         builder: (BuildContext context) {
                           return WillPopScope(
                             onWillPop: () async => false,
-                            child: AlertDialog(
-                              backgroundColor: Colors.blueGrey,
-                              content: SizedBox(
-                                height: 800,
-                                child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    children: [
-                                          Container(
-                                          padding: const EdgeInsets.only(left: 10.0),
-                                            height: MediaQuery.of(context).size.height * 0.5,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: _imageToShow,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            )),
-                                      const Icon(
-                                        Icons.check_circle_outlined,
-                                        color: Colors.green,
-                                        size: 60,
+                            child:
+                            AlertDialog(
+                              backgroundColor: Colors.lightBlueAccent,
+                              shape: const RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 3,
+                                      color: Colors.black)),
+                              content: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Container(
+                                      height: MediaQuery.of(context).size.height * 0.5,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover, image: _imageToShow),
+                                        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                                        color: Colors.black,
                                       ),
-                                      Text(
-                                        stored.toString(),
-                                        style: const TextStyle(
-                                            color: Colors.green,
-                                            fontFamily: "Qaz",
-                                            fontSize: 40),
-                                      ),
-                                      IconButton(
-                                          icon: const Icon(
-                                            Icons.arrow_circle_right,
-                                            size: 40,
-                                            color: Colors.white,
+                                    ),
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: Ink(
+                                          width: MediaQuery.of(context).size.width * 0.6,
+                                          height: MediaQuery.of(context).size.height * 0.13,
+                                          decoration: const ShapeDecoration(
+                                              color: Colors.lightGreenAccent,
+                                              shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      width: 3,
+                                                      color: Colors.black)
+                                              )
                                           ),
-                                          onPressed: () {
-                                            progressSafer.update(stored, (value) => [1,0]);            //korektes Wort (azahl hilfe ist in newGame())
-                                            newGame();
-                                            Navigator.of(context).pop();
-                                          })
-                                    ]),
-                              ),
+                                          child: Column(
+                                            children: [
+                                              const Icon(
+                                                Icons.check_circle_outlined,
+                                                color: Colors.black,
+                                                size: 40,
+                                              ),
+                                              Container(
+                                                  height: MediaQuery.of(context).size.height * 0.01
+                                              ),
+                                              Text(
+                                                stored.toString(),
+                                                style: const TextStyle(
+                                                  fontFamily: "Qaz",
+                                                  fontSize: 40,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                      ),
+                                    ),
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: Ink(
+                                          width: 50,
+                                          height: 50,
+                                          decoration: const ShapeDecoration(
+                                              color: Colors.white,
+                                              shape: CircleBorder(
+                                                  side: BorderSide(
+                                                      width: 3,
+                                                      color: Colors.black)
+                                              )
+                                          ),
+                                          child: IconButton(
+                                              icon: const Icon(
+                                                Icons.arrow_forward_sharp,
+                                                size: 30,
+                                                color: Colors.black,
+                                              ),
+                                              onPressed: () {
+                                                progressSafer.update(stored, (value) => [1,0]);            //korektes Wort (azahl hilfe ist in newGame())
+                                                newGame();
+                                                Navigator.of(context).pop();
+                                              })
+                                      ),
+                                    ),
+                                  ]),
                             ),
                           );
                         });
@@ -1405,90 +1521,163 @@ class _StartScreenState extends State<StartScreen> {
                         builder: (BuildContext context) {
                           return WillPopScope(
                             onWillPop: () async => false,
-                            child: AlertDialog(
-                              backgroundColor:
-                              Colors.blueGrey,
-                              content: SizedBox(
-                                height: 800,
-                                child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Container(
-                                          padding: const EdgeInsets.only(left: 10.0),
-                                          height: MediaQuery.of(context).size.height * 0.5,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: _imageToShow,
-                                              fit: BoxFit.contain,
-                                            ),
-                                          )),
-                                      const Icon(
-                                        Icons.remove_circle_outline_outlined,
-                                        color: Colors.red,
-                                        size: 40,
+                            child:
+                            AlertDialog(
+                              backgroundColor: Colors.lightBlueAccent,
+                              shape: const RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      width: 3,
+                                      color: Colors.black)),
+                              content: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Container(
+                                      height: MediaQuery.of(context).size.height * 0.3,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover, image: _imageToShow),
+                                        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                                        color: Colors.black,
                                       ),
-                                      Text(
-                                        stored.toString(),
-                                        style: const TextStyle(
-                                            color: Colors.red,
-                                            fontFamily: "Qaz",
-                                            fontSize: 30),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      const Text(
-                                        "Keine Leben mehr",
-                                        style: TextStyle(
-                                            color: Colors.green,
-                                            fontFamily: "Qaz",
-                                            fontSize: 20),
-                                      ),
-                                      const Text(
-                                        "Versuche es nochmal!",
-                                        style: TextStyle(
-                                            color: Colors.green,
-                                            fontFamily: "Qaz",
-                                            fontSize: 20),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                        children: [
-                                          IconButton(
-                                              icon: const Icon(
-                                                Icons.arrow_back,
+                                    ),
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: Ink(
+                                          width: MediaQuery.of(context).size.width * 0.6,
+                                          height: MediaQuery.of(context).size.height * 0.13,
+                                          decoration: const ShapeDecoration(
+                                              color: Colors.redAccent,
+                                              shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      width: 3,
+                                                      color: Colors.black)
+                                              )
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              const Icon(
+                                                Icons.remove_circle_outline_rounded,
+                                                color: Colors.black,
                                                 size: 40,
-                                                color: Colors.white,
                                               ),
-                                              onPressed: () {
-                                                DBHelper.insert('SCORE', {
-                                                  'date': context.read<SettingsController>().playerName.value,
-                                                  'score': score
-                                                });
-                                                refresh();
-                                                refresh();
-                                              }),
-                                          IconButton(
-                                              icon: const Icon(
-                                                Icons.info,
-                                                size: 40,
-                                                color: Colors.white,
+                                              Container(
+                                                  height: MediaQuery.of(context).size.height * 0.01
                                               ),
-                                              onPressed: () {
-                                                DBHelper.insert('SCORE', {
-                                                  'date': context.read<SettingsController>().playerName.value,
-                                                  'score': score
-                                                });
-                                                checkForHelp();
-                                                print(progressSafer);
-                                                getMissingWords();
-                                                print(progressSafer);
-                                                Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
-                                              }),
-                                        ],
+                                              Text(
+                                                stored.toString(),
+                                                style: const TextStyle(
+                                                  fontFamily: "Qaz",
+                                                  fontSize: 40,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ],
+                                          )
                                       ),
-                                    ]),
-                              ),
+                                    ),
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: Ink(
+                                          width: MediaQuery.of(context).size.width * 0.8,
+                                          height: MediaQuery.of(context).size.height * 0.2,
+                                          decoration: const ShapeDecoration(
+                                              color: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      width: 3,
+                                                      color: Colors.black)
+                                              )
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              const Text(
+                                                "ENDE",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 40),
+                                              ),
+                                              Container(
+                                                  height: MediaQuery.of(context).size.height * 0.1
+                                              ),
+                                              const Text(
+                                                "Alle Herzen aufgebraucht!",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 20),
+                                              ),
+                                            ],
+                                          )
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: CircleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.home,
+                                                    size: 30,
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPressed: () {
+                                                    DBHelper.insert('SCORE', {
+                                                      'date': context.read<SettingsController>().playerName.value,
+                                                      'score': score
+                                                    });
+                                                    refresh();
+                                                    refresh();
+                                                  })
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: CircleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.info_outlined,
+                                                    size: 30,
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPressed: () {
+                                                    DBHelper.insert('SCORE', {
+                                                      'date': context.read<SettingsController>().playerName.value,
+                                                      'score': score
+                                                    });
+                                                    checkForHelp();
+                                                    getMissingWords();
+                                                    Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                  })
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]),
                             ),
                           );
                         });
@@ -1501,87 +1690,162 @@ class _StartScreenState extends State<StartScreen> {
                           builder: (BuildContext context) {
                             return WillPopScope(
                               onWillPop: () async => false,
-                              child: AlertDialog(
-                                backgroundColor:
-                                Colors.blueGrey,
-                                content: SizedBox(
-                                  height: 800,
-                                  child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Container(
-                                            padding: EdgeInsets.only(left: 10.0),
-                                            height: MediaQuery.of(context).size.height * 0.5,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: _imageToShow,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            )),
-                                        const Icon(
-                                          Icons.check_circle_outlined,
-                                          color: Colors.red,
-                                          size: 40,
+                              child:
+                              AlertDialog(
+                                backgroundColor: Colors.lightBlueAccent,
+                                shape: const RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        width: 3,
+                                        color: Colors.black)),
+                                content: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Container(
+                                        height: MediaQuery.of(context).size.height * 0.3,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover, image: _imageToShow),
+                                          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                                          color: Colors.black,
                                         ),
-                                        Text(
-                                          stored.toString(),
-                                          style: const TextStyle(
-                                              color: Colors.red,
-                                              fontFamily: "Qaz",
-                                              fontSize: 40),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        const Text(
-                                          "Glückwunsch!",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily: "Qaz",
-                                              fontSize: 20),
-                                        ),
-                                        const Text(
-                                          "Durchlauf beendet",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily: "Qaz",
-                                              fontSize: 20),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                          children: [
-                                            IconButton(
-                                                icon: const Icon(
-                                                  Icons.arrow_back,
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.13,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.redAccent,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                const Icon(
+                                                  Icons.remove_circle_outline_rounded,
+                                                  color: Colors.black,
                                                   size: 40,
-                                                  color: Colors.white,
                                                 ),
-                                                onPressed: () {
-                                                  DBHelper.insert('SCORE', {
-                                                    'date': context.read<SettingsController>().playerName.value,
-                                                    'score': score
-                                                  });
-                                                  refresh();
-                                                  refresh();
-                                                }),
-                                            IconButton(
-                                                icon: const Icon(
-                                                  Icons.info,
-                                                  size: 40,
-                                                  color: Colors.white,
+                                                Container(
+                                                    height: MediaQuery.of(context).size.height * 0.01
                                                 ),
-                                                onPressed: () {
-                                                  DBHelper.insert('SCORE', {
-                                                    'date': context.read<SettingsController>().playerName.value,
-                                                    'score': score
-                                                  });
-                                                  checkForHelp();
-                                                  Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
-                                                }),
-                                          ],
+                                                Text(
+                                                  stored.toString(),
+                                                  style: const TextStyle(
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 40,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
                                         ),
-                                      ]),
-                                ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            width: MediaQuery.of(context).size.width * 0.8,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                const Text(
+                                                  "Glückwunsch",
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontFamily: "Qaz",
+                                                      fontSize: 40),
+                                                ),
+                                                Container(
+                                                    height: MediaQuery.of(context).size.height * 0.1
+                                                ),
+                                                const Text(
+                                                  "Alle Wörter durchgespielt!",
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontFamily: "Qaz",
+                                                      fontSize: 20),
+                                                ),
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: 50,
+                                                height: 50,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: const Icon(
+                                                      Icons.home,
+                                                      size: 30,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score
+                                                      });
+                                                      refresh();
+                                                      refresh();
+                                                    })
+                                            ),
+                                          ),
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: 50,
+                                                height: 50,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: const Icon(
+                                                      Icons.info_outlined,
+                                                      size: 30,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score
+                                                      });
+                                                      checkForHelp();
+                                                      Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                    })
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ]),
                               ),
                             );
                           });
@@ -1593,56 +1857,87 @@ class _StartScreenState extends State<StartScreen> {
                           builder: (BuildContext context) {
                             return WillPopScope(
                               onWillPop: () async => false,
-                              child: AlertDialog(
-                                backgroundColor: Colors.blueGrey,
-                                content: SizedBox(
-                                  height: 800,
-                                  child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Container(
-                                            padding: const EdgeInsets.only(left: 10.0),
-                                            height: MediaQuery.of(context).size.height * 0.5,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: _imageToShow,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            )),
-                                        const Icon(
-                                          Icons.remove_circle_outline_outlined,
-                                          color: Colors.red,
-                                          size: 70,
+                              child:
+                              AlertDialog(
+                                backgroundColor: Colors.lightBlueAccent,
+                                shape: const RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        width: 3,
+                                        color: Colors.black)),
+                                content: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Container(
+                                        height: MediaQuery.of(context).size.height * 0.5,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover, image: _imageToShow),
+                                          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                                          color: Colors.black,
                                         ),
-                                        Text(
-                                          stored.toString(),
-                                          style: const TextStyle(
-                                              color: Colors.red,
-                                              fontFamily: "Qaz",
-                                              fontSize: 40),
-                                        ),
-                             /*           if (lives == 0)
-                                          TextFormField(
-                                            validator: (value) => value!.isEmpty
-                                                ? "Name"
-                                                : null,
-                                            controller: _name,
-                                            decoration: const InputDecoration(
-                                                hintText: "Bitte Namen eingeben"),
-                                          ), */
-                                        IconButton(
-                                            icon: const Icon(
-                                              Icons.arrow_circle_right,
-                                              size: 40,
-                                              color: Colors.white,
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.13,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.redAccent,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
                                             ),
-                                            onPressed: () {
-                                              newGame();
-                                              Navigator.of(context).pop();
-                                            })
-                                      ]),
-                                ),
+                                            child: Column(
+                                              children: [
+                                                const Icon(
+                                                  Icons.remove_circle_outline_rounded,
+                                                  color: Colors.black,
+                                                  size: 40,
+                                                ),
+                                                Container(
+                                                    height: MediaQuery.of(context).size.height * 0.01
+                                                ),
+                                                Text(
+                                                  stored.toString(),
+                                                  style: const TextStyle(
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 40,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: IconButton(
+                                                icon: const Icon(
+                                                  Icons.arrow_forward_sharp,
+                                                  size: 30,
+                                                  color: Colors.black,
+                                                ),
+                                                onPressed: () {
+                                                  newGame();
+                                                  Navigator.of(context).pop();
+                                                })
+                                        ),
+                                      ),
+                                    ]),
                               ),
                             );
                           });
@@ -1731,6 +2026,11 @@ class _StartScreenState extends State<StartScreen> {
                                   return WillPopScope(
                                     onWillPop: () async => false,
                                     child: AlertDialog(
+                                      backgroundColor: Colors.lightBlueAccent,
+                                      shape: const RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              width: 3,
+                                              color: Colors.black)),
                                     icon: const Icon(
                                       shadows: <Shadow>[
                                         Shadow(
@@ -1743,7 +2043,20 @@ class _StartScreenState extends State<StartScreen> {
                                       size: 50,
                                       color: Colors.black,
                                     ),
-                                      backgroundColor: Colors.blueGrey,
+                                      title: const Text(
+                                        "Hilfe",
+                                        style: TextStyle(
+                                            shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 2.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],
+                                            color: Colors.black,
+                                            fontSize: 35,
+                                            fontFamily: "Qaz"),
+                                      ),
                                       content: StatefulBuilder(
                                         builder: (BuildContext context, StateSetter setState){
                                           return  SizedBox(
@@ -1753,13 +2066,43 @@ class _StartScreenState extends State<StartScreen> {
                                                 MainAxisAlignment.spaceAround,
                                                 children: <Widget>[
                                                   _isButtonAufgeklappt1 ?
-                                                      Column(
-                                                        children: [
-                                                          Row(
-                                                            children:  const [
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        width: MediaQuery.of(context).size.width * 0.8,
+                                                        height: MediaQuery.of(context).size.height * 0.1,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.yellow,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: Column(
+                                                            children: [
+                                                              Row(
+                                                                children:  const [
+                                                                  Text(
+                                                                    "Tipp 1:",
+                                                                    style: TextStyle(
+                                                                        shadows: <Shadow>[
+                                                                          Shadow(
+                                                                            offset: Offset(0.0, 0.0),
+                                                                            blurRadius: 2.0,
+                                                                            color: Colors.black,
+                                                                          ),
+                                                                        ],
+                                                                        // fontWeight: FontWeight.bold,
+                                                                        color: Colors.black,
+                                                                        fontFamily: "Qaz",
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                ],
+                                                              ),
                                                               Text(
-                                                                "Tipp 1:",
-                                                                style: TextStyle(
+                                                                entryList[randomIndex].value[0],
+                                                                style: const TextStyle(
                                                                     shadows: <Shadow>[
                                                                       Shadow(
                                                                         offset: Offset(0.0, 0.0),
@@ -1770,190 +2113,265 @@ class _StartScreenState extends State<StartScreen> {
                                                                     // fontWeight: FontWeight.bold,
                                                                     color: Colors.black,
                                                                     fontFamily: "Qaz",
-                                                                    fontSize: 20),
+                                                                    fontSize: 25),
+                                                                textAlign: TextAlign.center,
                                                               ),
-                                                            ],
-                                                          ),
-                                                          Text(
-                                                            entryList[randomIndex].value[0],
-                                                            style: const TextStyle(
-                                                                shadows: <Shadow>[
-                                                                  Shadow(
-                                                                    offset: Offset(0.0, 0.0),
-                                                                    blurRadius: 2.0,
-                                                                    color: Colors.black,
-                                                                  ),
-                                                                ],
-                                                                // fontWeight: FontWeight.bold,
-                                                                color: Colors.black,
-                                                                fontFamily: "Qaz",
-                                                                fontSize: 25),
-                                                            textAlign: TextAlign.center,
-                                                          ),
-                                                        ]
+                                                            ]
+                                                        )
+                                                    ),
                                                   ): Container(),
                                                   _isButtonAufgeklappt2 ?
-                                                      Column(
-                                                      children: [
-                                                        Row(
-                                                          children:  const [
-                                                            Text(
-                                                              "Tipp 2:",
-                                                              style: TextStyle(
-                                                                  shadows: <Shadow>[
-                                                                    Shadow(
-                                                                      offset: Offset(0.0, 0.0),
-                                                                      blurRadius: 2.0,
-                                                                      color: Colors.black,
-                                                                    ),
-                                                                  ],
-                                                                  // fontWeight: FontWeight.bold,
-                                                                  color: Colors.black,
-                                                                  fontFamily: "Qaz",
-                                                                  fontSize: 20),
-                                                            ),
-                                                          ],
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        width: MediaQuery.of(context).size.width * 0.8,
+                                                        height: MediaQuery.of(context).size.height * 0.1,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.yellow,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
                                                         ),
-                                                        Text(
-                                                          entryList[randomIndex].value[1],
-                                                          style: const TextStyle(
-                                                              shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 2.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ],
-                                                              // fontWeight: FontWeight.bold,
-                                                              color: Colors.black,
-                                                              fontFamily: "Qaz",
-                                                              fontSize: 25),
-                                                          textAlign: TextAlign.center,
-                                                        ),
-                                                      ]
-                                                  ): Container(),
-                                                  _isButtonAufgeklappt3 ?
-                                                  Column(
-                                                      children: [
-                                                        Row(
-                                                          children:  const [
-                                                            Text(
-                                                              "Tipp 3:",
-                                                              style: TextStyle(
-                                                                  shadows: <Shadow>[
-                                                                    Shadow(
-                                                                      offset: Offset(0.0, 0.0),
-                                                                      blurRadius: 2.0,
-                                                                      color: Colors.black,
-                                                                    ),
-                                                                  ],
-                                                                  // fontWeight: FontWeight.bold,
-                                                                  color: Colors.black,
-                                                                  fontFamily: "Qaz",
-                                                                  fontSize: 20),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Text(
-                                                          entryList[randomIndex].value[2],
-                                                          style: const TextStyle(
-                                                              shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 2.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ],
-                                                              // fontWeight: FontWeight.bold,
-                                                              color: Colors.black,
-                                                              fontFamily: "Qaz",
-                                                              fontSize: 25),
-                                                          textAlign: TextAlign.center,
-                                                        ),
-                                                      ]
-                                                  ): Container(),
-                                                  _isButtonAufgeklappt4 ?
-                                                  Column(
-                                                      children: [
-                                                        Row(
-                                                          children:  const [
-                                                            Text(
-                                                              "Tipp 4:",
-                                                              style: TextStyle(
-                                                                  shadows: <Shadow>[
-                                                                    Shadow(
-                                                                      offset: Offset(0.0, 0.0),
-                                                                      blurRadius: 2.0,
-                                                                      color: Colors.black,
-                                                                    ),
-                                                                  ],
-                                                                  // fontWeight: FontWeight.bold,
-                                                                  color: Colors.black,
-                                                                  fontFamily: "Qaz",
-                                                                  fontSize: 20),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Text(
-                                                          entryList[randomIndex].value[3],
-                                                          style: const TextStyle(
-                                                              shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 2.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ],
-                                                              // fontWeight: FontWeight.bold,
-                                                              color: Colors.black,
-                                                              fontFamily: "Qaz",
-                                                              fontSize: 25),
-                                                          textAlign: TextAlign.center,
-                                                        ),
-                                                      ]
-                                                  ): Container(),
-                                                  _isButtonAufgeklappt4 == false && _isButtonAufgeklappt1 == false ?
-                                                   ElevatedButton(
-                                                    onPressed: () {
-                                                      setState((){
-                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt4 == false){
-                                                          _isButtonAufgeklappt4 = true;
-                                                        }
-                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
-                                                          _isButtonAufgeklappt3 = true;
-                                                        }
-                                                        if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
-                                                          _isButtonAufgeklappt2 = true;
-                                                        }
-                                                        if (_isButtonAufgeklappt1 == false){
-                                                          _isButtonAufgeklappt1 = true;
-                                                        }
-                                                      });
-                                                    },
-                                                    style: ButtonStyle(
-                                                        alignment: Alignment.centerLeft,
-                                                        backgroundColor: MaterialStateProperty.resolveWith((state) {
-                                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
-                                                        return Colors.white;
-                                                        }),
-                                                        shadowColor: MaterialStateProperty.all(Colors.transparent),
-                                                        side: MaterialStateProperty.all(const BorderSide(width: 2))),
-                                                    child: const Text(
-                                                      "Tipp anzeigen",
-                                                      style: TextStyle(
-                                                          shadows: <Shadow>[
-                                                            Shadow(
-                                                              offset: Offset(0.0, 0.0),
-                                                              blurRadius: 2.0,
-                                                              color: Colors.black,
-                                                            ),
-                                                          ],
-                                                          // fontWeight: FontWeight.bold,
-                                                          color: Colors.black,
-                                                          fontFamily: "Qaz",
-                                                          fontSize: 30),
+                                                        child: Column(
+                                                            children: [
+                                                              Row(
+                                                                children:  const [
+                                                                  Text(
+                                                                    "Tipp 2:",
+                                                                    style: TextStyle(
+                                                                        shadows: <Shadow>[
+                                                                          Shadow(
+                                                                            offset: Offset(0.0, 0.0),
+                                                                            blurRadius: 2.0,
+                                                                            color: Colors.black,
+                                                                          ),
+                                                                        ],
+                                                                        // fontWeight: FontWeight.bold,
+                                                                        color: Colors.black,
+                                                                        fontFamily: "Qaz",
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Text(
+                                                                entryList[randomIndex].value[1],
+                                                                style: const TextStyle(
+                                                                    shadows: <Shadow>[
+                                                                      Shadow(
+                                                                        offset: Offset(0.0, 0.0),
+                                                                        blurRadius: 2.0,
+                                                                        color: Colors.black,
+                                                                      ),
+                                                                    ],
+                                                                    // fontWeight: FontWeight.bold,
+                                                                    color: Colors.black,
+                                                                    fontFamily: "Qaz",
+                                                                    fontSize: 25),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                            ]
+                                                        )
                                                     ),
                                                   ) : Container(),
+                                                  _isButtonAufgeklappt3 ?
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        width: MediaQuery.of(context).size.width * 0.8,
+                                                        height: MediaQuery.of(context).size.height * 0.13,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.yellow,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: Column(
+                                                            children: [
+                                                              Row(
+                                                                children:  const [
+                                                                  Text(
+                                                                    "Tipp 3:",
+                                                                    style: TextStyle(
+                                                                        shadows: <Shadow>[
+                                                                          Shadow(
+                                                                            offset: Offset(0.0, 0.0),
+                                                                            blurRadius: 2.0,
+                                                                            color: Colors.black,
+                                                                          ),
+                                                                        ],
+                                                                        // fontWeight: FontWeight.bold,
+                                                                        color: Colors.black,
+                                                                        fontFamily: "Qaz",
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Text(
+                                                                entryList[randomIndex].value[2],
+                                                                style: const TextStyle(
+                                                                    shadows: <Shadow>[
+                                                                      Shadow(
+                                                                        offset: Offset(0.0, 0.0),
+                                                                        blurRadius: 2.0,
+                                                                        color: Colors.black,
+                                                                      ),
+                                                                    ],
+                                                                    // fontWeight: FontWeight.bold,
+                                                                    color: Colors.black,
+                                                                    fontFamily: "Qaz",
+                                                                    fontSize: 25),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                            ]
+                                                        )
+                                                    ),
+                                                  ) : Container(),
+                                                  _isButtonAufgeklappt4 ?
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        width: MediaQuery.of(context).size.width * 0.8,
+                                                        height: MediaQuery.of(context).size.height * 0.13,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.yellow,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: Column(
+                                                            children: [
+                                                              Row(
+                                                                children:  const [
+                                                                  Text(
+                                                                    "Tipp 4:",
+                                                                    style: TextStyle(
+                                                                        shadows: <Shadow>[
+                                                                          Shadow(
+                                                                            offset: Offset(0.0, 0.0),
+                                                                            blurRadius: 2.0,
+                                                                            color: Colors.black,
+                                                                          ),
+                                                                        ],
+                                                                        // fontWeight: FontWeight.bold,
+                                                                        color: Colors.black,
+                                                                        fontFamily: "Qaz",
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Text(
+                                                                entryList[randomIndex].value[3],
+                                                                style: const TextStyle(
+                                                                    shadows: <Shadow>[
+                                                                      Shadow(
+                                                                        offset: Offset(0.0, 0.0),
+                                                                        blurRadius: 2.0,
+                                                                        color: Colors.black,
+                                                                      ),
+                                                                    ],
+                                                                    // fontWeight: FontWeight.bold,
+                                                                    color: Colors.black,
+                                                                    fontFamily: "Qaz",
+                                                                    fontSize: 25),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                            ]
+                                                        )
+                                                    ),
+                                                  ) : Container(),
+                                                  _isButtonAufgeklappt4 == false && _isButtonAufgeklappt1 == false ?
+                                                    Material(
+
+                                                    color: Colors.transparent,
+                                          child: Ink(
+                                                              width: MediaQuery.of(context).size.width * 0.8,
+                                                              height: MediaQuery.of(context).size.height * 0.1,
+                                                              decoration: const ShapeDecoration(color: Colors.white,
+                                                                  shape: RoundedRectangleBorder(
+                                                                      side: BorderSide(width: 3, color: Colors.black))),
+                                                              child: ElevatedButton(
+                                                                onPressed: () {
+                                                                  setState(() {
+                                                                    if (_isButtonAufgeklappt1 == true &&
+                                                                        _isButtonAufgeklappt2 ==
+                                                                            true &&
+                                                                        _isButtonAufgeklappt3 ==
+                                                                            true &&
+                                                                        _isButtonAufgeklappt4 ==
+                                                                            false) {
+                                                                      _isButtonAufgeklappt4 =
+                                                                          true;
+                                                                    }
+                                                                    if (_isButtonAufgeklappt1 == true &&
+                                                                        _isButtonAufgeklappt2 ==
+                                                                            true &&
+                                                                        _isButtonAufgeklappt3 ==
+                                                                            false) {
+                                                                      _isButtonAufgeklappt3 =
+                                                                          true;
+                                                                    }
+                                                                    if (_isButtonAufgeklappt1 ==
+                                                                            true &&
+                                                                        _isButtonAufgeklappt2 ==
+                                                                            false) {
+                                                                      _isButtonAufgeklappt2 =
+                                                                          true;
+                                                                    }
+                                                                    if (_isButtonAufgeklappt1 ==
+                                                                        false) {
+                                                                      _isButtonAufgeklappt1 =
+                                                                          true;
+                                                                    }
+                                                                  });
+                                                                },
+                                                                style: ButtonStyle(
+                                                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                                                                            borderRadius: BorderRadius.circular(
+                                                                                10.0),
+                                                                            side: const BorderSide(color: Colors.black))),
+                                                                        alignment: Alignment.center,
+                                                                        backgroundColor: MaterialStateProperty.resolveWith(
+                                                                                (state) {
+                                                                          if (state
+                                                                              .contains(MaterialState.pressed))
+                                                                            return Colors.grey;
+                                                                          return Colors
+                                                                              .white;
+                                                                        }),
+                                                                        shadowColor:
+                                                                            MaterialStateProperty.all(Colors
+                                                                                .transparent),
+                                                                        side: MaterialStateProperty.all(
+                                                                            const BorderSide(width: 2))),
+                                                                child:
+                                                                    const Text(
+                                                                  "Tipp anzeigen",
+                                                                  style: TextStyle(
+                                                                      shadows: <Shadow>[
+                                                                        Shadow(
+                                                                          offset: Offset(
+                                                                              0.0,
+                                                                              0.0),
+                                                                          blurRadius:
+                                                                              2.0,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ],
+                                                                      // fontWeight: FontWeight.bold,
+                                                                      color: Colors.black,
+                                                                      fontFamily: "Qaz",
+                                                                      fontSize: 30),
+                                                                ),
+                                                              )),
+                                                        )
+                                                      : Container(),
                                                   _isButtonAufgeklappt1 == true && _isButtonAufgeklappt4 == false ?
                                                   ElevatedButton(
                                                     onPressed: () {
@@ -1996,23 +2414,38 @@ class _StartScreenState extends State<StartScreen> {
                                                           fontSize: 30),
                                                     ),
                                                   ): Container(),
-                                                  IconButton(
-                                                    style: ButtonStyle(
-                                                        alignment: Alignment.centerLeft,
-                                                        backgroundColor: MaterialStateProperty.resolveWith((state) {
-                                                          if (state.contains(MaterialState.pressed)) return Colors.grey;
-                                                          return Colors.white;
-                                                        }),
-                                                        shadowColor: MaterialStateProperty.all(Colors.transparent),
-                                                        side: MaterialStateProperty.all(const BorderSide(width: 2))),
-                                                      icon: const Icon(
-                                                        Icons.cancel,
-                                                        size: 50,
-                                                        color: Colors.white,
-                                                      ),
-                                                      onPressed: () {
-                                                        Navigator.of(context).pop();
-                                                      })
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        width: 50,
+                                                        height: 50,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.white,
+                                                            shape: CircleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: IconButton(
+                                                            style: ButtonStyle(
+                                                                alignment: Alignment.centerLeft,
+                                                                backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                                  if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                                  return Colors.black;
+                                                                }),
+                                                                shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                                side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                                            icon: const Icon(
+                                                              Icons.cancel_sharp,
+                                                              size: 25,
+                                                              color: Colors.black,
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.of(context).pop();
+                                                            })
+                                                    ),
+                                                  ),
                                                 ]),
                                           );
                                         },

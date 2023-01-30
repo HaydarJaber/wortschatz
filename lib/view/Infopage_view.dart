@@ -87,8 +87,8 @@ class _InfopageState extends State<Infopage> {
             ),
             SizedBox(height: 20),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:[
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:const [
                 Text(
                   'Richtig',
                   style: TextStyle(shadows: <Shadow>[
