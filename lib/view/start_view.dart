@@ -1364,7 +1364,7 @@ class _StartScreenState extends State<StartScreen> {
                                               ),
                                               child: IconButton(
                                                   icon: const Icon(
-                                                    Icons.home,
+                                                    IconData(0xf2af, fontFamily: 'MaterialIcons'),
                                                     size: 30,
                                                     color: Colors.black,
                                                   ),
@@ -1373,8 +1373,7 @@ class _StartScreenState extends State<StartScreen> {
                                                       'date': context.read<SettingsController>().playerName.value,
                                                       'score': score
                                                     });
-                                                    refresh();
-                                                    refresh();
+                                                    Navigator.pushNamed(context, Routes.categories);
                                                   })
                                           ),
                                         ),
@@ -1631,7 +1630,7 @@ class _StartScreenState extends State<StartScreen> {
                                               ),
                                               child: IconButton(
                                                   icon: const Icon(
-                                                    Icons.home,
+                                                    IconData(0xf2af, fontFamily: 'MaterialIcons'),
                                                     size: 30,
                                                     color: Colors.black,
                                                   ),
@@ -1640,8 +1639,7 @@ class _StartScreenState extends State<StartScreen> {
                                                       'date': context.read<SettingsController>().playerName.value,
                                                       'score': score
                                                     });
-                                                    refresh();
-                                                    refresh();
+                                                    Navigator.pushNamed(context, Routes.categories);
                                                   })
                                           ),
                                         ),
@@ -1800,7 +1798,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 ),
                                                 child: IconButton(
                                                     icon: const Icon(
-                                                      Icons.home,
+                                                      IconData(0xf2af, fontFamily: 'MaterialIcons'),
                                                       size: 30,
                                                       color: Colors.black,
                                                     ),
@@ -1809,8 +1807,7 @@ class _StartScreenState extends State<StartScreen> {
                                                         'date': context.read<SettingsController>().playerName.value,
                                                         'score': score
                                                       });
-                                                      refresh();
-                                                      refresh();
+                                                      Navigator.pushNamed(context, Routes.categories);
                                                     })
                                             ),
                                           ),

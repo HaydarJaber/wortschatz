@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/viewmodels/imprint_api.dart';
 import 'package:wortschatz/view/start_view.dart';
+import '../model/constants/routes.dart';
 import '../model/styles/responsive_screen.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
@@ -59,7 +60,7 @@ class _InfopageState extends State<Infopage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () => Navigator.pushNamed(context, Routes.home),
                     icon: const Icon(
                       shadows: <Shadow>[
                         Shadow(
@@ -288,6 +289,71 @@ class _InfopageState extends State<Infopage> {
                   ),
                 ),
               ),
+            ),
+            Container(height: MediaQuery.of(context).size.height * 0.01),
+            Row(
+              mainAxisAlignment:
+              MainAxisAlignment.spaceAround,
+              children: [
+                Material(
+                  color: Colors.transparent,
+                  child: Ink(
+                      width: 50,
+                      height: 50,
+                      decoration: const ShapeDecoration(
+                          color: Colors.white,
+                          shape: CircleBorder(
+                              side: BorderSide(
+                                  width: 3,
+                                  color: Colors.black)
+                          )
+                      ),
+                      child: IconButton(
+                          icon: const Icon(
+                            IconData(0xf2af, fontFamily: 'MaterialIcons'),
+                            size: 30,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                          //  DBHelper.insert('SCORE', {
+                          //    'date': context.read<SettingsController>().playerName.value,
+                           //   'score': score
+                          //  });
+                            Navigator.pushNamed(context, Routes.categories);
+                          })
+                  ),
+                ),
+                Material(
+                  color: Colors.transparent,
+                  child: Ink(
+                      width: 50,
+                      height: 50,
+                      decoration: const ShapeDecoration(
+                          color: Colors.white,
+                          shape: CircleBorder(
+                              side: BorderSide(
+                                  width: 3,
+                                  color: Colors.black)
+                          )
+                      ),
+                      child: IconButton(
+                          icon: const Icon(
+                            Icons.info_outlined,
+                            size: 30,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                         //   DBHelper.insert('SCORE', {
+                          //    'date': context.read<SettingsController>().playerName.value,
+                          //    'score': score
+                          //  });
+                         //   progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
+                         //   checkForHelp();                                    //check wie viele Hilfen benötigt
+                            Navigator.pushNamed(context, Routes.home);
+                          })
+                  ),
+                ),
+              ],
             ),
           ]);
         } else {

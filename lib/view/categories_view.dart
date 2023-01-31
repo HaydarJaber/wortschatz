@@ -176,7 +176,7 @@ class Categories extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
-                          onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () => Navigator.pushNamed(context, Routes.home),
                           icon: const Icon(
                             shadows: <Shadow>[
                               Shadow(
