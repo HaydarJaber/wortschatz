@@ -122,6 +122,91 @@ class _StartScreenState extends State<StartScreen> {
       return;
     }
   }
+  void addCategoryInfoforInfopage(){
+    switch(widget.category) {
+      case Category.All:
+        progressSafer["Kategorie"] = [0];
+        break;
+      case Category.Autoteile:
+        progressSafer["Kategorie"] = [1];
+        break;
+      case Category.Badezimmer:
+        progressSafer["Kategorie"] = [2];
+        break;
+      case Category.Bauernhof:
+        progressSafer["Kategorie"] = [3];
+        break;
+      case Category.Berufe:
+        progressSafer["Kategorie"] = [4];
+        break;
+      case Category.DeutscheStaedte:
+        progressSafer["Kategorie"] = [5];
+        break;
+      case Category.Fahrzeuge:
+        progressSafer["Kategorie"] = [6];
+        break;
+      case Category.Garten:
+        progressSafer["Kategorie"] = [7];
+        break;
+      case Category.Gemuese:
+        progressSafer["Kategorie"] = [8];
+        break;
+      case Category.Getraenke:
+        progressSafer["Kategorie"] = [9];
+        break;
+      case Category.Hauptstaedte:
+        progressSafer["Kategorie"] = [10];
+        break;
+      case Category.Hausbau:
+        progressSafer["Kategorie"] = [11];
+        break;
+      case Category.Hobbys:
+        progressSafer["Kategorie"] = [12];
+        break;
+      case Category.Kleidung:
+        progressSafer["Kategorie"] = [13];
+        break;
+      case Category.Koerperteile:
+        progressSafer["Kategorie"] = [14];
+        break;
+      case Category.Kueche:
+        progressSafer["Kategorie"] = [15];
+        break;
+      case Category.Laender:
+        progressSafer["Kategorie"] = [16];
+        break;
+      case Category.Moebel:
+        progressSafer["Kategorie"] = [17];
+        break;
+      case Category.Musikinstrumente:
+        progressSafer["Kategorie"] = [18];
+        break;
+      case Category.Obst:
+        progressSafer["Kategorie"] = [19];
+        break;
+      case Category.Pflanzen:
+        progressSafer["Kategorie"] = [20];
+        break;
+      case Category.Resteraunt:
+        progressSafer["Kategorie"] = [21];
+        break;
+      case Category.Sportarten:
+        progressSafer["Kategorie"] = [22];
+        break;
+      case Category.Strassenverkehr:
+        progressSafer["Kategorie"] = [23];
+        break;
+      case Category.Supermarkt:
+        progressSafer["Kategorie"] = [24];
+        break;
+      case Category.Tiere:
+        progressSafer["Kategorie"] = [25];
+        break;
+      case Category.Werkzeuge:
+        progressSafer["Kategorie"] = [26];
+        break;
+    }
+  }
 
   void getMissingWords(){
     while(wordListCounter != wordList.length){
@@ -1669,6 +1754,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     });
                                                     checkForHelp();
                                                     getMissingWords();
+                                                    addCategoryInfoforInfopage();
                                                     Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                   })
                                           ),

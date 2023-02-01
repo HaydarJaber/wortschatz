@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/viewmodels/imprint_api.dart';
 import 'package:wortschatz/view/start_view.dart';
+import '../model/constants/categories.dart';
 import '../model/constants/routes.dart';
 import '../model/styles/responsive_screen.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
@@ -33,8 +34,10 @@ class _InfopageState extends State<Infopage> {
   bool showErrorMessage = false;
   static const _gap = SizedBox(width: 20);
 
+
   @override
   Widget build(BuildContext context) {
+
     final settings = context.watch<SettingsController>();
     final palette = context.watch<Palette>();
     late MediaQueryData queryData;
@@ -43,6 +46,93 @@ class _InfopageState extends State<Infopage> {
     final richtig = ProgresMap.entries.where((e) => e.value[0] == 1).toList().length;
     final falsch = ProgresMap.entries.where((e) => e.value[0] == 0).toList().length;
     final offen = ProgresMap.entries.where((e) => e.value[0] == 2).toList().length;
+    var category = "";
+    void getCategoryFromNumber() {
+      ProgresMap.entries.last.value;
+      switch(ProgresMap.entries.last.value.toString()) {
+        case "[0]":
+          category = "Alle Kategorien";
+          break;
+        case "[1]":
+          category = "Autoteile";
+          break;
+        case "[2]":
+          category = "Badezimmer";
+          break;
+        case "[3]":
+          category = "Bauernhof";
+          break;
+        case "[4]":
+          category = "Berufe";
+          break;
+        case "[5]":
+          category = "Deutsche Städte";
+          break;
+        case "[6]":
+          category = "Fahrzeuge";
+          break;
+        case "[7]":
+          category = "Garten";
+          break;
+        case "[8]":
+          category = "Gemüse";
+          break;
+        case "[9]":
+          category = "Getränke";
+          break;
+        case "[10]":
+          category = "Hauptstädte";
+          break;
+        case "[11]":
+          category = "Hausbau";
+          break;
+        case "[12]":
+          category = "Hobbys";
+          break;
+        case "[13]":
+          category = "Kleidung";
+          break;
+        case "[14]":
+          category = "Körperteile";
+          break;
+        case "[15]":
+          category = "Küche";
+          break;
+        case "[16]":
+          category = "Länder";
+          break;
+        case "[17]":
+          category = "Möbel";
+          break;
+        case "[18]":
+          category = "Musikinstrumente";
+          break;
+        case "[19]":
+          category = "Obst";
+          break;
+        case "[20]":
+          category = "Pflanzen";
+          break;
+        case "[21]":
+          category = "Resteraunt";
+          break;
+        case "[22]":
+          category = "Sportarten";
+          break;
+        case "[23]":
+          category = "Straßenverkehr";
+          break;
+        case "[24]":
+          category = "Supermarkt";
+          break;
+        case "[25]":
+          category = "Tiere";
+          break;
+        case "[26]":
+          category = "Werkzeuge";
+          break;
+    }}
+
     return SafeArea(
         child: Scaffold(
             body: Container(
@@ -160,7 +250,7 @@ class _InfopageState extends State<Infopage> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: ProgresMap.entries.toList().length,
+                itemCount: ProgresMap.entries.toList().length-1,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: Column(
@@ -319,7 +409,9 @@ class _InfopageState extends State<Infopage> {
                           //    'date': context.read<SettingsController>().playerName.value,
                            //   'score': score
                           //  });
-                            Navigator.pushNamed(context, Routes.newGame,arguments: "Obst");
+                            getCategoryFromNumber();
+                            print("Kategorie"+category);
+                            Navigator.pushNamed(context, Routes.newGame,arguments: category);
                           })
                   ),
                 ),
@@ -382,4 +474,8 @@ class _InfopageState extends State<Infopage> {
       }),
     )));
   }
+
+
+
+
 }
