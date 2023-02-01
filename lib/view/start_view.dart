@@ -1364,7 +1364,7 @@ class _StartScreenState extends State<StartScreen> {
                                               ),
                                               child: IconButton(
                                                   icon: const Icon(
-                                                    IconData(0xf2af, fontFamily: 'MaterialIcons'),
+                                                    IconData(0xe4cb, fontFamily: 'MaterialIcons'),
                                                     size: 30,
                                                     color: Colors.black,
                                                   ),
@@ -1392,7 +1392,7 @@ class _StartScreenState extends State<StartScreen> {
                                               ),
                                               child: IconButton(
                                                   icon: const Icon(
-                                                    Icons.info_outlined,
+                                                    IconData(0xe7ca, fontFamily: 'MaterialIcons'),
                                                     size: 30,
                                                     color: Colors.black,
                                                   ),
@@ -1630,7 +1630,7 @@ class _StartScreenState extends State<StartScreen> {
                                               ),
                                               child: IconButton(
                                                   icon: const Icon(
-                                                    IconData(0xf2af, fontFamily: 'MaterialIcons'),
+                                                    IconData(0xe4cb, fontFamily: 'MaterialIcons'),
                                                     size: 30,
                                                     color: Colors.black,
                                                   ),
@@ -1658,7 +1658,7 @@ class _StartScreenState extends State<StartScreen> {
                                               ),
                                               child: IconButton(
                                                   icon: const Icon(
-                                                    Icons.info_outlined,
+                                                    IconData(0xe7ca, fontFamily: 'MaterialIcons'),
                                                     size: 30,
                                                     color: Colors.black,
                                                   ),
@@ -1798,7 +1798,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 ),
                                                 child: IconButton(
                                                     icon: const Icon(
-                                                      IconData(0xf2af, fontFamily: 'MaterialIcons'),
+                                                      IconData(0xe4cb, fontFamily: 'MaterialIcons'),
                                                       size: 30,
                                                       color: Colors.black,
                                                     ),
@@ -1826,7 +1826,7 @@ class _StartScreenState extends State<StartScreen> {
                                                 ),
                                                 child: IconButton(
                                                     icon: const Icon(
-                                                      Icons.info_outlined,
+                                                      IconData(0xe7ca, fontFamily: 'MaterialIcons'),
                                                       size: 30,
                                                       color: Colors.black,
                                                     ),
@@ -1985,7 +1985,7 @@ class _StartScreenState extends State<StartScreen> {
                       children: [
                         IconButton(
                           onPressed: (() {
-                            Navigator.of(context).pop();
+                            Navigator.pushNamed(context, Routes.categories);
                           }),
                           icon: const Icon(
                             shadows: <Shadow>[
@@ -2067,7 +2067,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     color: Colors.transparent,
                                                     child: Ink(
                                                         width: MediaQuery.of(context).size.width * 0.8,
-                                                        height: MediaQuery.of(context).size.height * 0.1,
+                                                        height: MediaQuery.of(context).size.height * 0.12,
                                                         decoration: const ShapeDecoration(
                                                             color: Colors.yellow,
                                                             shape: RoundedRectangleBorder(
@@ -2122,7 +2122,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     color: Colors.transparent,
                                                     child: Ink(
                                                         width: MediaQuery.of(context).size.width * 0.8,
-                                                        height: MediaQuery.of(context).size.height * 0.1,
+                                                        height: MediaQuery.of(context).size.height * 0.12,
                                                         decoration: const ShapeDecoration(
                                                             color: Colors.yellow,
                                                             shape: RoundedRectangleBorder(

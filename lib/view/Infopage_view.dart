@@ -310,7 +310,7 @@ class _InfopageState extends State<Infopage> {
                       ),
                       child: IconButton(
                           icon: const Icon(
-                            IconData(0xf2af, fontFamily: 'MaterialIcons'),
+                            Icons.autorenew,
                             size: 30,
                             color: Colors.black,
                           ),
@@ -319,7 +319,7 @@ class _InfopageState extends State<Infopage> {
                           //    'date': context.read<SettingsController>().playerName.value,
                            //   'score': score
                           //  });
-                            Navigator.pushNamed(context, Routes.categories);
+                            Navigator.pushNamed(context, Routes.newGame,arguments: "Obst");
                           })
                   ),
                 ),
@@ -338,7 +338,7 @@ class _InfopageState extends State<Infopage> {
                       ),
                       child: IconButton(
                           icon: const Icon(
-                            Icons.info_outlined,
+                            Icons.home,
                             size: 30,
                             color: Colors.black,
                           ),

@@ -29,5 +29,15 @@
     "id": 5,
     "type": "p",
     "content": "Ostbayerische Technische Hochschule Regensburg\nSeybothstraße 2, 93053 Regensburg\nPräsident: Prof. Dr. Ralph Schneider\nInternet: www.oth-regensburg.de\nUmsatzsteuer-ID: DE250211285\n\nHochschule Fresenius gGmbH\nLimburger Str. 2 65510 Idstein\nGeschäftsführung: Prof. Dr. Tobias Engelsleben, Sascha Kappes, Kai Metzner\nPräsident: Prof. Dr. Tobias Engelsleben\nInternet: www.hs-fresenius.de\nUmsatzsteuer-ID: DE196697659"
+  },{
+    "id": 6,
+    "type": "h2",
+    "content": "4. Disclaimer"
+},
+  {
+    "id": 7,
+    "type": "p",
+    "content": "Diese App wurde zu wissenschaftlichen Forschungszwecken entwickelt.\nDer Zweck dieser App umfasst nicht die Diagnose, Behandlung, Überwachung oder Vorhersage von Erkrankungen."
   }
 ]
+
