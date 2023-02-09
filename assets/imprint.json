@@ -7,37 +7,46 @@
   {
     "id": 1,
     "type": "p",
-    "content": "Ansprechpartner für fachliche Fragen:\n\nProf. Dr. Norina Lauer\n\t\t\t\t○\tFakultät Angewandte Sozial- und\n\t\t\t\t\t\t\t\tGesundheitswissenschaften\n\t\t\t\t○\tRegensburg Center of Health Sciences\n\t\t\t\t\t\t\t\tand Technology (RCHST)\n\t\t\t\t○\tOstbayerische Technische Hochschule\n\t\t\t\t\t\t\t\t(OTH) Regensburg\nMail:\tnorina.lauer@oth-regensburg.de\n\nProf. Dr. Tanja Grewe\n\t\t\t\t○\tAbt. Technik & Gesundheit für Menschen,\n\t\t\t\t\t\t\tStudiengang Logopädie\n\t\t\t\t○\tJade Hochschule, Oldenburg\nMail: tanja.grewe@jade-hs.de"
+    "content": "Ansprechpartnerinnen für fachliche Fragen:\n\nProf. Dr. Norina Lauer\nnorina.lauer@oth-regensburg.de\n\nProf. Dr. Tanja Grewe\ntanja.grewe@jade-hs.de"
 
   },
   {
     "id": 2,
     "type": "h2",
-    "content": "2. Mitwirkende"
+    "content": "2. Fachliche Konzeption"
   },
   {
     "id": 3,
     "type": "p",
-    "content": "Projektmanagement:\nPatrick Leitinger\n\t\t\t\t\t○\tHochschule Fresenius online plus\nLydia Pott\n\t\t\t\t\t○\tCOGNOS AG\n\nFachliche Konzeption:\nDie App-Konzeption entstand auf der Basis der Bachelorarbeit von Jessica Hofmann, Absolventin des Bachelor-Studiengangs Logopädie der Hochschule Fresenius, die 2015 erstellt wurde. Die Arbeit wurde betreut von Prof. Dr. Tanja Grewe und Prof. Dr. Norina Lauer. Die Bachelorarbeit wurde mit dem Förderpreis 2015 des Fonds der Arzneimittelfirmen Hessen/Rheinland-Pfalz/Saarland e.V. ausgezeichnet.\n\nApp-Design und Programmierung:\n○\t1. Version (unveröffentlicht):\n\t\t\t\t\t\t\t\tJeanette Pigulla, Hochschule Fresenius\n\t\t\t\t\t\t\t\tNeue Maastrichter Str. 13\n\t\t\t\t\t\t\t\t50672 Köln\n\t\t\t\t\t\t\t\twww.accelerate.de\n○\t2. Version:\nHaydar Hamed-Jaber im Rahmen der Masterarbeit im Studiengang Informatik an der OTH Regensburg.\nDie Arbeit wurde betreut von \nProf. Dr. Georgios Raptis (OTH Regensburg) und Prof. Dr. Norina Lauer (OTH Regensburg)"
+    "content": "Die App-Konzeption entstand auf der Basis der Bachelorarbeit von Jessica Hofmann, Absolventin des Bachelor-Studiengangs Logopädie der Hochschule Fresenius, die 2015 erstellt wurde. Die Arbeit wurde betreut von Prof. Dr. Tanja Grewe und Prof. Dr. Norina Lauer. Die Bachelorarbeit wurde mit dem Förderpreis 2015 des Fonds der Arzneimittelfirmen Hessen/Rheinland-Pfalz/Saarland e.V. ausgezeichnet."
   },
   {
     "id": 4,
     "type": "h2",
-    "content": "3. Impressum"
+    "content": "3. App-Design und Programmierung"
   },
   {
     "id": 5,
     "type": "p",
-    "content": "Ostbayerische Technische Hochschule Regensburg\nSeybothstraße 2, 93053 Regensburg\nPräsident: Prof. Dr. Ralph Schneider\nInternet: www.oth-regensburg.de\nUmsatzsteuer-ID: DE250211285\n\nHochschule Fresenius gGmbH\nLimburger Str. 2 65510 Idstein\nGeschäftsführung: Prof. Dr. Tobias Engelsleben, Sascha Kappes, Kai Metzner\nPräsident: Prof. Dr. Tobias Engelsleben\nInternet: www.hs-fresenius.de\nUmsatzsteuer-ID: DE196697659"
-  },{
+    "content": "1. Version (unveröffentlicht): \nJeanette Pigulla, Hochschule Fresenius \nAccelerate Media Solutions GmbH \nNeue Maastrichter Str. 13, 50672 Köln \nwww.accelerate.de \n\n2. Version\nHaydar Hamed-Jaber im Rahmen der Masterarbeit im Studiengang Informatik an der Ostbayerischen Technischen Hochschule (OTH) Regensburg\nDie Arbeit wurde betreut von \nProf. Dr. Georgios Raptis (OTH Regensburg) und \nProf. Dr. Norina Lauer (OTH Regensburg)\n"
+  },
+  {
     "id": 6,
     "type": "h2",
-    "content": "4. Disclaimer"
-},
+    "content": "3. Impressum"
+  },
   {
     "id": 7,
     "type": "p",
-    "content": "Diese App wurde zu wissenschaftlichen Forschungszwecken entwickelt.\nDer Zweck dieser App umfasst nicht die Diagnose, Behandlung, Überwachung oder Vorhersage von Erkrankungen."
+    "content": "Ostbayerische Technische Hochschule Regensburg\nSeybothstraße 2, 93053 Regensburg\nPräsident: Prof. Dr. Ralph Schneider\nInternet: www.oth-regensburg.de\nUmsatzsteuer-ID: DE250211285\n\nHOCHSCHULEN FRESENIUS GEMEINNÜTZIGE TRÄGERGESELLSCHAFT MBH\nLimburger Str. 2 65510 Idstein\nGeschäftsführung: Prof. Dr. Tobias Engelsleben, Sascha Kappes, Kai Metzner\nPräsident: Prof. Dr. Tobias Engelsleben\nInternet: www.hs-fresenius.de\nUmsatzsteuer-ID: DE196697659"
+  },{
+    "id": 8,
+    "type": "h2",
+    "content": "4. Haftungsausschluss"
+},
+  {
+    "id": 9,
+    "type": "p",
+    "content": "Diese App wurde zu wissenschaftlichen Forschungszwecken entwickelt.\nDer Zweck dieser App umfasst nicht die Diagnose, Behandlung, Überwachung oder Vorhersage von Erkrankungen.\nDie Inhalte dieser App wurden mit größtmöglicher Sorgfalt erstellt. Es wird keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Inhalte übernommen. Die Nutzung der Inhalte der App erfolgt auf eigene Gefahr des Nutzers."
   }
 ]
-

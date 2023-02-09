@@ -78,12 +78,41 @@ class _StartScreenState extends State<StartScreen> {
     super.didChangeDependencies();
     alphabets.updateAll((key, value) => value = 0);
     getCategory();
+    getSchwierigkeit();
     sword = List.generate(randomWord.length, (index) => "_");
     stored = randomWord;
     progressSafer[randomWord] = [0,0];
     _imageToShow = AssetImage('assets/images/Wörter/$stored.jpg');
     print(randomWord);
     print(progressSafer);
+  }
+
+  void getSchwierigkeit(){
+    final schwierigkeit = context.read<SettingsController>().schwierigkeit;
+    final settings = context.read<SettingsController>().frequency;
+
+          if(settings.value == 'Alle Wörter'){
+            if(schwierigkeit.value == 'Leicht'){
+              lives = 16;
+            }
+            if(schwierigkeit.value == 'Normal'){
+              lives = 10;
+            }
+            if(schwierigkeit.value == 'Schwer'){
+              lives = 6;
+            }
+          }
+          else {
+            if(schwierigkeit.value == 'Leicht'){
+              lives = 8;
+            }
+            if(schwierigkeit.value == 'Normal'){
+              lives = 5;
+            }
+            if(schwierigkeit.value == 'Schwer'){
+              lives = 3;
+            }
+          }
   }
 
   void checkForHelp(){
@@ -2097,7 +2126,7 @@ class _StartScreenState extends State<StartScreen> {
                                 ),
                               ],
                               color: Colors.lightBlueAccent,
-                              fontSize: 35,
+                              fontSize: 40,
                               fontFamily: "Qaz"),
                         ),
                         IconButton(
@@ -2550,7 +2579,9 @@ class _StartScreenState extends State<StartScreen> {
                             color: Colors.black,
                           ),
                         ),
-                        Stack(children: [
+                        Stack(
+                            alignment: Alignment.center,
+                            children: [
                           const Icon(
                             shadows: <Shadow>[
                               Shadow(
@@ -2560,27 +2591,25 @@ class _StartScreenState extends State<StartScreen> {
                               ),
                             ],
                             Icons.favorite,
-                            size: 35,
+                            size: 50,
                             color: Colors.lightBlueAccent,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(13, 6, 0, 0),
-                            child: Text(
+                         Text(
                               lives.toString(),
                               style: const TextStyle(
                                   shadows: <Shadow>[
                                     Shadow(
                                       offset: Offset(0.0, 0.0),
-                                      blurRadius: 1.0,
+                                      blurRadius: 0.0,
                                       color: Colors.black,
                                     ),
                                   ],
                                 color: Colors.black,
                                   fontFamily: "Qaz",
-                                  fontSize: 17,
+                                  fontSize: 25,
                                   fontWeight: FontWeight.bold),
                             ),
-                          )
+
                         ])
                       ],
                     ),

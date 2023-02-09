@@ -39,6 +39,12 @@ class LocalStorageSettingsPersistence extends SettingsPersistence {
     return prefs.getString('frequency') ?? 'Alle Wörter';
   }
 
+  @override
+  Future<String> getSchwierigkeit() async{
+    final prefs = await instanceFuture;
+    return prefs.getString('schwierigkeit') ?? 'Leicht';
+  }
+
   ///SAVE
   @override
   Future<void> saveMusicOn(bool value) async {
@@ -68,5 +74,11 @@ class LocalStorageSettingsPersistence extends SettingsPersistence {
   Future<void> saveFrequency(String value) async {
     final prefs = await instanceFuture;
     await prefs.setString('frequency', value);
+  }
+
+  @override
+  Future<void> saveSchwierigkeit(String value) async {
+    final prefs = await instanceFuture;
+    await prefs.setString('schwierigkeit', value);
   }
 }

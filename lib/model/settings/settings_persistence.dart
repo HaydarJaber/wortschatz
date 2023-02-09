@@ -8,11 +8,13 @@ abstract class SettingsPersistence {
   Future<String> getPlayerName();
   Future<bool> getSoundsOn();
   Future<String> getFrequency();
+  Future<String> getSchwierigkeit();
 
   Future<void> saveMusicOn(bool value);
   Future<void> saveMuted(bool value);
   Future<void> savePlayerName(String value);
   Future<void> saveFrequency(String value);
+  Future<void> saveSchwierigkeit(String value);
   Future<void> saveSoundsOn(bool value);
 
 }

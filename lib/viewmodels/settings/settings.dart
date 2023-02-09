@@ -20,6 +20,8 @@ class SettingsController {
 
   ValueNotifier<String> frequency = ValueNotifier('Alle Wörter');
 
+  ValueNotifier<String> schwierigkeit = ValueNotifier('Leicht');
+
   /// Creates a new instance of [SettingsController] backed by [persistence].
   SettingsController({required SettingsPersistence persistence})
       : _persistence = persistence;
@@ -34,12 +36,18 @@ class SettingsController {
       _persistence.getMusicOn().then((value) => musicOn.value = value),
       _persistence.getPlayerName().then((value) => playerName.value = value),
       _persistence.getFrequency().then((value) => frequency.value = value),
+      _persistence.getSchwierigkeit().then((value) => schwierigkeit.value = value),
     ]);
   }
 
   void setFrequency(String name) {
     frequency.value = name;
     _persistence.saveFrequency(frequency.value);
+  }
+
+  void setSchwierigkeit(String name) {
+    schwierigkeit.value = name;
+    _persistence.saveSchwierigkeit(schwierigkeit.value);
   }
 
   void setPlayerName(String name) {

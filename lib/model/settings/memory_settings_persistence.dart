@@ -28,6 +28,9 @@ class MemoryOnlySettingsPersistence implements SettingsPersistence {
   @override
   Future<String> getFrequency() async => frequency;
 
+  @override
+  Future<String> getSchwierigkeit() async => frequency;
+
 
   @override
   Future<void> saveMusicOn(bool value) async => musicOn = value;
@@ -43,4 +46,7 @@ class MemoryOnlySettingsPersistence implements SettingsPersistence {
 
   @override
   Future<void> saveFrequency(String value) async => frequency = value;
+
+  @override
+  Future<void> saveSchwierigkeit(String value) async => frequency = value;
 }

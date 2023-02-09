@@ -109,6 +109,7 @@ class Settings extends StatelessWidget {
                       },
                 ), */
                 _gap,
+                        _SchwierigkeitChangeLine('Schwierigkeit:'),
                 ],
                 ),)
                     ],
@@ -349,6 +350,88 @@ class _FrequenzChangeLine extends StatelessWidget {
                       );
                     }).toList(),
                   )
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SchwierigkeitChangeLine extends StatelessWidget {
+  final String title;
+  final List<String> schwierigkeit = ['Leicht','Normal','Schwer'];
+
+  _SchwierigkeitChangeLine(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    final settings = context.watch<SettingsController>();
+
+    return InkResponse(
+      highlightShape: BoxShape.rectangle,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+                children: [
+                  Text(title,
+                    style: TextStyle(
+                      shadows: const <Shadow>[
+                        Shadow(
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 2.0,
+                          color: Colors.black,
+                        ),
+                      ],
+                      color: Colors.black,
+                      fontSize: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.03,
+                      fontFamily: "Qaz",
+                    ),),
+                ]
+            ),
+            ValueListenableBuilder(
+                valueListenable: settings.schwierigkeit,
+                builder: (context, value, child) =>
+                    DropdownButton<String>(
+                      value: value,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: TextStyle(
+                        shadows: const <Shadow>[
+                          Shadow(
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                        color: Colors.black,
+                        fontSize: MediaQuery
+                            .of(context)
+                            .size
+                            .height * 0.035,
+                        fontFamily: "Qaz",
+                      ),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.black,
+                      ),
+                      onChanged: (value) {
+                        // This is called when the user selects an item.
+                        context.read<SettingsController>().setSchwierigkeit(value!);
+                      },
+                      items: schwierigkeit.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    )
             ),
           ],
         ),
