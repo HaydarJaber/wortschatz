@@ -6,7 +6,7 @@ class DBHelper {
     final dbPath = await sql.getDatabasesPath();
     return sql.openDatabase(path.join(dbPath, 'highScore.db'),
         onCreate: (db, version) async {
-          return db.execute('CREATE TABLE SCORE(date TEXT,score INTEGER)');
+          return db.execute('CREATE TABLE SCORE2(date TEXT,score INTEGER,diff TEXT)');
         }, version: 1);
   }
 

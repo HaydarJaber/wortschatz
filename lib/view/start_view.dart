@@ -1483,9 +1483,10 @@ class _StartScreenState extends State<StartScreen> {
                                                     color: Colors.black,
                                                   ),
                                                   onPressed: () {
-                                                    DBHelper.insert('SCORE', {
+                                                    DBHelper.insert('SCORE2', {
                                                       'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score
+                                                      'score': score,
+                                                      'diff': context.read<SettingsController>().schwierigkeit.value
                                                     });
                                                     Navigator.pushNamed(context, Routes.categories);
                                                   })
@@ -1511,9 +1512,10 @@ class _StartScreenState extends State<StartScreen> {
                                                     color: Colors.black,
                                                   ),
                                                   onPressed: () {
-                                                    DBHelper.insert('SCORE', {
+                                                    DBHelper.insert('SCORE2', {
                                                       'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score
+                                                      'score': score,
+                                                      'diff': context.read<SettingsController>().schwierigkeit.value
                                                     });
                                                     progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
                                                     checkForHelp();                                    //check wie viele Hilfen benötigt
@@ -1749,10 +1751,11 @@ class _StartScreenState extends State<StartScreen> {
                                                     color: Colors.black,
                                                   ),
                                                   onPressed: () {
-                                                    DBHelper.insert('SCORE', {
-                                                      'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score
-                                                    });
+                                                      DBHelper.insert('SCORE2', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
+                                                      });
                                                     Navigator.pushNamed(context, Routes.categories);
                                                   })
                                           ),
@@ -1777,9 +1780,10 @@ class _StartScreenState extends State<StartScreen> {
                                                     color: Colors.black,
                                                   ),
                                                   onPressed: () {
-                                                    DBHelper.insert('SCORE', {
+                                                    DBHelper.insert('SCORE2', {
                                                       'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score
+                                                      'score': score,
+                                                      'diff': context.read<SettingsController>().schwierigkeit.value
                                                     });
                                                     checkForHelp();
                                                     getMissingWords();
@@ -1918,9 +1922,10 @@ class _StartScreenState extends State<StartScreen> {
                                                       color: Colors.black,
                                                     ),
                                                     onPressed: () {
-                                                      DBHelper.insert('SCORE', {
+                                                      DBHelper.insert('SCORE2', {
                                                         'date': context.read<SettingsController>().playerName.value,
-                                                        'score': score
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
                                                       });
                                                       Navigator.pushNamed(context, Routes.categories);
                                                     })
@@ -1946,9 +1951,10 @@ class _StartScreenState extends State<StartScreen> {
                                                       color: Colors.black,
                                                     ),
                                                     onPressed: () {
-                                                      DBHelper.insert('SCORE', {
+                                                      DBHelper.insert('SCORE2', {
                                                         'date': context.read<SettingsController>().playerName.value,
-                                                        'score': score
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
                                                       });
                                                       checkForHelp();
                                                       Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);

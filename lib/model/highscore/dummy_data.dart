@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:wortschatz/model/highscore/db_helper.dart';
 
+import '../../viewmodels/settings/settings.dart';
+
 class HighScore {
   String date;
   int score;
+  String diff;
 
-  HighScore(this.date, this.score);
+  HighScore(this.date, this.score,this.diff);
 }
 
 class HighScoreItems with ChangeNotifier {
@@ -15,22 +18,23 @@ class HighScoreItems with ChangeNotifier {
     return [..._items];
   }
 
-  void addHighScore(date, score) {
-    final highScore = HighScore(date, score);
+  void addHighScore(date, score, diff) {
+    final highScore = HighScore(date, score, diff);
     _items.add(highScore);
     notifyListeners();
   }
 
   Future<List<HighScore>> fetchData() async {
     final db = await DBHelper.database();
-    List<Map<String, dynamic>> table = await db.query('SCORE');
+    List<Map<String, dynamic>> table = await db.query('SCORE2');
     _items = [];
     for (var item in table) {
-      _items.add(HighScore(item['date'], item['score']));
+      _items.add(HighScore(item['date'], item['score'], item['diff']));
     }
     return [..._items];
   }
 }
+
 
 
 Map<String, int> alphabets = {

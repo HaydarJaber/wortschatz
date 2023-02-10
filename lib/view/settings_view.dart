@@ -222,55 +222,75 @@ class _NameChangeLine extends StatelessWidget {
     return InkResponse(
       highlightShape: BoxShape.rectangle,
       onTap: () => showCustomNameDialog(context),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-            Text(title,
-            style: TextStyle(
-              shadows: const <Shadow>[
-                Shadow(
-                  offset: Offset(0.0, 0.0),
-                  blurRadius: 2.0,
-                  color: Colors.black,
-                ),
-              ],
-              color: Colors.black,
-              fontSize: MediaQuery
-                  .of(context)
-                  .size
-                  .height * 0.03,
-              fontFamily: "Qaz",
-            ),),
-              ]
+      child:
+
+      Material(
+        color: Colors.transparent,
+        child: Ink(
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: MediaQuery.of(context).size.height * 0.15,
+            decoration: const ShapeDecoration(
+                color: Colors.white70,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.black)
+                )
             ),
-            ValueListenableBuilder(
-              valueListenable: settings.playerName,
-              builder: (context, name, child) => Text(
-                '‘$name’',
-                style: TextStyle(
-                  shadows: const <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 5.0,
-                      color: Colors.black,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                      children: [
+                        Text(title,
+                          style: TextStyle(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            color: Colors.black,
+                            fontSize: MediaQuery
+                                .of(context)
+                                .size
+                                .height * 0.03,
+                            fontFamily: "Qaz",
+                          ),),
+                      ]
+                  ),
+                  ValueListenableBuilder(
+                    valueListenable: settings.playerName,
+                    builder: (context, name, child) => Text(
+                      '‘$name’',
+                      style: TextStyle(
+                        shadows: const <Shadow>[
+                          Shadow(
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 5.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                        color: Colors.black,
+                        fontSize: MediaQuery
+                            .of(context)
+                            .size
+                            .height * 0.07,
+                        fontFamily: "Qaz",
+                      ),
                     ),
-                  ],
-                  color: Colors.black,
-                  fontSize: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.07,
-                  fontFamily: "Qaz",
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
         ),
-      ),
+      )
+
+
+
     );
   }
 }
@@ -288,72 +308,91 @@ class _FrequenzChangeLine extends StatelessWidget {
 
     return InkResponse(
       highlightShape: BoxShape.rectangle,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
+      child:
+
+      Material(
+        color: Colors.transparent,
+        child: Ink(
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: MediaQuery.of(context).size.height * 0.12,
+            decoration: const ShapeDecoration(
+                color: Colors.yellow,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.black)
+                )
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(title,
-                      style: TextStyle(
-                        shadows: const <Shadow>[
-                          Shadow(
-                            offset: Offset(0.0, 0.0),
-                            blurRadius: 2.0,
+                  Row(
+                      children: [
+                        Text(title,
+                          style: TextStyle(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
                             color: Colors.black,
-                          ),
-                        ],
-                        color: Colors.black,
-                        fontSize: MediaQuery
-                            .of(context)
-                            .size
-                            .height * 0.03,
-                        fontFamily: "Qaz",
-                      ),),
-                ]
-            ),
-            ValueListenableBuilder(
-              valueListenable: settings.frequency,
-              builder: (context, value, child) =>
-                  DropdownButton<String>(
-                    value: value,
-                    icon: const Icon(Icons.arrow_downward),
-                    elevation: 16,
-                    style: TextStyle(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 0.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                      color: Colors.black,
-                      fontSize: MediaQuery
-                          .of(context)
-                          .size
-                          .height * 0.035,
-                      fontFamily: "Qaz",
-                    ),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.black,
-                    ),
-                    onChanged: (value) {
-                      // This is called when the user selects an item.
-                      context.read<SettingsController>().setFrequency(value!);
-                    },
-                    items: frequenz.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  )
-            ),
-          ],
+                            fontSize: MediaQuery
+                                .of(context)
+                                .size
+                                .height * 0.03,
+                            fontFamily: "Qaz",
+                          ),),
+                      ]
+                  ),
+                  ValueListenableBuilder(
+                      valueListenable: settings.frequency,
+                      builder: (context, value, child) =>
+                          DropdownButton<String>(
+                            value: value,
+                            icon: const Icon(Icons.arrow_downward),
+                            elevation: 16,
+                            style: TextStyle(
+                              shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 0.0,
+                                  color: Colors.black,
+                                ),
+                              ],
+                              color: Colors.black,
+                              fontSize: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.035,
+                              fontFamily: "Qaz",
+                            ),
+                            underline: Container(
+                              height: 2,
+                              color: Colors.black,
+                            ),
+                            onChanged: (value) {
+                              // This is called when the user selects an item.
+                              context.read<SettingsController>().setFrequency(value!);
+                            },
+                            items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          )
+                  ),
+                ],
+              ),
+            )
         ),
-      ),
+      )
+
+
     );
   }
 }
@@ -370,72 +409,89 @@ class _SchwierigkeitChangeLine extends StatelessWidget {
 
     return InkResponse(
       highlightShape: BoxShape.rectangle,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
+      child:
+
+      Material(
+        color: Colors.transparent,
+        child: Ink(
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: MediaQuery.of(context).size.height * 0.12,
+            decoration: const ShapeDecoration(
+                color: Colors.yellow,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.black)
+                )
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(title,
-                    style: TextStyle(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 2.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                      color: Colors.black,
-                      fontSize: MediaQuery
-                          .of(context)
-                          .size
-                          .height * 0.03,
-                      fontFamily: "Qaz",
-                    ),),
-                ]
-            ),
-            ValueListenableBuilder(
-                valueListenable: settings.schwierigkeit,
-                builder: (context, value, child) =>
-                    DropdownButton<String>(
-                      value: value,
-                      icon: const Icon(Icons.arrow_downward),
-                      elevation: 16,
-                      style: TextStyle(
-                        shadows: const <Shadow>[
-                          Shadow(
-                            offset: Offset(0.0, 0.0),
-                            blurRadius: 0.0,
+                  Row(
+                      children: [
+                        Text(title,
+                          style: TextStyle(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
                             color: Colors.black,
-                          ),
-                        ],
-                        color: Colors.black,
-                        fontSize: MediaQuery
-                            .of(context)
-                            .size
-                            .height * 0.035,
-                        fontFamily: "Qaz",
-                      ),
-                      underline: Container(
-                        height: 2,
-                        color: Colors.black,
-                      ),
-                      onChanged: (value) {
-                        // This is called when the user selects an item.
-                        context.read<SettingsController>().setSchwierigkeit(value!);
-                      },
-                      items: schwierigkeit.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    )
+                            fontSize: MediaQuery
+                                .of(context)
+                                .size
+                                .height * 0.03,
+                            fontFamily: "Qaz",
+                          ),),
+                      ]
+                  ),
+                  ValueListenableBuilder(
+                      valueListenable: settings.schwierigkeit,
+                      builder: (context, value, child) =>
+                          DropdownButton<String>(
+                            value: value,
+                            icon: const Icon(Icons.arrow_downward),
+                            elevation: 16,
+                            style: TextStyle(
+                              shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 0.0,
+                                  color: Colors.black,
+                                ),
+                              ],
+                              color: Colors.black,
+                              fontSize: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.035,
+                              fontFamily: "Qaz",
+                            ),
+                            underline: Container(
+                              height: 2,
+                              color: Colors.black,
+                            ),
+                            onChanged: (value) {
+                              // This is called when the user selects an item.
+                              context.read<SettingsController>().setSchwierigkeit(value!);
+                            },
+                            items: schwierigkeit.map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          )
+                  ),
+                ],
+              ),
             ),
-          ],
+            )
         ),
-      ),
     );
   }
 }
