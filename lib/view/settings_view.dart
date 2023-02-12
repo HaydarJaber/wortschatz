@@ -233,7 +233,7 @@ class _NameChangeLine extends StatelessWidget {
                 color: Colors.white70,
                 shape: RoundedRectangleBorder(
                     side: BorderSide(
-                        width: 3,
+                        width: 2,
                         color: Colors.black)
                 )
             ),
@@ -316,10 +316,10 @@ class _FrequenzChangeLine extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.8,
             height: MediaQuery.of(context).size.height * 0.12,
             decoration: const ShapeDecoration(
-                color: Colors.yellow,
+                color: Colors.white70,
                 shape: RoundedRectangleBorder(
                     side: BorderSide(
-                        width: 3,
+                        width: 2,
                         color: Colors.black)
                 )
             ),
@@ -417,10 +417,10 @@ class _SchwierigkeitChangeLine extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.8,
             height: MediaQuery.of(context).size.height * 0.12,
             decoration: const ShapeDecoration(
-                color: Colors.yellow,
+                color: Colors.white70,
                 shape: RoundedRectangleBorder(
                     side: BorderSide(
-                        width: 3,
+                        width: 2,
                         color: Colors.black)
                 )
             ),

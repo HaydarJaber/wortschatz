@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height*0.10,
                           alignment: Alignment.center,
-                          child: const MenuButton(label: "Einstellung", route: Routes.settings , iconCodePoint: 0xe57f,)
+                          child: const MenuButton(label: "Einstellungen", route: Routes.settings , iconCodePoint: 0xe57f,)
                     ),
                     Container(
                         width: MediaQuery.of(context).size.width,
