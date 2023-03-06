@@ -45,6 +45,10 @@ class SettingsController {
     _persistence.saveFrequency(frequency.value);
   }
 
+  void setFrequencyReadONLY(String name) {
+    frequency.value = name;
+  }
+
   void setSchwierigkeit(String name) {
     schwierigkeit.value = name;
     _persistence.saveSchwierigkeit(schwierigkeit.value);

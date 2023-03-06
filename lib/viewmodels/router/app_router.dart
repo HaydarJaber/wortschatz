@@ -12,6 +12,7 @@ import '../../main.dart';
 import '../../view/Infopage_view.dart';
 import '../../view/highscore_view.dart';
 import '../../view/imprint_view.dart';
+import '../../view/progress_view.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -41,8 +42,10 @@ class AppRouter {
       //  );
       case Routes.rank:
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
+      case Routes.progress:
+        return CustomPageRoute(child: const Progress(), settings: settings);
       case Routes.manual:
-        return CustomPageRoute(child: Manual(), settings: settings);
+        return CustomPageRoute(child: const Manual(), settings: settings);
       case Routes.imprint:
         return CustomPageRoute(child: const Imprint(), settings: settings);
       case Routes.infopage:
