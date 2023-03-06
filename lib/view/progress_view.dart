@@ -8,6 +8,8 @@ import 'package:wortschatz/model/highscore/dummy_data.dart';
 
 import '../viewmodels/settings/settings.dart';
 
+final List<String> frequenz = ['Alle Wörter','Hochfrequente Wörter', 'Niedrigfrequente Wörter'];
+
 class Progress extends StatefulWidget {
   // final List<HighScore> scores;
   const Progress({
@@ -23,7 +25,8 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
   late int rank1,rank2,rank3;
   late Future<List<HighScore>> initFuture;
   late TabController _tabController;
-  final List<String> frequenz = ['Alle Wörter','Hochfrequente Wörter', 'Niedrigfrequente Wörter'];
+  String dropdownValue = frequenz.first;
+
 
   @override
   void initState() {
@@ -69,6 +72,7 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
+
     return SafeArea(
         child: Scaffold(
           backgroundColor: Colors.deepPurple.shade900,
@@ -221,45 +225,43 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            ValueListenableBuilder(
-                                                valueListenable: settings.frequency,
-                                                builder: (context, value, child) =>
-                                                    DropdownButton<String>(
-                                                      isExpanded: true,
-                                                      value: value,
-                                                      icon: const Icon(Icons.arrow_downward),
-                                                      elevation: 16,
+                                              DropdownButton<String>(
+                                                isExpanded: true,
+                                              value: dropdownValue,
+                                              icon: const Icon(Icons.arrow_downward),
+                                              elevation: 16,
+                                              style: TextStyle(
+                                                shadows: const <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],
+                                                color: Colors.black,
+                                                fontSize: MediaQuery
+                                                    .of(context)
+                                                    .size
+                                                    .height * 0.035,
+                                                fontFamily: "Qaz",
+                                              ),
+                                                underline: const SizedBox.shrink(),
+                                              onChanged: (String? value) {
+                                                // This is called when the user selects an item.
+                                                setState(() {
+                                                  dropdownValue = value!;
+                                                });
+                                              },
+                                              items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                                return DropdownMenuItem<String>(
+                                                  value: value,
+                                                  child: Text(value,
                                                       style: TextStyle(
-                                                        shadows: const <Shadow>[
-                                                          Shadow(
-                                                            offset: Offset(0.0, 0.0),
-                                                            blurRadius: 0.0,
-                                                            color: Colors.black,
-                                                          ),
-                                                        ],
-                                                        color: Colors.black,
-                                                        fontSize: MediaQuery
-                                                            .of(context)
-                                                            .size
-                                                            .height * 0.035,
-                                                        fontFamily: "Qaz",
-                                                      ),
-                                                      underline: const SizedBox.shrink(),
-                                                      onChanged: (value) {
-                                                        // This is called when the user selects an item.
-                                                        context.read<SettingsController>().setFrequencyReadONLY(value!);
-                                                      },
-                                                      items: frequenz.map<DropdownMenuItem<String>>((String value) {
-                                                        return DropdownMenuItem<String>(
-                                                          value: value,
-                                                          child: Text(value,
-                                                          style: TextStyle(
-                                                            fontSize: MediaQuery.of(context).size.height * 0.03,
-                                                          )),
-                                                        );
-                                                      }).toList(),
-                                                    )
-                                            ),
+                                                        fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                      )),
+                                                );
+                                              }).toList(),
+                                            )
                                           ],
                                         ),
                                       )
