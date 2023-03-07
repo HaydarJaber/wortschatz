@@ -1519,6 +1519,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     });
                                                     progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
                                                     checkForHelp();                                    //check wie viele Hilfen benötigt
+                                                    addCategoryInfoforInfopage();
                                                     print(progressSafer);
                                                     Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                   })
@@ -1959,6 +1960,8 @@ class _StartScreenState extends State<StartScreen> {
                                                         'diff': context.read<SettingsController>().schwierigkeit.value
                                                       });
                                                       checkForHelp();
+                                                      addCategoryInfoforInfopage();
+                                                      print(progressSafer);
                                                       Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                     })
                                             ),
