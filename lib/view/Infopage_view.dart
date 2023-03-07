@@ -15,7 +15,6 @@ import '../model/constants/routes.dart';
 import '../model/styles/responsive_screen.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
-import '../viewmodels/player_progress/player_progress.dart';
 
 class Infopage extends StatefulWidget {
   final Map getProgress;
@@ -43,12 +42,28 @@ class _InfopageState extends State<Infopage> {
     late MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     Map ProgresMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final richtig = ProgresMap.entries.where((e) => e.value[0] == 1).toList().length;
-    final falsch = ProgresMap.entries.where((e) => e.value[0] == 0).toList().length;
-    final offen = ProgresMap.entries.where((e) => e.value[0] == 2).toList().length;
+    late int richtig = ProgresMap.entries.where((e) => e.value[0] == 1).toList().length;
+    late int falsch = ProgresMap.entries.where((e) => e.value[0] == 0).toList().length;
+    late int offen = ProgresMap.entries.where((e) => e.value[0] == 2).toList().length;
+    if(ProgresMap.entries.last.value.toString() == "[0]") {
+      if(falsch != 0){  //da wegen Kategorie: 2,1 und 0  in der map die 0 von der Kategorie fälschlerwweise mitgezählt wird als wort richtig/falsch/offen
+        falsch = falsch -1;
+      }
+    }
+    if(ProgresMap.entries.last.value.toString() == "[1]") {
+      if(richtig != 0){  //da wegen Kategorie: 2,1 und 0  in der map die zwei fälschlerwweise mitgezählt wird
+        richtig = richtig -1;
+      }
+    }
+    if(ProgresMap.entries.last.value.toString() == "[2]") {
+      if(offen != 0){  //da wegen Kategorie: 2,1 und 0  in der map die zwei fälschlerwweise mitgezählt wird
+        offen = offen -1;
+      }
+    }
     var category = "";
     void getCategoryFromNumber() {
       ProgresMap.entries.last.value;
+      print(ProgresMap);
       switch(ProgresMap.entries.last.value.toString()) {
         case "[0]":
           category = "Alle Kategorien";

@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import '../model/styles/responsive_screen.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
-import '../viewmodels/player_progress/player_progress.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});

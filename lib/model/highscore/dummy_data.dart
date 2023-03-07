@@ -36,7 +36,6 @@ class HighScoreItems with ChangeNotifier {
 }
 
 
-
 Map<String, int> alphabets = {
   'A': 0,
   'B': 0,

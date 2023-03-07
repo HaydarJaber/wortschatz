@@ -12,7 +12,6 @@ import '../model/constants/routes.dart';
 import '../model/styles/responsive_screen.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
-import '../viewmodels/player_progress/player_progress.dart';
 import 'home_view.dart';
 
 class Manual extends StatefulWidget {

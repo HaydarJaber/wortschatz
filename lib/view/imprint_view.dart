@@ -12,7 +12,7 @@ import 'package:wortschatz/viewmodels/imprint_api.dart';
 import '../model/styles/responsive_screen.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
-import '../viewmodels/player_progress/player_progress.dart';
+
 
 class Imprint extends StatefulWidget {
   const Imprint({Key? key}) : super(key: key);

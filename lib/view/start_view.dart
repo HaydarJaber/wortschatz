@@ -1519,6 +1519,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     });
                                                     progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
                                                     checkForHelp();                                    //check wie viele Hilfen benötigt
+                                                    print(progressSafer);
                                                     Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                   })
                                           ),
@@ -1788,6 +1789,7 @@ class _StartScreenState extends State<StartScreen> {
                                                     checkForHelp();
                                                     getMissingWords();
                                                     addCategoryInfoforInfopage();
+                                                    print(progressSafer);
                                                     Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                   })
                                           ),

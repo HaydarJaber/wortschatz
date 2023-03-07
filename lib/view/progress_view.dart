@@ -267,6 +267,7 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                       )
                                   ),
                                 ),
+                                /*
                                 FutureBuilder(
                                   future: initFuture,
                                   builder: ((context, snapshot) {
@@ -366,59 +367,75 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                     }
                                   }),
                                 )
+
+                                 */
                               ]),
                             ),
                             // second tab bar view widget
                             Padding(
                               padding: const EdgeInsets.all(20),
                               child: Column(children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text(
-                                      'Platz',
-                                      style: TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
+                                Material(
+                                  color: Colors.transparent,
+                                  child: Ink(
+                                      width: MediaQuery.of(context).size.width * 0.8,
+                                      height: MediaQuery.of(context).size.height * 0.07,
+                                      decoration: const ShapeDecoration(
+                                          color: Colors.white70,
+                                          shape: RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                  width: 2,
+                                                  color: Colors.black)
+                                          )
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            DropdownButton<String>(
+                                              isExpanded: true,
+                                              value: dropdownValue,
+                                              icon: const Icon(Icons.arrow_downward),
+                                              elevation: 16,
+                                              style: TextStyle(
+                                                shadows: const <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],
+                                                color: Colors.black,
+                                                fontSize: MediaQuery
+                                                    .of(context)
+                                                    .size
+                                                    .height * 0.035,
+                                                fontFamily: "Qaz",
+                                              ),
+                                              underline: const SizedBox.shrink(),
+                                              onChanged: (String? value) {
+                                                // This is called when the user selects an item.
+                                                setState(() {
+                                                  dropdownValue = value!;
+                                                });
+                                              },
+                                              items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                                return DropdownMenuItem<String>(
+                                                  value: value,
+                                                  child: Text(value,
+                                                      style: TextStyle(
+                                                        fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                      )),
+                                                );
+                                              }).toList(),
+                                            )
                                           ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 30,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      'Name',
-                                      style: TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 30,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      'Punkte',
-                                      style: TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 30,
-                                          color: Colors.black),
-                                    ),
-                                  ],
+                                        ),
+                                      )
+                                  ),
                                 ),
+                                /*
                                 FutureBuilder(
                                   future: initFuture,
                                   builder: ((context, snapshot) {
@@ -449,14 +466,13 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                             ),
                                           ),
                                         ),
-                                        builder: (context, highscore, ch) => highscore
-                                            .item.isEmpty
-                                            ? ch!
+                                        builder: (context, highscore, ch) =>
+                                        highscore.item.isEmpty ? ch!
                                             : ListView.builder(
                                           shrinkWrap: true,
                                           itemCount: highscore.item.length,
                                           itemBuilder: (context, index) =>
-                                          highscore.item[index].diff == 'Normal' ?
+                                          highscore.item[index].diff == 'Leicht' ?
                                           Padding(
                                             padding: const EdgeInsets.fromLTRB(
                                                 0, 10, 0, 0),
@@ -465,9 +481,9 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                               MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text(
-                                                  rank2 < 3
-                                                      ? emoji[rank2++]
-                                                      : " ${++rank2}",
+                                                  rank1 < 3
+                                                      ? emoji[rank1++]
+                                                      : " ${++rank1}",
                                                   style: const TextStyle(
                                                       shadows: <Shadow>[
                                                         Shadow(
@@ -519,58 +535,75 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                     }
                                   }),
                                 )
+
+                                 */
                               ]),
                             ),
+
                             Padding(
                               padding: const EdgeInsets.all(20),
                               child: Column(children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text(
-                                      'Platz',
-                                      style: TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
+                                Material(
+                                  color: Colors.transparent,
+                                  child: Ink(
+                                      width: MediaQuery.of(context).size.width * 0.8,
+                                      height: MediaQuery.of(context).size.height * 0.07,
+                                      decoration: const ShapeDecoration(
+                                          color: Colors.white70,
+                                          shape: RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                  width: 2,
+                                                  color: Colors.black)
+                                          )
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            DropdownButton<String>(
+                                              isExpanded: true,
+                                              value: dropdownValue,
+                                              icon: const Icon(Icons.arrow_downward),
+                                              elevation: 16,
+                                              style: TextStyle(
+                                                shadows: const <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],
+                                                color: Colors.black,
+                                                fontSize: MediaQuery
+                                                    .of(context)
+                                                    .size
+                                                    .height * 0.035,
+                                                fontFamily: "Qaz",
+                                              ),
+                                              underline: const SizedBox.shrink(),
+                                              onChanged: (String? value) {
+                                                // This is called when the user selects an item.
+                                                setState(() {
+                                                  dropdownValue = value!;
+                                                });
+                                              },
+                                              items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                                return DropdownMenuItem<String>(
+                                                  value: value,
+                                                  child: Text(value,
+                                                      style: TextStyle(
+                                                        fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                      )),
+                                                );
+                                              }).toList(),
+                                            )
                                           ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 30,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      'Name',
-                                      style: TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 30,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      'Punkte',
-                                      style: TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 30,
-                                          color: Colors.black),
-                                    ),
-                                  ],
+                                        ),
+                                      )
+                                  ),
                                 ),
+                                /*
                                 FutureBuilder(
                                   future: initFuture,
                                   builder: ((context, snapshot) {
@@ -601,14 +634,13 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                             ),
                                           ),
                                         ),
-                                        builder: (context, highscore, ch) => highscore
-                                            .item.isEmpty
-                                            ? ch!
+                                        builder: (context, highscore, ch) =>
+                                        highscore.item.isEmpty ? ch!
                                             : ListView.builder(
                                           shrinkWrap: true,
                                           itemCount: highscore.item.length,
                                           itemBuilder: (context, index) =>
-                                          highscore.item[index].diff == 'Schwer' ?
+                                          highscore.item[index].diff == 'Leicht' ?
                                           Padding(
                                             padding: const EdgeInsets.fromLTRB(
                                                 0, 10, 0, 0),
@@ -617,9 +649,9 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                               MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text(
-                                                  rank3 < 3
-                                                      ? emoji[rank3++]
-                                                      : " ${++rank3}",
+                                                  rank1 < 3
+                                                      ? emoji[rank1++]
+                                                      : " ${++rank1}",
                                                   style: const TextStyle(
                                                       shadows: <Shadow>[
                                                         Shadow(
@@ -671,8 +703,10 @@ class _ProgressState extends State<Progress> with TickerProviderStateMixin {
                                     }
                                   }),
                                 )
+
+                                 */
                               ]),
-                            )
+                            ),
                           ],
                         ),
                       ),
