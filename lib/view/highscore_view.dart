@@ -429,7 +429,8 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                         ? ch!
                                         : ListView.builder(
                                       shrinkWrap: true,
-                                      itemCount: highscore.item.length,
+                                      //itemCount: highscore.item.length,
+                                      itemCount: 15,
                                       itemBuilder: (context, index) =>
                                       highscore.item[index].diff == 'Normal' ?
                                                Padding(
@@ -439,53 +440,56 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                           children: [
+                                              Text(
+                                                rank2 < 3
+                                                    ? emoji[rank2++]
+                                                    : " ${++rank2}",
+                                                style: const TextStyle(
+                                                    shadows: <Shadow>[
+                                                      Shadow(
+                                                        offset: Offset(
+                                                            0.0, 0.0),
+                                                        blurRadius: 2.0,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ],
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 20,
+                                                    color: Colors.black),
+                                              ),
                                             Text(
-                                              rank2 < 3
-                                                  ? emoji[rank2++]
-                                                  : " ${++rank2}",
-                                              style: const TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
+                                                highscore.item[index].date,
+                                                // .toString()
+                                                // .substring(0, 10),
+                                                style: const TextStyle(
+                                                    shadows: <Shadow>[
+                                                      Shadow(
+                                                        offset: Offset(
+                                                            0.0, 0.0),
+                                                        blurRadius: 2.0,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ],
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 20,
+                                                    color: Colors.black),
+                                              ),
                                             Text(
-                                              highscore.item[index].date,
-                                              // .toString()
-                                              // .substring(0, 10),
-                                              style: const TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
-                                            Text(
-                                              highscore.item[index].score
-                                                  .toString(),
-                                              style: const TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            )
+                                                highscore.item[index].score
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                    shadows: <Shadow>[
+                                                      Shadow(
+                                                        offset: Offset(
+                                                            0.0, 0.0),
+                                                        blurRadius: 2.0,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ],
+                                                    fontFamily: "Qaz",
+                                                    fontSize: 20,
+                                                    color: Colors.black),
+                                              )
                                           ],
                                         ),
                                       ): const SizedBox.shrink(),

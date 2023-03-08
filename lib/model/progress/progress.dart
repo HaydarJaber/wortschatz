@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wortschatz/model/highscore/db_helper.dart';
 
 import '../../viewmodels/settings/settings.dart';
+import 'db_helperprogress.dart';
 
 class Progress {
   String schwierigkeit;
@@ -23,7 +24,7 @@ class ProgressItems with ChangeNotifier {
   }
 
   Future<List<Progress>> fetchData() async {
-    final db = await DBHelper.database();
+    final db = await DBHelperProgress.database();
     List<Map<String, dynamic>> table = await db.query('Progress');
     _items = [];
     for (var item in table) {

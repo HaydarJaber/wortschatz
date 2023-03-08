@@ -43,7 +43,7 @@ class AppRouter {
       case Routes.rank:
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
       case Routes.progress:
-        return CustomPageRoute(child: const Progress(), settings: settings);
+        return CustomPageRoute(child: const ProgressScreen(), settings: settings);
       case Routes.manual:
         return CustomPageRoute(child: const Manual(), settings: settings);
       case Routes.imprint:
