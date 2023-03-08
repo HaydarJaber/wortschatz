@@ -25,6 +25,37 @@ class ProgressCategory extends StatefulWidget {
   _ProgressCategoryState createState() => _ProgressCategoryState();
 }
 
+Map<String, List<dynamic>> itemsMAP = {
+  //"Alle Kategorien":[Category.All,0xf144,0],
+  "Autoteile":[Category.Autoteile,0xf1b9,0],
+  "Badezimmer":[Category.Badezimmer,0xf2cd,0],
+  "Bauernhof":[Category.Bauernhof,0xe2cd,0],
+  "Berufe":[Category.Berufe,0xf85e,0],
+  "Deutsche Städte":[Category.DeutscheStaedte,0xf64f,0],
+  "Fahrzeuge":[Category.Fahrzeuge,0xf21c,0],
+  "Garten":[Category.Garten,0xf1bb,0],
+  "Gemüse":[Category.Gemuese,0xf787,0],
+  "Getränke":[Category.Getraenke,0xf000,0],
+  "Hauptstädte":[Category.Hauptstaedte,0xf64f,0],
+  "Hausbau":[Category.Hausbau,0xf015,0],
+  "Hobbys":[Category.Hobbys,0xf554,0],
+  "Kleidung":[Category.Kleidung,0xf553,0],
+  "Körperteile":[Category.Koerperteile,0xf06e,0],
+  "Küche":[Category.Kueche,0xe51a,0],
+  "Länder":[Category.Laender,0xf024,0],
+  "Möbel":[Category.Moebel,0xf4b8,0],
+  "Musikinstrumente":[Category.Musikinstrumente,0xf001,0],
+  "Obst":[Category.Obst,0xf5d1,0],
+  "Pflanzen":[Category.Pflanzen,0xe5aa,0],
+  "Resteraunt":[Category.Resteraunt,0xf2e7,0],
+  "Sportarten":[Category.Sportarten,0xf1e3,0],
+  "Strassenverkehr":[Category.Strassenverkehr,0xf018,0],
+  "Supermarkt":[Category.Supermarkt,0xf54f,0],
+  "Tiere":[Category.Tiere,0xf6f0,0],
+  "Werkzeuge":[Category.Werkzeuge,0xf7d9,0],
+};
+
+
 class _ProgressCategoryState extends State<ProgressCategory> {
   final controller = PageController();
   final _formKey = GlobalKey<FormState>();
@@ -88,37 +119,21 @@ class _ProgressCategoryState extends State<ProgressCategory> {
                     Expanded(
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: 10-1,
+                        itemCount: itemsMAP.entries.toList().length-1,
                         itemBuilder: (context, index) => Padding(
                           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                             // (ProgresMap.entries.toList()[index].value[0].toString() == "1")
-                                 // ?
                               Container(
-                                  color: Colors.green[600],
+                                  color: Colors.black,
                                   child: Card(
+                                      color: Colors.white70,
                                       child: ListTile(
-                                        onTap: () {
-                                          Navigator.pushNamed(context, Routes.home);
+                                        onTap: () {Navigator.pushNamed(context, Routes.progressEINZEL, arguments: itemsMAP.entries.toList()[index].value[0] );
                                         },
                                         title: Text(
-                                          "Kategoriename",
-                                          style: const TextStyle(
-                                              shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 2.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],
-                                              fontFamily: "Qaz",
-                                              fontSize: 35,
-                                              color: Colors.green),
-                                        ),
-                                        subtitle: Text(
-                                          "Hilfen: ",
+                                          itemsMAP.entries.toList()[index].key,
                                           style: const TextStyle(
                                               shadows: <Shadow>[
                                                 Shadow(
@@ -131,159 +146,45 @@ class _ProgressCategoryState extends State<ProgressCategory> {
                                               fontSize: 30,
                                               color: Colors.black),
                                         ),
-                                        leading: CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                'assets/images/Wörter/".jpg'),
-                                            radius: 40),
-                                        // trailing: Icon(Icons.star)
-                                      )))
-                              /*
-                                  : (ProgresMap.entries.toList()[index].value[0].toString() == "0") ?
-                              Container(
-                                  color: Colors.red[600],
-                                  child: Card(
-                                      child: ListTile(
-                                        title: Text(
-                                          "s",
-                                          style: const TextStyle(
-                                              shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 2.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],
-                                              fontFamily: "Qaz",
-                                              fontSize: 40,
-                                              color: Colors.red),
+                                        leading: Icon(
+                                            shadows: const <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 5.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],
+                                            size: MediaQuery
+                                                .of(context)
+                                                .size
+                                                .height * 0.03,
+                                            color: Colors.white,
+                                            IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                                         ),
-                                        subtitle: Text(
-                                          "Hilfen: ",
-                                          style: const TextStyle(
-                                              shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 2.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],
-                                              fontFamily: "Qaz",
-                                              fontSize: 30,
-                                              color: Colors.black),
-                                        ),
-                                        leading: CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
-                                            radius: 40),
-                                        // trailing: Icon(Icons.star)
+                                         trailing: Icon(
+                                             shadows: const <Shadow>[
+                                               Shadow(
+                                                 offset: Offset(0.0, 0.0),
+                                                 blurRadius: 5.0,
+                                                 color: Colors.black,
+                                               ),
+                                             ],
+                                             size: MediaQuery
+                                                 .of(context)
+                                                 .size
+                                                 .height * 0.03,
+                                             //nicht vollständig
+                                             /* color: Colors.grey,
+                                             IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter') */
+                                             //vollständig
+                                             color: Colors.yellow,
+                                             IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                                         ),
                                       )))
-                                  : Card(
-                                  child: ListTile(
-                                    title: Text(
-                                      ProgresMap.entries.toList()[index].key,
-                                      style: const TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 40,
-                                          color: Colors.grey),
-                                    ),
-                                    subtitle: const Text(
-                                      "WORT NICHT BEHANDELT",
-                                      style: TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 20,
-                                          color: Colors.grey),
-                                    ),
-                                    leading: CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
-                                        radius: 40),
-                                    // trailing: Icon(Icons.star)
-                                  )) */
                             ],
                           ),
                         ),
                       ),
-                    ),
-                    Container(height: MediaQuery.of(context).size.height * 0.01),
-                    Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceAround,
-                      children: [
-                        Material(
-                          color: Colors.transparent,
-                          child: Ink(
-                              width: 50,
-                              height: 50,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.white,
-                                  shape: CircleBorder(
-                                      side: BorderSide(
-                                          width: 3,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: IconButton(
-                                  icon: const Icon(
-                                    Icons.autorenew,
-                                    size: 30,
-                                    color: Colors.black,
-                                  ),
-                                  onPressed: () {
-                                    //  DBHelper.insert('SCORE', {
-                                    //    'date': context.read<SettingsController>().playerName.value,
-                                    //   'score': score
-                                    //  });
-                                    //getCategoryFromNumber();
-                                    //print("Kategorie"+category);
-                                    Navigator.pushNamed(context, Routes.home);
-                                  })
-                          ),
-                        ),
-                        Material(
-                          color: Colors.transparent,
-                          child: Ink(
-                              width: 50,
-                              height: 50,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.white,
-                                  shape: CircleBorder(
-                                      side: BorderSide(
-                                          width: 3,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: IconButton(
-                                  icon: const Icon(
-                                    Icons.home,
-                                    size: 30,
-                                    color: Colors.black,
-                                  ),
-                                  onPressed: () {
-                                    //   DBHelper.insert('SCORE', {
-                                    //    'date': context.read<SettingsController>().playerName.value,
-                                    //    'score': score
-                                    //  });
-                                    //   progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
-                                    //   checkForHelp();                                    //check wie viele Hilfen benötigt
-                                    Navigator.pushNamed(context, Routes.home);
-                                  })
-                          ),
-                        ),
-                      ],
                     ),
                   ]);
                 } else {

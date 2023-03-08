@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/model/styles/palette.dart';
 import 'package:wortschatz/view/settings_view.dart';
-import 'package:wortschatz/viewmodels/widgets/CategoryButton.dart';
 import 'package:wortschatz/viewmodels/widgets/menuButton.dart';
 import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/model/constants/categories.dart';
@@ -11,145 +10,37 @@ import 'package:wortschatz/model/styles/palette.dart';
 import '../viewmodels/settings/settings.dart';
 
 
+Map<String, List<dynamic>> itemsMAP = {
+  //"Alle Kategorien":[Category.All,0xf144,0],
+  "Autoteile":[Category.Autoteile,0xf1b9,0],
+  "Badezimmer":[Category.Badezimmer,0xf2cd,0],
+  "Bauernhof":[Category.Bauernhof,0xe2cd,0],
+  "Berufe":[Category.Berufe,0xf85e,0],
+  "Deutsche Städte":[Category.DeutscheStaedte,0xf64f,0],
+  "Fahrzeuge":[Category.Fahrzeuge,0xf21c,0],
+  "Garten":[Category.Garten,0xf1bb,0],
+  "Gemüse":[Category.Gemuese,0xf787,0],
+  "Getränke":[Category.Getraenke,0xf000,0],
+  "Hauptstädte":[Category.Hauptstaedte,0xf64f,0],
+  "Hausbau":[Category.Hausbau,0xf015,0],
+  "Hobbys":[Category.Hobbys,0xf554,0],
+  "Kleidung":[Category.Kleidung,0xf553,0],
+  "Körperteile":[Category.Koerperteile,0xf06e,0],
+  "Küche":[Category.Kueche,0xe51a,0],
+  "Länder":[Category.Laender,0xf024,0],
+  "Möbel":[Category.Moebel,0xf4b8,0],
+  "Musikinstrumente":[Category.Musikinstrumente,0xf001,0],
+  "Obst":[Category.Obst,0xf5d1,0],
+  "Pflanzen":[Category.Pflanzen,0xe5aa,0],
+  "Resteraunt":[Category.Resteraunt,0xf2e7,0],
+  "Sportarten":[Category.Sportarten,0xf1e3,0],
+  "Strassenverkehr":[Category.Strassenverkehr,0xf018,0],
+  "Supermarkt":[Category.Supermarkt,0xf54f,0],
+  "Tiere":[Category.Tiere,0xf6f0,0],
+  "Werkzeuge":[Category.Werkzeuge,0xf7d9,0],
+};
 
-List<Widget> items = [
-  const CategoryButton(
-      label: Category.All,
-      route: Routes.newGame,
-      iconCodePoint: 0xf144,
-      color: Colors.lightBlueAccent
-  ),
-  const CategoryButton(
-      label: Category.Autoteile,
-      route: Routes.newGame,
-      iconCodePoint: 0xf1b9,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Badezimmer,
-      route: Routes.newGame,
-      iconCodePoint: 0xf2cd,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Bauernhof,
-      route: Routes.newGame,
-      iconCodePoint: 0xe2cd,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Berufe,
-      route: Routes.newGame,
-      iconCodePoint: 0xf85e,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.DeutscheStaedte,
-      route: Routes.newGame,
-      iconCodePoint: 0xf64f,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Fahrzeuge,
-      route: Routes.newGame,
-      iconCodePoint: 0xf21c,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Garten,
-      route: Routes.newGame,
-      iconCodePoint: 0xf1bb,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Gemuese,
-      route: Routes.newGame,
-      iconCodePoint: 0xf787,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Getraenke,
-      route: Routes.newGame,
-      iconCodePoint: 0xf000,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Hauptstaedte,
-      route: Routes.newGame,
-      iconCodePoint: 0xf64f,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Hausbau,
-      route: Routes.newGame,
-      iconCodePoint: 0xf015,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Hobbys,
-      route: Routes.newGame,
-      iconCodePoint: 0xf554,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Kleidung,
-      route: Routes.newGame,
-      iconCodePoint: 0xf553,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Koerperteile,
-      route: Routes.newGame,
-      iconCodePoint: 0xf06e,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Kueche,
-      route: Routes.newGame,
-      iconCodePoint: 0xe51a,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Laender,
-      route: Routes.newGame,
-      iconCodePoint: 0xf024,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Moebel,
-      route: Routes.newGame,
-      iconCodePoint: 0xf4b8,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Musikinstrumente,
-      route: Routes.newGame,
-      iconCodePoint: 0xf001,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Obst,
-      route: Routes.newGame,
-      iconCodePoint: 0xf5d1,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Pflanzen,
-      route: Routes.newGame,
-      iconCodePoint: 0xe5aa,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Resteraunt,
-      route: Routes.newGame,
-      iconCodePoint: 0xf2e7,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Sportarten,
-      route: Routes.newGame,
-      iconCodePoint: 0xf1e3,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Strassenverkehr,
-      route: Routes.newGame,
-      iconCodePoint: 0xf018,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Supermarkt,
-      route: Routes.newGame,
-      iconCodePoint: 0xf54f,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Tiere,
-      route: Routes.newGame,
-      iconCodePoint: 0xf6f0,
-      color: Colors.lightBlueAccent),
-  const CategoryButton(
-      label: Category.Werkzeuge,
-      route: Routes.newGame,
-      iconCodePoint: 0xf7d9,
-      color: Colors.lightBlueAccent),
-];
+
 
 class Categories extends StatelessWidget {
   const Categories({Key? key}) : super(key: key);
@@ -207,7 +98,7 @@ class Categories extends StatelessWidget {
                     ],
                   ),
                   //const Text('Kategorien', style: TextStyle(fontSize: 60,fontFamily: "Modak")
-                  Expanded(
+                  /*Expanded(
                   child:
                       ListView.builder(
                           itemCount: items.length,
@@ -215,7 +106,61 @@ class Categories extends StatelessWidget {
                             return items[index];
                         },
 
-                  ))
+                  ))*/
+                  Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: itemsMAP.entries.toList().length-1,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                color: Colors.black,
+                                child: Card(
+                                  color: Colors.lightBlueAccent,
+                                    child: ListTile(
+                                      onTap: () {Navigator.pushNamed(context, Routes.newGame, arguments: itemsMAP.entries.toList()[index].value[0] );
+                                        },
+                                      title: Text(
+                                        itemsMAP.entries.toList()[index].key,
+                                        style: const TextStyle(
+                                            shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 2.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],
+                                            fontFamily: "Qaz",
+                                            fontSize: 30,
+                                            color: Colors.black),
+                                      ),
+                                      leading: Icon(
+                                          shadows: const <Shadow>[
+                                            Shadow(
+                                              offset: Offset(0.0, 0.0),
+                                              blurRadius: 5.0,
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                          size: MediaQuery
+                                              .of(context)
+                                              .size
+                                              .height * 0.03,
+                                          color: Colors.white,
+                                          IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                                      ),
+                                      // trailing: Icon(Icons.star)
+                                    )))
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+
                 ],
               );
             } else {

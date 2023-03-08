@@ -13,6 +13,7 @@ import '../../main.dart';
 import '../../view/Infopage_view.dart';
 import '../../view/highscore_view.dart';
 import '../../view/imprint_view.dart';
+import '../../view/progressEinzel_view.dart';
 import '../../view/progress_view.dart';
 
 class AppRouter {
@@ -27,6 +28,10 @@ class AppRouter {
       case Routes.newGame:
         return CustomPageRoute(
             child: StartScreen(category: settings.arguments.toString()),
+            settings: settings);
+      case Routes.progressEINZEL:
+        return CustomPageRoute(
+            child: ProgressEinzel(label: settings.arguments.toString()),
             settings: settings);
     //  case Routes.game:
      //   return PageRouteBuilder(
