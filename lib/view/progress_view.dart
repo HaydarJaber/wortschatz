@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/model/progress/progress.dart';
 
+import '../model/constants/routes.dart';
 import '../viewmodels/settings/settings.dart';
 
 final List<String> frequenz = ['Alle Wörter','Hochfrequente Wörter', 'Niedrigfrequente Wörter'];
@@ -849,7 +850,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                       shadowColor: MaterialStateProperty.all(Colors.transparent),
                                       side: MaterialStateProperty.all(const BorderSide(width: 2))),
                                   onPressed: () =>
-                                      Navigator.of(context).pop(),
+                                      Navigator.pushNamed(context, Routes.progressCATEGORY),
                                   icon: Icon(
                                       shadows: const <Shadow>[
                                         Shadow(

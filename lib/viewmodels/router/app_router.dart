@@ -3,6 +3,7 @@ import 'package:wortschatz/View/home_view.dart';
 import 'package:wortschatz/model/constants/routes.dart';
 import 'package:wortschatz/view/categories_view.dart';
 import 'package:wortschatz/view/manual_view.dart';
+import 'package:wortschatz/view/progressCategory_view.dart';
 import 'package:wortschatz/view/start_view.dart';
 import 'package:wortschatz/viewmodels/router/custom_page_route.dart';
 import 'package:wortschatz/view/settings_view.dart';
@@ -40,6 +41,8 @@ class AppRouter {
       //  return MaterialPageRoute(
          // builder: (_) => const Terms(),
       //  );
+      case Routes.progressCATEGORY:
+        return CustomPageRoute(child: const ProgressCategory(), settings: settings);
       case Routes.rank:
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
       case Routes.progress:
