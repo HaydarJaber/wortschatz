@@ -1,6 +1,10 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:wortschatz/model/progress/db_helperprogress.dart';
+import 'package:wortschatz/model/progress/progress.dart';
 import 'package:wortschatz/model/words/hf_words.dart';
 import 'package:wortschatz/model/settings/local_storage_settings_persistence.dart';
 import 'package:wortschatz/model/settings/settings_persistence.dart';
@@ -12,6 +16,8 @@ import 'package:wortschatz/view/settings_view.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import '../model/constants/categories.dart';
 import '../model/highscore/dummy_data.dart';
+import '../model/progress/progressWord.dart';
+import '../model/progress/progressWord_boxes.dart';
 import '../model/words/all_words.dart';
 import '../model/words/nf_words.dart';
 import '../viewmodels/settings/settings.dart';
@@ -34,6 +40,12 @@ class _StartScreenState extends State<StartScreen> {
   var entryList = [];
   int lives = 3;
   int score = 0;
+  // für DB-Progress
+  int h1 = 0;
+  int h2 = 0;
+  int h3 = 0;
+  int h4 = 0;
+  // ENDE
   var index = 0;
   List help = [];
   bool _isButtonAufgeklappt1 = false;
@@ -55,9 +67,13 @@ class _StartScreenState extends State<StartScreen> {
       index = 0;
       getCategory();
       sword = List.generate(randomWord.length, (index) => "_");
-      checkForHelp();
+      //checkForHelp();
       stored = randomWord;
       progressSafer[randomWord] = [0,0];          //erster eintrag richtig/falsch, zweiter wie viele Hilfen benötigt
+      h1 = 0;
+      h2 = 0;
+      h3 = 0;
+      h4 = 0;
       _isButtonAufgeklappt1 = false;
       _isButtonAufgeklappt2 = false;
       _isButtonAufgeklappt3 = false;
@@ -87,10 +103,48 @@ class _StartScreenState extends State<StartScreen> {
     print(progressSafer);
   }
 
+  void changeHelpNumberforProgress(){
+    if (_isButtonAufgeklappt4 == true){
+      h1 = 1;
+      h2 = 1;
+      h3 = 1;
+      h4 = 1;
+    }
+    if (_isButtonAufgeklappt3 == true){
+      h1 = 1;
+      h2 = 1;
+      h3 = 1;
+    }
+    if (_isButtonAufgeklappt2 == true){
+      h1 = 1;
+      h2 = 1;
+    }
+    if (_isButtonAufgeklappt1 == true){
+      h1 = 1;
+    }
+  }
+
+  bool addWord(String diff, String freq, String category, String word, String rOderF, int h1,int h2,int h3, int h4){
+    final WordForProgress = Word()
+      ..diff = diff
+      ..freq = freq
+      ..category = category
+      ..word = word
+      ..rOderF = rOderF
+      ..H1 = h1
+      ..H2 = h2
+      ..H3 = h3
+      ..H4 = h4;
+
+    final box = Boxes.getWords();
+    box.add(WordForProgress);
+    return true;
+  }
+
+
   void getSchwierigkeit(){
     final schwierigkeit = context.read<SettingsController>().schwierigkeit;
     final settings = context.read<SettingsController>().frequency;
-
           if(settings.value == 'Alle Wörter'){
             if(schwierigkeit.value == 'Leicht'){
               lives = 16;
@@ -114,6 +168,7 @@ class _StartScreenState extends State<StartScreen> {
             }
           }
   }
+
 
   void checkForHelp(){
     if(_isButtonAufgeklappt4 == true){
@@ -1488,6 +1543,7 @@ class _StartScreenState extends State<StartScreen> {
                                                       'score': score,
                                                       'diff': context.read<SettingsController>().schwierigkeit.value
                                                     });
+                                                    print(progressSafer.entries.toList()[index].value[0]);
                                                     Navigator.pushNamed(context, Routes.categories);
                                                   })
                                           ),
@@ -1615,7 +1671,41 @@ class _StartScreenState extends State<StartScreen> {
                                                 color: Colors.black,
                                               ),
                                               onPressed: () {
-                                                progressSafer.update(stored, (value) => [1,0]);            //korektes Wort (azahl hilfe ist in newGame())
+                                                progressSafer.update(stored, (value) => [1,0]);
+                                                checkForHelp();
+                                                /*
+                                                print("Schwierigkeit:");
+                                                print(context.read<SettingsController>().schwierigkeit.value);
+                                                print("kategorie:");
+                                                print(widget.category);
+                                                print("wort:");
+                                                print(stored);
+                                                print("roderf:");
+                                                print(progressSafer.entries.toList().last.value[0]);
+                                                print("hilfe:");
+                                                print(progressSafer.entries.toList().last.value[1]);
+                                                */
+
+                                                changeHelpNumberforProgress();
+                                                addWord(
+                                                    context.read<SettingsController>().schwierigkeit.value,
+                                                    context.read<SettingsController>().frequency.value,
+                                                    widget.category,
+                                                    randomWord,
+                                                    "richtig",
+                                                    h1,
+                                                    h2,
+                                                    h3,
+                                                    h4);
+                                                /*
+                                                 DBHelperProgress.insert('Progress2', {
+                                                  'schwierigkeit': context.read<SettingsController>().schwierigkeit.value,
+                                                  'kategorie': widget.category,
+                                                  'wort': randomWord,
+                                                  'roderf': progressSafer.entries.toList().last.value[0],
+                                                  'hilfe': progressSafer.entries.toList().last.value[1]
+                                                });
+                                                */
                                                 newGame();
                                                 Navigator.of(context).pop();
                                               })
@@ -1758,7 +1848,7 @@ class _StartScreenState extends State<StartScreen> {
                                                         'score': score,
                                                         'diff': context.read<SettingsController>().schwierigkeit.value
                                                       });
-                                                    Navigator.pushNamed(context, Routes.categories);
+                                                      Navigator.pushNamed(context, Routes.categories);
                                                   })
                                           ),
                                         ),
@@ -2055,6 +2145,14 @@ class _StartScreenState extends State<StartScreen> {
                                                   color: Colors.black,
                                                 ),
                                                 onPressed: () {
+                                                  checkForHelp();
+                                                 /* DBHelperProgress.insert('Progress', {
+                                                    'schwierigkeit': context.read<SettingsController>().schwierigkeit.value,
+                                                    'kategorie': widget.category,
+                                                    'wort': randomWord,
+                                                    'roderf': progressSafer.entries.toList().last.value[0],
+                                                    'hilfe': progressSafer.entries.toList().last.value[1]
+                                                  }); */
                                                   newGame();
                                                   Navigator.of(context).pop();
                                                 })
@@ -2702,3 +2800,5 @@ class _StartScreenState extends State<StartScreen> {
     );
   }
 }
+
+

@@ -11,9 +11,12 @@ import 'package:wortschatz/view/terms_view.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'model/progress/progress.dart';
+import 'model/progress/progressWord.dart';
 import 'model/settings/local_storage_settings_persistence.dart';
 import 'model/settings/settings_persistence.dart';
 import 'model/styles/palette.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 int? isviewed;
 
@@ -21,7 +24,9 @@ Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   isviewed  = await prefs.getInt("onBoard");
-  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(WordAdapter());
+  await Hive.openBox<Word>('einzelWorter');
   runApp(MyApp(
       settingsPersistence: LocalStorageSettingsPersistence(),
       appRouter: AppRouter()

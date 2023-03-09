@@ -3,9 +3,10 @@
 // angeforderte Hilfe
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/model/progress/progress.dart';
-
+import 'package:wortschatz/view/categories_view.dart';
 import '../model/constants/routes.dart';
 import '../viewmodels/settings/settings.dart';
 
@@ -29,12 +30,12 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
   String dropdownValue = frequenz.first;
   static const _gapW = SizedBox(width: 20);
   static const _gapH = SizedBox(height: 10);
-
+  late int Rcount,Fcount;
+  var currentDiff = "";
 
   @override
   void initState() {
-    initFuture =
-        Provider.of<ProgressItems>(context, listen: false).fetchData();
+    initFuture = Provider.of<ProgressItems>(context, listen: false).fetchData();
     rank1 = 0;
     rank2 = 0;
     rank3 = 0;
@@ -49,11 +50,38 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
   }
 
 
+  //HIVE
+  @override
+  void disposeBOX(){
+    Hive.close(); //löscht alle boxen
+    Hive.box('einzelWorter').close(); //löscht nur eine spezielle Box
+
+    super.dispose();
+  }
+
+  //HIVE ENDE
+
+
+
+
+
+
+
+
+
+
+
   @override
   void tabChanged() {
-    rank1 = 0;
-    rank2 = 0;
-    rank3 = 0;
+    if(_tabController.index == 0) {
+    currentDiff = "Leicht";
+    }
+    if(_tabController.index == 1) {
+      currentDiff = "Normal";
+    }
+    if(_tabController.index == 2) {
+     currentDiff = "Schwer";
+    }
   }
 
   @override
@@ -270,619 +298,667 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                       ),
                                   ),
                                 ),
-                                _gapH,
-                                Material(
-                                  color: Colors.transparent,
-                                  child: Ink(
-                                    width: MediaQuery.of(context).size.width * 0.8,
-                                    height: MediaQuery.of(context).size.height * 0.18,
-                                    decoration: const ShapeDecoration(
-                                        color: Colors.lightBlueAccent,
-                                        shape: RoundedRectangleBorder(
-                                            side: BorderSide(
-                                                width: 2,
-                                                color: Colors.black)
-                                        )
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children:const [
-                                              Text(
-                                                'Spiele',
-                                                style: TextStyle(shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 1.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                                              ),
-                                            ],
+                                FutureBuilder(
+                                  future: initFuture,
+                                  builder: ((context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    } else {
+                                      return Consumer<ProgressItems>(
+                                        child: const SizedBox(
+                                          height: 50,
+                                          child: Center(
+                                            // child: CircularProgressIndicator(),
+                                            child: Text(
+                                              'Keine Spieler gefunden!',
+                                              style: TextStyle(
+                                                  shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 2.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],
+                                                  fontFamily: "Qaz",
+                                                  fontSize: 30,
+                                                  color: Colors.black),
+                                            ),
                                           ),
-                                          _gapH,
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children:[
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.35,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.green,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'Gewonnen',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.35,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.deepOrange,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'Verloren',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0,0.0),
-                                                                  blurRadius: 2.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                _gapH,
-                                Material(
-                                  color: Colors.transparent,
-                                  child: Ink(
-                                    width: MediaQuery.of(context).size.width * 0.8,
-                                    height: MediaQuery.of(context).size.height * 0.18,
-                                    decoration: const ShapeDecoration(
-                                        color: Colors.lightBlueAccent,
-                                        shape: RoundedRectangleBorder(
-                                            side: BorderSide(
-                                                width: 2,
-                                                color: Colors.black)
-                                        )
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children:const [
-                                              Text(
-                                                'Wörter',
-                                                style: TextStyle(shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 1.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                                              ),
-                                            ],
-                                          ),
-                                          _gapH,
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children:[
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.35,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.green,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'Richtig',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.35,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.deepOrange,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'Falsch',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0,0.0),
-                                                                  blurRadius: 2.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              _gapH,
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                _gapH,
-                                Material(
-                                  color: Colors.transparent,
-                                  child: Ink(
-                                    width: MediaQuery.of(context).size.width * 0.8,
-                                    height: MediaQuery.of(context).size.height * 0.18,
-                                    decoration: const ShapeDecoration(
-                                        color: Colors.lightBlueAccent,
-                                        shape: RoundedRectangleBorder(
-                                            side: BorderSide(
-                                                width: 2,
-                                                color: Colors.black)
-                                        )
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children:const [
-                                              Text(
-                                                'genutzte Hilfen',
-                                                style: TextStyle(shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 1.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                                              ),
-                                            ],
-                                          ),
-                                          _gapH,
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children:[
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.175,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.yellow,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'H1',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.175,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.yellow,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'H2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.175,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.yellow,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'H3',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '2',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Material(
-                                                color: Colors.transparent,
-                                                child: Ink(
-                                                  width: MediaQuery.of(context).size.width * 0.175,
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  decoration: const ShapeDecoration(
-                                                      color: Colors.yellow,
-                                                      shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                              width: 2,
-                                                              color: Colors.black)
-                                                      )
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              'H4',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        _gapH,
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:const [
-                                                            Text(
-                                                              '200',
-                                                              style: TextStyle(shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 1.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                _gapH,
-                                Directionality(textDirection: TextDirection.rtl, child: ElevatedButton.icon(
-                                  style: ButtonStyle(
-                                      minimumSize: MaterialStateProperty.all(const Size(1,1)),
-                                      alignment: Alignment.center,
-                                      backgroundColor: MaterialStateProperty.resolveWith((state) {
-                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
-                                        return Colors.white;
-                                      }),
-                                      shadowColor: MaterialStateProperty.all(Colors.transparent),
-                                      side: MaterialStateProperty.all(const BorderSide(width: 2))),
-                                  onPressed: () =>
-                                      Navigator.pushNamed(context, Routes.progressCATEGORY),
-                                  icon: Icon(
-                                      shadows: const <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
                                         ),
-                                      ],
-                                      size: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .height * 0.07,
-                                      color: Colors.black,
-                                      const IconData(0xe09c, fontFamily: 'MaterialIcons')),
-                                  label: Text("Kategorie Fortschritt",
-                                    style: TextStyle(
-                                      shadows: const <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
+                                        builder: (context, progress2, ch) =>
+                                        progress2.item.isEmpty ? ch! :
+                                        ListView.builder(
+                                          shrinkWrap: true,
+                                          itemCount: 1,
+                                          itemBuilder: (context, index) =>
+                                          progress2.item[index].schwierigkeit == 'Leicht' ?
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                0, 10, 0, 0),
+                                            child: Column(
+                                              children: [
+                                                Material(
+                                                  color: Colors.transparent,
+                                                  child: Ink(
+                                                    width: MediaQuery.of(context).size.width * 0.8,
+                                                    height: MediaQuery.of(context).size.height * 0.18,
+                                                    decoration: const ShapeDecoration(
+                                                        color: Colors.lightBlueAccent,
+                                                        shape: RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                                width: 2,
+                                                                color: Colors.black)
+                                                        )
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children:const [
+                                                              Text(
+                                                                'Spiele',
+                                                                style: TextStyle(shadows: <Shadow>[
+                                                                  Shadow(
+                                                                    offset: Offset(0.0, 0.0),
+                                                                    blurRadius: 1.0,
+                                                                    color: Colors.black,
+                                                                  ),
+                                                                ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          _gapH,
+                                                          Row(
+                                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                            children:[
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.35,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.green,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'Gewonnen',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children: const [
+                                                                            Text("2",
+                                                                              style: const TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.35,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.deepOrange,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'Verloren',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0,0.0),
+                                                                                  blurRadius: 2.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              '2',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                _gapH,
+                                                Material(
+                                                  color: Colors.transparent,
+                                                  child: Ink(
+                                                    width: MediaQuery.of(context).size.width * 0.8,
+                                                    height: MediaQuery.of(context).size.height * 0.18,
+                                                    decoration: const ShapeDecoration(
+                                                        color: Colors.lightBlueAccent,
+                                                        shape: RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                                width: 2,
+                                                                color: Colors.black)
+                                                        )
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children:const [
+                                                              Text(
+                                                                'Wörter',
+                                                                style: TextStyle(shadows: <Shadow>[
+                                                                  Shadow(
+                                                                    offset: Offset(0.0, 0.0),
+                                                                    blurRadius: 1.0,
+                                                                    color: Colors.black,
+                                                                  ),
+                                                                ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          _gapH,
+                                                          Row(
+                                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                            children:[
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.35,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.green,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'Richtig',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              '2',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.35,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.deepOrange,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'Falsch',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0,0.0),
+                                                                                  blurRadius: 2.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              '2',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              _gapH,
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                _gapH,
+                                                Material(
+                                                  color: Colors.transparent,
+                                                  child: Ink(
+                                                    width: MediaQuery.of(context).size.width * 0.8,
+                                                    height: MediaQuery.of(context).size.height * 0.18,
+                                                    decoration: const ShapeDecoration(
+                                                        color: Colors.lightBlueAccent,
+                                                        shape: RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                                width: 2,
+                                                                color: Colors.black)
+                                                        )
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children:const [
+                                                              Text(
+                                                                'genutzte Hilfen',
+                                                                style: TextStyle(shadows: <Shadow>[
+                                                                  Shadow(
+                                                                    offset: Offset(0.0, 0.0),
+                                                                    blurRadius: 1.0,
+                                                                    color: Colors.black,
+                                                                  ),
+                                                                ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          _gapH,
+                                                          Row(
+                                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                            children:[
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.175,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.yellow,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'H1',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              '2',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.175,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.yellow,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'H2',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              '2',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.175,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.yellow,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'H3',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              '2',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                  width: MediaQuery.of(context).size.width * 0.175,
+                                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                                  decoration: const ShapeDecoration(
+                                                                      color: Colors.yellow,
+                                                                      shape: RoundedRectangleBorder(
+                                                                          side: BorderSide(
+                                                                              width: 2,
+                                                                              color: Colors.black)
+                                                                      )
+                                                                  ),
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                                                                    child: Column(
+                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              'H4',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        _gapH,
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children:const [
+                                                                            Text(
+                                                                              '200',
+                                                                              style: TextStyle(shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 1.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                _gapH,
+                                                Directionality(textDirection: TextDirection.rtl, child: ElevatedButton.icon(
+                                                  style: ButtonStyle(
+                                                      minimumSize: MaterialStateProperty.all(const Size(1,1)),
+                                                      alignment: Alignment.center,
+                                                      backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                        return Colors.white;
+                                                      }),
+                                                      shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                      side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(context, Routes.progressCATEGORY, arguments: {currentDiff,dropdownValue}),
+                                                  icon: Icon(
+                                                      shadows: const <Shadow>[
+                                                        Shadow(
+                                                          offset: Offset(0.0, 0.0),
+                                                          blurRadius: 2.0,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ],
+                                                      size: MediaQuery
+                                                          .of(context)
+                                                          .size
+                                                          .height * 0.07,
+                                                      color: Colors.black,
+                                                      const IconData(0xe09c, fontFamily: 'MaterialIcons')),
+                                                  label: Text("Kategorie Fortschritt",
+                                                    style: TextStyle(
+                                                      shadows: const <Shadow>[
+                                                        Shadow(
+                                                          offset: Offset(0.0, 0.0),
+                                                          blurRadius: 2.0,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ],
+                                                      color: Colors.black,
+                                                      fontSize: MediaQuery
+                                                          .of(context)
+                                                          .size
+                                                          .height * 0.03,
+                                                      fontFamily: "Qaz",
+                                                    ),
+                                                  ),
+                                                ))
+                                              ],
+                                            )
+                                          ) : const SizedBox.shrink(),
                                         ),
-                                      ],
-                                      color: Colors.black,
-                                      fontSize: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .height * 0.03,
-                                      fontFamily: "Qaz",
-                                    ),
-                                  ),
-                                ))
+                                      );
+                                    }
+                                  }),
+                                ),
                               ]),
                             ),
                             // second tab bar view widget
@@ -951,7 +1027,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                 ),
                               ]),
                             ),
-
                             Padding(
                               padding: const EdgeInsets.all(20),
                               child: Column(children: [
@@ -1015,108 +1090,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                       )
                                   ),
                                 ),
-                                /*
-                                FutureBuilder(
-                                  future: initFuture,
-                                  builder: ((context, snapshot) {
-                                    if (snapshot.connectionState ==
-                                        ConnectionState.waiting) {
-                                      return const Center(
-                                        child: CircularProgressIndicator(),
-                                      );
-                                    } else {
-                                      return Consumer<HighScoreItems>(
-                                        child: const SizedBox(
-                                          height: 50,
-                                          child: Center(
-                                            // child: CircularProgressIndicator(),
-                                            child: Text(
-                                              'Keine Spieler gefunden!',
-                                              style: TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 30,
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                        ),
-                                        builder: (context, highscore, ch) =>
-                                        highscore.item.isEmpty ? ch!
-                                            : ListView.builder(
-                                          shrinkWrap: true,
-                                          itemCount: highscore.item.length,
-                                          itemBuilder: (context, index) =>
-                                          highscore.item[index].diff == 'Leicht' ?
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 10, 0, 0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  rank1 < 3
-                                                      ? emoji[rank1++]
-                                                      : " ${++rank1}",
-                                                  style: const TextStyle(
-                                                      shadows: <Shadow>[
-                                                        Shadow(
-                                                          offset: Offset(0.0, 0.0),
-                                                          blurRadius: 2.0,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ],
-                                                      fontFamily: "Qaz",
-                                                      fontSize: 20,
-                                                      color: Colors.black),
-                                                ),
-                                                Text(
-                                                  highscore.item[index].date,
-                                                  // .toString()
-                                                  // .substring(0, 10),
-                                                  style: const TextStyle(
-                                                      shadows: <Shadow>[
-                                                        Shadow(
-                                                          offset: Offset(0.0, 0.0),
-                                                          blurRadius: 2.0,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ],
-                                                      fontFamily: "Qaz",
-                                                      fontSize: 20,
-                                                      color: Colors.black),
-                                                ),
-                                                Text(
-                                                  highscore.item[index].score
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                      shadows: <Shadow>[
-                                                        Shadow(
-                                                          offset: Offset(0.0, 0.0),
-                                                          blurRadius: 2.0,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ],
-                                                      fontFamily: "Qaz",
-                                                      fontSize: 20,
-                                                      color: Colors.black),
-                                                )
-                                              ],
-                                            ),
-                                          ): const SizedBox.shrink(),
-                                        ),
-                                      );
-                                    }
-                                  }),
-                                )
-
-                                 */
                               ]),
                             ),
                           ],
@@ -1152,4 +1125,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
           ),
         ));
   }
+
+
 }

@@ -47,7 +47,7 @@ class AppRouter {
          // builder: (_) => const Terms(),
       //  );
       case Routes.progressCATEGORY:
-        return CustomPageRoute(child: const ProgressCategory(), settings: settings);
+        return CustomPageRoute(child: ProgressCategory(getProgress: settings.arguments as Map), settings: settings);
       case Routes.rank:
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
       case Routes.progress:

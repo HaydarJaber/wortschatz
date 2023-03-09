@@ -17,9 +17,9 @@ import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
 
 class ProgressCategory extends StatefulWidget {
-  //final Map getProgress;
+  final Map getProgress;
 
-  const ProgressCategory({Key? key}) : super(key: key);
+  const ProgressCategory({Key? key, required this.getProgress}) : super(key: key);
 
   @override
   _ProgressCategoryState createState() => _ProgressCategoryState();
@@ -57,6 +57,7 @@ Map<String, List<dynamic>> itemsMAP = {
 
 
 class _ProgressCategoryState extends State<ProgressCategory> {
+
   final controller = PageController();
   final _formKey = GlobalKey<FormState>();
   bool rememberMe = false;
@@ -67,7 +68,7 @@ class _ProgressCategoryState extends State<ProgressCategory> {
 
   @override
   Widget build(BuildContext context) {
-
+    Map DiffFrequencyMAP = ModalRoute.of(context)?.settings.arguments as Map;
     final settings = context.watch<SettingsController>();
     final palette = context.watch<Palette>();
     late MediaQueryData queryData;
@@ -130,6 +131,7 @@ class _ProgressCategoryState extends State<ProgressCategory> {
                                   child: Card(
                                       color: Colors.white70,
                                       child: ListTile(
+                                        //Hier muss MAP: DiffFrequencyMAP rein als argument d.h argument umschriebn als Map und den value mit in map rein => sodass 3 values drin sind
                                         onTap: () {Navigator.pushNamed(context, Routes.progressEINZEL, arguments: itemsMAP.entries.toList()[index].value[0] );
                                         },
                                         title: Text(
@@ -174,11 +176,11 @@ class _ProgressCategoryState extends State<ProgressCategory> {
                                                  .size
                                                  .height * 0.03,
                                              //nicht vollständig
-                                             /* color: Colors.grey,
-                                             IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter') */
+                                              color: Colors.grey,
+                                             IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                                              //vollständig
-                                             color: Colors.yellow,
-                                             IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                                             //color: Colors.yellow,
+                                             //IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                                          ),
                                       )))
                             ],
