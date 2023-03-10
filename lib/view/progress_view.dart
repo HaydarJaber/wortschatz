@@ -152,6 +152,11 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                       ),
                       // give the tab bar a height [can change hheight to preferred height]
                       Container(height: 10),
+                      /* ALTERSTAND
+
+                      HIER KOMMT der code rein, damit Kateogire Buttons hier angezeigt werden
+                      * */
+
                       Container(
                         height: 45,
                         decoration: BoxDecoration(

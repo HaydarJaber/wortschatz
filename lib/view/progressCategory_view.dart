@@ -131,8 +131,6 @@ class _ProgressCategoryState extends State<ProgressCategory> {
                                   child: Card(
                                       color: Colors.white70,
                                       child: ListTile(
-                                        //Hier muss MAP: DiffFrequencyMAP rein als argument d.h argument umschriebn als Map und den value mit in map rein => sodass 3 values drin sind
-
                                         onTap: () {
                                           List progressData = [DiffFrequencyLIST[0],DiffFrequencyLIST[1],itemsMAP.entries.toList()[index].value[0]];
                                           Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
