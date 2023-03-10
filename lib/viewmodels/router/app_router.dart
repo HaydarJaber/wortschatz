@@ -31,8 +31,7 @@ class AppRouter {
             settings: settings);
       case Routes.progressEINZEL:
         return CustomPageRoute(
-            child: ProgressEinzel(label: settings.arguments.toString()),
-            settings: settings);
+            child: ProgressEinzel(getProgress: settings.arguments as List), settings: settings);
     //  case Routes.game:
      //   return PageRouteBuilder(
       //    pageBuilder: (context, animation1, animation2) =>
@@ -47,7 +46,7 @@ class AppRouter {
          // builder: (_) => const Terms(),
       //  );
       case Routes.progressCATEGORY:
-        return CustomPageRoute(child: ProgressCategory(getProgress: settings.arguments as Map), settings: settings);
+        return CustomPageRoute(child: ProgressCategory(getProgress: settings.arguments as List), settings: settings);
       case Routes.rank:
         return CustomPageRoute(child: const HighScoreScreen(), settings: settings);
       case Routes.progress:

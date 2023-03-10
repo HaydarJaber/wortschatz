@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:wortschatz/model/progress/progress.dart';
 
 import '../model/constants/categories.dart';
 import '../model/constants/routes.dart';
@@ -17,8 +16,8 @@ import '../viewmodels/settings/settings.dart';
 final List<String> frequenz = ['Alle Wörter','Hochfrequente Wörter', 'Niedrigfrequente Wörter'];
 
 class ProgressEinzel extends StatefulWidget {
-  final String label;
-  const ProgressEinzel({Key? key, required this.label}) : super(key: key);
+  final List getProgress;
+  const ProgressEinzel({Key? key,  required this.getProgress}) : super(key: key);
 
   @override
   State<ProgressEinzel> createState() => _ProgressEinzelState();
@@ -28,7 +27,6 @@ class ProgressEinzel extends StatefulWidget {
 class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStateMixin {
   var emoji = ['🥇', '🥈', '🥉'];
   late int rank1,rank2,rank3;
-  late Future<List<Progress>> initFuture;
   late TabController _tabController;
   String dropdownValue = frequenz.first;
   static const _gapW = SizedBox(width: 20);
@@ -38,8 +36,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
 
   @override
   void initState() {
-    initFuture =
-        Provider.of<ProgressItems>(context, listen: false).fetchData();
+    print(widget.getProgress);
     rank1 = 0;
     rank2 = 0;
     rank3 = 0;
@@ -54,7 +51,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
   }
 
   int getIcon() {
-    switch(widget.label)
+    switch(widget.getProgress[2])
     {
       case Category.All:
         iconCode = 0xf144;
@@ -154,11 +151,6 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
     _tabController.dispose();
   }
 
-  Future<List<Progress>> getList() async {
-    List<Progress> initFuture =
-    await Provider.of<ProgressItems>(context, listen: false).fetchData();
-    return initFuture;
-  }
 
 
   TextStyle txt = const TextStyle(
@@ -167,7 +159,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
-
+    List progressData = ModalRoute.of(context)?.settings.arguments as List;
     return SafeArea(
         child: Scaffold(
           backgroundColor: Colors.deepPurple.shade900,
@@ -204,7 +196,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                               )),
                           const SizedBox(width: 60),
                           Text(
-                            (widget.label),
+                            (progressData[2]),
                             style: const TextStyle(
                                 shadows: <Shadow>[
                                   Shadow(
@@ -282,20 +274,60 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
 
   Widget buildContent(List<Word> words) {
     if (words.isEmpty) {
-      return Center(
+      return const Center(
         child: Text(
           'Keine Daten gefunden',
           style: TextStyle(fontSize: 24),
         ),
       );
     } else {
+      List progressData = ModalRoute.of(context)?.settings.arguments as List;
+      var richtigesWort = 0;
+      var falschesWort = 0;
+      var Spielgewonnen = 0;
+      var Spielverloren = 0;
+      var h1 = 0;
+      var h2 = 0;
+      var h3 = 0;
+      var h4 = 0;
+      for(int i = 0; i < words.length; i++){
+        if(words[i].diff == progressData[0]){
+          if(words[i].freq == progressData[1]){
+            if (words[i].H1 == 1){
+              h1++;
+            }
+            if (words[i].H2 == 1){
+              h2++;
+            }
+            if (words[i].H3 == 1){
+              h3++;
+            }
+            if (words[i].H4 == 1){
+              h4++;
+            }
+            if(words[i].rOderF.contains("richtig")){
+              richtigesWort++;
+            }
+            if(words[i].rOderF.contains("G")){
+              Spielgewonnen++;
+            }
+            if(words[i].rOderF.contains("falsch")){
+              falschesWort++;
+            }
+            if(words[i].rOderF.contains("V")){
+              Spielverloren++;
+            }
+          }
+        }
+
+       // words[i].rOderF;
+      }
 
 
       //Addiere Hilfense
-      final h1 = words.fold<int>(0, (previousValue, word) => previousValue + word.H1);
-      final h2 = words.fold<int>(0, (previousValue, word) => previousValue + word.H2);
-      final h3 = words.fold<int>(0, (previousValue, word) => previousValue + word.H3);
-      final h4 = words.fold<int>(0, (previousValue, word) => previousValue + word.H4);
+
+
+
 /*
       return Column(
         children: [
@@ -323,6 +355,8 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
         ],
       );
 */
+
+
      return Flexible(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -400,10 +434,10 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                     _gapH,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
+                                      children:[
                                         Text(
-                                          '2',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          '$Spielgewonnen',
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
@@ -454,10 +488,10 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                     _gapH,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
+                                      children: [
                                         Text(
-                                          '2',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          '$Spielverloren',
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
@@ -554,10 +588,10 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                     _gapH,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
+                                      children: [
                                         Text(
-                                          '2',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          '$richtigesWort',
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
@@ -608,10 +642,10 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                     _gapH,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
+                                      children: [
                                         Text(
-                                          '2',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          '$falschesWort',
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
@@ -712,7 +746,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                       children:[
                                         Text(
                                           '$h1',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
@@ -763,10 +797,10 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                     _gapH,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
+                                      children: [
                                         Text(
-                                          '2',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          '$h2',
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
@@ -817,10 +851,10 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                     _gapH,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
+                                      children: [
                                         Text(
-                                          '2',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          '$h3',
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
@@ -871,10 +905,10 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                     _gapH,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
+                                      children: [
                                         Text(
-                                          '200',
-                                          style: TextStyle(shadows: <Shadow>[
+                                          '$h4',
+                                          style: const TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,

@@ -17,7 +17,7 @@ import 'package:wortschatz/viewmodels/settings/settings.dart';
 import 'package:wortschatz/model/styles/palette.dart';
 
 class ProgressCategory extends StatefulWidget {
-  final Map getProgress;
+  final List getProgress;
 
   const ProgressCategory({Key? key, required this.getProgress}) : super(key: key);
 
@@ -68,7 +68,7 @@ class _ProgressCategoryState extends State<ProgressCategory> {
 
   @override
   Widget build(BuildContext context) {
-    Map DiffFrequencyMAP = ModalRoute.of(context)?.settings.arguments as Map;
+    List DiffFrequencyLIST = ModalRoute.of(context)?.settings.arguments as List;
     final settings = context.watch<SettingsController>();
     final palette = context.watch<Palette>();
     late MediaQueryData queryData;
@@ -132,7 +132,10 @@ class _ProgressCategoryState extends State<ProgressCategory> {
                                       color: Colors.white70,
                                       child: ListTile(
                                         //Hier muss MAP: DiffFrequencyMAP rein als argument d.h argument umschriebn als Map und den value mit in map rein => sodass 3 values drin sind
-                                        onTap: () {Navigator.pushNamed(context, Routes.progressEINZEL, arguments: itemsMAP.entries.toList()[index].value[0] );
+
+                                        onTap: () {
+                                          List progressData = [DiffFrequencyLIST[0],DiffFrequencyLIST[1],itemsMAP.entries.toList()[index].value[0]];
+                                          Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
                                         },
                                         title: Text(
                                           itemsMAP.entries.toList()[index].key,

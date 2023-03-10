@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:wortschatz/model/progress/db_helperprogress.dart';
-import 'package:wortschatz/model/progress/progress.dart';
 import 'package:wortschatz/model/words/hf_words.dart';
 import 'package:wortschatz/model/settings/local_storage_settings_persistence.dart';
 import 'package:wortschatz/model/settings/settings_persistence.dart';
@@ -1543,7 +1541,17 @@ class _StartScreenState extends State<StartScreen> {
                                                       'score': score,
                                                       'diff': context.read<SettingsController>().schwierigkeit.value
                                                     });
-                                                    print(progressSafer.entries.toList()[index].value[0]);
+                                                    changeHelpNumberforProgress();
+                                                    addWord(
+                                                        context.read<SettingsController>().schwierigkeit.value,
+                                                        context.read<SettingsController>().frequency.value,
+                                                        widget.category,
+                                                        randomWord,
+                                                        "richtigG",
+                                                        h1,
+                                                        h2,
+                                                        h3,
+                                                        h4);
                                                     Navigator.pushNamed(context, Routes.categories);
                                                   })
                                           ),
@@ -1577,6 +1585,17 @@ class _StartScreenState extends State<StartScreen> {
                                                     checkForHelp();                                    //check wie viele Hilfen benötigt
                                                     addCategoryInfoforInfopage();
                                                     print(progressSafer);
+                                                    changeHelpNumberforProgress();
+                                                    addWord(
+                                                        context.read<SettingsController>().schwierigkeit.value,
+                                                        context.read<SettingsController>().frequency.value,
+                                                        widget.category,
+                                                        randomWord,
+                                                        "richtigG",
+                                                        h1,
+                                                        h2,
+                                                        h3,
+                                                        h4);
                                                     Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                   })
                                           ),
@@ -1673,19 +1692,6 @@ class _StartScreenState extends State<StartScreen> {
                                               onPressed: () {
                                                 progressSafer.update(stored, (value) => [1,0]);
                                                 checkForHelp();
-                                                /*
-                                                print("Schwierigkeit:");
-                                                print(context.read<SettingsController>().schwierigkeit.value);
-                                                print("kategorie:");
-                                                print(widget.category);
-                                                print("wort:");
-                                                print(stored);
-                                                print("roderf:");
-                                                print(progressSafer.entries.toList().last.value[0]);
-                                                print("hilfe:");
-                                                print(progressSafer.entries.toList().last.value[1]);
-                                                */
-
                                                 changeHelpNumberforProgress();
                                                 addWord(
                                                     context.read<SettingsController>().schwierigkeit.value,
@@ -1697,15 +1703,6 @@ class _StartScreenState extends State<StartScreen> {
                                                     h2,
                                                     h3,
                                                     h4);
-                                                /*
-                                                 DBHelperProgress.insert('Progress2', {
-                                                  'schwierigkeit': context.read<SettingsController>().schwierigkeit.value,
-                                                  'kategorie': widget.category,
-                                                  'wort': randomWord,
-                                                  'roderf': progressSafer.entries.toList().last.value[0],
-                                                  'hilfe': progressSafer.entries.toList().last.value[1]
-                                                });
-                                                */
                                                 newGame();
                                                 Navigator.of(context).pop();
                                               })
@@ -1848,6 +1845,17 @@ class _StartScreenState extends State<StartScreen> {
                                                         'score': score,
                                                         'diff': context.read<SettingsController>().schwierigkeit.value
                                                       });
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "falschV",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
                                                       Navigator.pushNamed(context, Routes.categories);
                                                   })
                                           ),
@@ -1880,6 +1888,17 @@ class _StartScreenState extends State<StartScreen> {
                                                     checkForHelp();
                                                     getMissingWords();
                                                     addCategoryInfoforInfopage();
+                                                    changeHelpNumberforProgress();
+                                                    addWord(
+                                                        context.read<SettingsController>().schwierigkeit.value,
+                                                        context.read<SettingsController>().frequency.value,
+                                                        widget.category,
+                                                        randomWord,
+                                                        "falschV",
+                                                        h1,
+                                                        h2,
+                                                        h3,
+                                                        h4);
                                                     print(progressSafer);
                                                     Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                   })
@@ -2020,6 +2039,17 @@ class _StartScreenState extends State<StartScreen> {
                                                         'score': score,
                                                         'diff': context.read<SettingsController>().schwierigkeit.value
                                                       });
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "falschG",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
                                                       Navigator.pushNamed(context, Routes.categories);
                                                     })
                                             ),
@@ -2052,6 +2082,17 @@ class _StartScreenState extends State<StartScreen> {
                                                       checkForHelp();
                                                       addCategoryInfoforInfopage();
                                                       print(progressSafer);
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "falschG",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
                                                       Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
                                                     })
                                             ),
@@ -2146,13 +2187,17 @@ class _StartScreenState extends State<StartScreen> {
                                                 ),
                                                 onPressed: () {
                                                   checkForHelp();
-                                                 /* DBHelperProgress.insert('Progress', {
-                                                    'schwierigkeit': context.read<SettingsController>().schwierigkeit.value,
-                                                    'kategorie': widget.category,
-                                                    'wort': randomWord,
-                                                    'roderf': progressSafer.entries.toList().last.value[0],
-                                                    'hilfe': progressSafer.entries.toList().last.value[1]
-                                                  }); */
+                                                  changeHelpNumberforProgress();
+                                                  addWord(
+                                                      context.read<SettingsController>().schwierigkeit.value,
+                                                      context.read<SettingsController>().frequency.value,
+                                                      widget.category,
+                                                      randomWord,
+                                                      "falsch",
+                                                      h1,
+                                                      h2,
+                                                      h3,
+                                                      h4);
                                                   newGame();
                                                   Navigator.of(context).pop();
                                                 })

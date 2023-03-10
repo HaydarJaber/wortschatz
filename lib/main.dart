@@ -10,7 +10,6 @@ import 'package:wortschatz/view/splash_view.dart';
 import 'package:wortschatz/view/terms_view.dart';
 import 'package:wortschatz/viewmodels/router/app_router.dart';
 import 'package:wortschatz/viewmodels/settings/settings.dart';
-import 'model/progress/progress.dart';
 import 'model/progress/progressWord.dart';
 import 'model/settings/local_storage_settings_persistence.dart';
 import 'model/settings/settings_persistence.dart';
@@ -46,9 +45,6 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider.value(
             value: HighScoreItems()
-          ),
-          ChangeNotifierProvider.value(
-              value: ProgressItems()
           ),
           Provider(
             create: (context) => Palette(),
