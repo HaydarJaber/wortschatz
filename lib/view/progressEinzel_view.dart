@@ -36,7 +36,6 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
 
   @override
   void initState() {
-    print(widget.getProgress);
     rank1 = 0;
     rank2 = 0;
     rank3 = 0;
@@ -54,7 +53,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
     switch(widget.getProgress[2])
     {
       case Category.All:
-        iconCode = 0xf144;
+        iconCode = 0xe473;
         return iconCode;
       case Category.Autoteile:
         iconCode = 0xf1b9;
@@ -293,29 +292,31 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
       for(int i = 0; i < words.length; i++){
         if(words[i].diff == progressData[0]){
           if(words[i].freq == progressData[1]){
-            if (words[i].H1 == 1){
-              h1++;
-            }
-            if (words[i].H2 == 1){
-              h2++;
-            }
-            if (words[i].H3 == 1){
-              h3++;
-            }
-            if (words[i].H4 == 1){
-              h4++;
-            }
-            if(words[i].rOderF.contains("richtig")){
-              richtigesWort++;
-            }
-            if(words[i].rOderF.contains("G")){
-              Spielgewonnen++;
-            }
-            if(words[i].rOderF.contains("falsch")){
-              falschesWort++;
-            }
-            if(words[i].rOderF.contains("V")){
-              Spielverloren++;
+            if(words[i].category == progressData[2]){
+              if (words[i].H1 == 1){
+                h1++;
+              }
+              if (words[i].H2 == 1){
+                h2++;
+              }
+              if (words[i].H3 == 1){
+                h3++;
+              }
+              if (words[i].H4 == 1){
+                h4++;
+              }
+              if(words[i].rOderF.contains("richtig")){
+                richtigesWort++;
+              }
+              if(words[i].rOderF.contains("G")){
+                Spielgewonnen++;
+              }
+              if(words[i].rOderF.contains("falsch")){
+                falschesWort++;
+              }
+              if(words[i].rOderF.contains("V")){
+                Spielverloren++;
+              }
             }
           }
         }

@@ -1,5 +1,5 @@
 class Category {
-  static const String All = 'Alle Kategorien';
+  static const String All = 'Gesamt';
   static const String Autoteile = 'Autoteile';
   static const String Badezimmer = 'Badezimmer';
   static const String Bauernhof = 'Bauernhof';

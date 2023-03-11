@@ -134,6 +134,9 @@ class _StartScreenState extends State<StartScreen> {
       ..H3 = h3
       ..H4 = h4;
 
+
+
+
     final box = Boxes.getWords();
     box.add(WordForProgress);
     return true;

@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/view/categories_view.dart';
+import '../model/constants/categories.dart';
 import '../model/constants/routes.dart';
 import '../model/progress/progressWord.dart';
 import '../model/progress/progressWord_boxes.dart';
@@ -25,8 +26,6 @@ class ProgressScreen extends StatefulWidget {
 }
 
 class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin {
-  var emoji = ['🥇', '🥈', '🥉'];
-  late int rank1,rank2,rank3;
   late TabController _tabController;
   String dropdownValue = frequenz.first;
   static const _gapW = SizedBox(width: 20);
@@ -36,14 +35,11 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
 
   @override
   void initState() {
-    rank1 = 0;
-    rank2 = 0;
-    rank3 = 0;
     _tabController = TabController(length: 3, vsync: this);
+    getTab();
     _tabController.addListener(() {
       if (_tabController.indexIsChanging == false) {
         getTab();
-        print("ausgeführt");
       }
     });
     super.initState();
@@ -61,14 +57,35 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
 
   //HIVE ENDE
 
-
-
-
-
-
-
-
-
+  Map<String, List<dynamic>> itemsMAP = {
+    "Gesamt":[Category.All,0xe473,0],
+    "Autoteile":[Category.Autoteile,0xf1b9,0],
+    "Badezimmer":[Category.Badezimmer,0xf2cd,0],
+    "Bauernhof":[Category.Bauernhof,0xe2cd,0],
+    "Berufe":[Category.Berufe,0xf85e,0],
+    "Deutsche Städte":[Category.DeutscheStaedte,0xf64f,0],
+    "Fahrzeuge":[Category.Fahrzeuge,0xf21c,0],
+    "Garten":[Category.Garten,0xf1bb,0],
+    "Gemüse":[Category.Gemuese,0xf787,0],
+    "Getränke":[Category.Getraenke,0xf000,0],
+    "Hauptstädte":[Category.Hauptstaedte,0xf64f,0],
+    "Hausbau":[Category.Hausbau,0xf015,0],
+    "Hobbys":[Category.Hobbys,0xf554,0],
+    "Kleidung":[Category.Kleidung,0xf553,0],
+    "Körperteile":[Category.Koerperteile,0xf06e,0],
+    "Küche":[Category.Kueche,0xe51a,0],
+    "Länder":[Category.Laender,0xf024,0],
+    "Möbel":[Category.Moebel,0xf4b8,0],
+    "Musikinstrumente":[Category.Musikinstrumente,0xf001,0],
+    "Obst":[Category.Obst,0xf5d1,0],
+    "Pflanzen":[Category.Pflanzen,0xe5aa,0],
+    "Resteraunt":[Category.Resteraunt,0xf2e7,0],
+    "Sportarten":[Category.Sportarten,0xf1e3,0],
+    "Strassenverkehr":[Category.Strassenverkehr,0xf018,0],
+    "Supermarkt":[Category.Supermarkt,0xf54f,0],
+    "Tiere":[Category.Tiere,0xf6f0,0],
+    "Werkzeuge":[Category.Werkzeuge,0xf7d9,0],
+  };
 
 
   @override
@@ -154,7 +171,8 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                       Container(height: 10),
                       /* ALTERSTAND
 
-                      HIER KOMMT der code rein, damit Kateogire Buttons hier angezeigt werden
+
+
                       * */
 
                       Container(
@@ -302,7 +320,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                     valueListenable: Boxes.getWords().listenable(),
                                     builder: (context,box,_){
                                       final words = box.values.toList().cast<Word>();
-                                            print(words);
+
                                       return buildContent(words);
                                     }
                                 ),
@@ -490,36 +508,41 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
       var h2 = 0;
       var h3 = 0;
       var h4 = 0;
+      var gewonneneKateogrien = [];
+      print(currentDiff);
+      print(dropdownValue);
       for(int i = 0; i < words.length; i++){
         if(words[i].diff == currentDiff){
           if(words[i].freq == dropdownValue){
-            if (words[i].H1 == 1){
-              h1++;
-            }
-            if (words[i].H2 == 1){
-              h2++;
-            }
-            if (words[i].H3 == 1){
-              h3++;
-            }
-            if (words[i].H4 == 1){
-              h4++;
-            }
-            if(words[i].rOderF.contains("richtig")){
-              richtigesWort++;
-            }
-            if(words[i].rOderF.contains("G")){
-              Spielgewonnen++;
-            }
-            if(words[i].rOderF.contains("falsch")){
-              falschesWort++;
-            }
-            if(words[i].rOderF.contains("V")){
-              Spielverloren++;
-            }
+              if (words[i].H1 == 1) {
+                h1++;
+              }
+              if (words[i].H2 == 1) {
+                h2++;
+              }
+              if (words[i].H3 == 1) {
+                h3++;
+              }
+              if (words[i].H4 == 1) {
+                h4++;
+              }
+              if (words[i].rOderF.contains("richtig")) {
+                richtigesWort++;
+              }
+              if (words[i].rOderF.contains("G")) {
+                Spielgewonnen++;
+                gewonneneKateogrien.add(words[i].category);
+              }
+              if (words[i].rOderF.contains("falsch")) {
+                falschesWort++;
+              }
+              if (words[i].rOderF.contains("V")) {
+                Spielverloren++;
+              }
           }
         }
       }
+      /*ALT:
       return Flexible(
         child: Padding(
           padding: const EdgeInsets.all(5),
@@ -1140,6 +1163,76 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
               ),
             ))
           ]),
+        ),
+      );
+       */
+
+      return Expanded(
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: itemsMAP.entries.toList().length-1,
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                    color: Colors.black,
+                    child: Card(
+                        color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: Colors.white70,
+                        child: ListTile(
+                          onTap: () {
+                            List progressData = [currentDiff,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
+                            Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
+                          },
+                          title: Text(
+                            itemsMAP.entries.toList()[index].key,
+                            style: const TextStyle(
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 2.0,
+                                    color: Colors.black,
+                                  ),
+                                ],
+                                fontFamily: "Qaz",
+                                fontSize: 30,
+                                color: Colors.black),
+                          ),
+                          leading: Icon(
+                              shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 5.0,
+                                  color: Colors.black,
+                                ),
+                              ],
+                              size: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.03,
+                              color: Colors.white,
+                              IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                          ),
+                          trailing: Icon(
+                              shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 5.0,
+                                  color: Colors.black,
+                                ),
+                              ],
+                              size: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.03,
+                              color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
+                              gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                          ),
+                        )))
+              ],
+            ),
+          ),
         ),
       );
 
