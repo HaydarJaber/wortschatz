@@ -285,7 +285,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
       for(int i = 0; i < words.length; i++){
         if(words[i].diff == progressData[0]){
           if(words[i].freq == progressData[1]){
-            if(words[i].category == progressData[2]){
+            if(words[i].category == progressData[2] || progressData[2] == "Gesamt"){
               if (words[i].H1 == 1){
                 h1++;
               }
