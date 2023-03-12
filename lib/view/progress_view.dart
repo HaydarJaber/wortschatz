@@ -565,7 +565,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
       return Expanded(
         child: ListView.builder(
           shrinkWrap: true,
-          itemCount: itemsMAP.entries.toList().length-1,
+          itemCount: itemsMAP.entries.toList().length,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Column(
