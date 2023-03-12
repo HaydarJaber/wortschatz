@@ -44,6 +44,7 @@ class _StartScreenState extends State<StartScreen> {
   int h3 = 0;
   int h4 = 0;
   // ENDE
+  List saveWordForProgress = [];
   var index = 0;
   List help = [];
   bool _isButtonAufgeklappt1 = false;
@@ -134,11 +135,13 @@ class _StartScreenState extends State<StartScreen> {
       ..H3 = h3
       ..H4 = h4;
 
-
-
-
+    saveWordForProgress.add(WordForProgress);
     final box = Boxes.getWords();
-    box.add(WordForProgress);
+    if(WordForProgress.rOderF.contains("G") || WordForProgress.rOderF.contains("V")){
+      for(int i = 0; i < saveWordForProgress.length; i++){
+        box.add(saveWordForProgress[i]);
+      }
+    }
     return true;
   }
 

@@ -1179,7 +1179,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                 Container(
                     color: Colors.black,
                     child: Card(
-                        color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: Colors.white70,
+                        color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: itemsMAP.entries.toList()[index].value[0] == "Gesamt" ? Colors.lightBlueAccent:Colors.white70,
                         child: ListTile(
                           onTap: () {
                             List progressData = [currentDiff,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
@@ -1214,7 +1214,9 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                               color: Colors.white,
                               IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                           ),
-                          trailing: Icon(
+                          trailing:
+                          itemsMAP.entries.toList()[index].value[0] != "Gesamt" ?
+                          Icon(
                               shadows: const <Shadow>[
                                 Shadow(
                                   offset: Offset(0.0, 0.0),
@@ -1227,8 +1229,10 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                   .size
                                   .height * 0.03,
                               color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
-                              gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
-                          ),
+                              gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? const IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): const IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                          )
+                          : SizedBox.shrink()
+                          ,
                         )))
               ],
             ),
