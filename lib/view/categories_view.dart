@@ -121,7 +121,7 @@ class Categories extends StatelessWidget {
                                 child: Card(
                                   color: Colors.lightBlueAccent,
                                     child: ListTile(
-                                      onTap: () {Navigator.pushNamed(context, Routes.newGame, arguments: itemsMAP.entries.toList()[index].value[0] );
+                                      onTap: () {Navigator.pushNamed(context, Routes.newGame, arguments: itemsMAP.entries.toList()[index].value[0]);
                                         },
                                       title: Text(
                                         itemsMAP.entries.toList()[index].key,

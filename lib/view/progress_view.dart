@@ -31,12 +31,11 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
   static const _gapW = SizedBox(width: 20);
   static const _gapH = SizedBox(height: 5);
   late int Rcount,Fcount;
-  var currentDiff = "";
+  var currentDiff = "Leicht";
 
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
-    getTab();
     _tabController.addListener(() {
       if (_tabController.indexIsChanging == false) {
         getTab();
@@ -90,14 +89,14 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
 
   @override
   void getTab() {
-    if(_tabController.index == 0) {
-    currentDiff = "Leicht";
+    if(_tabController.index == 2) {
+      currentDiff = "Schwer";
     }
     if(_tabController.index == 1) {
       currentDiff = "Normal";
     }
-    if(_tabController.index == 2) {
-     currentDiff = "Schwer";
+    if(_tabController.index == 0) {
+      currentDiff = "Leicht";
     }
   }
 
@@ -169,12 +168,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                       ),
                       // give the tab bar a height [can change hheight to preferred height]
                       Container(height: 10),
-                      /* ALTERSTAND
-
-
-
-                      * */
-
                       Container(
                         height: 45,
                         decoration: BoxDecoration(
@@ -194,7 +187,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                           ),
                           labelColor: Colors.black,
                           unselectedLabelColor: Colors.black,
-                          tabs: const[
+                          tabs: const [
                             // first tab [you can add an icon using the icon property]
                             Tab(
                               child : Text(
@@ -211,7 +204,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                     fontSize: 20),
                               ),
                             ),
-
                             // second tab [you can add an icon using the icon property]
                             Tab(
                               child : Text(
@@ -228,7 +220,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                     fontSize: 20),
                               ),
                             ),
-
                             Tab(
                               child : Text(
                                 'Schwer',
@@ -328,132 +319,149 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                             ),
                             // second tab bar view widget
                             Padding(
-                              padding: const EdgeInsets.all(20),
+                              padding: const EdgeInsets.all(10),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
-                                      width: MediaQuery.of(context).size.width * 0.8,
-                                      height: MediaQuery.of(context).size.height * 0.07,
-                                      decoration: const ShapeDecoration(
-                                          color: Colors.white70,
-                                          shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 2,
-                                                  color: Colors.black)
-                                          )
+                                    width: MediaQuery.of(context).size.width * 0.8,
+                                    height: MediaQuery.of(context).size.height * 0.07,
+                                    decoration: const ShapeDecoration(
+                                        color: Colors.white70,
+                                        shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                width: 2,
+                                                color: Colors.black)
+                                        )
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          DropdownButton<String>(
+                                            isExpanded: true,
+                                            value: dropdownValue,
+                                            icon: const Icon(Icons.arrow_downward),
+                                            elevation: 16,
+                                            style: TextStyle(
+                                              shadows: const <Shadow>[
+                                                Shadow(
+                                                  offset: Offset(0.0, 0.0),
+                                                  blurRadius: 0.0,
+                                                  color: Colors.black,
+                                                ),
+                                              ],
+                                              color: Colors.black,
+                                              fontSize: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .height * 0.035,
+                                              fontFamily: "Qaz",
+                                            ),
+                                            underline: const SizedBox.shrink(),
+                                            onChanged: (String? value) {
+                                              // This is called when the user selects an item.
+                                              setState(() {
+                                                dropdownValue = value!;
+                                              });
+                                            },
+                                            items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value,
+                                                    style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                    )),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ],
                                       ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            DropdownButton<String>(
-                                              isExpanded: true,
-                                              value: dropdownValue,
-                                              icon: const Icon(Icons.arrow_downward),
-                                              elevation: 16,
-                                              style: TextStyle(
-                                                shadows: const <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ],
-                                                color: Colors.black,
-                                                fontSize: MediaQuery
-                                                    .of(context)
-                                                    .size
-                                                    .height * 0.035,
-                                                fontFamily: "Qaz",
-                                              ),
-                                              underline: const SizedBox.shrink(),
-                                              onChanged: (String? value) {
-                                                // This is called when the user selects an item.
-                                                setState(() {
-                                                  dropdownValue = value!;
-                                                });
-                                              },
-                                              items: frequenz.map<DropdownMenuItem<String>>((String value) {
-                                                return DropdownMenuItem<String>(
-                                                  value: value,
-                                                  child: Text(value,
-                                                      style: TextStyle(
-                                                        fontSize: MediaQuery.of(context).size.height * 0.03,
-                                                      )),
-                                                );
-                                              }).toList(),
-                                            )
-                                          ],
-                                        ),
-                                      )
+                                    ),
                                   ),
+                                ),
+                                ValueListenableBuilder<Box<Word>>(
+                                    valueListenable: Boxes.getWords().listenable(),
+                                    builder: (context,box,_){
+                                      final words = box.values.toList().cast<Word>();
+
+                                      return buildContent(words);
+                                    }
                                 ),
                               ]),
                             ),
+
                             Padding(
-                              padding: const EdgeInsets.all(20),
+                              padding: const EdgeInsets.all(10),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
-                                      width: MediaQuery.of(context).size.width * 0.8,
-                                      height: MediaQuery.of(context).size.height * 0.07,
-                                      decoration: const ShapeDecoration(
-                                          color: Colors.white70,
-                                          shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 2,
-                                                  color: Colors.black)
-                                          )
+                                    width: MediaQuery.of(context).size.width * 0.8,
+                                    height: MediaQuery.of(context).size.height * 0.07,
+                                    decoration: const ShapeDecoration(
+                                        color: Colors.white70,
+                                        shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                width: 2,
+                                                color: Colors.black)
+                                        )
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          DropdownButton<String>(
+                                            isExpanded: true,
+                                            value: dropdownValue,
+                                            icon: const Icon(Icons.arrow_downward),
+                                            elevation: 16,
+                                            style: TextStyle(
+                                              shadows: const <Shadow>[
+                                                Shadow(
+                                                  offset: Offset(0.0, 0.0),
+                                                  blurRadius: 0.0,
+                                                  color: Colors.black,
+                                                ),
+                                              ],
+                                              color: Colors.black,
+                                              fontSize: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .height * 0.035,
+                                              fontFamily: "Qaz",
+                                            ),
+                                            underline: const SizedBox.shrink(),
+                                            onChanged: (String? value) {
+                                              // This is called when the user selects an item.
+                                              setState(() {
+                                                dropdownValue = value!;
+                                              });
+                                            },
+                                            items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value,
+                                                    style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                    )),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ],
                                       ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            DropdownButton<String>(
-                                              isExpanded: true,
-                                              value: dropdownValue,
-                                              icon: const Icon(Icons.arrow_downward),
-                                              elevation: 16,
-                                              style: TextStyle(
-                                                shadows: const <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ],
-                                                color: Colors.black,
-                                                fontSize: MediaQuery
-                                                    .of(context)
-                                                    .size
-                                                    .height * 0.035,
-                                                fontFamily: "Qaz",
-                                              ),
-                                              underline: const SizedBox.shrink(),
-                                              onChanged: (String? value) {
-                                                // This is called when the user selects an item.
-                                                setState(() {
-                                                  dropdownValue = value!;
-                                                });
-                                              },
-                                              items: frequenz.map<DropdownMenuItem<String>>((String value) {
-                                                return DropdownMenuItem<String>(
-                                                  value: value,
-                                                  child: Text(value,
-                                                      style: TextStyle(
-                                                        fontSize: MediaQuery.of(context).size.height * 0.03,
-                                                      )),
-                                                );
-                                              }).toList(),
-                                            )
-                                          ],
-                                        ),
-                                      )
+                                    ),
                                   ),
+                                ),
+                                ValueListenableBuilder<Box<Word>>(
+                                    valueListenable: Boxes.getWords().listenable(),
+                                    builder: (context,box,_){
+                                      final words = box.values.toList().cast<Word>();
+
+                                      return buildContent(words);
+                                    }
                                 ),
                               ]),
                             ),
@@ -508,11 +516,22 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
       var h2 = 0;
       var h3 = 0;
       var h4 = 0;
+      var currentDiff_ = "Leicht";
       var gewonneneKateogrien = [];
-      print(currentDiff);
+
+      if(_tabController.index == 0) {
+          currentDiff_ = "Leicht";
+      }
+      if(_tabController.index == 1) {
+        currentDiff_ = "Normal";
+      }
+      if(_tabController.index == 2) {
+        currentDiff_ = "Schwer";
+      }
+      print(currentDiff_);
       print(dropdownValue);
       for(int i = 0; i < words.length; i++){
-        if(words[i].diff == currentDiff){
+        if(words[i].diff == currentDiff_){
           if(words[i].freq == dropdownValue){
               if (words[i].H1 == 1) {
                 h1++;
@@ -542,630 +561,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
           }
         }
       }
-      /*ALT:
-      return Flexible(
-        child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: Column(children: [
-            Material(
-              color: Colors.transparent,
-              child: Ink(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.18,
-                decoration: const ShapeDecoration(
-                    color: Colors.lightBlueAccent,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            width: 2,
-                            color: Colors.black)
-                    )
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children:const [
-                          Text(
-                            'Spiele',
-                            style: TextStyle(shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 1.0,
-                                color: Colors.black,
-                              ),
-                            ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      _gapH,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children:[
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.green,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'Gewonnen',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:[
-                                        Text(
-                                          '$Spielgewonnen',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.deepOrange,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'Verloren',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0,0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '$Spielverloren',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            _gapH,
-            Material(
-              color: Colors.transparent,
-              child: Ink(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.18,
-                decoration: const ShapeDecoration(
-                    color: Colors.lightBlueAccent,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            width: 2,
-                            color: Colors.black)
-                    )
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children:const [
-                          Text(
-                            'Wörter',
-                            style: TextStyle(shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 1.0,
-                                color: Colors.black,
-                              ),
-                            ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      _gapH,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children:[
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.green,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'Richtig',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '$richtigesWort',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.deepOrange,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'Falsch',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0,0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '$falschesWort',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          _gapH,
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            _gapH,
-            Material(
-              color: Colors.transparent,
-              child: Ink(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.18,
-                decoration: const ShapeDecoration(
-                    color: Colors.lightBlueAccent,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            width: 2,
-                            color: Colors.black)
-                    )
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children:const [
-                          Text(
-                            'genutzte Hilfen',
-                            style: TextStyle(shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 1.0,
-                                color: Colors.black,
-                              ),
-                            ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      _gapH,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children:[
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.175,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.yellow,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'H1',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:[
-                                        Text(
-                                          '$h1',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.175,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.yellow,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'H2',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '$h2',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.175,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.yellow,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'H3',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '$h3',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            child: Ink(
-                              width: MediaQuery.of(context).size.width * 0.175,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: const ShapeDecoration(
-                                  color: Colors.yellow,
-                                  shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 2,
-                                          color: Colors.black)
-                                  )
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:const [
-                                        Text(
-                                          'H4',
-                                          style: TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    _gapH,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '$h4',
-                                          style: const TextStyle(shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 1.0,
-                                              color: Colors.black,
-                                            ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            _gapH,
-            _gapH,
-            Directionality(textDirection: TextDirection.rtl, child: ElevatedButton.icon(
-              style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(const Size(1,1)),
-                  alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.resolveWith((state) {
-                    if (state.contains(MaterialState.pressed)) return Colors.grey;
-                    return Colors.white;
-                  }),
-                  shadowColor: MaterialStateProperty.all(Colors.transparent),
-                  side: MaterialStateProperty.all(const BorderSide(width: 2))),
-              onPressed: () {
-                getTab();
-                Navigator.pushNamed(context, Routes.progressCATEGORY, arguments: [currentDiff,dropdownValue]);
-              },
-              icon: Icon(
-                  shadows: const <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 2.0,
-                      color: Colors.black,
-                    ),
-                  ],
-                  size: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.07,
-                  color: Colors.black,
-                  const IconData(0xe09c, fontFamily: 'MaterialIcons')),
-              label: Text("Kategorien",
-                style: TextStyle(
-                  shadows: const <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 2.0,
-                      color: Colors.black,
-                    ),
-                  ],
-                  color: Colors.black,
-                  fontSize: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.054,
-                  fontFamily: "Qaz",
-                ),
-              ),
-            ))
-          ]),
-        ),
-      );
-       */
 
       return Expanded(
         child: ListView.builder(
@@ -1182,7 +577,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                         color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: itemsMAP.entries.toList()[index].value[0] == "Gesamt" ? Colors.lightBlueAccent:Colors.white70,
                         child: ListTile(
                           onTap: () {
-                            List progressData = [currentDiff,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
+                            List progressData = [currentDiff_,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
                             Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
                           },
                           title: Text(

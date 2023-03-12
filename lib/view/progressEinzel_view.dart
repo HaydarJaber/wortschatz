@@ -42,7 +42,6 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(() {
       if (_tabController.indexIsChanging == false) {
-        tabChanged();
         print("ausgeführt");
       }
     });
@@ -137,12 +136,6 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
     return iconCode;
   }
 
-  @override
-  void tabChanged() {
-    rank1 = 0;
-    rank2 = 0;
-    rank3 = 0;
-  }
 
   @override
   void dispose() {
@@ -362,13 +355,14 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(children: [
+            _gapH,
             Material(
               color: Colors.transparent,
               child: Ink(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: MediaQuery.of(context).size.height * 0.18,
                 decoration: const ShapeDecoration(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.white70,
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
                             width: 2,
@@ -522,7 +516,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: MediaQuery.of(context).size.height * 0.18,
                 decoration: const ShapeDecoration(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.white70,
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
                             width: 2,
@@ -677,7 +671,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: MediaQuery.of(context).size.height * 0.18,
                 decoration: const ShapeDecoration(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.white70,
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
                             width: 2,
@@ -730,14 +724,14 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children:const [
                                         Text(
-                                          'H1',
+                                          'Tipp 1',
                                           style: TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
                                               color: Colors.black,
                                             ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                          ], fontFamily: "Qaz", fontSize: 20, color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -784,14 +778,14 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children:const [
                                         Text(
-                                          'H2',
+                                          'Tipp 2',
                                           style: TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
                                               color: Colors.black,
                                             ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                          ], fontFamily: "Qaz", fontSize: 20, color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -838,14 +832,14 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children:const [
                                         Text(
-                                          'H3',
+                                          'Tipp 3',
                                           style: TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
                                               color: Colors.black,
                                             ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                          ], fontFamily: "Qaz", fontSize: 20, color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -892,14 +886,14 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children:const [
                                         Text(
-                                          'H4',
+                                          'Tipp 4',
                                           style: TextStyle(shadows: <Shadow>[
                                             Shadow(
                                               offset: Offset(0.0, 0.0),
                                               blurRadius: 1.0,
                                               color: Colors.black,
                                             ),
-                                          ], fontFamily: "Qaz", fontSize: 28, color: Colors.black),
+                                          ], fontFamily: "Qaz", fontSize: 20, color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -931,6 +925,66 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
                 ),
               ),
             ),
+            _gapH,
+            _gapH,
+            progressData[2] == "Gesamt" ? SizedBox.shrink() :Row(
+              mainAxisAlignment:
+              MainAxisAlignment.spaceAround,
+              children: [
+                Material(
+                  color: Colors.transparent,
+                  child: Ink(
+                      width: 100,
+                      height: 100,
+                      decoration: const ShapeDecoration(
+                          color: Colors.lightBlueAccent,
+                          shape: CircleBorder(
+                              side: BorderSide(
+                                  width: 3,
+                                  color: Colors.black)
+                          )
+                      ),
+                      child: IconButton(
+                          icon: const Icon(
+                            Icons.play_arrow,
+                            size: 60,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            context.read<SettingsController>().setSchwierigkeit(progressData[0]);
+                            context.read<SettingsController>().setFrequency(progressData[1]);
+                            Navigator.pushNamed(context, Routes.newGame,arguments: progressData[2]);
+                          })
+                  ),
+                ),
+                Material(
+                  color: Colors.transparent,
+                  child: Ink(
+                      width: 100,
+                      height: 100,
+                      decoration: const ShapeDecoration(
+                          color: Colors.lightBlueAccent,
+                          shape: CircleBorder(
+                              side: BorderSide(
+                                  width: 3,
+                                  color: Colors.black)
+                          )
+                      ),
+                      child: IconButton(
+                          icon: const Icon(
+                            Icons.home,
+                            size: 60,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, Routes.home);
+                          })
+                  ),
+                ),
+              ],
+            ),
+
+
           ]),
         ),
       );
