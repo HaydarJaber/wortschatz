@@ -302,11 +302,10 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                                   fontSize: 20,
                                                   color: Colors.black),
                                             ),
-                                            Text(
-                                              highscore.item[index].date,
-                                              // .toString()
-                                              // .substring(0, 10),
-                                              style: const TextStyle(
+                                            const Text(
+                                             // highscore.item[index].date,
+                                              "Haydar H.J.",
+                                              style: TextStyle(
                                                   shadows: <Shadow>[
                                                     Shadow(
                                                       offset: Offset(0.0, 0.0),
@@ -457,11 +456,10 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                                     fontSize: 20,
                                                     color: Colors.black),
                                               ),
-                                            Text(
-                                                highscore.item[index].date,
-                                                // .toString()
-                                                // .substring(0, 10),
-                                                style: const TextStyle(
+                                            const Text(
+                                                //highscore.item[index].date,
+                                              "Haydar H.J.",
+                                                style: TextStyle(
                                                     shadows: <Shadow>[
                                                       Shadow(
                                                         offset: Offset(
@@ -585,7 +583,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                         ? ch!
                                         : ListView.builder(
                                       shrinkWrap: true,
-                                      itemCount: highscore.item.length,
+                                      itemCount: 15,
                                       itemBuilder: (context, index) =>
                                       highscore.item[index].diff == 'Schwer' ?
                                       Padding(
@@ -611,11 +609,10 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                                   fontSize: 20,
                                                   color: Colors.black),
                                             ),
-                                            Text(
-                                              highscore.item[index].date,
-                                              // .toString()
-                                              // .substring(0, 10),
-                                              style: const TextStyle(
+                                            const Text(
+                                              //highscore.item[index].date,
+                                              "Haydar H.J.",
+                                              style: TextStyle(
                                                   shadows: <Shadow>[
                                                     Shadow(
                                                       offset: Offset(0.0, 0.0),

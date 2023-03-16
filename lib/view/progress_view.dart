@@ -13,7 +13,7 @@ import '../model/progress/progressWord.dart';
 import '../model/progress/progressWord_boxes.dart';
 import '../viewmodels/settings/settings.dart';
 
-final List<String> frequenz = ['Alle Wörter','Hochfrequente Wörter', 'Niedrigfrequente Wörter'];
+final List<String> frequenz = ['Alle Wörter','Häufige Wörter', 'Seltene Wörter'];
 
 class ProgressScreen extends StatefulWidget {
   // final List<HighScore> scores;

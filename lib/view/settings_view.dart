@@ -297,7 +297,7 @@ class _NameChangeLine extends StatelessWidget {
 
 class _FrequenzChangeLine extends StatelessWidget {
   final String title;
-  final List<String> frequenz = ['Alle Wörter','Hochfrequente Wörter', 'Niedrigfrequente Wörter'];
+  final List<String> frequenz = ['Alle Wörter','Häufige Wörter', 'Seltene Wörter'];
 
   _FrequenzChangeLine(this.title);
 
