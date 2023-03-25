@@ -5,6 +5,7 @@ import 'package:wortschatz/View/home_view.dart';
 import 'package:wortschatz/viewmodels/terms_api.dart';
 import 'package:flutter/services.dart' as rootBundle;
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Terms extends StatefulWidget {
   const Terms({Key? key}): super(key: key);
@@ -32,120 +33,124 @@ class _TermsState extends State<Terms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Nutzungsbedingungen"),foregroundColor: Colors.black,),
+        appBar: AppBar(title: const AutoSizeText('Nutzungsbedinungen',style: TextStyle(fontSize: 30),minFontSize: 5, overflow: TextOverflow.ellipsis),foregroundColor: Colors.black,),
         body:
-        Form(
-          key: _formKey,
-          child: FutureBuilder(
-            future: ReadJsonData(),
-            builder: (context, data) {
-              if (data.hasError) {
-                return Center(child: Text("${data.error}"));
-              } else if (data.hasData) {
-                var items = data.data as List<TermsAPI>;
-                return Column(
-                  children: <Widget>[
-                    Expanded(
-                        child: ListView.builder(
-                            itemCount: items == null ? 0 : items.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                elevation: 5,
-                                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 10,
-                                        height: 10,
-                                      ),
-                                      Flexible(
-                                          child: Container(
-                                            padding: const EdgeInsets.only(bottom: 8),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment
-                                                  .start,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 8, right: 8),
-                                                  child: Text(
-                                                    items[index].content.toString(),
-                                                    style: const TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          )),
-                                    ],
-                                  ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _formKey,
+                  child: FutureBuilder(
+                    future: ReadJsonData(),
+                    builder: (context, data) {
+                      if (data.hasError) {
+                        return Center(child: Text("${data.error}"));
+                      } else if (data.hasData) {
+                        var items = data.data as List<TermsAPI>;
+                        return Column(
+                          children: <Widget>[
+                            Expanded(
+                                child: ListView.builder(
+                                    itemCount: items == null ? 0 : items.length,
+                                    itemBuilder: (context, index) {
+                                      return Card(
+                                        elevation: 5,
+                                        margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05, vertical: MediaQuery.of(context).size.height*0.01),
+                                        child: Container(
+                                          padding: const EdgeInsets.all(8),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Flexible(
+                                                  child: Container(
+                                                    padding: const EdgeInsets.only(bottom: 8),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(left: 8, right: 8),
+                                                          child:
+                                                          Text(
+                                                            items[index].content.toString(),
+                                                            style: const TextStyle(
+                                                                fontSize: 15,
+                                                                fontWeight: FontWeight.bold),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                      );}
+                                )
+                            ),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Flexible(child: AutoSizeText('Ich akzeptiere die Nutzungsbedingungen',style: TextStyle(fontSize: 40),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis),),
+                                  Transform.scale(
+                                      scale: 1.5,
+                                      child: Checkbox(
+                                          focusColor: Colors.lightBlue,
+                                          activeColor: Colors.green,
+                                          value: rememberMe,
+                                          onChanged: (newValue) {
+                                            setState(() => rememberMe = newValue!);
+                                          }
+                                      )
+                                  )
+                                ]
+                            ),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.01),
+                            showErrorMessage ?
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(80.0)
                                 ),
-                              );}
-                        )
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text('Ich akzeptiere die Nutzungsbedingungen'),
-                          const SizedBox(width: 20.0),
-                          Checkbox(
-                              focusColor: Colors.lightBlue,
-                              activeColor: Colors.green,
-                              value: rememberMe,
-                              onChanged: (newValue) {
-                                setState(() => rememberMe = newValue!);
-                              }
-                          )
-                        ]
-                    ),
-                    showErrorMessage ?
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(80.0)
-                        ),
-                        child: const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text('Die Nutzungsbedingungen müssen akzeptiert werden!')
-                        )
-                    )
-                        : Container(),
-                    SizedBox(height: 5.0),
-                    ElevatedButton(
-                        child: const Text('Weiter'),
-                        onPressed: (){
-                          if(_formKey.currentState!.validate()){
-                            if(rememberMe != true) {
-                              setState(() => showErrorMessage = true);
-                            }
-                            else {
-                              setState(() => showErrorMessage = false);
-                              _storeOnboardInfo();
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const HomeScreen()),
-                              );
-                            }
-                          }
-                        }
-                    ),
-                    SizedBox(height: 10.0),
-                  ],
-                );
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          ),
-        )
+                                child: const Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: AutoSizeText('Die Nutzungsbedingungen müssen akzeptiert werden!',style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                )
+                            )
+                                : const SizedBox.shrink(),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.01),
+                            ElevatedButton(
+                                child: const Padding(padding: EdgeInsets.all(5.0),
+                                child: AutoSizeText('Weiter',style: TextStyle(fontSize: 30),minFontSize: 10, overflow: TextOverflow.ellipsis),),
+                                onPressed: (){
+                                  if(_formKey.currentState!.validate()){
+                                    if(rememberMe != true) {
+                                      setState(() => showErrorMessage = true);
+                                    }
+                                    else {
+                                      setState(() => showErrorMessage = false);
+                                      _storeOnboardInfo();
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                                      );
+                                    }
+                                  }
+                                }
+                            ),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.02),
+
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                )
+            )
+
     );
   }
 

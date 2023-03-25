@@ -16,10 +16,11 @@ class MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(3.0),
-        child: ElevatedButton.icon(
+        padding: const EdgeInsets.all(8.0),
+        child:
+        ElevatedButton.icon(
           style: ButtonStyle(
-              minimumSize: MaterialStateProperty.all(const Size(300, 50)),
+              minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
               alignment: Alignment.centerLeft,
               backgroundColor: MaterialStateProperty.resolveWith((state) {
                 if (state.contains(MaterialState.pressed)) return Colors.grey;
@@ -56,7 +57,7 @@ class MenuButton extends StatelessWidget {
               fontSize: MediaQuery
                   .of(context)
                   .size
-                  .height * 0.04,
+                  .height * 0.035,
               fontFamily: "Qaz",
             ),
           ),

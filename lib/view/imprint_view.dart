@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,38 +44,33 @@ class _ImprintState extends State<Imprint> {
             image: AssetImage("assets/images/Hintergrund.jpg"),
             fit: BoxFit.cover),
       ),
-      padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+      padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: OrientationBuilder(builder: (context, orientation) {
         if (orientation == Orientation.portrait) {
-          return Column(mainAxisSize: MainAxisSize.max, children: [
+          return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center, children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(
-                      shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 2.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                      Icons.home,
-                      color: Colors.black,
-                      size: 35,
-                    )),
-                const SizedBox(width: 60),
-                const Text(
-                  'Impressum',
-                  style: TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 2.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                )
+                  iconSize: MediaQuery.of(context).size.width*0.12,
+                          onPressed: () => Navigator.of(context).pop(),
+                          icon: const Icon(
+                            shadows: <Shadow>[
+                            ],
+                            Icons.home,
+                            color: Colors.black,
+                          )),
+                SizedBox(width: MediaQuery.of(context).size.width*0.05),
+                const Expanded(child:
+                AutoSizeText('Impressum',style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 1.0,
+                    color: Colors.black,
+                  ),
+                ]),minFontSize: 20, maxLines: 1, overflow: TextOverflow.ellipsis))
               ],
             ),
             Expanded(
@@ -154,27 +150,105 @@ class _ImprintState extends State<Imprint> {
             ))
           ]);
         } else {
-          return Row(
-            children: [
-              /*  Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                    iconSize: 35,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ),*/
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(),
-                  ],
-                ),
-              ),
-            ],
-          );
+          return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center, children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    iconSize: MediaQuery.of(context).size.width*0.05,
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(
+                      shadows: <Shadow>[
+                      ],
+                      Icons.home,
+                      color: Colors.black,
+                    )),
+                SizedBox(width: MediaQuery.of(context).size.width*0.01),
+                const Flexible(child:
+                AutoSizeText('Impressum',style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 1.0,
+                    color: Colors.black,
+                  ),
+                ]),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                SizedBox(width: MediaQuery.of(context).size.width*0.6),
+              ],
+            ),
+            Expanded(
+                child: Form(
+                  key: _formKey,
+                  child: FutureBuilder(
+                    future: ReadJsonData(),
+                    builder: (context, data) {
+                      if (data.hasError) {
+                        return Center(child: Text("${data.error}"));
+                      } else if (data.hasData) {
+                        var items = data.data as List<ImprintAPI>;
+                        return Column(
+                          children: <Widget>[
+                            Expanded(
+                                child: ListView.builder(
+                                    itemCount: items == null ? 0 : items.length,
+                                    itemBuilder: (context, index) {
+                                      return Card(
+                                        elevation: 5,
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 6),
+                                        child: Container(
+                                          padding: const EdgeInsets.all(8),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                            children: [
+                                              Flexible(
+                                                  child: Container(
+                                                    padding: const EdgeInsets.symmetric(
+                                                        horizontal: 2, vertical: 2),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(
+                                                              left: 8, right: 8),
+                                                          child: AutoSizeText(
+                                                            items[index]
+                                                                .content
+                                                                .toString(),
+                                                            style: const TextStyle(
+                                                                fontSize: 15,
+                                                                fontWeight:
+                                                                FontWeight.bold),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    })),
+                            const SizedBox(height: 10.0),
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                ))
+          ]);
         }
       }),
     )));

@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:wortschatz/viewmodels/widgets/menuButton.dart';
 import 'package:flutter/material.dart';
 import 'package:wortschatz/model/constants/routes.dart';
@@ -27,44 +26,303 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       alignment: Alignment.center,
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height*0.3,
+                      height: MediaQuery.of(context).size.height*0.2,
                       child: Image.asset("assets/images/Homescreen_BIG.png"),
                     ),
                     Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width*0.9,
                         height: MediaQuery.of(context).size.height*0.10,
                         alignment: Alignment.center,
-                            child: const MenuButton(label: "Start", route:  Routes.categories, iconCodePoint: 0xf2af,),
+                            child: ElevatedButton.icon(
+            style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+            alignment: Alignment.centerLeft,
+            backgroundColor: MaterialStateProperty.resolveWith((state) {
+            if (state.contains(MaterialState.pressed)) return Colors.grey;
+            return Colors.lightBlueAccent;
+            }),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            side: MaterialStateProperty.all(const BorderSide(width: 2))),
+            onPressed: () =>
+            Navigator.pushNamed(context, Routes.categories, arguments: "Start"),
+            icon: Icon(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 5.0,
+            color: Colors.black,
+            ),
+            ],
+            size: MediaQuery
+                .of(context)
+                .size
+                .height * 0.07,
+            color: Colors.white,
+            const IconData(0xf2af, fontFamily: 'MaterialIcons')),
+            label: Text("Start",
+            style: TextStyle(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+            ),
+            ],
+            color: Colors.black,
+            fontSize: MediaQuery
+                .of(context)
+                .size
+                .height * 0.05,
+            fontFamily: "Qaz",
+            ),
+            ),
+            )
                     ),
                     Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width*0.9,
                         height: MediaQuery.of(context).size.height*0.10,
                           alignment: Alignment.center,
-                            child: const MenuButton(label: "Rangliste", route: Routes.rank , iconCodePoint: 0xf05ae,)
+                            child: ElevatedButton.icon(
+            style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+            alignment: Alignment.centerLeft,
+            backgroundColor: MaterialStateProperty.resolveWith((state) {
+            if (state.contains(MaterialState.pressed)) return Colors.grey;
+            return Colors.lightBlueAccent;
+            }),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            side: MaterialStateProperty.all(const BorderSide(width: 2))),
+            onPressed: () =>
+            Navigator.pushNamed(context, Routes.rank, arguments: "Rangliste"),
+            icon: Icon(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 5.0,
+            color: Colors.black,
+            ),
+            ],
+            size: MediaQuery
+                .of(context)
+                .size
+                .height * 0.07,
+            color: Colors.white,
+            const IconData(0xf05ae, fontFamily: 'MaterialIcons')),
+            label: Text("Rangliste",
+            style: TextStyle(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+            ),
+            ],
+            color: Colors.black,
+            fontSize: MediaQuery
+                .of(context)
+                .size
+                .height * 0.05,
+            fontFamily: "Qaz",
+            ),
+            ),
+            )
                     ),
                     Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width*0.9,
                         height: MediaQuery.of(context).size.height*0.10,
                         alignment: Alignment.center,
-                        child: const MenuButton(label: "Fortschritt", route: Routes.progress , iconCodePoint: 0xe7ca,)
+                        child:
+                          ElevatedButton.icon(
+            style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+            alignment: Alignment.centerLeft,
+            backgroundColor: MaterialStateProperty.resolveWith((state) {
+            if (state.contains(MaterialState.pressed)) return Colors.grey;
+            return Colors.lightBlueAccent;
+            }),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            side: MaterialStateProperty.all(const BorderSide(width: 2))),
+            onPressed: () =>
+            Navigator.pushNamed(context, Routes.progress, arguments: "Fortschritt"),
+            icon: Icon(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 5.0,
+            color: Colors.black,
+            ),
+            ],
+            size: MediaQuery
+                .of(context)
+                .size
+                .height * 0.07,
+            color: Colors.white,
+            const IconData(0xe7ca, fontFamily: 'MaterialIcons')),
+            label: Text("Fortschritt",
+            style: TextStyle(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+            ),
+            ],
+            color: Colors.black,
+            fontSize: MediaQuery
+                .of(context)
+                .size
+                .height * 0.05,
+            fontFamily: "Qaz",
+            ),
+            ),
+            )
                     ),
                     Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width*0.9,
                         height: MediaQuery.of(context).size.height*0.10,
                           alignment: Alignment.center,
-                          child: const MenuButton(label: "Anleitung", route:  Routes.manual, iconCodePoint: 0xe309,)
+                          child: ElevatedButton.icon(
+            style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+            alignment: Alignment.centerLeft,
+            backgroundColor: MaterialStateProperty.resolveWith((state) {
+            if (state.contains(MaterialState.pressed)) return Colors.grey;
+            return Colors.lightBlueAccent;
+            }),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            side: MaterialStateProperty.all(const BorderSide(width: 2))),
+            onPressed: () =>
+            Navigator.pushNamed(context, Routes.manual, arguments: "Anleitung"),
+            icon: Icon(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 5.0,
+            color: Colors.black,
+            ),
+            ],
+            size: MediaQuery
+                .of(context)
+                .size
+                .height * 0.07,
+            color: Colors.white,
+            const IconData(0xe309, fontFamily: 'MaterialIcons')),
+            label: Text("Anleitung",
+            style: TextStyle(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+            ),
+            ],
+            color: Colors.black,
+            fontSize: MediaQuery
+                .of(context)
+                .size
+                .height * 0.05,
+            fontFamily: "Qaz",
+            ),
+            ),
+            )
                     ),
                     Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width*0.9,
                         height: MediaQuery.of(context).size.height*0.10,
                           alignment: Alignment.center,
-                          child: const MenuButton(label: "Einstellungen", route: Routes.settings , iconCodePoint: 0xe57f,)
+                          child: ElevatedButton.icon(
+            style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+            alignment: Alignment.centerLeft,
+            backgroundColor: MaterialStateProperty.resolveWith((state) {
+            if (state.contains(MaterialState.pressed)) return Colors.grey;
+            return Colors.lightBlueAccent;
+            }),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            side: MaterialStateProperty.all(const BorderSide(width: 2))),
+            onPressed: () =>
+            Navigator.pushNamed(context, Routes.settings, arguments: "Einstellungen"),
+            icon: Icon(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 5.0,
+            color: Colors.black,
+            ),
+            ],
+            size: MediaQuery
+                .of(context)
+                .size
+                .height * 0.07,
+            color: Colors.white,
+            const IconData(0xe57f, fontFamily: 'MaterialIcons')),
+            label: Text("Einstellungen",
+            style: TextStyle(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+            ),
+            ],
+            color: Colors.black,
+            fontSize: MediaQuery
+                .of(context)
+                .size
+                .height * 0.05,
+            fontFamily: "Qaz",
+            ),
+            ),
+            )
                     ),
                     Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width*0.9,
                         height: MediaQuery.of(context).size.height*0.10,
                           alignment: Alignment.center,
-                        child: const MenuButton(label: "Impressum", route: Routes.imprint , iconCodePoint: 0xe33c,)
+                        child: ElevatedButton.icon(
+            style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+            alignment: Alignment.centerLeft,
+            backgroundColor: MaterialStateProperty.resolveWith((state) {
+            if (state.contains(MaterialState.pressed)) return Colors.grey;
+            return Colors.lightBlueAccent;
+            }),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            side: MaterialStateProperty.all(const BorderSide(width: 2))),
+            onPressed: () =>
+            Navigator.pushNamed(context, Routes.imprint, arguments: "Impressum"),
+            icon: Icon(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 5.0,
+            color: Colors.black,
+            ),
+            ],
+            size: MediaQuery
+                .of(context)
+                .size
+                .height * 0.07,
+            color: Colors.white,
+            const IconData(0xe33c, fontFamily: 'MaterialIcons')),
+            label: Text("Impressum",
+            style: TextStyle(
+            shadows: const <Shadow>[
+            Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+            ),
+            ],
+            color: Colors.black,
+            fontSize: MediaQuery
+                .of(context)
+                .size
+                .height * 0.05,
+            fontFamily: "Qaz",
+            ),
+            ),
+            )
                     ),
                   ],
               );
@@ -75,46 +333,313 @@ class HomeScreen extends StatelessWidget {
                     children: [
                           Container(
                             alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height*0.30,
+                            width: MediaQuery.of(context).size.width*0.9,
+                            height: MediaQuery.of(context).size.height*0.3,
                             child: Image.asset("assets/images/Homescreen_BIG.png"),
                           ),
-                          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            //crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
                             Container(
-                              width: MediaQuery.of(context).size.width * 0.40,
-                              height: MediaQuery.of(context).size.height*0.10,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              height: MediaQuery.of(context).size.height*0.2,
                               alignment: Alignment.center,
-                              child: const MenuButton(label: "Start", route:  Routes.categories, iconCodePoint: 0xf2af,),
+                              child: ElevatedButton.icon(
+                                style: ButtonStyle(
+                                    minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+                                    alignment: Alignment.centerLeft,
+                                    backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                      if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                      return Colors.lightBlueAccent;
+                                    }),
+                                    shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                    side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                onPressed: () =>
+                                    Navigator.pushNamed(context, Routes.categories, arguments: "Start"),
+                                icon: Icon(
+                                    shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 5.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                    size: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height * 0.1,
+                                    color: Colors.white,
+                                    const IconData(0xf2af, fontFamily: 'MaterialIcons')),
+                                label: Text("Start",
+                                  style: TextStyle(
+                                    shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 1.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                    color: Colors.black,
+                                    fontSize: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height * 0.07,
+                                    fontFamily: "Qaz",
+                                  ),
+                                ),
+                              ),
                             ),
-                            const Padding(padding: EdgeInsets.all(10)),
                             Container(
-                              width: MediaQuery.of(context).size.width * 0.40,
-                              height: MediaQuery.of(context).size.height*0.10,
-                              alignment: Alignment.center,
-                              child: const MenuButton(label: "Fortschritt", route: Routes.progress , iconCodePoint: 0xf05ae,)
-                            ),
-                          ],),
-                          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.40,
-                              height: MediaQuery.of(context).size.height*0.10,
-                              alignment: Alignment.center,
-                              child: const MenuButton(label: "Anleitung", route: Routes.manual , iconCodePoint: 0xe309,)
-                            ),
-                            const Padding(padding: EdgeInsets.all(10)),
-                            Container(
-                                width: MediaQuery.of(context).size.width * 0.40,
-                                height: MediaQuery.of(context).size.height*0.10,
+                                width: MediaQuery.of(context).size.width*0.4,
+                                height: MediaQuery.of(context).size.height*0.20,
                                 alignment: Alignment.center,
-                                child: const MenuButton(label: "Einstellung", route: Routes.settings , iconCodePoint: 0xe57f,)
+                                child: ElevatedButton.icon(
+                                  style: ButtonStyle(
+                                      minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+                                      alignment: Alignment.centerLeft,
+                                      backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                        return Colors.lightBlueAccent;
+                                      }),
+                                      shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                      side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, Routes.rank, arguments: "Rangliste"),
+                                  icon: Icon(
+                                      shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 5.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],
+                                      size: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .height * 0.10,
+                                      color: Colors.white,
+                                      const IconData(0xf05ae, fontFamily: 'MaterialIcons')),
+                                  label: Text("Rangliste",
+                                    style: TextStyle(
+                                      shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 1.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],
+                                      color: Colors.black,
+                                      fontSize: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .height * 0.07,
+                                      fontFamily: "Qaz",
+                                    ),
+                                  ),
+                                )
                             ),
                           ],),
-                          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
                             Container(
-                              width: MediaQuery.of(context).size.width * 0.40,
-                              height: MediaQuery.of(context).size.height*0.10,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              height: MediaQuery.of(context).size.height*0.20,
                               alignment: Alignment.center,
-                              child: const MenuButton(label: "Impressum", route: Routes.imprint , iconCodePoint: 0xe33c,)
+                              child: ElevatedButton.icon(
+                                style: ButtonStyle(
+                                    minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+                                    alignment: Alignment.centerLeft,
+                                    backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                      if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                      return Colors.lightBlueAccent;
+                                    }),
+                                    shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                    side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                onPressed: () =>
+                                    Navigator.pushNamed(context, Routes.progress, arguments: "Fortschritt"),
+                                icon: Icon(
+                                    shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 5.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                    size: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height * 0.1,
+                                    color: Colors.white,
+                                    const IconData(0xe7ca, fontFamily: 'MaterialIcons')),
+                                label: Text("Fortschritt",
+                                  style: TextStyle(
+                                    shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 1.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                    color: Colors.black,
+                                    fontSize: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height * 0.07,
+                                    fontFamily: "Qaz",
+                                  ),
+                                ),
+                              )
+                            ),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                height: MediaQuery.of(context).size.height*0.20,
+                                alignment: Alignment.center,
+                                child: ElevatedButton.icon(
+                                  style: ButtonStyle(
+                                      minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+                                      alignment: Alignment.centerLeft,
+                                      backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                        return Colors.lightBlueAccent;
+                                      }),
+                                      shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                      side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, Routes.manual, arguments: "Anleitung"),
+                                  icon: Icon(
+                                      shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 5.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],
+                                      size: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .height * 0.1,
+                                      color: Colors.white,
+                                      const IconData(0xe309, fontFamily: 'MaterialIcons')),
+                                  label: Text("Anleitung",
+                                    style: TextStyle(
+                                      shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 1.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],
+                                      color: Colors.black,
+                                      fontSize: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .height * 0.07,
+                                      fontFamily: "Qaz",
+                                    ),
+                                  ),
+                                )
+                            ),
+                          ],),
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              height: MediaQuery.of(context).size.height*0.20,
+                              alignment: Alignment.center,
+                              child: ElevatedButton.icon(
+                                style: ButtonStyle(
+                                    minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+                                    alignment: Alignment.centerLeft,
+                                    backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                      if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                      return Colors.lightBlueAccent;
+                                    }),
+                                    shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                    side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                onPressed: () =>
+                                    Navigator.pushNamed(context, Routes.settings, arguments: "Einstellungen"),
+                                icon: Icon(
+                                    shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 5.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                    size: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height * 0.10,
+                                    color: Colors.white,
+                                    const IconData(0xe57f, fontFamily: 'MaterialIcons')),
+                                label: Text("Einstellungen",
+                                  style: TextStyle(
+                                    shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 1.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                    color: Colors.black,
+                                    fontSize: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height * 0.07,
+                                    fontFamily: "Qaz",
+                                  ),
+                                ),
+                              )
+                            ),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                height: MediaQuery.of(context).size.height*0.20,
+                                alignment: Alignment.center,
+                                child: ElevatedButton.icon(
+                                  style: ButtonStyle(
+                                      minimumSize: MaterialStateProperty.all(const Size(double.infinity,double.infinity)),
+                                      alignment: Alignment.centerLeft,
+                                      backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                        return Colors.lightBlueAccent;
+                                      }),
+                                      shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                      side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, Routes.imprint, arguments: "Impressum"),
+                                  icon: Icon(
+                                      shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 5.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],
+                                      size: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .height * 0.1,
+                                      color: Colors.white,
+                                      const IconData(0xe33c, fontFamily: 'MaterialIcons')),
+                                  label: Text("Impressum",
+                                    style: TextStyle(
+                                      shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 1.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],
+                                      color: Colors.black,
+                                      fontSize: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .height * 0.07,
+                                      fontFamily: "Qaz",
+                                    ),
+                                  ),
+                                )
                             ),
                           ],
                          ),
