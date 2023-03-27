@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/model/highscore/dummy_data.dart';
@@ -61,6 +62,10 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    var mySizeGRP_V = AutoSizeGroup();
+    var mySizeGRP2_V = AutoSizeGroup();
+    var mySizeGRP_H = AutoSizeGroup();
+    var mySizeGRP2_H = AutoSizeGroup();
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.deepPurple.shade900,
@@ -71,7 +76,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
               image: AssetImage("assets/images/Hintergrund.jpg"),
               fit: BoxFit.cover),
         ),
-        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: OrientationBuilder(builder: (context, orientation) {
           if (orientation == Orientation.portrait) {
             return Padding(
@@ -82,40 +87,27 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
+                          iconSize: MediaQuery.of(context).size.width*0.1,
                           onPressed: () => Navigator.of(context).pop(),
                           icon: const Icon(
                             shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
                             ],
                             Icons.home,
                             color: Colors.black,
-                            size: 35,
                           )),
-                      const SizedBox(width: 60),
-                      const Text(
-                        'Rangliste',
-                        style: TextStyle(
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
-                            ],
-                            fontFamily: "Qaz",
-                            fontSize: 35,
-                            color: Colors.black),
-                      )
+                      SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                      Text('Rangliste',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                        Shadow(
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 1.0,
+                          color: Colors.black,
+                        ),
+                      ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                     ],
                   ),
                   // give the tab bar a height [can change hheight to preferred height]
-                  Container(height: 10),
                   Container(
-                    height: 45,
+                    height: MediaQuery.of(context).size.height*0.07,
                     decoration: BoxDecoration(
                       color: Colors.white70,
                       borderRadius: BorderRadius.circular(
@@ -133,55 +125,38 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                       ),
                       labelColor: Colors.black,
                       unselectedLabelColor: Colors.black,
-                      tabs: const[
+                      tabs: [
                         // first tab [you can add an icon using the icon property]
                         Tab(
-                          child : Text(
-                            'Leicht',
-                            style: TextStyle(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                                color: Colors.black,
-                                fontSize: 20),
-                          ),
+                          child :
+                          AutoSizeText('Leicht', group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 1.0,
+                              color: Colors.black,
+                            ),
+                          ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                         ),
 
                         // second tab [you can add an icon using the icon property]
                         Tab(
-                          child : Text(
-                            'Normal',
-                            style: TextStyle(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                                color: Colors.black,
-                                fontSize: 20),
-                          ),
+                          child : AutoSizeText('Normal', group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 1.0,
+                              color: Colors.black,
+                            ),
+                          ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                         ),
 
                         Tab(
-                          child : Text(
-                            'Schwer',
-                            style: TextStyle(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                                color: Colors.black,
-                                fontSize: 20),
-                          ),
+                          child : AutoSizeText('Schwer', group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 1.0,
+                              color: Colors.black,
+                            ),
+                          ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                         ),
                       ],
                     ),
@@ -193,53 +168,35 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                       children: [
                         // first tab bar view widget
                         Padding(
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
                           child: Column(children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text(
-                                  'Platz',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
-                                Text(
-                                  'Name',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
-                                Text(
-                                  'Punkte',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
+                              children: [
+                                Flexible(child:
+                                AutoSizeText('Platz', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Name', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Punkte', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
                               ],
                             ),
                             FutureBuilder(
@@ -256,20 +213,13 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                       height: 50,
                                       child: Center(
                                         // child: CircularProgressIndicator(),
-                                        child: Text(
-                                          'Keine Spieler gefunden!',
-                                          style: TextStyle(
-                                              shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 2.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],
-                                              fontFamily: "Qaz",
-                                              fontSize: 30,
-                                              color: Colors.black),
-                                        ),
+                                        child: AutoSizeText('Keine Spieler gefunden!', style: TextStyle(fontSize: 200, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 1.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
                                       ),
                                     ),
                                     builder: (context, highscore, ch) =>
@@ -281,57 +231,35 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                       highscore.item[index].diff == 'Leicht' ?
                                           Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 10, 0, 0),
+                                            0, 8, 0, 0),
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceAround,
                                           children: [
-                                            Text(
-                                              rank1 < 3
-                                                  ? emoji[rank1++]
-                                                  : " ${++rank1}",
-                                              style: const TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
-                                            const Text(
-                                             // highscore.item[index].date,
-                                              "Haydar H.J.",
-                                              style: TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
-                                            Text(
-                                              highscore.item[index].score
-                                                  .toString(),
-                                              style: const TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            )
+                                            AutoSizeText(rank1 < 3
+                                                ? emoji[rank1++]
+                                                : " ${++rank1}", group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].date, group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].score
+                                                .toString(), group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                           ],
                                         ),
                                       ): const SizedBox.shrink(),
@@ -344,53 +272,35 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                         ),
                         // second tab bar view widget
                         Padding(
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
                           child: Column(children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text(
-                                  'Platz',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
-                                Text(
-                                  'Name',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
-                                Text(
-                                  'Punkte',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
+                              children: [
+                                Flexible(child:
+                                AutoSizeText('Platz', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Name', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Punkte', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
                               ],
                             ),
                             FutureBuilder(
@@ -407,87 +317,53 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                       height: 50,
                                       child: Center(
                                         // child: CircularProgressIndicator(),
-                                        child: Text(
-                                          'Keine Spieler gefunden!',
-                                          style: TextStyle(
-                                              shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 2.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],
-                                              fontFamily: "Qaz",
-                                              fontSize: 30,
-                                              color: Colors.black),
-                                        ),
+                                        child: AutoSizeText('Keine Spieler gefunden!', style: TextStyle(fontSize: 200, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 1.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
                                       ),
                                     ),
-                                    builder: (context, highscore, ch) => highscore
-                                        .item.isEmpty
-                                        ? ch!
+                                    builder: (context, highscore, ch) =>
+                                    highscore.item.isEmpty ? ch!
                                         : ListView.builder(
                                       shrinkWrap: true,
-                                      //itemCount: highscore.item.length,
-                                      itemCount: 15,
+                                      itemCount: highscore.item.length,
                                       itemBuilder: (context, index) =>
                                       highscore.item[index].diff == 'Normal' ?
-                                               Padding(
+                                      Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 10, 0, 0),
+                                            0, 8, 0, 0),
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceAround,
                                           children: [
-                                              Text(
-                                                rank2 < 3
-                                                    ? emoji[rank2++]
-                                                    : " ${++rank2}",
-                                                style: const TextStyle(
-                                                    shadows: <Shadow>[
-                                                      Shadow(
-                                                        offset: Offset(
-                                                            0.0, 0.0),
-                                                        blurRadius: 2.0,
-                                                        color: Colors.black,
-                                                      ),
-                                                    ],
-                                                    fontFamily: "Qaz",
-                                                    fontSize: 20,
-                                                    color: Colors.black),
+                                            AutoSizeText(rank1 < 3
+                                                ? emoji[rank1++]
+                                                : " ${++rank1}", group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
                                               ),
-                                            const Text(
-                                                //highscore.item[index].date,
-                                              "Haydar H.J.",
-                                                style: TextStyle(
-                                                    shadows: <Shadow>[
-                                                      Shadow(
-                                                        offset: Offset(
-                                                            0.0, 0.0),
-                                                        blurRadius: 2.0,
-                                                        color: Colors.black,
-                                                      ),
-                                                    ],
-                                                    fontFamily: "Qaz",
-                                                    fontSize: 20,
-                                                    color: Colors.black),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].date, group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
                                               ),
-                                            Text(
-                                                highscore.item[index].score
-                                                    .toString(),
-                                                style: const TextStyle(
-                                                    shadows: <Shadow>[
-                                                      Shadow(
-                                                        offset: Offset(
-                                                            0.0, 0.0),
-                                                        blurRadius: 2.0,
-                                                        color: Colors.black,
-                                                      ),
-                                                    ],
-                                                    fontFamily: "Qaz",
-                                                    fontSize: 20,
-                                                    color: Colors.black),
-                                              )
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].score
+                                                .toString(), group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                           ],
                                         ),
                                       ): const SizedBox.shrink(),
@@ -499,53 +375,35 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                           ]),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
                           child: Column(children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text(
-                                  'Platz',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
-                                Text(
-                                  'Name',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
-                                Text(
-                                  'Punkte',
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      fontFamily: "Qaz",
-                                      fontSize: 30,
-                                      color: Colors.black),
-                                ),
+                              children: [
+                                Flexible(child:
+                                AutoSizeText('Platz', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Name', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Punkte', group: mySizeGRP2_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
                               ],
                             ),
                             FutureBuilder(
@@ -562,83 +420,53 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                       height: 50,
                                       child: Center(
                                         // child: CircularProgressIndicator(),
-                                        child: Text(
-                                          'Keine Spieler gefunden!',
-                                          style: TextStyle(
-                                              shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 2.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],
-                                              fontFamily: "Qaz",
-                                              fontSize: 30,
-                                              color: Colors.black),
-                                        ),
+                                        child: AutoSizeText('Keine Spieler gefunden!', style: TextStyle(fontSize: 200, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 1.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
                                       ),
                                     ),
-                                    builder: (context, highscore, ch) => highscore
-                                        .item.isEmpty
-                                        ? ch!
+                                    builder: (context, highscore, ch) =>
+                                    highscore.item.isEmpty ? ch!
                                         : ListView.builder(
                                       shrinkWrap: true,
-                                      itemCount: 15,
+                                      itemCount: highscore.item.length,
                                       itemBuilder: (context, index) =>
                                       highscore.item[index].diff == 'Schwer' ?
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 10, 0, 0),
+                                            0, 8, 0, 0),
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceAround,
                                           children: [
-                                            Text(
-                                              rank3 < 3
-                                                  ? emoji[rank3++]
-                                                  : " ${++rank3}",
-                                              style: const TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
-                                            const Text(
-                                              //highscore.item[index].date,
-                                              "Haydar H.J.",
-                                              style: TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
-                                            Text(
-                                              highscore.item[index].score
-                                                  .toString(),
-                                              style: const TextStyle(
-                                                  shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 2.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],
-                                                  fontFamily: "Qaz",
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            )
+                                            AutoSizeText(rank1 < 3
+                                                ? emoji[rank1++]
+                                                : " ${++rank1}", group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].date, group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].score
+                                                .toString(), group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                           ],
                                         ),
                                       ): const SizedBox.shrink(),
@@ -656,26 +484,409 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
               ),
             );
           } else {
-            return Row(
-              children: [
-                /*  Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                    iconSize: 35,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ),*/
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(),
+                      IconButton(
+                          iconSize: MediaQuery.of(context).size.width*0.06,
+                          onPressed: () => Navigator.of(context).pop(),
+                          icon: const Icon(
+                            shadows: <Shadow>[
+                            ],
+                            Icons.home,
+                            color: Colors.black,
+                          )),
+                      SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                      Text('Rangliste',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                        Shadow(
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 1.0,
+                          color: Colors.black,
+                        ),
+                      ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                     ],
                   ),
-                ),
-              ],
+                  // give the tab bar a height [can change hheight to preferred height]
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.1,
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(
+                        25.0,
+                      ),
+                    ),
+                    child: TabBar(
+                      controller: _tabController,
+                      // give the indicator a decoration (color and border radius)
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          25.0,
+                        ),
+                        color: Colors.lightBlueAccent,
+                      ),
+                      labelColor: Colors.black,
+                      unselectedLabelColor: Colors.black,
+                      tabs: [
+                        // first tab [you can add an icon using the icon property]
+                        Tab(
+                            child :
+                            AutoSizeText('Leicht', group: mySizeGRP_H, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 1.0,
+                                color: Colors.black,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                        ),
+
+                        // second tab [you can add an icon using the icon property]
+                        Tab(
+                            child : AutoSizeText('Normal', group: mySizeGRP_H, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 1.0,
+                                color: Colors.black,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                        ),
+
+                        Tab(
+                            child : AutoSizeText('Schwer', group: mySizeGRP_H, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 1.0,
+                                color: Colors.black,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                        ),
+                      ],
+                    ),
+                  ),
+                  // tab bar view here
+                  Flexible(
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        // first tab bar view widget
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
+                          child: Column(children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(child:
+                                AutoSizeText('Platz', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Name', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Punkte', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                              ],
+                            ),
+                            FutureBuilder(
+                              future: initFuture,
+                              builder: ((context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else {
+                                  return Consumer<HighScoreItems>(
+                                    child: const SizedBox(
+                                      height: 50,
+                                      child: Center(
+                                        // child: CircularProgressIndicator(),
+                                        child: AutoSizeText('Keine Spieler gefunden!', style: TextStyle(fontSize: 200, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 1.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                      ),
+                                    ),
+                                    builder: (context, highscore, ch) =>
+                                    highscore.item.isEmpty ? ch!
+                                        : ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: highscore.item.length,
+                                      itemBuilder: (context, index) =>
+                                      highscore.item[index].diff == 'Leicht' ?
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 8, 0, 0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            AutoSizeText(rank1 < 3
+                                                ? emoji[rank1++]
+                                                : " ${++rank1}", group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].date, group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].score
+                                                .toString(), group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                                          ],
+                                        ),
+                                      ): const SizedBox.shrink(),
+                                    ),
+                                  );
+                                }
+                              }),
+                            )
+                          ]),
+                        ),
+                        // second tab bar view widget
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
+                          child: Column(children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(child:
+                                AutoSizeText('Platz', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Name', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Punkte', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                              ],
+                            ),
+                            FutureBuilder(
+                              future: initFuture,
+                              builder: ((context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else {
+                                  return Consumer<HighScoreItems>(
+                                    child: const SizedBox(
+                                      height: 50,
+                                      child: Center(
+                                        // child: CircularProgressIndicator(),
+                                        child: AutoSizeText('Keine Spieler gefunden!', style: TextStyle(fontSize: 200, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 1.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                      ),
+                                    ),
+                                    builder: (context, highscore, ch) =>
+                                    highscore.item.isEmpty ? ch!
+                                        : ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: highscore.item.length,
+                                      itemBuilder: (context, index) =>
+                                      highscore.item[index].diff == 'Normal' ?
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 8, 0, 0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            AutoSizeText(rank1 < 3
+                                                ? emoji[rank1++]
+                                                : " ${++rank1}", group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].date, group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].score
+                                                .toString(), group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                                          ],
+                                        ),
+                                      ): const SizedBox.shrink(),
+                                    ),
+                                  );
+                                }
+                              }),
+                            )
+                          ]),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
+                          child: Column(children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(child:
+                                AutoSizeText('Platz', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Name', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                Flexible(child:
+                                AutoSizeText('Punkte', group: mySizeGRP2_H, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                              ],
+                            ),
+                            FutureBuilder(
+                              future: initFuture,
+                              builder: ((context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else {
+                                  return Consumer<HighScoreItems>(
+                                    child: const SizedBox(
+                                      height: 50,
+                                      child: Center(
+                                        // child: CircularProgressIndicator(),
+                                        child: AutoSizeText('Keine Spieler gefunden!', style: TextStyle(fontSize: 200, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 1.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                      ),
+                                    ),
+                                    builder: (context, highscore, ch) =>
+                                    highscore.item.isEmpty ? ch!
+                                        : ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: highscore.item.length,
+                                      itemBuilder: (context, index) =>
+                                      highscore.item[index].diff == 'Schwer' ?
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 8, 0, 0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                          children: [
+                                            AutoSizeText(rank1 < 3
+                                                ? emoji[rank1++]
+                                                : " ${++rank1}", group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].date, group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                            AutoSizeText(highscore.item[index].score
+                                                .toString(), group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 1.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                                          ],
+                                        ),
+                                      ): const SizedBox.shrink(),
+                                    ),
+                                  );
+                                }
+                              }),
+                            )
+                          ]),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             );
           }
         }),

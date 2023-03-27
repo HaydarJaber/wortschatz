@@ -30,7 +30,7 @@ class Settings extends StatelessWidget {
                     fit: BoxFit.cover
                 ),
               ),
-              padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
               child: OrientationBuilder(builder: (context, orientation) {
                 if (orientation == Orientation.portrait) {
                   return Column(
@@ -80,7 +80,7 @@ class Settings extends StatelessWidget {
                                   ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
                                 ],
                               )
-                              ,const _NameChangeLine('Name:',)
+                              ,_NameChangeLine('Name:',orientation)
                             ],
                           ),),
                         Container(
@@ -100,7 +100,7 @@ class Settings extends StatelessWidget {
                                   ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
                                 ],
                               )
-                              ,_FrequenzChangeLine('Frequenz der Wörter:')
+                              ,_FrequenzChangeLine('Frequenz der Wörter:',orientation)
                             ],
                           ),),
                         Container(
@@ -120,7 +120,7 @@ class Settings extends StatelessWidget {
                                   ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
                                 ],
                               )
-                              ,_SchwierigkeitChangeLine('Schwierigkeit:')
+                              ,_SchwierigkeitChangeLine('Schwierigkeit:',orientation)
                             ],
                           ),),
                       ],
@@ -129,25 +129,91 @@ class Settings extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return Row(
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      /*  Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                    iconSize: 35,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ),*/
-                      Expanded(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                              iconSize: MediaQuery.of(context).size.width*0.06,
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(
+                                shadows: <Shadow>[
+                                ],
+                                Icons.home,
+                                color: Colors.black,
+                              )),
+                          SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                          Text('Einstellungen',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 1.0,
+                              color: Colors.black,
+                            ),
+                          ]), maxLines: 1, overflow: TextOverflow.ellipsis)
+                        ],
+                      ),
+                      //const Text('Kategorien', style: TextStyle(fontSize: 60,fontFamily: "Modak")
+                      Flexible(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Row(),
+                            Expanded(
+                              //padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                              child:
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Expanded(child:
+                                      AutoSizeText('Name:',group: mySizeGRP_H,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 0.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                      ,_NameChangeLine('Name:',orientation)
+                                    ],
+                                  )),
+                            Expanded(
+                              //padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                              child:
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Flexible(child:
+                                      AutoSizeText('Frequenz der Wörter:',group: mySizeGRP_H,style: const TextStyle(fontSize: 400, shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 0.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 2, overflow: TextOverflow.ellipsis))
+                                    ,_FrequenzChangeLine('Frequenz der Wörter:',orientation)
+                                    ],
+                                  ),
+                                ),
+                            Expanded(
+                              //padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                              child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Expanded(child:
+                                      AutoSizeText('Schwierigkeit:',group: mySizeGRP_H,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 0.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                    ,_SchwierigkeitChangeLine('Schwierigkeit:',orientation)
+                                    ],
+                                  )
+                                  ,),
                           ],
                         ),
-                      ),
+                      )
                     ],
                   );
                 }
@@ -166,8 +232,9 @@ void showCustomNameDialog(BuildContext context) {
 
 class CustomNameDialog extends StatefulWidget {
   final Animation<double> animation;
+  late Orientation orientation;
 
-  const CustomNameDialog({required this.animation, super.key});
+  CustomNameDialog({required this.animation, super.key});
 
   @override
   State<CustomNameDialog> createState() => _CustomNameDialogState();
@@ -187,7 +254,7 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
       SimpleDialog(
         contentPadding: EdgeInsets.zero,
         backgroundColor: Colors.white,
-        title: Text('Namensänderung:',style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.07, shadows: const <Shadow>[
+        title: Text('Namensänderung:',style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.04, shadows: const <Shadow>[
           Shadow(
             offset: Offset(0.0, 0.0),
             blurRadius: 1.0,
@@ -255,51 +322,95 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
 
 class _NameChangeLine extends StatelessWidget {
   final String title;
+  Orientation orientation;
 
-  const _NameChangeLine(this.title);
+  _NameChangeLine(this.title, this.orientation);
 
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
-    return InkResponse(
-      highlightShape: BoxShape.rectangle,
-      onTap: () => showCustomNameDialog(context),
-      child: Material(
-        color: Colors.transparent,
-        child: Ink(
-            width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.height * 0.14,
-            decoration: const ShapeDecoration(
-                color: Colors.white70,
-                shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        width: 2,
-                        color: Colors.black)
-                )
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ValueListenableBuilder(
-                    valueListenable: settings.playerName,
-                    builder: (context, name, child) =>
-                    Flexible(child:
-                        AutoSizeText('$name', style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                          Shadow(
-                            offset: Offset(0.0, 0.0),
-                            blurRadius: 2.0,
-                            color: Colors.lightBlueAccent,
-                          ),
-                        ],fontFamily: "Qaz",color: Colors.lightBlueAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                  ),
-                ],
+    if (orientation == Orientation.portrait) {
+      return InkResponse(
+          highlightShape: BoxShape.rectangle,
+          onTap: () => showCustomNameDialog(context),
+          child: Material(
+            color: Colors.transparent,
+            child: Ink(
+              width: MediaQuery.of(context).size.width * 1,
+              height: MediaQuery.of(context).size.height * 0.1,
+              decoration: const ShapeDecoration(
+                  color: Colors.white70,
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 2,
+                          color: Colors.black)
+                  )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ValueListenableBuilder(
+                        valueListenable: settings.playerName,
+                        builder: (context, name, child) =>
+                            Flexible(child:
+                            AutoSizeText('$name', style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.lightBlueAccent,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.lightBlueAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                    ),
+                  ],
+                ),
               ),
             ),
-        ),
-      )
-    );
+          )
+      );
+    }else{
+      return InkResponse(
+          highlightShape: BoxShape.rectangle,
+          onTap: () => showCustomNameDialog(context),
+          child: Material(
+            color: Colors.transparent,
+            child: Ink(
+              width: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.height * 0.2,
+              decoration: const ShapeDecoration(
+                  color: Colors.white70,
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 2,
+                          color: Colors.black)
+                  )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ValueListenableBuilder(
+                        valueListenable: settings.playerName,
+                        builder: (context, name, child) =>
+                            Flexible(child:
+                            AutoSizeText('$name', style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.lightBlueAccent,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.lightBlueAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
+      );
+    }
+
   }
 }
 
@@ -307,166 +418,320 @@ class _NameChangeLine extends StatelessWidget {
 class _FrequenzChangeLine extends StatelessWidget {
   final String title;
   final List<String> frequenz = ['Alle Wörter','Häufige Wörter', 'Seltene Wörter'];
-  _FrequenzChangeLine(this.title);
+  Orientation orientation;
+  _FrequenzChangeLine(this.title, this.orientation);
 
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
+    if (orientation == Orientation.portrait) {
+      return InkResponse(
+          highlightShape: BoxShape.rectangle,
+          child:
 
-    return InkResponse(
-      highlightShape: BoxShape.rectangle,
-      child:
-
-      Material(
-        color: Colors.transparent,
-        child: Ink(
-            width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.height * 0.11,
-            decoration: const ShapeDecoration(
-                color: Colors.white70,
-                shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        width: 2,
-                        color: Colors.black)
+          Material(
+            color: Colors.transparent,
+            child: Ink(
+                width: MediaQuery.of(context).size.width * 1,
+                height: MediaQuery.of(context).size.height * 0.11,
+                decoration: const ShapeDecoration(
+                    color: Colors.white70,
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 2,
+                            color: Colors.black)
+                    )
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ValueListenableBuilder(
+                          valueListenable: settings.frequency,
+                          builder: (context, value, child) =>
+                              Flexible(child:
+                              DropdownButton<String>(
+                                itemHeight: MediaQuery.of(context).size.height*0.1,
+                                value: value,
+                                icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
+                                isExpanded: true,
+                                elevation: 16,
+                                style: const TextStyle(
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                  color: Colors.black,
+                                  fontFamily: "Qaz",
+                                ),
+                                underline: Container(
+                                  height: 0,
+                                  color: Colors.transparent,
+                                ),
+                                onChanged: (value) {
+                                  // This is called when the user selects an item.
+                                  context.read<SettingsController>().setFrequency(value!);
+                                },
+                                items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: AutoSizeText(value,style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 0.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
+                                  );
+                                }).toList(),
+                              ))
+                      ),
+                    ],
+                  ),
                 )
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ValueListenableBuilder(
-                      valueListenable: settings.frequency,
-                      builder: (context, value, child) =>
-                      Flexible(child:
-                          DropdownButton<String>(
-                            itemHeight: MediaQuery.of(context).size.height*0.1,
-                            value: value,
-                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
-                            isExpanded: true,
-                            elevation: 16,
-                            style: const TextStyle(
-                              shadows: <Shadow>[
-                                Shadow(
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 0.0,
-                                  color: Colors.black,
-                                ),
-                              ],
-                              color: Colors.black,
-                              fontFamily: "Qaz",
-                            ),
-                            underline: Container(
-                            height: 0,
-                            color: Colors.transparent,
-                          ),
-                            onChanged: (value) {
-                              // This is called when the user selects an item.
-                              context.read<SettingsController>().setFrequency(value!);
-                            },
-                            items: frequenz.map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
+          )
+
+
+      );
+    }
+    else{
+      return InkResponse(
+          highlightShape: BoxShape.rectangle,
+          child:
+
+          Material(
+            color: Colors.transparent,
+            child: Ink(
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.height * 0.2,
+                decoration: const ShapeDecoration(
+                    color: Colors.white70,
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 2,
+                            color: Colors.black)
+                    )
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ValueListenableBuilder(
+                          valueListenable: settings.frequency,
+                          builder: (context, value, child) =>
+                              Flexible(child:
+                              DropdownButton<String>(
+                                itemHeight: MediaQuery.of(context).size.height*0.15,
                                 value: value,
-                                child: AutoSizeText(value,style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 0.0,
-                                    color: Colors.black,
-                                  ),
-                                ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
-                              );
-                            }).toList(),
-                          ))
+                                icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.height * 0.1),
+                                isExpanded: true,
+                                elevation: 16,
+                                style: const TextStyle(
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                  color: Colors.black,
+                                  fontFamily: "Qaz",
+                                ),
+                                underline: Container(
+                                  height: 0,
+                                  color: Colors.transparent,
+                                ),
+                                onChanged: (value) {
+                                  // This is called when the user selects an item.
+                                  context.read<SettingsController>().setFrequency(value!);
+                                },
+                                items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: AutoSizeText(value,style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 0.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
+                                  );
+                                }).toList(),
+                              ))
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )
-        ),
-      )
+                )
+            ),
+          )
 
 
-    );
+      );
+    }
+
   }
 }
 
 class _SchwierigkeitChangeLine extends StatelessWidget {
   final String title;
   final List<String> schwierigkeit = ['Leicht','Normal','Schwer'];
-  _SchwierigkeitChangeLine(this.title);
+  Orientation orientation;
+  _SchwierigkeitChangeLine(this.title, this.orientation);
 
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
-    return InkResponse(
-      highlightShape: BoxShape.rectangle,
-      child:
-      Material(
-        color: Colors.transparent,
-        child: Ink(
-            width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.height * 0.11,
-            decoration: const ShapeDecoration(
-                color: Colors.white70,
-                shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        width: 2,
-                        color: Colors.black)
-                )
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ValueListenableBuilder(
-                      valueListenable: settings.schwierigkeit,
-                      builder: (context, value, child) =>
-                          DropdownButton<String>(
-                            isExpanded: true,
-                            value: value,
-                            itemHeight: MediaQuery.of(context).size.height*0.1,
-                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
-                            elevation: 16,
-                            style: const TextStyle(
-                              shadows: <Shadow>[
-                                Shadow(
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 0.0,
-                                  color: Colors.black,
-                                ),
-                              ],
-                              color: Colors.black,
-                              fontFamily: "Qaz",
-                            ),
-                            underline: Container(
-                              height: 0,
-                              color: Colors.transparent,
-                            ),
-                            onChanged: (value) {
-                              // This is called when the user selects an item.
-                              context.read<SettingsController>().setSchwierigkeit(value!);
-                            },
-                            items: schwierigkeit.map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: AutoSizeText(value, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+    if (orientation == Orientation.portrait) {
+      return InkResponse(
+        highlightShape: BoxShape.rectangle,
+        child:
+        Material(
+            color: Colors.transparent,
+            child: Ink(
+              width: MediaQuery.of(context).size.width * 1,
+              height: MediaQuery.of(context).size.height * 0.11,
+              decoration: const ShapeDecoration(
+                  color: Colors.white70,
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 2,
+                          color: Colors.black)
+                  )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ValueListenableBuilder(
+                        valueListenable: settings.schwierigkeit,
+                        builder: (context, value, child) =>
+                            DropdownButton<String>(
+                              isExpanded: true,
+                              value: value,
+                              itemHeight: MediaQuery.of(context).size.height*0.1,
+                              icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
+                              elevation: 16,
+                              style: const TextStyle(
+                                shadows: <Shadow>[
                                   Shadow(
                                     offset: Offset(0.0, 0.0),
                                     blurRadius: 0.0,
                                     color: Colors.black,
                                   ),
-                                ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
-                                ,
-                              );
-                            }).toList(),
-                          )
-                  ),
-                ],
+                                ],
+                                color: Colors.black,
+                                fontFamily: "Qaz",
+                              ),
+                              underline: Container(
+                                height: 0,
+                                color: Colors.transparent,
+                              ),
+                              onChanged: (value) {
+                                // This is called when the user selects an item.
+                                context.read<SettingsController>().setSchwierigkeit(value!);
+                              },
+                              items: schwierigkeit.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: AutoSizeText(value, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
+                                  ,
+                                );
+                              }).toList(),
+                            )
+                    ),
+                  ],
+                ),
               ),
-            ),
             )
         ),
-    );
+      );
+    }
+    else {
+      return InkResponse(
+        highlightShape: BoxShape.rectangle,
+        child:
+        Material(
+            color: Colors.transparent,
+            child: Ink(
+              width: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.height * 0.2,
+              decoration: const ShapeDecoration(
+                  color: Colors.white70,
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 2,
+                          color: Colors.black)
+                  )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ValueListenableBuilder(
+                        valueListenable: settings.schwierigkeit,
+                        builder: (context, value, child) =>
+                            DropdownButton<String>(
+                              isExpanded: true,
+                              value: value,
+                              itemHeight: MediaQuery.of(context).size.height*0.15,
+                              icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.height * 0.1),
+                              elevation: 16,
+                              style: const TextStyle(
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
+                                    color: Colors.black,
+                                  ),
+                                ],
+                                color: Colors.black,
+                                fontFamily: "Qaz",
+                              ),
+                              underline: Container(
+                                height: 0,
+                                color: Colors.transparent,
+                              ),
+                              onChanged: (value) {
+                                // This is called when the user selects an item.
+                                context.read<SettingsController>().setSchwierigkeit(value!);
+                              },
+                              items: schwierigkeit.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: AutoSizeText(value, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
+                                  ,
+                                );
+                              }).toList(),
+                            )
+                    ),
+                  ],
+                ),
+              ),
+            )
+        ),
+      );
+    }
+
   }
 }
 
