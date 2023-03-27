@@ -49,164 +49,275 @@ class _ManualState extends State<Manual> {
       padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
       child: OrientationBuilder(builder: (context, orientation) {
         if (orientation == Orientation.portrait) {
-          return Column(mainAxisSize: MainAxisSize.max, children: [
+          return Column(
+              mainAxisSize: MainAxisSize.max, children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
+                    iconSize: MediaQuery.of(context).size.width*0.1,
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(
                       shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 2.0,
-                          color: Colors.black,
-                        ),
                       ],
                       Icons.home,
                       color: Colors.black,
-                      size: 35,
                     )),
-                const SizedBox(width: 60),
-                const Text(
-                  'Anleitung',
-                  style: TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 2.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                )
+                SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                Text('Anleitung',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 1.0,
+                    color: Colors.black,
+                  ),
+                ]), maxLines: 1, overflow: TextOverflow.ellipsis)
               ],
             ),
-            Container(height: MediaQuery.of(context).size.height * 0.08),
-            ElevatedButton(
-              style: ButtonStyle(
-                  alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.resolveWith((state) {
-                    if (state.contains(MaterialState.pressed)) {
-                      return Colors.grey;
-                    }
-                    return Colors.lightBlueAccent;
-                  }),
-                  shadowColor: MaterialStateProperty.all(Colors.transparent),
-                  side: MaterialStateProperty.all(const BorderSide(width: 2)),
-                  minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height * 0.3))
-              ),
-               onPressed: () => {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const PdfLabPage(name: 'assets/Therapeut_Anleitung.pdf',titel: 'Anleitung Therapeut')))
-               },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 10.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                      size: MediaQuery.of(context).size.height * 0.2,
-                      color: Colors.white,
-                      const IconData(0xf56d,
-                          fontFamily: 'FontAwesomeSolid',
-                          fontPackage: 'font_awesome_flutter')),
-                  Text(
-                    "Therapeut",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 2.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                      color: Colors.black,
-                      fontSize: MediaQuery.of(context).size.height * 0.06,
-                      fontFamily: "Qaz",
-                    ),
+            Flexible(child:
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children:[
+                ElevatedButton(
+                  style: ButtonStyle(
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStateProperty.resolveWith((state) {
+                        if (state.contains(MaterialState.pressed)) {
+                          return Colors.grey;
+                        }
+                        return Colors.lightBlueAccent;
+                      }),
+                      shadowColor: MaterialStateProperty.all(Colors.transparent),
+                      side: MaterialStateProperty.all(const BorderSide(width: 2)),
+                      minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height * 0.3))
                   ),
-                ],
-              ),
-            ),
-            Container(height: MediaQuery.of(context).size.height * 0.04),
-            ElevatedButton(
-              style: ButtonStyle(
-                  alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.resolveWith((state) {
-                    if (state.contains(MaterialState.pressed)) {
-                      return Colors.grey;
-                    }
-                    return Colors.lightBlueAccent;
-                  }),
-                  shadowColor: MaterialStateProperty.all(Colors.transparent),
-                  side: MaterialStateProperty.all(const BorderSide(width: 2)),
-                  minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height * 0.3)),
-              ),
-              onPressed: () => {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const PdfLabPage(name: 'assets/Spieler_Anleitung.pdf',titel: 'Anleitung Spieler')))
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 10.0,
+                  onPressed: () => {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const PdfLabPage(name: 'assets/Therapeut_Anleitung.pdf',titel: 'Anleitung Therapeut')))
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                          shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                            ),
+                          ],
+                          size: MediaQuery.of(context).size.height * 0.2,
+                          color: Colors.white,
+                          const IconData(0xf56d,
+                              fontFamily: 'FontAwesomeSolid',
+                              fontPackage: 'font_awesome_flutter')),
+                      Text(
+                        "Therapeut",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 2.0,
+                              color: Colors.black,
+                            ),
+                          ],
                           color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.height * 0.06,
+                          fontFamily: "Qaz",
                         ),
-                      ],
-                      size: MediaQuery.of(context).size.height * 0.2,
-                      color: Colors.white,
-                      const IconData(0xf56d,
-                          fontFamily: 'FontAwesomeSolid',
-                          fontPackage: 'font_awesome_flutter')),
-                  Text(
-                    "Spieler",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 2.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                      color: Colors.black,
-                      fontSize: MediaQuery.of(context).size.height * 0.06,
-                      fontFamily: "Qaz",
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    alignment: Alignment.center,
+                    backgroundColor: MaterialStateProperty.resolveWith((state) {
+                      if (state.contains(MaterialState.pressed)) {
+                        return Colors.grey;
+                      }
+                      return Colors.lightBlueAccent;
+                    }),
+                    shadowColor: MaterialStateProperty.all(Colors.transparent),
+                    side: MaterialStateProperty.all(const BorderSide(width: 2)),
+                    minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height * 0.3)),
+                  ),
+                  onPressed: () => {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const PdfLabPage(name: 'assets/Spieler_Anleitung.pdf',titel: 'Anleitung Spieler')))
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                          shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                            ),
+                          ],
+                          size: MediaQuery.of(context).size.height * 0.2,
+                          color: Colors.white,
+                          const IconData(0xf56d,
+                              fontFamily: 'FontAwesomeSolid',
+                              fontPackage: 'font_awesome_flutter')),
+                      Text(
+                        "Spieler",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 2.0,
+                              color: Colors.black,
+                            ),
+                          ],
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.height * 0.06,
+                          fontFamily: "Qaz",
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+            ]
+            ))
           ]);
         } else {
-          return Row(
-            children: [
-              /*  Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                    iconSize: 35,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ),*/
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(),
-                  ],
-                ),
-              ),
-            ],
-          );
+          return Column(
+              mainAxisSize: MainAxisSize.max, children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    iconSize: MediaQuery.of(context).size.width*0.06,
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(
+                      shadows: <Shadow>[
+                      ],
+                      Icons.home,
+                      color: Colors.black,
+                    )),
+                SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                Text('Anleitung',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 1.0,
+                    color: Colors.black,
+                  ),
+                ]), maxLines: 1, overflow: TextOverflow.ellipsis)
+              ],
+            ),
+            Expanded(child:
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children:[
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        alignment: Alignment.center,
+                        maximumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.4, MediaQuery.of(context).size.height * 0.6)),
+                        backgroundColor: MaterialStateProperty.resolveWith((state) {
+                          if (state.contains(MaterialState.pressed)) {
+                            return Colors.grey;
+                          }
+                          return Colors.lightBlueAccent;
+                        }),
+                        shadowColor: MaterialStateProperty.all(Colors.transparent),
+                        side: MaterialStateProperty.all(const BorderSide(width: 2)),
+                        minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.4, MediaQuery.of(context).size.height * 0.1))
+                    ),
+                    onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const PdfLabPage(name: 'assets/Therapeut_Anleitung.pdf',titel: 'Anleitung Therapeut')))
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 10.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            size: MediaQuery.of(context).size.height * 0.2,
+                            color: Colors.white,
+                            const IconData(0xf56d,
+                                fontFamily: 'FontAwesomeSolid',
+                                fontPackage: 'font_awesome_flutter')),
+                        Text(
+                          "Therapeut",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 1.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.height * 0.06,
+                            fontFamily: "Qaz",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      alignment: Alignment.center,
+                      maximumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.4, MediaQuery.of(context).size.height * 0.6)),
+                      backgroundColor: MaterialStateProperty.resolveWith((state) {
+                        if (state.contains(MaterialState.pressed)) {
+                          return Colors.grey;
+                        }
+                        return Colors.lightBlueAccent;
+                      }),
+                      shadowColor: MaterialStateProperty.all(Colors.transparent),
+                      side: MaterialStateProperty.all(const BorderSide(width: 2)),
+                      minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.4, MediaQuery.of(context).size.height * 0.1)),
+                    ),
+                    onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const PdfLabPage(name: 'assets/Spieler_Anleitung.pdf',titel: 'Anleitung Spieler')))
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 10.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            size: MediaQuery.of(context).size.height * 0.2,
+                            color: Colors.white,
+                            const IconData(0xf56d,
+                                fontFamily: 'FontAwesomeSolid',
+                                fontPackage: 'font_awesome_flutter')),
+                        Text(
+                          "Spieler",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 1.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.height * 0.06,
+                            fontFamily: "Qaz",
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ]
+            ))
+          ]);
         }
       }),
     )));

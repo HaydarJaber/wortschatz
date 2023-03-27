@@ -1,6 +1,7 @@
 // Frequenz der Wörter (DONE)
 ///TODO: mit oder ohne Hilfe
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,15 +13,15 @@ import 'package:wortschatz/model/styles/palette.dart';
 class Settings extends StatelessWidget {
   const Settings({super.key});
 
-  static const _gap = SizedBox(height: 60);
-
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
     final palette = context.watch<Palette>();
-
+    var mySizeGRP_V = AutoSizeGroup();
+    var mySizeGRP_H = AutoSizeGroup();
     return SafeArea(
         child: Scaffold(
+            resizeToAvoidBottomInset: false,
             body: Container(
               constraints: const BoxConstraints.expand(),
               decoration: const BoxDecoration(
@@ -39,78 +40,92 @@ class Settings extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           IconButton(
+                              iconSize: MediaQuery.of(context).size.width*0.1,
                               onPressed: () => Navigator.of(context).pop(),
                               icon: const Icon(
                                 shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
                                 ],
                                 Icons.home,
                                 color: Colors.black,
-                                size: 35,
                               )),
-                          const SizedBox(width: 60),
-                          const Text(
-                            'Einstellungen',
-                            style: TextStyle(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                                fontFamily: "Qaz",
-                                fontSize: 35,
-                                color: Colors.black),
-                          )
+                          SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                          Text('Einstellungen',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 1.0,
+                              color: Colors.black,
+                            ),
+                          ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                         ],
                       ),
                       //const Text('Kategorien', style: TextStyle(fontSize: 60,fontFamily: "Modak")
-                      Expanded(
-                          child: ListView(
+                      Flexible(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                      _gap,
-                      const _NameChangeLine(
-                      'Name:',
-                      ),
-                      /*   ValueListenableBuilder<bool>(
-              valueListenable: settings.soundsOn,
-              builder: (context, soundsOn, child) => _SettingsLine(
-                'Sound FX',
-                Icon(soundsOn ? Icons.graphic_eq : Icons.volume_off),
-                onSelected: () => settings.toggleSoundsOn(),
-              ),
-            ), */
-                      /*     ValueListenableBuilder<bool>(
-              valueListenable: settings.musicOn,
-              builder: (context, musicOn, child) => _SettingsLine(
-                'Music',
-                Icon(musicOn ? Icons.music_note : Icons.music_off),
-                onSelected: () => settings.toggleMusicOn(),
-              ),
-            ), */
-                        _gap,
-                      _FrequenzChangeLine('Frequenz der Wörter:'),
-            /*          _SettingsLine(
-                      'Fortschritt zurücksetzen',
-                      const Icon(Icons.delete),
-                      onSelected: () {
-                      context.read<PlayerProgress>().reset();
-                      final messenger = ScaffoldMessenger.of(context);
-                      messenger.showSnackBar(
-                      const SnackBar(
-                      content: Text('Player progress has been reset.')),
-                      );
-                      },
-                ), */
-                _gap,
-                        _SchwierigkeitChangeLine('Schwierigkeit:'),
-                ],
-                ),)
+                        Container(
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(child:
+                                  AutoSizeText('Name:',group: mySizeGRP_V,style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                ],
+                              )
+                              ,const _NameChangeLine('Name:',)
+                            ],
+                          ),),
+                        Container(
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(child:
+                                  AutoSizeText('Frequenz der Wörter:',group: mySizeGRP_V,style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                ],
+                              )
+                              ,_FrequenzChangeLine('Frequenz der Wörter:')
+                            ],
+                          ),),
+                        Container(
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(child:
+                                  AutoSizeText('Schwierigkeit:',group: mySizeGRP_V,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                ],
+                              )
+                              ,_SchwierigkeitChangeLine('Schwierigkeit:')
+                            ],
+                          ),),
+                      ],
+                            ),
+                      )
                     ],
                   );
                 } else {
@@ -168,10 +183,26 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
         parent: widget.animation,
         curve: Curves.easeOutCubic,
       ),
-      child: SimpleDialog(
-        title: const Text('Namensänderung'),
+      child:
+      SimpleDialog(
+        contentPadding: EdgeInsets.zero,
+        backgroundColor: Colors.white,
+        title: Text('Namensänderung:',style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.07, shadows: const <Shadow>[
+          Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+          ),
+        ],fontFamily: "Qaz",color: Colors.black),maxLines: 1, overflow: TextOverflow.ellipsis),
         children: [
           TextField(
+            style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.1, shadows: const <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 1.0,
+                color: Colors.lightBlueAccent,
+              ),
+            ],fontFamily: "Qaz",color: Colors.lightBlueAccent),
             controller: _controller,
             autofocus: true,
             maxLength: 12,
@@ -188,8 +219,21 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
             },
           ),
           TextButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith((state) {
+                if (state.contains(MaterialState.pressed)) return Colors.grey;
+                return Colors.lightBlue;
+                }),
+                minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.05, MediaQuery.of(context).size.height * 0.05))
+            ),
             onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+            child: Text('OK',style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.1, shadows: const <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 1.0,
+                color: Colors.black,
+              ),
+            ],fontFamily: "Qaz",color: Colors.black),maxLines: 1, overflow: TextOverflow.ellipsis),
           ),
         ],
       ),
@@ -217,17 +261,14 @@ class _NameChangeLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
-
     return InkResponse(
       highlightShape: BoxShape.rectangle,
       onTap: () => showCustomNameDialog(context),
-      child:
-
-      Material(
+      child: Material(
         color: Colors.transparent,
         child: Ink(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 0.14,
             decoration: const ShapeDecoration(
                 color: Colors.white70,
                 shape: RoundedRectangleBorder(
@@ -241,55 +282,23 @@ class _NameChangeLine extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                      children: [
-                        Text(title,
-                          style: TextStyle(
-                            shadows: const <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
-                            ],
-                            color: Colors.black,
-                            fontSize: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.03,
-                            fontFamily: "Qaz",
-                          ),),
-                      ]
-                  ),
                   ValueListenableBuilder(
                     valueListenable: settings.playerName,
-                    builder: (context, name, child) => Text(
-                      '‘$name’',
-                      style: TextStyle(
-                        shadows: const <Shadow>[
+                    builder: (context, name, child) =>
+                    Flexible(child:
+                        AutoSizeText('$name', style: const TextStyle(fontSize: 100, shadows: <Shadow>[
                           Shadow(
                             offset: Offset(0.0, 0.0),
-                            blurRadius: 5.0,
-                            color: Colors.black,
+                            blurRadius: 2.0,
+                            color: Colors.lightBlueAccent,
                           ),
-                        ],
-                        color: Colors.black,
-                        fontSize: MediaQuery
-                            .of(context)
-                            .size
-                            .height * 0.07,
-                        fontFamily: "Qaz",
-                      ),
-                    ),
+                        ],fontFamily: "Qaz",color: Colors.lightBlueAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
                   ),
                 ],
               ),
             ),
         ),
       )
-
-
-
     );
   }
 }
@@ -298,7 +307,6 @@ class _NameChangeLine extends StatelessWidget {
 class _FrequenzChangeLine extends StatelessWidget {
   final String title;
   final List<String> frequenz = ['Alle Wörter','Häufige Wörter', 'Seltene Wörter'];
-
   _FrequenzChangeLine(this.title);
 
   @override
@@ -312,8 +320,8 @@ class _FrequenzChangeLine extends StatelessWidget {
       Material(
         color: Colors.transparent,
         child: Ink(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.12,
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 0.11,
             decoration: const ShapeDecoration(
                 color: Colors.white70,
                 shape: RoundedRectangleBorder(
@@ -323,39 +331,22 @@ class _FrequenzChangeLine extends StatelessWidget {
                 )
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                      children: [
-                        Text(title,
-                          style: TextStyle(
-                            shadows: const <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
-                            ],
-                            color: Colors.black,
-                            fontSize: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.03,
-                            fontFamily: "Qaz",
-                          ),),
-                      ]
-                  ),
                   ValueListenableBuilder(
                       valueListenable: settings.frequency,
                       builder: (context, value, child) =>
+                      Flexible(child:
                           DropdownButton<String>(
+                            itemHeight: MediaQuery.of(context).size.height*0.1,
                             value: value,
-                            icon: const Icon(Icons.arrow_downward),
+                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
+                            isExpanded: true,
                             elevation: 16,
-                            style: TextStyle(
-                              shadows: const <Shadow>[
+                            style: const TextStyle(
+                              shadows: <Shadow>[
                                 Shadow(
                                   offset: Offset(0.0, 0.0),
                                   blurRadius: 0.0,
@@ -363,16 +354,12 @@ class _FrequenzChangeLine extends StatelessWidget {
                                 ),
                               ],
                               color: Colors.black,
-                              fontSize: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .height * 0.035,
                               fontFamily: "Qaz",
                             ),
                             underline: Container(
-                              height: 2,
-                              color: Colors.black,
-                            ),
+                            height: 0,
+                            color: Colors.transparent,
+                          ),
                             onChanged: (value) {
                               // This is called when the user selects an item.
                               context.read<SettingsController>().setFrequency(value!);
@@ -380,10 +367,16 @@ class _FrequenzChangeLine extends StatelessWidget {
                             items: frequenz.map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
-                                child: Text(value),
+                                child: AutoSizeText(value,style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
                               );
                             }).toList(),
-                          )
+                          ))
                   ),
                 ],
               ),
@@ -399,22 +392,19 @@ class _FrequenzChangeLine extends StatelessWidget {
 class _SchwierigkeitChangeLine extends StatelessWidget {
   final String title;
   final List<String> schwierigkeit = ['Leicht','Normal','Schwer'];
-
   _SchwierigkeitChangeLine(this.title);
 
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
-
     return InkResponse(
       highlightShape: BoxShape.rectangle,
       child:
-
       Material(
         color: Colors.transparent,
         child: Ink(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.12,
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 0.11,
             decoration: const ShapeDecoration(
                 color: Colors.white70,
                 shape: RoundedRectangleBorder(
@@ -428,35 +418,17 @@ class _SchwierigkeitChangeLine extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                      children: [
-                        Text(title,
-                          style: TextStyle(
-                            shadows: const <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
-                            ],
-                            color: Colors.black,
-                            fontSize: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.03,
-                            fontFamily: "Qaz",
-                          ),),
-                      ]
-                  ),
                   ValueListenableBuilder(
                       valueListenable: settings.schwierigkeit,
                       builder: (context, value, child) =>
                           DropdownButton<String>(
+                            isExpanded: true,
                             value: value,
-                            icon: const Icon(Icons.arrow_downward),
+                            itemHeight: MediaQuery.of(context).size.height*0.1,
+                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
                             elevation: 16,
-                            style: TextStyle(
-                              shadows: const <Shadow>[
+                            style: const TextStyle(
+                              shadows: <Shadow>[
                                 Shadow(
                                   offset: Offset(0.0, 0.0),
                                   blurRadius: 0.0,
@@ -464,15 +436,11 @@ class _SchwierigkeitChangeLine extends StatelessWidget {
                                 ),
                               ],
                               color: Colors.black,
-                              fontSize: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .height * 0.035,
                               fontFamily: "Qaz",
                             ),
                             underline: Container(
-                              height: 2,
-                              color: Colors.black,
+                              height: 0,
+                              color: Colors.transparent,
                             ),
                             onChanged: (value) {
                               // This is called when the user selects an item.
@@ -481,7 +449,14 @@ class _SchwierigkeitChangeLine extends StatelessWidget {
                             items: schwierigkeit.map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
-                                child: Text(value),
+                                child: AutoSizeText(value, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis)
+                                ,
                               );
                             }).toList(),
                           )
@@ -495,37 +470,6 @@ class _SchwierigkeitChangeLine extends StatelessWidget {
   }
 }
 
-class _SettingsLine extends StatelessWidget {
-  final String title;
 
-  final Widget icon;
-
-  final VoidCallback? onSelected;
-
-  const _SettingsLine(this.title, this.icon, {this.onSelected});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkResponse(
-      highlightShape: BoxShape.rectangle,
-      onTap: onSelected,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(title,
-                style: const TextStyle(
-                  fontFamily: 'Permanent Marker',
-                  fontSize: 30,
-                )),
-            const Spacer(),
-            icon,
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 

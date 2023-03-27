@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:wortschatz/viewmodels/widgets/menuButton.dart';
 import 'package:flutter/material.dart';
 import 'package:wortschatz/model/constants/routes.dart';
@@ -7,6 +8,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mySizeGRP_V = AutoSizeGroup();
+    var mySizeGRP_H = AutoSizeGroup();
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -56,26 +59,16 @@ class HomeScreen extends StatelessWidget {
             size: MediaQuery
                 .of(context)
                 .size
-                .height * 0.07,
+                .height * 0.08,
             color: Colors.white,
             const IconData(0xf2af, fontFamily: 'MaterialIcons')),
-            label: Text("Start",
-            style: TextStyle(
-            shadows: const <Shadow>[
-            Shadow(
-            offset: Offset(0.0, 0.0),
-            blurRadius: 1.0,
-            color: Colors.black,
-            ),
-            ],
-            color: Colors.black,
-            fontSize: MediaQuery
-                .of(context)
-                .size
-                .height * 0.05,
-            fontFamily: "Qaz",
-            ),
-            ),
+            label: AutoSizeText('Start', group: mySizeGRP_V,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                color: Colors.black,
+              ),
+            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
             )
                     ),
                     Container(
@@ -105,26 +98,16 @@ class HomeScreen extends StatelessWidget {
             size: MediaQuery
                 .of(context)
                 .size
-                .height * 0.07,
+                .height * 0.08,
             color: Colors.white,
             const IconData(0xf05ae, fontFamily: 'MaterialIcons')),
-            label: Text("Rangliste",
-            style: TextStyle(
-            shadows: const <Shadow>[
-            Shadow(
-            offset: Offset(0.0, 0.0),
-            blurRadius: 1.0,
-            color: Colors.black,
-            ),
-            ],
-            color: Colors.black,
-            fontSize: MediaQuery
-                .of(context)
-                .size
-                .height * 0.05,
-            fontFamily: "Qaz",
-            ),
-            ),
+            label: AutoSizeText('Rangliste', group: mySizeGRP_V,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                color: Colors.black,
+              ),
+            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
             )
                     ),
                     Container(
@@ -155,26 +138,16 @@ class HomeScreen extends StatelessWidget {
             size: MediaQuery
                 .of(context)
                 .size
-                .height * 0.07,
+                .height * 0.08,
             color: Colors.white,
             const IconData(0xe7ca, fontFamily: 'MaterialIcons')),
-            label: Text("Fortschritt",
-            style: TextStyle(
-            shadows: const <Shadow>[
-            Shadow(
-            offset: Offset(0.0, 0.0),
-            blurRadius: 1.0,
-            color: Colors.black,
-            ),
-            ],
-            color: Colors.black,
-            fontSize: MediaQuery
-                .of(context)
-                .size
-                .height * 0.05,
-            fontFamily: "Qaz",
-            ),
-            ),
+            label: AutoSizeText('Fortschritt', group: mySizeGRP_V,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                color: Colors.black,
+              ),
+            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
             )
                     ),
                     Container(
@@ -204,26 +177,16 @@ class HomeScreen extends StatelessWidget {
             size: MediaQuery
                 .of(context)
                 .size
-                .height * 0.07,
+                .height * 0.08,
             color: Colors.white,
             const IconData(0xe309, fontFamily: 'MaterialIcons')),
-            label: Text("Anleitung",
-            style: TextStyle(
-            shadows: const <Shadow>[
-            Shadow(
-            offset: Offset(0.0, 0.0),
-            blurRadius: 1.0,
-            color: Colors.black,
-            ),
-            ],
-            color: Colors.black,
-            fontSize: MediaQuery
-                .of(context)
-                .size
-                .height * 0.05,
-            fontFamily: "Qaz",
-            ),
-            ),
+            label: AutoSizeText('Anleitung', group: mySizeGRP_V,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                color: Colors.black,
+              ),
+            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
             )
                     ),
                     Container(
@@ -253,26 +216,16 @@ class HomeScreen extends StatelessWidget {
             size: MediaQuery
                 .of(context)
                 .size
-                .height * 0.07,
+                .height * 0.08,
             color: Colors.white,
             const IconData(0xe57f, fontFamily: 'MaterialIcons')),
-            label: Text("Einstellungen",
-            style: TextStyle(
-            shadows: const <Shadow>[
+            label: AutoSizeText('Einstellungen', group: mySizeGRP_V,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
             Shadow(
             offset: Offset(0.0, 0.0),
-            blurRadius: 1.0,
+            blurRadius: 0.0,
             color: Colors.black,
             ),
-            ],
-            color: Colors.black,
-            fontSize: MediaQuery
-                .of(context)
-                .size
-                .height * 0.05,
-            fontFamily: "Qaz",
-            ),
-            ),
+            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
             )
                     ),
                     Container(
@@ -302,26 +255,16 @@ class HomeScreen extends StatelessWidget {
             size: MediaQuery
                 .of(context)
                 .size
-                .height * 0.07,
+                .height * 0.08,
             color: Colors.white,
             const IconData(0xe33c, fontFamily: 'MaterialIcons')),
-            label: Text("Impressum",
-            style: TextStyle(
-            shadows: const <Shadow>[
-            Shadow(
-            offset: Offset(0.0, 0.0),
-            blurRadius: 1.0,
-            color: Colors.black,
-            ),
-            ],
-            color: Colors.black,
-            fontSize: MediaQuery
-                .of(context)
-                .size
-                .height * 0.05,
-            fontFamily: "Qaz",
-            ),
-            ),
+            label: AutoSizeText('Impressum', group: mySizeGRP_V,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                color: Colors.black,
+              ),
+            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
             )
                     ),
                   ],
@@ -343,7 +286,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                             Container(
                               width: MediaQuery.of(context).size.width * 0.4,
-                              height: MediaQuery.of(context).size.height*0.2,
+                              height: MediaQuery.of(context).size.height*0.15,
                               alignment: Alignment.center,
                               child: ElevatedButton.icon(
                                 style: ButtonStyle(
@@ -371,28 +314,18 @@ class HomeScreen extends StatelessWidget {
                                         .height * 0.1,
                                     color: Colors.white,
                                     const IconData(0xf2af, fontFamily: 'MaterialIcons')),
-                                label: Text("Start",
-                                  style: TextStyle(
-                                    shadows: const <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 1.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
+                                label: AutoSizeText('Start', group: mySizeGRP_H,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
                                     color: Colors.black,
-                                    fontSize: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height * 0.07,
-                                    fontFamily: "Qaz",
                                   ),
-                                ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                               ),
                             ),
                             Container(
                                 width: MediaQuery.of(context).size.width*0.4,
-                                height: MediaQuery.of(context).size.height*0.20,
+                                height: MediaQuery.of(context).size.height*0.15,
                                 alignment: Alignment.center,
                                 child: ElevatedButton.icon(
                                   style: ButtonStyle(
@@ -420,23 +353,13 @@ class HomeScreen extends StatelessWidget {
                                           .height * 0.10,
                                       color: Colors.white,
                                       const IconData(0xf05ae, fontFamily: 'MaterialIcons')),
-                                  label: Text("Rangliste",
-                                    style: TextStyle(
-                                      shadows: const <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 1.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
+                                  label: AutoSizeText('Rangliste', group: mySizeGRP_H,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
                                       color: Colors.black,
-                                      fontSize: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .height * 0.07,
-                                      fontFamily: "Qaz",
                                     ),
-                                  ),
+                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                 )
                             ),
                           ],),
@@ -444,7 +367,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                             Container(
                               width: MediaQuery.of(context).size.width * 0.4,
-                              height: MediaQuery.of(context).size.height*0.20,
+                              height: MediaQuery.of(context).size.height*0.15,
                               alignment: Alignment.center,
                               child: ElevatedButton.icon(
                                 style: ButtonStyle(
@@ -472,28 +395,18 @@ class HomeScreen extends StatelessWidget {
                                         .height * 0.1,
                                     color: Colors.white,
                                     const IconData(0xe7ca, fontFamily: 'MaterialIcons')),
-                                label: Text("Fortschritt",
-                                  style: TextStyle(
-                                    shadows: const <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 1.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
+                                label: AutoSizeText('Fortschritt', group: mySizeGRP_H,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
                                     color: Colors.black,
-                                    fontSize: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height * 0.07,
-                                    fontFamily: "Qaz",
                                   ),
-                                ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                               )
                             ),
                             Container(
                                 width: MediaQuery.of(context).size.width * 0.4,
-                                height: MediaQuery.of(context).size.height*0.20,
+                                height: MediaQuery.of(context).size.height*0.15,
                                 alignment: Alignment.center,
                                 child: ElevatedButton.icon(
                                   style: ButtonStyle(
@@ -521,23 +434,13 @@ class HomeScreen extends StatelessWidget {
                                           .height * 0.1,
                                       color: Colors.white,
                                       const IconData(0xe309, fontFamily: 'MaterialIcons')),
-                                  label: Text("Anleitung",
-                                    style: TextStyle(
-                                      shadows: const <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 1.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
+                                  label: AutoSizeText('Anleitung', group: mySizeGRP_H,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
                                       color: Colors.black,
-                                      fontSize: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .height * 0.07,
-                                      fontFamily: "Qaz",
                                     ),
-                                  ),
+                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                 )
                             ),
                           ],),
@@ -545,7 +448,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                             Container(
                               width: MediaQuery.of(context).size.width * 0.4,
-                              height: MediaQuery.of(context).size.height*0.20,
+                              height: MediaQuery.of(context).size.height*0.15,
                               alignment: Alignment.center,
                               child: ElevatedButton.icon(
                                 style: ButtonStyle(
@@ -573,28 +476,18 @@ class HomeScreen extends StatelessWidget {
                                         .height * 0.10,
                                     color: Colors.white,
                                     const IconData(0xe57f, fontFamily: 'MaterialIcons')),
-                                label: Text("Einstellungen",
-                                  style: TextStyle(
-                                    shadows: const <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 1.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
+                                label: AutoSizeText('Einstellungen', group: mySizeGRP_H,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
                                     color: Colors.black,
-                                    fontSize: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height * 0.07,
-                                    fontFamily: "Qaz",
                                   ),
-                                ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                               )
                             ),
                             Container(
                                 width: MediaQuery.of(context).size.width * 0.4,
-                                height: MediaQuery.of(context).size.height*0.20,
+                                height: MediaQuery.of(context).size.height*0.15,
                                 alignment: Alignment.center,
                                 child: ElevatedButton.icon(
                                   style: ButtonStyle(
@@ -622,23 +515,13 @@ class HomeScreen extends StatelessWidget {
                                           .height * 0.1,
                                       color: Colors.white,
                                       const IconData(0xe33c, fontFamily: 'MaterialIcons')),
-                                  label: Text("Impressum",
-                                    style: TextStyle(
-                                      shadows: const <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 1.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
+                                  label: AutoSizeText('Impressum', group: mySizeGRP_H,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
                                       color: Colors.black,
-                                      fontSize: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .height * 0.07,
-                                      fontFamily: "Qaz",
                                     ),
-                                  ),
+                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                 )
                             ),
                           ],

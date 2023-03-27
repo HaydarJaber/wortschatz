@@ -54,7 +54,7 @@ class _ImprintState extends State<Imprint> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                  iconSize: MediaQuery.of(context).size.width*0.12,
+                  iconSize: MediaQuery.of(context).size.width*0.1,
                           onPressed: () => Navigator.of(context).pop(),
                           icon: const Icon(
                             shadows: <Shadow>[
@@ -62,15 +62,14 @@ class _ImprintState extends State<Imprint> {
                             Icons.home,
                             color: Colors.black,
                           )),
-                SizedBox(width: MediaQuery.of(context).size.width*0.05),
-                const Expanded(child:
-                AutoSizeText('Impressum',style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                Text('Impressum',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
                   Shadow(
                     offset: Offset(0.0, 0.0),
                     blurRadius: 1.0,
                     color: Colors.black,
                   ),
-                ]),minFontSize: 20, maxLines: 1, overflow: TextOverflow.ellipsis))
+                ]), maxLines: 1, overflow: TextOverflow.ellipsis)
               ],
             ),
             Expanded(
@@ -157,7 +156,7 @@ class _ImprintState extends State<Imprint> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                    iconSize: MediaQuery.of(context).size.width*0.05,
+                    iconSize: MediaQuery.of(context).size.width*0.06,
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(
                       shadows: <Shadow>[
@@ -165,16 +164,14 @@ class _ImprintState extends State<Imprint> {
                       Icons.home,
                       color: Colors.black,
                     )),
-                SizedBox(width: MediaQuery.of(context).size.width*0.01),
-                const Flexible(child:
-                AutoSizeText('Impressum',style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                Text('Impressum',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
                   Shadow(
                     offset: Offset(0.0, 0.0),
                     blurRadius: 1.0,
                     color: Colors.black,
                   ),
-                ]),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                SizedBox(width: MediaQuery.of(context).size.width*0.6),
+                ]), maxLines: 1, overflow: TextOverflow.ellipsis)
               ],
             ),
             Expanded(
