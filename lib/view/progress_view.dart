@@ -2,6 +2,7 @@
 // Statistk per Kategorie
 // angeforderte Hilfe
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -114,7 +115,8 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsController>();
-
+    var mySizeGRP_V = AutoSizeGroup();
+    var mySizeGRP_H = AutoSizeGroup();
     return SafeArea(
         child: Scaffold(
           backgroundColor: Colors.deepPurple.shade900,
@@ -125,51 +127,38 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                   image: AssetImage("assets/images/Hintergrund.jpg"),
                   fit: BoxFit.cover),
             ),
-            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
             child: OrientationBuilder(builder: (context, orientation) {
               if (orientation == Orientation.portrait) {
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(0.0),
                   child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           IconButton(
+                              iconSize: MediaQuery.of(context).size.width*0.1,
                               onPressed: () => Navigator.of(context).pop(),
                               icon: const Icon(
                                 shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
                                 ],
                                 Icons.home,
                                 color: Colors.black,
-                                size: 35,
                               )),
-                          const SizedBox(width: 60),
-                          const Text(
-                            'Fortschritt',
-                            style: TextStyle(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                                fontFamily: "Qaz",
-                                fontSize: 35,
-                                color: Colors.black),
-                          )
+                          SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                          Text('Fortschritt',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 1.0,
+                              color: Colors.black,
+                            ),
+                          ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                         ],
                       ),
                       // give the tab bar a height [can change hheight to preferred height]
-                      Container(height: 10),
                       Container(
-                        height: 45,
+                        height: MediaQuery.of(context).size.height*0.07,
                         decoration: BoxDecoration(
                           color: Colors.white70,
                           borderRadius: BorderRadius.circular(
@@ -187,53 +176,38 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                           ),
                           labelColor: Colors.black,
                           unselectedLabelColor: Colors.black,
-                          tabs: const [
+                          tabs: [
                             // first tab [you can add an icon using the icon property]
                             Tab(
-                              child : Text(
-                                'Leicht',
-                                style: TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
+                                child :
+                                AutoSizeText('Leicht', group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
                                     color: Colors.black,
-                                    fontSize: 20),
-                              ),
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                             ),
+
                             // second tab [you can add an icon using the icon property]
                             Tab(
-                              child : Text(
-                                'Normal',
-                                style: TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
+                                child : AutoSizeText('Normal', group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
                                     color: Colors.black,
-                                    fontSize: 20),
-                              ),
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                             ),
+
                             Tab(
-                              child : Text(
-                                'Schwer',
-                                style: TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
+                                child : AutoSizeText('Schwer', group: mySizeGRP_V, style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
                                     color: Colors.black,
-                                    fontSize: 20),
-                              ),
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                             ),
                           ],
                         ),
@@ -245,13 +219,13 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                           children: [
                             // first tab bar view widget
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(8),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
-                                      width: MediaQuery.of(context).size.width * 0.8,
-                                      height: MediaQuery.of(context).size.height * 0.07,
+                                      width: MediaQuery.of(context).size.width * 1,
+                                      height: MediaQuery.of(context).size.height * 0.1,
                                       decoration: const ShapeDecoration(
                                           color: Colors.white70,
                                           shape: RoundedRectangleBorder(
@@ -268,7 +242,8 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                               DropdownButton<String>(
                                                 isExpanded: true,
                                               value: dropdownValue,
-                                              icon: const Icon(Icons.arrow_downward),
+                                                itemHeight: MediaQuery.of(context).size.height*0.09,
+                                              icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
                                               elevation: 16,
                                               style: TextStyle(
                                                 shadows: const <Shadow>[
@@ -282,7 +257,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 fontSize: MediaQuery
                                                     .of(context)
                                                     .size
-                                                    .height * 0.035,
+                                                    .height * 0.05,
                                                 fontFamily: "Qaz",
                                               ),
                                                 underline: const SizedBox.shrink(),
@@ -297,7 +272,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                   value: value,
                                                   child: Text(value,
                                                       style: TextStyle(
-                                                        fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                        fontSize: MediaQuery.of(context).size.height * 0.05,
                                                       )),
                                                 );
                                               }).toList(),
@@ -312,20 +287,20 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                     builder: (context,box,_){
                                       final words = box.values.toList().cast<Word>();
 
-                                      return buildContent(words);
+                                      return buildContent(words,orientation);
                                     }
                                 ),
                               ]),
                             ),
                             // second tab bar view widget
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(8),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
-                                    width: MediaQuery.of(context).size.width * 0.8,
-                                    height: MediaQuery.of(context).size.height * 0.07,
+                                    width: MediaQuery.of(context).size.width * 1,
+                                    height: MediaQuery.of(context).size.height * 0.1,
                                     decoration: const ShapeDecoration(
                                         color: Colors.white70,
                                         shape: RoundedRectangleBorder(
@@ -342,7 +317,8 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                           DropdownButton<String>(
                                             isExpanded: true,
                                             value: dropdownValue,
-                                            icon: const Icon(Icons.arrow_downward),
+                                            itemHeight: MediaQuery.of(context).size.height*0.09,
+                                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
                                             elevation: 16,
                                             style: TextStyle(
                                               shadows: const <Shadow>[
@@ -356,7 +332,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                               fontSize: MediaQuery
                                                   .of(context)
                                                   .size
-                                                  .height * 0.035,
+                                                  .height * 0.05,
                                               fontFamily: "Qaz",
                                             ),
                                             underline: const SizedBox.shrink(),
@@ -371,7 +347,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 value: value,
                                                 child: Text(value,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
                                                     )),
                                               );
                                             }).toList(),
@@ -386,20 +362,20 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                     builder: (context,box,_){
                                       final words = box.values.toList().cast<Word>();
 
-                                      return buildContent(words);
+                                      return buildContent(words,orientation);
                                     }
                                 ),
                               ]),
                             ),
 
                             Padding(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(8),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
-                                    width: MediaQuery.of(context).size.width * 0.8,
-                                    height: MediaQuery.of(context).size.height * 0.07,
+                                    width: MediaQuery.of(context).size.width * 1,
+                                    height: MediaQuery.of(context).size.height * 0.1,
                                     decoration: const ShapeDecoration(
                                         color: Colors.white70,
                                         shape: RoundedRectangleBorder(
@@ -416,7 +392,8 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                           DropdownButton<String>(
                                             isExpanded: true,
                                             value: dropdownValue,
-                                            icon: const Icon(Icons.arrow_downward),
+                                            itemHeight: MediaQuery.of(context).size.height*0.09,
+                                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.1),
                                             elevation: 16,
                                             style: TextStyle(
                                               shadows: const <Shadow>[
@@ -430,7 +407,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                               fontSize: MediaQuery
                                                   .of(context)
                                                   .size
-                                                  .height * 0.035,
+                                                  .height * 0.05,
                                               fontFamily: "Qaz",
                                             ),
                                             underline: const SizedBox.shrink(),
@@ -445,7 +422,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 value: value,
                                                 child: Text(value,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.height * 0.03,
+                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
                                                     )),
                                               );
                                             }).toList(),
@@ -460,7 +437,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                     builder: (context,box,_){
                                       final words = box.values.toList().cast<Word>();
 
-                                      return buildContent(words);
+                                      return buildContent(words,orientation);
                                     }
                                 ),
                               ]),
@@ -472,26 +449,35 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                   ),
                 );
               } else {
-                return Row(
-                  children: [
-                    /*  Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                    iconSize: 35,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ),*/
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                return Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Row(),
+                          IconButton(
+                              iconSize: MediaQuery.of(context).size.width*0.06,
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(
+                                shadows: <Shadow>[
+                                ],
+                                Icons.home,
+                                color: Colors.black,
+                              )),
+                          SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                          Text('Fortschritt',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 1.0,
+                              color: Colors.black,
+                            ),
+                          ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                         ],
                       ),
-                    ),
-                  ],
+                      // give the tab bar a height [can change hheight to preferred height]
+                    ],
+                  ),
                 );
               }
             }),
@@ -499,13 +485,17 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
         ));
   }
 
-  Widget buildContent(List<Word> words) {
+  Widget buildContent(List<Word> words, Orientation orientation) {
+    var mySizeGRP_V_kategorien = AutoSizeGroup();
     if (words.isEmpty) {
       return const Center(
-        child: Text(
-          'Keine Daten gefunden',
-          style: TextStyle(fontSize: 24),
-        ),
+        child: AutoSizeText('Keine Daten gefunden!', style: TextStyle(fontSize: 70, shadows: <Shadow>[
+          Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+          ),
+        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 5, maxLines: 1, overflow: TextOverflow.ellipsis),
       );
     } else {
       var richtigesWort = 0;
@@ -561,80 +551,154 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
           }
         }
       }
-
-      return Expanded(
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: itemsMAP.entries.toList().length,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                    color: Colors.black,
-                    child: Card(
-                        color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: itemsMAP.entries.toList()[index].value[0] == "Gesamt" ? Colors.lightBlueAccent:Colors.white70,
-                        child: ListTile(
-                          onTap: () {
-                            List progressData = [currentDiff_,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
-                            Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
-                          },
-                          title: Text(
-                            itemsMAP.entries.toList()[index].key,
-                            style: const TextStyle(
-                                shadows: <Shadow>[
+      if (orientation == Orientation.portrait) {
+        return Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: itemsMAP.entries.toList().length,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                      color: Colors.black,
+                      child: Card(
+                          color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: itemsMAP.entries.toList()[index].value[0] == "Gesamt" ? Colors.lightBlueAccent:Colors.white70,
+                          child: ListTile(
+                            onTap: () {
+                              List progressData = [currentDiff_,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
+                              Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
+                            },
+                            contentPadding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+                              minLeadingWidth: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width * 0.1,
+                            title:
+                            AutoSizeText(itemsMAP.entries.toList()[index].key, group: mySizeGRP_V_kategorien, style: const TextStyle(fontSize: 80, shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 1.0,
+                                color: Colors.black,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                            leading: Icon(
+                                shadows: const <Shadow>[
                                   Shadow(
                                     offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
+                                    blurRadius: 5.0,
                                     color: Colors.black,
                                   ),
                                 ],
-                                fontFamily: "Qaz",
-                                fontSize: 30,
-                                color: Colors.black),
-                          ),
-                          leading: Icon(
-                              shadows: const <Shadow>[
-                                Shadow(
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 5.0,
-                                  color: Colors.black,
-                                ),
-                              ],
-                              size: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .height * 0.03,
-                              color: Colors.white,
-                              IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
-                          ),
-                          trailing:
-                          itemsMAP.entries.toList()[index].value[0] != "Gesamt" ?
-                          Icon(
-                              shadows: const <Shadow>[
-                                Shadow(
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 5.0,
-                                  color: Colors.black,
-                                ),
-                              ],
-                              size: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .height * 0.03,
-                              color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
-                              gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? const IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): const IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
-                          )
-                          : SizedBox.shrink()
-                          ,
-                        )))
-              ],
+                                size: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .height * 0.06,
+                                color: Colors.white,
+                                IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                            ),
+                            trailing:
+                            itemsMAP.entries.toList()[index].value[0] != "Gesamt" ?
+                            Icon(
+                                shadows: const <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 5.0,
+                                    color: Colors.black,
+                                  ),
+                                ],
+                                size: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .height * 0.06,
+                                color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
+                                gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? const IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): const IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                            )
+                                : SizedBox.shrink()
+                            ,
+                          )))
+                ],
+              ),
             ),
           ),
-        ),
-      );
-
+        );
+      }
+      else
+        {
+          return Expanded(
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: itemsMAP.entries.toList().length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        color: Colors.black,
+                        child: Card(
+                            color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: itemsMAP.entries.toList()[index].value[0] == "Gesamt" ? Colors.lightBlueAccent:Colors.white70,
+                            child: ListTile(
+                              onTap: () {
+                                List progressData = [currentDiff_,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
+                                Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
+                              },
+                              title: Text(
+                                itemsMAP.entries.toList()[index].key,
+                                style: const TextStyle(
+                                    shadows: <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 2.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                    fontFamily: "Qaz",
+                                    fontSize: 30,
+                                    color: Colors.black),
+                              ),
+                              leading: Icon(
+                                  shadows: const <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 5.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                  size: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height * 0.03,
+                                  color: Colors.white,
+                                  IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                              ),
+                              trailing:
+                              itemsMAP.entries.toList()[index].value[0] != "Gesamt" ?
+                              Icon(
+                                  shadows: const <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 5.0,
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                  size: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height * 0.03,
+                                  color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
+                                  gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? const IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): const IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                              )
+                                  : SizedBox.shrink()
+                              ,
+                            )))
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
 
     }
   }
