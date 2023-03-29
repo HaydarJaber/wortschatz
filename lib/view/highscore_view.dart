@@ -492,7 +492,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
-                          iconSize: MediaQuery.of(context).size.width*0.06,
+                          iconSize: MediaQuery.of(context).size.width*0.05,
                           onPressed: () => Navigator.of(context).pop(),
                           icon: const Icon(
                             shadows: <Shadow>[

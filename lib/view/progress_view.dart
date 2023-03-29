@@ -127,7 +127,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                   image: AssetImage("assets/images/Hintergrund.jpg"),
                   fit: BoxFit.cover),
             ),
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+            padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
             child: OrientationBuilder(builder: (context, orientation) {
               if (orientation == Orientation.portrait) {
                 return Padding(
@@ -449,15 +449,13 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                   ),
                 );
               } else {
-                return Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Column(
+                return Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           IconButton(
-                              iconSize: MediaQuery.of(context).size.width*0.06,
+                              iconSize: MediaQuery.of(context).size.width*0.05,
                               onPressed: () => Navigator.of(context).pop(),
                               icon: const Icon(
                                 shadows: <Shadow>[
@@ -476,7 +474,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                         ],
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height*0.1,
+                        height: MediaQuery.of(context).size.width*0.05,
                         decoration: BoxDecoration(
                           color: Colors.white70,
                           borderRadius: BorderRadius.circular(
@@ -498,7 +496,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                             // first tab [you can add an icon using the icon property]
                             Tab(
                                 child :
-                                AutoSizeText('Leicht', group: mySizeGRP_H, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                AutoSizeText('Leicht', group: mySizeGRP_H, style: const TextStyle(fontSize: 200, shadows: <Shadow>[
                                   Shadow(
                                     offset: Offset(0.0, 0.0),
                                     blurRadius: 1.0,
@@ -509,7 +507,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
 
                             // second tab [you can add an icon using the icon property]
                             Tab(
-                                child : AutoSizeText('Normal', group: mySizeGRP_H, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                child : AutoSizeText('Normal', group: mySizeGRP_H, style: const TextStyle(fontSize: 200, shadows: <Shadow>[
                                   Shadow(
                                     offset: Offset(0.0, 0.0),
                                     blurRadius: 1.0,
@@ -519,7 +517,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                             ),
 
                             Tab(
-                                child : AutoSizeText('Schwer', group: mySizeGRP_H, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                child : AutoSizeText('Schwer', group: mySizeGRP_H, style: const TextStyle(fontSize: 200, shadows: <Shadow>[
                                   Shadow(
                                     offset: Offset(0.0, 0.0),
                                     blurRadius: 1.0,
@@ -537,13 +535,13 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                           children: [
                             // first tab bar view widget
                             Padding(
-                              padding: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
                                     width: MediaQuery.of(context).size.width * 1,
-                                    height: MediaQuery.of(context).size.height * 0.12,
+                                    height: MediaQuery.of(context).size.width * 0.098,
                                     decoration: const ShapeDecoration(
                                         color: Colors.white70,
                                         shape: RoundedRectangleBorder(
@@ -553,18 +551,18 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                         )
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           DropdownButton<String>(
                                             isExpanded: true,
                                             value: dropdownValue,
-                                            itemHeight: MediaQuery.of(context).size.height*0.06,
+                                            //itemHeight: MediaQuery.of(context).size.height*0.15,
                                             icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.05),
                                             elevation: 16,
-                                            style: TextStyle(
-                                              shadows: const <Shadow>[
+                                            style: const TextStyle(
+                                              shadows: <Shadow>[
                                                 Shadow(
                                                   offset: Offset(0.0, 0.0),
                                                   blurRadius: 0.0,
@@ -572,10 +570,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 ),
                                               ],
                                               color: Colors.black,
-                                              fontSize: MediaQuery
-                                                  .of(context)
-                                                  .size
-                                                  .height * 0.05,
                                               fontFamily: "Qaz",
                                             ),
                                             underline: const SizedBox.shrink(),
@@ -590,7 +584,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 value: value,
                                                 child: Text(value,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
+                                                      fontSize: MediaQuery.of(context).size.width * 0.035,
                                                     )),
                                               );
                                             }).toList(),
@@ -612,13 +606,13 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                             ),
                             // second tab bar view widget
                             Padding(
-                              padding: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
                                     width: MediaQuery.of(context).size.width * 1,
-                                    height: MediaQuery.of(context).size.height * 0.12,
+                                    height: MediaQuery.of(context).size.height * 0.163,
                                     decoration: const ShapeDecoration(
                                         color: Colors.white70,
                                         shape: RoundedRectangleBorder(
@@ -635,11 +629,11 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                           DropdownButton<String>(
                                             isExpanded: true,
                                             value: dropdownValue,
-                                            itemHeight: MediaQuery.of(context).size.height*0.06,
+                                            //itemHeight: MediaQuery.of(context).size.height*0.15,
                                             icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.05),
                                             elevation: 16,
-                                            style: TextStyle(
-                                              shadows: const <Shadow>[
+                                            style: const TextStyle(
+                                              shadows: <Shadow>[
                                                 Shadow(
                                                   offset: Offset(0.0, 0.0),
                                                   blurRadius: 0.0,
@@ -647,10 +641,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 ),
                                               ],
                                               color: Colors.black,
-                                              fontSize: MediaQuery
-                                                  .of(context)
-                                                  .size
-                                                  .height * 0.05,
                                               fontFamily: "Qaz",
                                             ),
                                             underline: const SizedBox.shrink(),
@@ -665,7 +655,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 value: value,
                                                 child: Text(value,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
+                                                      fontSize: MediaQuery.of(context).size.width * 0.04,
                                                     )),
                                               );
                                             }).toList(),
@@ -687,13 +677,13 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                             ),
 
                             Padding(
-                              padding: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Column(children: [
                                 Material(
                                   color: Colors.transparent,
                                   child: Ink(
                                     width: MediaQuery.of(context).size.width * 1,
-                                    height: MediaQuery.of(context).size.height * 0.12,
+                                    height: MediaQuery.of(context).size.height * 0.163,
                                     decoration: const ShapeDecoration(
                                         color: Colors.white70,
                                         shape: RoundedRectangleBorder(
@@ -710,11 +700,11 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                           DropdownButton<String>(
                                             isExpanded: true,
                                             value: dropdownValue,
-                                            itemHeight: MediaQuery.of(context).size.height*0.06,
+                                            //itemHeight: MediaQuery.of(context).size.height*0.15,
                                             icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.05),
                                             elevation: 16,
-                                            style: TextStyle(
-                                              shadows: const <Shadow>[
+                                            style: const TextStyle(
+                                              shadows: <Shadow>[
                                                 Shadow(
                                                   offset: Offset(0.0, 0.0),
                                                   blurRadius: 0.0,
@@ -722,10 +712,6 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 ),
                                               ],
                                               color: Colors.black,
-                                              fontSize: MediaQuery
-                                                  .of(context)
-                                                  .size
-                                                  .height * 0.05,
                                               fontFamily: "Qaz",
                                             ),
                                             underline: const SizedBox.shrink(),
@@ -740,7 +726,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 value: value,
                                                 child: Text(value,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
+                                                      fontSize: MediaQuery.of(context).size.width * 0.04,
                                                     )),
                                               );
                                             }).toList(),
@@ -765,8 +751,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                       ),
                       // give the tab bar a height [can change hheight to preferred height]
                     ],
-                  ),
-                );
+                  );
               }
             }),
           ),
@@ -919,26 +904,24 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
               shrinkWrap: true,
               itemCount: itemsMAP.entries.toList().length,
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
+                        alignment: Alignment.center,
                         color: Colors.black,
                         child: Card(
                             color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.green: itemsMAP.entries.toList()[index].value[0] == "Gesamt" ? Colors.lightBlueAccent:Colors.white70,
-                            child: ListTile(
+                            child:
+                            ListTile(
                               onTap: () {
                                 List progressData = [currentDiff_,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
                                 Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
                               },
-                              contentPadding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-                              minLeadingWidth: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * 0.1,
+                              contentPadding: const EdgeInsets.fromLTRB(10, 0, 10,0),
                               title:
-                              AutoSizeText(itemsMAP.entries.toList()[index].key, group: mySizeGRP_V_kategorien, style: const TextStyle(fontSize: 80, shadows: <Shadow>[
+                              AutoSizeText(itemsMAP.entries.toList()[index].key, group: mySizeGRP_V_kategorien, style: const TextStyle(fontSize: 30, shadows: <Shadow>[
                                 Shadow(
                                   offset: Offset(0.0, 0.0),
                                   blurRadius: 1.0,
@@ -956,7 +939,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                   size: MediaQuery
                                       .of(context)
                                       .size
-                                      .height * 0.08,
+                                      .width * 0.04,
                                   color: Colors.white,
                                   IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                               ),
@@ -973,7 +956,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                   size: MediaQuery
                                       .of(context)
                                       .size
-                                      .height * 0.08,
+                                      .width * 0.04,
                                   color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
                                   gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? const IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): const IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                               )
