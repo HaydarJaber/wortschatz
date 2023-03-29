@@ -127,7 +127,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                   image: AssetImage("assets/images/Hintergrund.jpg"),
                   fit: BoxFit.cover),
             ),
-            padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: OrientationBuilder(builder: (context, orientation) {
               if (orientation == Orientation.portrait) {
                 return Padding(
