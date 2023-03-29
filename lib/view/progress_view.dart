@@ -541,7 +541,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                   color: Colors.transparent,
                                   child: Ink(
                                     width: MediaQuery.of(context).size.width * 1,
-                                    height: MediaQuery.of(context).size.width * 0.098,
+                                    height: MediaQuery.of(context).size.height * 0.163,
                                     decoration: const ShapeDecoration(
                                         color: Colors.white70,
                                         shape: RoundedRectangleBorder(
@@ -584,7 +584,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                                 value: value,
                                                 child: Text(value,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.width * 0.035,
+                                                      fontSize: MediaQuery.of(context).size.width * 0.04,
                                                     )),
                                               );
                                             }).toList(),

@@ -76,7 +76,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
               image: AssetImage("assets/images/Hintergrund.jpg"),
               fit: BoxFit.cover),
         ),
-        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: OrientationBuilder(builder: (context, orientation) {
           if (orientation == Orientation.portrait) {
             return Padding(

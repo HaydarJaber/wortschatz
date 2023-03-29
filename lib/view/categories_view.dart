@@ -164,69 +164,107 @@ class Categories extends StatelessWidget {
                 ],
               );
             } else {
-              return Row(
+              return Column(
+                mainAxisSize: MainAxisSize.max,
                 children: [
-                  /*  Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                    iconSize: 35,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ),*/
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                          onPressed: () => Navigator.pushNamed(context, Routes.home),
+                          icon: const Icon(
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            Icons.home,
+                            color: Colors.black,
+                            size: 35,
+                          )),
+                      const SizedBox(width: 60),
+                      const Text(
+                        'Kategorien',
+                        style: TextStyle(
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            fontFamily: "Qaz",
+                            fontSize: 35,
+                            color: Colors.black),
+                      )
+                    ],
+                  ),
+                  //const Text('Kategorien', style: TextStyle(fontSize: 60,fontFamily: "Modak")
+                  /*Expanded(
+                  child:
+                      ListView.builder(
+                          itemCount: items.length,
+                        itemBuilder: (context,index) {
+                            return items[index];
+                        },
+
+                  ))*/
                   Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const MenuButton(
-                            label: Category.All,
-                            route: Routes.newGame,
-                            iconCodePoint: 0xf2af,
-                            color: Colors.lightBlueAccent),
-                        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                MenuButton(
-                                    label: Category.Autoteile,
-                                    route: Routes.newGame,
-                                    iconCodePoint: 0xf2af,
-                                    color: Colors.green),
-                                MenuButton(
-                                    label: Category.Badezimmer,
-                                    route: Routes.newGame,
-                                    iconCodePoint: 0xf2af,
-                                    color: Colors.yellow),
-                                MenuButton(
-                                    label: Category.Bauernhof,
-                                    route: Routes.newGame,
-                                    iconCodePoint: 0xf2af,
-                                    color: Colors.orange),
-                              ]),
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                MenuButton(
-                                    label: Category.Berufe,
-                                    route: Routes.newGame,
-                                    iconCodePoint: 0xf2af,
-                                    color: Colors.red),
-                                MenuButton(
-                                    label: Category.DeutscheStaedte,
-                                    route: Routes.newGame,
-                                    iconCodePoint: 0xf2af,
-                                    color: Colors.pink),
-                                MenuButton(
-                                    label: Category.Fahrzeuge,
-                                    route: Routes.newGame,
-                                    iconCodePoint: 0xf2af,
-                                    color: Colors.purple),
-                              ]),
-                        ]),
-                      ],
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: itemsMAP.entries.toList().length,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                color: Colors.black,
+                                child: Card(
+                                    color: Colors.lightBlueAccent,
+                                    child: ListTile(
+                                      onTap: () {Navigator.pushNamed(context, Routes.newGame, arguments: itemsMAP.entries.toList()[index].value[0]);
+                                      },
+                                      title: Text(
+                                        itemsMAP.entries.toList()[index].key,
+                                        style: const TextStyle(
+                                            shadows: <Shadow>[
+                                              Shadow(
+                                                offset: Offset(0.0, 0.0),
+                                                blurRadius: 2.0,
+                                                color: Colors.black,
+                                              ),
+                                            ],
+                                            fontFamily: "Qaz",
+                                            fontSize: 30,
+                                            color: Colors.black),
+                                      ),
+                                      leading: Icon(
+                                          shadows: const <Shadow>[
+                                            Shadow(
+                                              offset: Offset(0.0, 0.0),
+                                              blurRadius: 5.0,
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                          size: MediaQuery
+                                              .of(context)
+                                              .size
+                                              .height * 0.03,
+                                          color: Colors.white,
+                                          IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                                      ),
+                                      // trailing: Icon(Icons.star)
+                                    )))
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+
+
                 ],
               );
             }
