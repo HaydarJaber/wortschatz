@@ -475,6 +475,294 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                           ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                         ],
                       ),
+                      Container(
+                        height: MediaQuery.of(context).size.height*0.1,
+                        decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.circular(
+                            25.0,
+                          ),
+                        ),
+                        child: TabBar(
+                          controller: _tabController,
+                          // give the indicator a decoration (color and border radius)
+                          indicator: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              25.0,
+                            ),
+                            color: Colors.lightBlueAccent,
+                          ),
+                          labelColor: Colors.black,
+                          unselectedLabelColor: Colors.black,
+                          tabs: [
+                            // first tab [you can add an icon using the icon property]
+                            Tab(
+                                child :
+                                AutoSizeText('Leicht', group: mySizeGRP_H, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                            ),
+
+                            // second tab [you can add an icon using the icon property]
+                            Tab(
+                                child : AutoSizeText('Normal', group: mySizeGRP_H, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                            ),
+
+                            Tab(
+                                child : AutoSizeText('Schwer', group: mySizeGRP_H, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+                            ),
+                          ],
+                        ),
+                      ),
+                      // tab bar view here
+                      Flexible(
+                        child: TabBarView(
+                          controller: _tabController,
+                          children: [
+                            // first tab bar view widget
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Column(children: [
+                                Material(
+                                  color: Colors.transparent,
+                                  child: Ink(
+                                    width: MediaQuery.of(context).size.width * 1,
+                                    height: MediaQuery.of(context).size.height * 0.12,
+                                    decoration: const ShapeDecoration(
+                                        color: Colors.white70,
+                                        shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                width: 2,
+                                                color: Colors.black)
+                                        )
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          DropdownButton<String>(
+                                            isExpanded: true,
+                                            value: dropdownValue,
+                                            itemHeight: MediaQuery.of(context).size.height*0.06,
+                                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.05),
+                                            elevation: 16,
+                                            style: TextStyle(
+                                              shadows: const <Shadow>[
+                                                Shadow(
+                                                  offset: Offset(0.0, 0.0),
+                                                  blurRadius: 0.0,
+                                                  color: Colors.black,
+                                                ),
+                                              ],
+                                              color: Colors.black,
+                                              fontSize: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .height * 0.05,
+                                              fontFamily: "Qaz",
+                                            ),
+                                            underline: const SizedBox.shrink(),
+                                            onChanged: (String? value) {
+                                              // This is called when the user selects an item.
+                                              setState(() {
+                                                dropdownValue = value!;
+                                              });
+                                            },
+                                            items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value,
+                                                    style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
+                                                    )),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                ValueListenableBuilder<Box<Word>>(
+                                    valueListenable: Boxes.getWords().listenable(),
+                                    builder: (context,box,_){
+                                      final words = box.values.toList().cast<Word>();
+
+                                      return buildContent(words,orientation);
+                                    }
+                                ),
+                              ]),
+                            ),
+                            // second tab bar view widget
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Column(children: [
+                                Material(
+                                  color: Colors.transparent,
+                                  child: Ink(
+                                    width: MediaQuery.of(context).size.width * 1,
+                                    height: MediaQuery.of(context).size.height * 0.12,
+                                    decoration: const ShapeDecoration(
+                                        color: Colors.white70,
+                                        shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                width: 2,
+                                                color: Colors.black)
+                                        )
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          DropdownButton<String>(
+                                            isExpanded: true,
+                                            value: dropdownValue,
+                                            itemHeight: MediaQuery.of(context).size.height*0.06,
+                                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.05),
+                                            elevation: 16,
+                                            style: TextStyle(
+                                              shadows: const <Shadow>[
+                                                Shadow(
+                                                  offset: Offset(0.0, 0.0),
+                                                  blurRadius: 0.0,
+                                                  color: Colors.black,
+                                                ),
+                                              ],
+                                              color: Colors.black,
+                                              fontSize: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .height * 0.05,
+                                              fontFamily: "Qaz",
+                                            ),
+                                            underline: const SizedBox.shrink(),
+                                            onChanged: (String? value) {
+                                              // This is called when the user selects an item.
+                                              setState(() {
+                                                dropdownValue = value!;
+                                              });
+                                            },
+                                            items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value,
+                                                    style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
+                                                    )),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                ValueListenableBuilder<Box<Word>>(
+                                    valueListenable: Boxes.getWords().listenable(),
+                                    builder: (context,box,_){
+                                      final words = box.values.toList().cast<Word>();
+
+                                      return buildContent(words,orientation);
+                                    }
+                                ),
+                              ]),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Column(children: [
+                                Material(
+                                  color: Colors.transparent,
+                                  child: Ink(
+                                    width: MediaQuery.of(context).size.width * 1,
+                                    height: MediaQuery.of(context).size.height * 0.12,
+                                    decoration: const ShapeDecoration(
+                                        color: Colors.white70,
+                                        shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                width: 2,
+                                                color: Colors.black)
+                                        )
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          DropdownButton<String>(
+                                            isExpanded: true,
+                                            value: dropdownValue,
+                                            itemHeight: MediaQuery.of(context).size.height*0.06,
+                                            icon: Icon(Icons.arrow_downward,size: MediaQuery.of(context).size.width * 0.05),
+                                            elevation: 16,
+                                            style: TextStyle(
+                                              shadows: const <Shadow>[
+                                                Shadow(
+                                                  offset: Offset(0.0, 0.0),
+                                                  blurRadius: 0.0,
+                                                  color: Colors.black,
+                                                ),
+                                              ],
+                                              color: Colors.black,
+                                              fontSize: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .height * 0.05,
+                                              fontFamily: "Qaz",
+                                            ),
+                                            underline: const SizedBox.shrink(),
+                                            onChanged: (String? value) {
+                                              // This is called when the user selects an item.
+                                              setState(() {
+                                                dropdownValue = value!;
+                                              });
+                                            },
+                                            items: frequenz.map<DropdownMenuItem<String>>((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value,
+                                                    style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.height * 0.05,
+                                                    )),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                ValueListenableBuilder<Box<Word>>(
+                                    valueListenable: Boxes.getWords().listenable(),
+                                    builder: (context,box,_){
+                                      final words = box.values.toList().cast<Word>();
+
+                                      return buildContent(words,orientation);
+                                    }
+                                ),
+                              ]),
+                            ),
+                          ],
+                        ),
+                      ),
                       // give the tab bar a height [can change hheight to preferred height]
                     ],
                   ),
@@ -570,7 +858,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                               List progressData = [currentDiff_,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
                               Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
                             },
-                            contentPadding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+                            contentPadding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                               minLeadingWidth: MediaQuery
                                   .of(context)
                                   .size
@@ -615,7 +903,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                 color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
                                 gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? const IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): const IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                             )
-                                : SizedBox.shrink()
+                                : const SizedBox.shrink()
                             ,
                           )))
                 ],
@@ -631,7 +919,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
               shrinkWrap: true,
               itemCount: itemsMAP.entries.toList().length,
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -644,20 +932,19 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                 List progressData = [currentDiff_,dropdownValue,itemsMAP.entries.toList()[index].value[0]];
                                 Navigator.pushNamed(context, Routes.progressEINZEL, arguments: progressData);
                               },
-                              title: Text(
-                                itemsMAP.entries.toList()[index].key,
-                                style: const TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
-                                    fontFamily: "Qaz",
-                                    fontSize: 30,
-                                    color: Colors.black),
-                              ),
+                              contentPadding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                              minLeadingWidth: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width * 0.1,
+                              title:
+                              AutoSizeText(itemsMAP.entries.toList()[index].key, group: mySizeGRP_V_kategorien, style: const TextStyle(fontSize: 80, shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 1.0,
+                                  color: Colors.black,
+                                ),
+                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
                               leading: Icon(
                                   shadows: const <Shadow>[
                                     Shadow(
@@ -669,7 +956,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                   size: MediaQuery
                                       .of(context)
                                       .size
-                                      .height * 0.03,
+                                      .height * 0.08,
                                   color: Colors.white,
                                   IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                               ),
@@ -686,7 +973,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
                                   size: MediaQuery
                                       .of(context)
                                       .size
-                                      .height * 0.03,
+                                      .height * 0.08,
                                   color: gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? Colors.yellow: Colors.white70,
                                   gewonneneKateogrien.contains(itemsMAP.entries.toList()[index].value[0])? const IconData(0xf091, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter'): const IconData(0xf110, fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                               )
