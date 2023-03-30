@@ -69,70 +69,18 @@ Map<String, int> alphabets = {
   'ß': 0
 };
 
-List images = [
-  Image.asset(
-    "assets/images/coins12.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins11.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins10.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins9.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins8.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins7.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins6.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins5.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins4.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins3.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins2.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins1.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
-  Image.asset(
-    "assets/images/coins0.gif",
-    height: 230,
-    fit: BoxFit.cover,
-  ),
+List images_coins = [
+  "assets/images/coins12.gif",
+  "assets/images/coins11.gif",
+  "assets/images/coins10.gif",
+  "assets/images/coins9.gif",
+  "assets/images/coins8.gif",
+  "assets/images/coins7.gif",
+  "assets/images/coins6.gif",
+  "assets/images/coins5.gif",
+  "assets/images/coins4.gif",
+  "assets/images/coins3.gif",
+  "assets/images/coins2.gif",
+  "assets/images/coins1.gif",
+  "assets/images/coins0.gif"
 ];

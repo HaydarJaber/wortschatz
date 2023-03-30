@@ -2899,36 +2899,25 @@ void getVerbleibendeWorter(){
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  ("Kategorie:"),
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.lightBlueAccent,
-                                        ),
-                                      ],
-                                      color: Colors.lightBlueAccent,
-                                      fontFamily: "Qaz",
-                                      fontSize: MediaQuery.of(context).size.width*0.05),
-                                ),
-                                SizedBox(width: MediaQuery.of(context).size.width*0.01),
-                                Text(
-                                  (widget.category),
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      color: Colors.black,
-                                      fontFamily: "Qaz",
-                                      fontSize: MediaQuery.of(context).size.width*0.05),
-                                ),
-                                SizedBox(width: MediaQuery.of(context).size.width*0.01),
+                                SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                                Flexible(child:
+                                AutoSizeText("Kategorie:",group: mySizeGRP_V2,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 1.0,
+                                    color: Colors.lightBlueAccent,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.lightBlueAccent),textAlign: TextAlign.center, minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                ,SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                                Flexible(child:
+                                AutoSizeText((widget.category),group: mySizeGRP_V2,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
+                                    color: Colors.black,
+                                  ),
+                                ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center, minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                ,SizedBox(width: MediaQuery.of(context).size.width*0.02),
                                 Icon(
                                     shadows: const <Shadow>[
                                       Shadow(
@@ -2940,16 +2929,26 @@ void getVerbleibendeWorter(){
                                     size: MediaQuery
                                         .of(context)
                                         .size
-                                        .height * 0.03,
+                                        .height * 0.04,
                                     color: Colors.black,
                                     IconData(getIcon(), fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
-                                ),]
+                                ),
+                                SizedBox(width: MediaQuery.of(context).size.width*0.02)
+                              ]
                           ),
-                        images[index],
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.fitHeight, image: AssetImage(images_coins[index])),
+                            borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                            color: Colors.transparent,
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [...sword.map((e) => underscore(e))],
                           ),
                         ),
@@ -3562,7 +3561,6 @@ void getVerbleibendeWorter(){
                                 ),]
                           ),
                         ),
-                        images[index],
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Row(
