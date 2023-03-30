@@ -1520,60 +1520,58 @@ void getVerbleibendeWorter(){
   }
 
   //Unterstrich
-  Widget underscore(String chr) {
-    return Text(
-      "$chr ",
-      style: const TextStyle(
-          shadows: <Shadow>[
-            Shadow(
-              offset: Offset(0.0, 0.0),
-              blurRadius: 2.0,
-              color: Colors.black,
-            ),
-          ],
-        // fontWeight: FontWeight.bold,
+  Widget underscore(String chr, Orientation orientation) {
+    var mySizeGRP_V_US = AutoSizeGroup();
+    if (orientation == Orientation.portrait) {
+      return Flexible(child:
+       AutoSizeText("$chr", group: mySizeGRP_V_US, style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.05, shadows: const <Shadow>[
+        Shadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
           color: Colors.black,
-          fontFamily: "PlatNomo",
-          fontSize: 30),
-    );
+        ),
+      ],fontFamily: "PlatNomo",color: Colors.black),stepGranularity: 1,minFontSize: 3, maxLines: 1, overflow: TextOverflow.ellipsis));
+      }
+    else {
+     return  AutoSizeText("$chr", group: mySizeGRP_V_US, style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.05, shadows: const <Shadow>[
+        Shadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          color: Colors.black,
+        ),
+      ],fontFamily: "PlatNomo",color: Colors.black),stepGranularity: 10,minFontSize: 3, maxLines: 1, overflow: TextOverflow.ellipsis);
+    }
   }
 
   //Buchstaben-Buttons
   Widget alphaContainer(var name, Color color) {
+  var mySizeGRP_Buchstaben = AutoSizeGroup();
     return Container(
-      decoration:
-      BoxDecoration(color: color, borderRadius: BorderRadius.circular(15),  boxShadow:  const <BoxShadow>[
-      BoxShadow(
-      offset: Offset(0.0, 0.0),
-      blurRadius: 2.0,
-      color: Colors.black,
-    ),
-    ],),
-      alignment: Alignment.center,
-      width: 50,
-      child: Text(
-        name,
-        style: const TextStyle(
-            shadows: <Shadow>[
-              Shadow(
-                offset: Offset(0.0, 0.0),
-                blurRadius: 2.0,
-                color: Colors.black,
-              ),
-            ],
-           //fontWeight: FontWeight.w100,
+        decoration:
+        BoxDecoration(color: color, borderRadius: BorderRadius.circular(15),  boxShadow:  const <BoxShadow>[
+          BoxShadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 2.0,
             color: Colors.black,
-            fontFamily: "Qaz",
-            fontSize: 30),
-      ),
-    );
+          ),
+        ],),
+        alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width*0.150,
+        child:
+        AutoSizeText(name, group: mySizeGRP_Buchstaben, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+          Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+          ),
+        ],fontFamily: "Qaz",color: Colors.black),stepGranularity: 10,minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+      );
   }
 
   //erstelle Buttons
-  Widget createButton(var name) {
+  Widget createButton(var name, Orientation orientation) {
     return alphabets[name] == 0
         ? InkWell(
-       //splashColor: Colors.deepOrange,
         onTap: () {
           setState(() {
             if (alphabets[name] == 0) {
@@ -2424,7 +2422,7 @@ void getVerbleibendeWorter(){
             child: OrientationBuilder(builder: (context, orientation) {
               if (orientation == Orientation.portrait) {
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  padding: EdgeInsets.zero,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -2946,21 +2944,24 @@ void getVerbleibendeWorter(){
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          padding: EdgeInsets.fromLTRB(8, MediaQuery.of(context).size.height*0.02, 8, MediaQuery.of(context).size.height*0.03),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [...sword.map((e) => underscore(e))],
+                            children: [...sword.map((e) => underscore(e,orientation))],
                           ),
                         ),
                         GridView.builder(
                           shrinkWrap: true,
                           itemCount: 30,
                           gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisSpacing: 10, crossAxisCount: 6),
+                          SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisExtent: MediaQuery.of(context).size.height*0.073,
+                              mainAxisSpacing: MediaQuery.of(context).size.height*0.01, crossAxisCount: 6),
                           itemBuilder: (context, index) {
-                            return Row(children: [
-                              createButton(alphabets.keys.toList()[index])
+                            return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                              createButton(alphabets.keys.toList()[index],orientation)
                             ]);
                           },
                         )
@@ -2972,616 +2973,6 @@ void getVerbleibendeWorter(){
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height -
-                        40 -
-                        MediaQuery.of(context).padding.top,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              onPressed: (() {
-                                Navigator.pushNamed(context, Routes.categories);
-                              }),
-                              icon: const Icon(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                                Icons.arrow_back_ios_new,
-                                size: 35,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              verbleibendeWorter.toString(),
-                              style: const TextStyle(
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      offset: Offset(0.0, 0.0),
-                                      blurRadius: 2.0,
-                                      color: Colors.lightBlueAccent,
-                                    ),
-                                  ],
-                                  color: Colors.lightBlueAccent,
-                                  fontSize: 40,
-                                  fontFamily: "Qaz"),
-                            ),
-                            Text(
-                              score.toString(),
-                              style: const TextStyle(
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      offset: Offset(0.0, 0.0),
-                                      blurRadius: 2.0,
-                                      color: Colors.lightBlueAccent,
-                                    ),
-                                  ],
-                                  color: Colors.green,
-                                  fontSize: 40,
-                                  fontFamily: "Qaz"),
-                            ),
-                            IconButton(
-                              onPressed: (() {
-                                showDialog(
-                                    barrierDismissible: true,
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return WillPopScope(
-                                        onWillPop: () async => false,
-                                        child: AlertDialog(
-                                          backgroundColor: Colors.lightBlueAccent,
-                                          shape: const RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 3,
-                                                  color: Colors.black)),
-                                          icon: const Icon(
-                                            shadows: <Shadow>[
-                                              Shadow(
-                                                offset: Offset(0.0, 0.0),
-                                                blurRadius: 2.0,
-                                                color: Colors.black,
-                                              ),
-                                            ],
-                                            Icons.lightbulb,
-                                            size: 50,
-                                            color: Colors.black,
-                                          ),
-                                          title: const Text(
-                                            "Hilfe",
-                                            style: TextStyle(
-                                                shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 2.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ],
-                                                color: Colors.black,
-                                                fontSize: 35,
-                                                fontFamily: "Qaz"),
-                                          ),
-                                          content: StatefulBuilder(
-                                            builder: (BuildContext context, StateSetter setState){
-                                              return  SizedBox(
-                                                height: 800,
-                                                child: Column(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment.spaceAround,
-                                                    children: <Widget>[
-                                                      _isButtonAufgeklappt1 ?
-                                                      Material(
-                                                        color: Colors.transparent,
-                                                        child: Ink(
-                                                            width: MediaQuery.of(context).size.width * 0.8,
-                                                            height: MediaQuery.of(context).size.height * 0.12,
-                                                            decoration: const ShapeDecoration(
-                                                                color: Colors.yellow,
-                                                                shape: RoundedRectangleBorder(
-                                                                    side: BorderSide(
-                                                                        width: 3,
-                                                                        color: Colors.black)
-                                                                )
-                                                            ),
-                                                            child: Column(
-                                                                children: [
-                                                                  Row(
-                                                                    children:  const [
-                                                                      Text(
-                                                                        "Tipp 1:",
-                                                                        style: TextStyle(
-                                                                            shadows: <Shadow>[
-                                                                              Shadow(
-                                                                                offset: Offset(0.0, 0.0),
-                                                                                blurRadius: 2.0,
-                                                                                color: Colors.black,
-                                                                              ),
-                                                                            ],
-                                                                            // fontWeight: FontWeight.bold,
-                                                                            color: Colors.black,
-                                                                            fontFamily: "Qaz",
-                                                                            fontSize: 20),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Text(
-                                                                    entryList[randomIndex].value[0],
-                                                                    style: const TextStyle(
-                                                                        shadows: <Shadow>[
-                                                                          Shadow(
-                                                                            offset: Offset(0.0, 0.0),
-                                                                            blurRadius: 2.0,
-                                                                            color: Colors.black,
-                                                                          ),
-                                                                        ],
-                                                                        // fontWeight: FontWeight.bold,
-                                                                        color: Colors.black,
-                                                                        fontFamily: "Qaz",
-                                                                        fontSize: 25),
-                                                                    textAlign: TextAlign.center,
-                                                                  ),
-                                                                ]
-                                                            )
-                                                        ),
-                                                      ): Container(),
-                                                      _isButtonAufgeklappt2 ?
-                                                      Material(
-                                                        color: Colors.transparent,
-                                                        child: Ink(
-                                                            width: MediaQuery.of(context).size.width * 0.8,
-                                                            height: MediaQuery.of(context).size.height * 0.12,
-                                                            decoration: const ShapeDecoration(
-                                                                color: Colors.yellow,
-                                                                shape: RoundedRectangleBorder(
-                                                                    side: BorderSide(
-                                                                        width: 3,
-                                                                        color: Colors.black)
-                                                                )
-                                                            ),
-                                                            child: Column(
-                                                                children: [
-                                                                  Row(
-                                                                    children:  const [
-                                                                      Text(
-                                                                        "Tipp 2:",
-                                                                        style: TextStyle(
-                                                                            shadows: <Shadow>[
-                                                                              Shadow(
-                                                                                offset: Offset(0.0, 0.0),
-                                                                                blurRadius: 2.0,
-                                                                                color: Colors.black,
-                                                                              ),
-                                                                            ],
-                                                                            // fontWeight: FontWeight.bold,
-                                                                            color: Colors.black,
-                                                                            fontFamily: "Qaz",
-                                                                            fontSize: 20),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Text(
-                                                                    entryList[randomIndex].value[1],
-                                                                    style: const TextStyle(
-                                                                        shadows: <Shadow>[
-                                                                          Shadow(
-                                                                            offset: Offset(0.0, 0.0),
-                                                                            blurRadius: 2.0,
-                                                                            color: Colors.black,
-                                                                          ),
-                                                                        ],
-                                                                        // fontWeight: FontWeight.bold,
-                                                                        color: Colors.black,
-                                                                        fontFamily: "Qaz",
-                                                                        fontSize: 25),
-                                                                    textAlign: TextAlign.center,
-                                                                  ),
-                                                                ]
-                                                            )
-                                                        ),
-                                                      ) : Container(),
-                                                      _isButtonAufgeklappt3 ?
-                                                      Material(
-                                                        color: Colors.transparent,
-                                                        child: Ink(
-                                                            width: MediaQuery.of(context).size.width * 0.8,
-                                                            height: MediaQuery.of(context).size.height * 0.13,
-                                                            decoration: const ShapeDecoration(
-                                                                color: Colors.yellow,
-                                                                shape: RoundedRectangleBorder(
-                                                                    side: BorderSide(
-                                                                        width: 3,
-                                                                        color: Colors.black)
-                                                                )
-                                                            ),
-                                                            child: Column(
-                                                                children: [
-                                                                  Row(
-                                                                    children:  const [
-                                                                      Text(
-                                                                        "Tipp 3:",
-                                                                        style: TextStyle(
-                                                                            shadows: <Shadow>[
-                                                                              Shadow(
-                                                                                offset: Offset(0.0, 0.0),
-                                                                                blurRadius: 2.0,
-                                                                                color: Colors.black,
-                                                                              ),
-                                                                            ],
-                                                                            // fontWeight: FontWeight.bold,
-                                                                            color: Colors.black,
-                                                                            fontFamily: "Qaz",
-                                                                            fontSize: 20),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Text(
-                                                                    entryList[randomIndex].value[2],
-                                                                    style: const TextStyle(
-                                                                        shadows: <Shadow>[
-                                                                          Shadow(
-                                                                            offset: Offset(0.0, 0.0),
-                                                                            blurRadius: 2.0,
-                                                                            color: Colors.black,
-                                                                          ),
-                                                                        ],
-                                                                        // fontWeight: FontWeight.bold,
-                                                                        color: Colors.black,
-                                                                        fontFamily: "Qaz",
-                                                                        fontSize: 25),
-                                                                    textAlign: TextAlign.center,
-                                                                  ),
-                                                                ]
-                                                            )
-                                                        ),
-                                                      ) : Container(),
-                                                      _isButtonAufgeklappt4 ?
-                                                      Material(
-                                                        color: Colors.transparent,
-                                                        child: Ink(
-                                                            width: MediaQuery.of(context).size.width * 0.8,
-                                                            height: MediaQuery.of(context).size.height * 0.13,
-                                                            decoration: const ShapeDecoration(
-                                                                color: Colors.yellow,
-                                                                shape: RoundedRectangleBorder(
-                                                                    side: BorderSide(
-                                                                        width: 3,
-                                                                        color: Colors.black)
-                                                                )
-                                                            ),
-                                                            child: Column(
-                                                                children: [
-                                                                  Row(
-                                                                    children:  const [
-                                                                      Text(
-                                                                        "Tipp 4:",
-                                                                        style: TextStyle(
-                                                                            shadows: <Shadow>[
-                                                                              Shadow(
-                                                                                offset: Offset(0.0, 0.0),
-                                                                                blurRadius: 2.0,
-                                                                                color: Colors.black,
-                                                                              ),
-                                                                            ],
-                                                                            // fontWeight: FontWeight.bold,
-                                                                            color: Colors.black,
-                                                                            fontFamily: "Qaz",
-                                                                            fontSize: 20),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Text(
-                                                                    entryList[randomIndex].value[3],
-                                                                    style: const TextStyle(
-                                                                        shadows: <Shadow>[
-                                                                          Shadow(
-                                                                            offset: Offset(0.0, 0.0),
-                                                                            blurRadius: 2.0,
-                                                                            color: Colors.black,
-                                                                          ),
-                                                                        ],
-                                                                        // fontWeight: FontWeight.bold,
-                                                                        color: Colors.black,
-                                                                        fontFamily: "Qaz",
-                                                                        fontSize: 25),
-                                                                    textAlign: TextAlign.center,
-                                                                  ),
-                                                                ]
-                                                            )
-                                                        ),
-                                                      ) : Container(),
-                                                      _isButtonAufgeklappt4 == false && _isButtonAufgeklappt1 == false ?
-                                                      Material(
-
-                                                        color: Colors.transparent,
-                                                        child: Ink(
-                                                            width: MediaQuery.of(context).size.width * 0.8,
-                                                            height: MediaQuery.of(context).size.height * 0.1,
-                                                            decoration: const ShapeDecoration(color: Colors.white,
-                                                                shape: RoundedRectangleBorder(
-                                                                    side: BorderSide(width: 3, color: Colors.black))),
-                                                            child: ElevatedButton(
-                                                              onPressed: () {
-                                                                setState(() {
-                                                                  if (_isButtonAufgeklappt1 == true &&
-                                                                      _isButtonAufgeklappt2 ==
-                                                                          true &&
-                                                                      _isButtonAufgeklappt3 ==
-                                                                          true &&
-                                                                      _isButtonAufgeklappt4 ==
-                                                                          false) {
-                                                                    _isButtonAufgeklappt4 =
-                                                                    true;
-                                                                  }
-                                                                  if (_isButtonAufgeklappt1 == true &&
-                                                                      _isButtonAufgeklappt2 ==
-                                                                          true &&
-                                                                      _isButtonAufgeklappt3 ==
-                                                                          false) {
-                                                                    _isButtonAufgeklappt3 =
-                                                                    true;
-                                                                  }
-                                                                  if (_isButtonAufgeklappt1 ==
-                                                                      true &&
-                                                                      _isButtonAufgeklappt2 ==
-                                                                          false) {
-                                                                    _isButtonAufgeklappt2 =
-                                                                    true;
-                                                                  }
-                                                                  if (_isButtonAufgeklappt1 ==
-                                                                      false) {
-                                                                    _isButtonAufgeklappt1 =
-                                                                    true;
-                                                                  }
-                                                                });
-                                                              },
-                                                              style: ButtonStyle(
-                                                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                                                                      borderRadius: BorderRadius.circular(
-                                                                          10.0),
-                                                                      side: const BorderSide(color: Colors.black))),
-                                                                  alignment: Alignment.center,
-                                                                  backgroundColor: MaterialStateProperty.resolveWith(
-                                                                          (state) {
-                                                                        if (state
-                                                                            .contains(MaterialState.pressed))
-                                                                          return Colors.grey;
-                                                                        return Colors
-                                                                            .white;
-                                                                      }),
-                                                                  shadowColor:
-                                                                  MaterialStateProperty.all(Colors
-                                                                      .transparent),
-                                                                  side: MaterialStateProperty.all(
-                                                                      const BorderSide(width: 2))),
-                                                              child:
-                                                              const Text(
-                                                                "Tipp anzeigen",
-                                                                style: TextStyle(
-                                                                    shadows: <Shadow>[
-                                                                      Shadow(
-                                                                        offset: Offset(
-                                                                            0.0,
-                                                                            0.0),
-                                                                        blurRadius:
-                                                                        2.0,
-                                                                        color:
-                                                                        Colors.black,
-                                                                      ),
-                                                                    ],
-                                                                    // fontWeight: FontWeight.bold,
-                                                                    color: Colors.black,
-                                                                    fontFamily: "Qaz",
-                                                                    fontSize: 30),
-                                                              ),
-                                                            )),
-                                                      )
-                                                          : Container(),
-                                                      _isButtonAufgeklappt1 == true && _isButtonAufgeklappt4 == false ?
-                                                      ElevatedButton(
-                                                        onPressed: () {
-                                                          setState((){
-                                                            if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt4 == false){
-                                                              _isButtonAufgeklappt4 = true;
-                                                            }
-                                                            if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
-                                                              _isButtonAufgeklappt3 = true;
-                                                            }
-                                                            if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
-                                                              _isButtonAufgeklappt2 = true;
-                                                            }
-                                                            if (_isButtonAufgeklappt1 == false){
-                                                              _isButtonAufgeklappt1 = true;
-                                                            }
-                                                          });
-                                                        },
-                                                        style: ButtonStyle(
-                                                            alignment: Alignment.centerLeft,
-                                                            backgroundColor: MaterialStateProperty.resolveWith((state) {
-                                                              if (state.contains(MaterialState.pressed)) return Colors.grey;
-                                                              return Colors.white;
-                                                            }),
-                                                            shadowColor: MaterialStateProperty.all(Colors.transparent),
-                                                            side: MaterialStateProperty.all(const BorderSide(width: 2))),
-                                                        child: const Text(
-                                                          "nächster Tipp",
-                                                          style: TextStyle(
-                                                              shadows: <Shadow>[
-                                                                Shadow(
-                                                                  offset: Offset(0.0, 0.0),
-                                                                  blurRadius: 2.0,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ],
-                                                              // fontWeight: FontWeight.bold,
-                                                              color: Colors.black,
-                                                              fontFamily: "Qaz",
-                                                              fontSize: 30),
-                                                        ),
-                                                      ): Container(),
-                                                      Material(
-                                                        color: Colors.transparent,
-                                                        child: Ink(
-                                                            width: 50,
-                                                            height: 50,
-                                                            decoration: const ShapeDecoration(
-                                                                color: Colors.white,
-                                                                shape: CircleBorder(
-                                                                    side: BorderSide(
-                                                                        width: 3,
-                                                                        color: Colors.black)
-                                                                )
-                                                            ),
-                                                            child: IconButton(
-                                                                style: ButtonStyle(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    backgroundColor: MaterialStateProperty.resolveWith((state) {
-                                                                      if (state.contains(MaterialState.pressed)) return Colors.grey;
-                                                                      return Colors.black;
-                                                                    }),
-                                                                    shadowColor: MaterialStateProperty.all(Colors.transparent),
-                                                                    side: MaterialStateProperty.all(const BorderSide(width: 2))),
-                                                                icon: const Icon(
-                                                                  Icons.cancel_sharp,
-                                                                  size: 25,
-                                                                  color: Colors.black,
-                                                                ),
-                                                                onPressed: () {
-                                                                  Navigator.of(context).pop();
-                                                                })
-                                                        ),
-                                                      ),
-                                                    ]),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      );
-                                    });
-                              }),
-                              icon: const Icon(
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(0.0, 0.0),
-                                    blurRadius: 2.0,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                                Icons.lightbulb,
-                                size: 35,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  const Icon(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.lightBlueAccent,
-                                      ),
-                                    ],
-                                    Icons.favorite,
-                                    size: 50,
-                                    color: Colors.lightBlueAccent,
-                                  ),
-                                  Text(
-                                    lives.toString(),
-                                    style: const TextStyle(
-                                        shadows: <Shadow>[
-                                          Shadow(
-                                            offset: Offset(0.0, 0.0),
-                                            blurRadius: 0.0,
-                                            color: Colors.black,
-                                          ),
-                                        ],
-                                        color: Colors.black,
-                                        fontFamily: "Qaz",
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-
-                                ])
-                          ],
-                        ),
-                        Padding(padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                          child: Row(
-                              children: [
-                                const Text(
-                                  ("Kategorie: "),
-                                  style: TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.lightBlueAccent,
-                                        ),
-                                      ],
-                                      color: Colors.lightBlueAccent,
-                                      fontFamily: "Qaz",
-                                      fontSize: 25),
-                                ),
-                                const SizedBox(width: 10),
-                                Text(
-                                  (widget.category),
-                                  style: const TextStyle(
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 2.0,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                      color: Colors.black,
-                                      fontFamily: "Qaz",
-                                      fontSize: 25),
-                                ),
-                                const SizedBox(width: 10),
-                                Icon(
-                                    shadows: const <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 0.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
-                                    size: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height * 0.03,
-                                    color: Colors.black,
-                                    IconData(getIcon(), fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
-                                ),]
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [...sword.map((e) => underscore(e))],
-                          ),
-                        ),
-                        GridView.builder(
-                          shrinkWrap: true,
-                          itemCount: 30,
-                          gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisSpacing: 10, crossAxisCount: 6),
-                          itemBuilder: (context, index) {
-                            return Row(children: [
-                              createButton(alphabets.keys.toList()[index])
-                            ]);
-                          },
-                        )
-                      ],
-                    ),
                   ),
                 );
               }

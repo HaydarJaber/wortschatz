@@ -70,7 +70,7 @@ class Categories extends StatelessWidget {
                     children: [
                       IconButton(
                           iconSize: MediaQuery.of(context).size.width*0.1,
-                          onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () => Navigator.pushNamed(context, Routes.home),
                           icon: const Icon(
                             shadows: <Shadow>[
                             ],
@@ -147,7 +147,7 @@ class Categories extends StatelessWidget {
                     children: [
                       IconButton(
                           iconSize: MediaQuery.of(context).size.width*0.05,
-                          onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () => Navigator.pushNamed(context, Routes.home),
                           icon: const Icon(
                             shadows: <Shadow>[
                             ],
