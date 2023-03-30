@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wortschatz/model/styles/palette.dart';
@@ -47,6 +48,7 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mySizeGRP_V = AutoSizeGroup();
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -57,7 +59,7 @@ class Categories extends StatelessWidget {
                 fit: BoxFit.cover
             ),
           ),
-          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 5),
           child: OrientationBuilder(builder: (context, orientation) {
             if (orientation == Orientation.portrait) {
               return Column(
@@ -67,52 +69,30 @@ class Categories extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
-                          onPressed: () => Navigator.pushNamed(context, Routes.home),
+                          iconSize: MediaQuery.of(context).size.width*0.1,
+                          onPressed: () => Navigator.of(context).pop(),
                           icon: const Icon(
                             shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
                             ],
                             Icons.home,
                             color: Colors.black,
-                            size: 35,
                           )),
-                      const SizedBox(width: 60),
-                      const Text(
-                        'Kategorien',
-                        style: TextStyle(
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
-                            ],
-                            fontFamily: "Qaz",
-                            fontSize: 35,
-                            color: Colors.black),
-                      )
+                      SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                      Text('Kategorien',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                        Shadow(
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 1.0,
+                          color: Colors.black,
+                        ),
+                      ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                     ],
                   ),
-                  //const Text('Kategorien', style: TextStyle(fontSize: 60,fontFamily: "Modak")
-                  /*Expanded(
-                  child:
-                      ListView.builder(
-                          itemCount: items.length,
-                        itemBuilder: (context,index) {
-                            return items[index];
-                        },
-
-                  ))*/
                   Expanded(
                     child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: itemsMAP.entries.toList().length,
                       itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -121,22 +101,17 @@ class Categories extends StatelessWidget {
                                 child: Card(
                                   color: Colors.lightBlueAccent,
                                     child: ListTile(
+                                      contentPadding: EdgeInsets.fromLTRB(8, 8, 8, 8),
                                       onTap: () {Navigator.pushNamed(context, Routes.newGame, arguments: itemsMAP.entries.toList()[index].value[0]);
                                         },
-                                      title: Text(
-                                        itemsMAP.entries.toList()[index].key,
-                                        style: const TextStyle(
-                                            shadows: <Shadow>[
-                                              Shadow(
-                                                offset: Offset(0.0, 0.0),
-                                                blurRadius: 2.0,
-                                                color: Colors.black,
-                                              ),
-                                            ],
-                                            fontFamily: "Qaz",
-                                            fontSize: 30,
-                                            color: Colors.black),
-                                      ),
+                                      title:
+                                        AutoSizeText(itemsMAP.entries.toList()[index].key, group: mySizeGRP_V, style: const TextStyle(fontSize: 80, shadows: <Shadow>[
+                                        Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 1.0,
+                                        color: Colors.black,
+                                        ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
                                       leading: Icon(
                                           shadows: const <Shadow>[
                                             Shadow(
@@ -148,7 +123,7 @@ class Categories extends StatelessWidget {
                                           size: MediaQuery
                                               .of(context)
                                               .size
-                                              .height * 0.03,
+                                              .height * 0.05,
                                           color: Colors.white,
                                           IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                                       ),
@@ -171,52 +146,30 @@ class Categories extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
-                          onPressed: () => Navigator.pushNamed(context, Routes.home),
+                          iconSize: MediaQuery.of(context).size.width*0.05,
+                          onPressed: () => Navigator.of(context).pop(),
                           icon: const Icon(
                             shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
                             ],
                             Icons.home,
                             color: Colors.black,
-                            size: 35,
                           )),
-                      const SizedBox(width: 60),
-                      const Text(
-                        'Kategorien',
-                        style: TextStyle(
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 2.0,
-                                color: Colors.black,
-                              ),
-                            ],
-                            fontFamily: "Qaz",
-                            fontSize: 35,
-                            color: Colors.black),
-                      )
+                      SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                      Text('Kategorien',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                        Shadow(
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 1.0,
+                          color: Colors.black,
+                        ),
+                      ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                     ],
                   ),
-                  //const Text('Kategorien', style: TextStyle(fontSize: 60,fontFamily: "Modak")
-                  /*Expanded(
-                  child:
-                      ListView.builder(
-                          itemCount: items.length,
-                        itemBuilder: (context,index) {
-                            return items[index];
-                        },
-
-                  ))*/
                   Expanded(
                     child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: itemsMAP.entries.toList().length,
                       itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 3, 0, 0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -225,22 +178,18 @@ class Categories extends StatelessWidget {
                                 child: Card(
                                     color: Colors.lightBlueAccent,
                                     child: ListTile(
+                                      horizontalTitleGap: 20,
+                                      contentPadding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
                                       onTap: () {Navigator.pushNamed(context, Routes.newGame, arguments: itemsMAP.entries.toList()[index].value[0]);
                                       },
-                                      title: Text(
-                                        itemsMAP.entries.toList()[index].key,
-                                        style: const TextStyle(
-                                            shadows: <Shadow>[
-                                              Shadow(
-                                                offset: Offset(0.0, 0.0),
-                                                blurRadius: 2.0,
-                                                color: Colors.black,
-                                              ),
-                                            ],
-                                            fontFamily: "Qaz",
-                                            fontSize: 30,
-                                            color: Colors.black),
-                                      ),
+                                      title:
+                                      AutoSizeText(itemsMAP.entries.toList()[index].key, group: mySizeGRP_V, style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 1.0,
+                                          color: Colors.black,
+                                        ),
+                                      ],fontFamily: "Qaz",color: Colors.black),stepGranularity: 10,minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
                                       leading: Icon(
                                           shadows: const <Shadow>[
                                             Shadow(
@@ -252,7 +201,7 @@ class Categories extends StatelessWidget {
                                           size: MediaQuery
                                               .of(context)
                                               .size
-                                              .height * 0.03,
+                                              .width * 0.045,
                                           color: Colors.white,
                                           IconData(itemsMAP.entries.toList()[index].value[1], fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                                       ),
