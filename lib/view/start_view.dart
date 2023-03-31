@@ -1533,19 +1533,21 @@ void getVerbleibendeWorter(){
       ],fontFamily: "PlatNomo",color: Colors.black),stepGranularity: 1,minFontSize: 3, maxLines: 1, overflow: TextOverflow.ellipsis));
       }
     else {
-     return  AutoSizeText("$chr", group: mySizeGRP_V_US, style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.05, shadows: const <Shadow>[
+      return Flexible(child:
+      AutoSizeText("$chr", group: mySizeGRP_V_US, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
         Shadow(
           offset: Offset(0.0, 0.0),
           blurRadius: 1.0,
           color: Colors.black,
         ),
-      ],fontFamily: "PlatNomo",color: Colors.black),stepGranularity: 10,minFontSize: 3, maxLines: 1, overflow: TextOverflow.ellipsis);
+      ],fontFamily: "PlatNomo",color: Colors.black),stepGranularity: 1,minFontSize: 3, maxLines: 1, overflow: TextOverflow.ellipsis));
     }
   }
 
   //Buchstaben-Buttons
-  Widget alphaContainer(var name, Color color) {
+  Widget alphaContainer(var name, Color color, Orientation orientation) {
   var mySizeGRP_Buchstaben = AutoSizeGroup();
+  if (orientation == Orientation.portrait) {
     return Container(
         decoration:
         BoxDecoration(color: color, borderRadius: BorderRadius.circular(15),  boxShadow:  const <BoxShadow>[
@@ -1565,21 +1567,46 @@ void getVerbleibendeWorter(){
             color: Colors.black,
           ),
         ],fontFamily: "Qaz",color: Colors.black),stepGranularity: 10,minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
-      );
+    );
+  }
+  else {
+    return Container(
+        decoration:
+        BoxDecoration(color: color, borderRadius: BorderRadius.circular(15),  boxShadow:  const <BoxShadow>[
+          BoxShadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 2.0,
+            color: Colors.black,
+          ),
+        ],),
+        alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width*0.09,
+        child:
+        AutoSizeText(name, group: mySizeGRP_Buchstaben, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+          Shadow(
+            offset: Offset(0.0, 0.0),
+            blurRadius: 1.0,
+            color: Colors.black,
+          ),
+        ],fontFamily: "Qaz",color: Colors.black),stepGranularity: 10,minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
+    );
+  }
+
   }
 
   //erstelle Buttons
   Widget createButton(var name, Orientation orientation) {
-    return alphabets[name] == 0
-        ? InkWell(
-        onTap: () {
-          setState(() {
-            if (alphabets[name] == 0) {
-              var chr = name.toString().toLowerCase();
-              var chrUP = name.toString();
-              print(chr);
-              print(chrUP);
-              if (randomWord.contains(chr) || randomWord.contains(chrUP)) {                 //Wenn Buchstabe im Wort vorhanden..
+    if (orientation == Orientation.portrait) {
+      return alphabets[name] == 0
+          ? InkWell(
+          onTap: () {
+            setState(() {
+              if (alphabets[name] == 0) {
+                var chr = name.toString().toLowerCase();
+                var chrUP = name.toString();
+                print(chr);
+                print(chrUP);
+                if (randomWord.contains(chr) || randomWord.contains(chrUP)) {                 //Wenn Buchstabe im Wort vorhanden..
                   while (randomWord.contains(chr)) {
                     int getIndex = randomWord.indexOf((chr));
                     randomWord = randomWord.replaceFirst(chr, '_');
@@ -1590,517 +1617,8 @@ void getVerbleibendeWorter(){
                     randomWord = randomWord.replaceFirst(chrUP, '_');
                     sword[getIndex] = chrUP;
                   }
-                if (!randomWord.contains(RegExp(r'[a-z]')) && !randomWord.contains(RegExp(r'[A-Z]'))) {                             //und dieser Buchstabe der letzte Buchstabe der Wortes ist..
-                  if(wordListCounter == wordList.length){                                 //und dieses Wort das letzte Wort aus der Liste ist..
-                    showDialog(
-                        barrierDismissible: true,
-                        context: context,
-                        builder: (BuildContext context) {
-                          return WillPopScope(
-                            onWillPop: () async => false,
-                            child:
-                            AlertDialog(
-                              backgroundColor: Colors.lightBlueAccent,
-                              shape: const RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      width: 3,
-                                      color: Colors.black)),
-                              content: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      height: MediaQuery.of(context).size.height * 0.3,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.scaleDown, image: _imageToShow),
-                                        borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: Ink(
-                                          padding: EdgeInsets.all(8),
-                                          width: MediaQuery.of(context).size.width * 0.6,
-                                          height: MediaQuery.of(context).size.height * 0.2,
-                                          decoration: const ShapeDecoration(
-                                              color: Colors.lightGreenAccent,
-                                              shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      width: 3,
-                                                      color: Colors.black)
-                                              )
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.check_circle_outlined,
-                                                color: Colors.black,
-                                                size: MediaQuery.of(context).size.height * 0.05,
-                                              ),
-                                              SizedBox(
-                                                  height: MediaQuery.of(context).size.height * 0.01
-                                              ),
-                                              Expanded(child:
-                                              AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 0.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                            ],
-                                          )
-                                      ),
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: Ink(
-                                          padding: EdgeInsets.all(8),
-                                          width: MediaQuery.of(context).size.width * 0.6,
-                                          height: MediaQuery.of(context).size.height * 0.2,
-                                          decoration: const ShapeDecoration(
-                                              color: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      width: 3,
-                                                      color: Colors.black)
-                                              )
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              const Expanded(child:
-                                              AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 0.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                              const Expanded(child:
-                                              AutoSizeText("Alle Wörter durchgespielt.",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 0.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                            ],
-                                          )
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              width: MediaQuery.of(context).size.width * 0.15,
-                                              height: MediaQuery.of(context).size.height * 0.10,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.white,
-                                                  shape: CircleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
-                                              ),
-                                              child: IconButton(
-                                                  icon: Icon(
-                                                    const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
-                                                    size: MediaQuery.of(context).size.width * 0.07,
-                                                    color: Colors.black,
-                                                  ),
-                                                  onPressed: () {
-                                                    DBHelper.insert('SCORE2', {
-                                                      'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score,
-                                                      'diff': context.read<SettingsController>().schwierigkeit.value
-                                                    });
-                                                    changeHelpNumberforProgress();
-                                                    addWord(
-                                                        context.read<SettingsController>().schwierigkeit.value,
-                                                        context.read<SettingsController>().frequency.value,
-                                                        widget.category,
-                                                        randomWord,
-                                                        "richtigG",
-                                                        h1,
-                                                        h2,
-                                                        h3,
-                                                        h4);
-                                                    Navigator.pushNamed(context, Routes.categories);
-                                                  })
-                                          ),
-                                        ),
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              width: MediaQuery.of(context).size.width * 0.15,
-                                              height: MediaQuery.of(context).size.height * 0.10,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.white,
-                                                  shape: CircleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
-                                              ),
-                                              child: IconButton(
-                                                  icon: Icon(
-                                                    const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
-                                                    size: MediaQuery.of(context).size.width * 0.07,
-                                                    color: Colors.black,
-                                                  ),
-                                                  onPressed: () {
-                                                    DBHelper.insert('SCORE2', {
-                                                      'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score,
-                                                      'diff': context.read<SettingsController>().schwierigkeit.value
-                                                    });
-                                                    progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
-                                                    checkForHelp();                                    //check wie viele Hilfen benötigt
-                                                    addCategoryInfoforInfopage();
-                                                    print(progressSafer);
-                                                    changeHelpNumberforProgress();
-                                                    addWord(
-                                                        context.read<SettingsController>().schwierigkeit.value,
-                                                        context.read<SettingsController>().frequency.value,
-                                                        widget.category,
-                                                        randomWord,
-                                                        "richtigG",
-                                                        h1,
-                                                        h2,
-                                                        h3,
-                                                        h4);
-                                                    Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
-                                                  })
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ]),
-                            ),
-                          );
-                        });
-                  }
-                  else{                                                                   //und diseses Wort NICHT das letzte Wort aus der Liste ist..
-                    score = score + 1;
-                    showDialog(
-                        barrierDismissible: true,
-                        context: context,
-                        builder: (BuildContext context) {
-                          return WillPopScope(
-                            onWillPop: () async => false,
-                            child:
-                            AlertDialog(
-                              backgroundColor: Colors.lightBlueAccent,
-                              shape: const RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      width: 3,
-                                      color: Colors.black)),
-                              content: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      height: MediaQuery.of(context).size.height * 0.5,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.scaleDown, image: _imageToShow),
-                                        borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: Ink(
-                                          padding: EdgeInsets.all(8),
-                                          width: MediaQuery.of(context).size.width * 0.6,
-                                          height: MediaQuery.of(context).size.height * 0.2,
-                                          decoration: const ShapeDecoration(
-                                              color: Colors.lightGreenAccent,
-                                              shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      width: 3,
-                                                      color: Colors.black)
-                                              )
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.check_circle_outlined,
-                                                color: Colors.black,
-                                                size: MediaQuery.of(context).size.height * 0.05,
-                                              ),
-                                              SizedBox(
-                                                  height: MediaQuery.of(context).size.height * 0.01
-                                              ),
-                                              Expanded(child:
-                                              AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 0.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                            ],
-                                          )
-                                      ),
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: Ink(
-                                          width: MediaQuery.of(context).size.width * 0.15,
-                                          height: MediaQuery.of(context).size.height * 0.10,
-                                          decoration: const ShapeDecoration(
-                                              color: Colors.white,
-                                              shape: CircleBorder(
-                                                  side: BorderSide(
-                                                      width: 3,
-                                                      color: Colors.black)
-                                              )
-                                          ),
-                                          child: IconButton(
-                                              icon: Icon(
-                                                Icons.arrow_forward_sharp,
-                                                size: MediaQuery.of(context).size.width * 0.07,
-                                                color: Colors.black,
-                                              ),
-                                              onPressed: () {
-                                                progressSafer.update(stored, (value) => [1,0]);
-                                                checkForHelp();
-                                                changeHelpNumberforProgress();
-                                                addWord(
-                                                    context.read<SettingsController>().schwierigkeit.value,
-                                                    context.read<SettingsController>().frequency.value,
-                                                    widget.category,
-                                                    randomWord,
-                                                    "richtig",
-                                                    h1,
-                                                    h2,
-                                                    h3,
-                                                    h4);
-                                                newGame();
-                                                Navigator.of(context).pop();
-                                              })
-                                      ),
-                                    ),
-                                  ]),
-                            ),
-                          );
-                        });
-                  }
-                }
-              } else {                        //Wenn Buchstabe im Wort NICHT vorhanden
-                if (index == 11) {                                                                              //und keine Münzen mehr verfügbar..
-                  index = index + 1;
-                  lives -= 1;
-                  if(lives == 0){                                                                               //und dadurch Leben auf 0 geht
-                    showDialog(
-                        barrierDismissible: true,
-                        context: context,
-                        builder: (BuildContext context) {
-
-                          return WillPopScope(
-                            onWillPop: () async => false,
-                            child:
-                            AlertDialog(
-                              backgroundColor: Colors.lightBlueAccent,
-                              shape: const RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      width: 3,
-                                      color: Colors.black)),
-                              content: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      height: MediaQuery.of(context).size.height * 0.3,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.scaleDown, image: _imageToShow),
-                                        borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: Ink(
-                                          padding: EdgeInsets.all(8),
-                                          width: MediaQuery.of(context).size.width * 0.6,
-                                          height: MediaQuery.of(context).size.height * 0.2,
-                                          decoration: const ShapeDecoration(
-                                              color: Colors.redAccent,
-                                              shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      width: 3,
-                                                      color: Colors.black)
-                                              )
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.remove_circle_outline_rounded,
-                                                color: Colors.black,
-                                                size: MediaQuery.of(context).size.height * 0.05,
-                                              ),
-                                              SizedBox(
-                                                  height: MediaQuery.of(context).size.height * 0.01
-                                              ),
-                                              Expanded(child:
-                                              AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 0.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                            ],
-                                          )
-                                      ),
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: Ink(
-                                          padding: EdgeInsets.all(8),
-                                          width: MediaQuery.of(context).size.width * 0.6,
-                                          height: MediaQuery.of(context).size.height * 0.2,
-                                          decoration: const ShapeDecoration(
-                                              color: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                      width: 3,
-                                                      color: Colors.black)
-                                              )
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              const Expanded(child:
-                                              AutoSizeText("ENDE",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 0.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                              const Expanded(child:
-                                              AutoSizeText("Alle Herzen aufgebraucht!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                Shadow(
-                                                  offset: Offset(0.0, 0.0),
-                                                  blurRadius: 0.0,
-                                                  color: Colors.black,
-                                                ),
-                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                            ],
-                                          )
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              width: MediaQuery.of(context).size.width * 0.15,
-                                              height: MediaQuery.of(context).size.height * 0.10,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.white,
-                                                  shape: CircleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
-                                              ),
-                                              child: IconButton(
-                                                  icon: Icon(
-                                                    const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
-                                                    size: MediaQuery.of(context).size.width * 0.07,
-                                                    color: Colors.black,
-                                                  ),
-                                                  onPressed: () {
-                                                    DBHelper.insert('SCORE2', {
-                                                      'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score,
-                                                      'diff': context.read<SettingsController>().schwierigkeit.value
-                                                    });
-                                                    changeHelpNumberforProgress();
-                                                    addWord(
-                                                        context.read<SettingsController>().schwierigkeit.value,
-                                                        context.read<SettingsController>().frequency.value,
-                                                        widget.category,
-                                                        randomWord,
-                                                        "falschV",
-                                                        h1,
-                                                        h2,
-                                                        h3,
-                                                        h4);
-                                                    Navigator.pushNamed(context, Routes.categories);
-                                                  })
-                                          ),
-                                        ),
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              width: MediaQuery.of(context).size.width * 0.15,
-                                              height: MediaQuery.of(context).size.height * 0.10,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.white,
-                                                  shape: CircleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
-                                              ),
-                                              child: IconButton(
-                                                  icon: Icon(
-                                                    const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
-                                                    size: MediaQuery.of(context).size.width * 0.07,
-                                                    color: Colors.black,
-                                                  ),
-                                                  onPressed: () {
-                                                    DBHelper.insert('SCORE2', {
-                                                      'date': context.read<SettingsController>().playerName.value,
-                                                      'score': score,
-                                                      'diff': context.read<SettingsController>().schwierigkeit.value
-                                                    });
-                                                    checkForHelp();
-                                                    getMissingWords();
-                                                    addCategoryInfoforInfopage();
-                                                    changeHelpNumberforProgress();
-                                                    addWord(
-                                                        context.read<SettingsController>().schwierigkeit.value,
-                                                        context.read<SettingsController>().frequency.value,
-                                                        widget.category,
-                                                        randomWord,
-                                                        "falschV",
-                                                        h1,
-                                                        h2,
-                                                        h3,
-                                                        h4);
-                                                    print(progressSafer);
-                                                    Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
-                                                  })
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ]),
-                            ),
-                          );
-                        });
-                  }
-                  else {
-                    if(wordListCounter == wordList.length){                                                   //oder es das letzte Wort ist auch wenn man noch Leben hat
+                  if (!randomWord.contains(RegExp(r'[a-z]')) && !randomWord.contains(RegExp(r'[A-Z]'))) {                             //und dieser Buchstabe der letzte Buchstabe der Wortes ist..
+                    if(wordListCounter == wordList.length){                                 //und dieses Wort das letzte Wort aus der Liste ist..
                       showDialog(
                           barrierDismissible: true,
                           context: context,
@@ -2134,7 +1652,7 @@ void getVerbleibendeWorter(){
                                             width: MediaQuery.of(context).size.width * 0.6,
                                             height: MediaQuery.of(context).size.height * 0.2,
                                             decoration: const ShapeDecoration(
-                                                color: Colors.redAccent,
+                                                color: Colors.lightGreenAccent,
                                                 shape: RoundedRectangleBorder(
                                                     side: BorderSide(
                                                         width: 3,
@@ -2145,7 +1663,7 @@ void getVerbleibendeWorter(){
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 Icon(
-                                                  Icons.remove_circle_outline_rounded,
+                                                  Icons.check_circle_outlined,
                                                   color: Colors.black,
                                                   size: MediaQuery.of(context).size.height * 0.05,
                                                 ),
@@ -2237,7 +1755,7 @@ void getVerbleibendeWorter(){
                                                           context.read<SettingsController>().frequency.value,
                                                           widget.category,
                                                           randomWord,
-                                                          "falschG",
+                                                          "richtigG",
                                                           h1,
                                                           h2,
                                                           h3,
@@ -2271,7 +1789,8 @@ void getVerbleibendeWorter(){
                                                         'score': score,
                                                         'diff': context.read<SettingsController>().schwierigkeit.value
                                                       });
-                                                      checkForHelp();
+                                                      progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
+                                                      checkForHelp();                                    //check wie viele Hilfen benötigt
                                                       addCategoryInfoforInfopage();
                                                       print(progressSafer);
                                                       changeHelpNumberforProgress();
@@ -2280,7 +1799,7 @@ void getVerbleibendeWorter(){
                                                           context.read<SettingsController>().frequency.value,
                                                           widget.category,
                                                           randomWord,
-                                                          "falschG",
+                                                          "richtigG",
                                                           h1,
                                                           h2,
                                                           h3,
@@ -2296,9 +1815,122 @@ void getVerbleibendeWorter(){
                             );
                           });
                     }
-                    else{
+                    else{                                                                   //und diseses Wort NICHT das letzte Wort aus der Liste ist..
+                      score = score + 1;
                       showDialog(
-                          barrierDismissible: false,
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return WillPopScope(
+                              onWillPop: () async => false,
+                              child:
+                              AlertDialog(
+                                backgroundColor: Colors.lightBlueAccent,
+                                shape: const RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        width: 3,
+                                        color: Colors.black)),
+                                content: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        height: MediaQuery.of(context).size.height * 0.5,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.scaleDown, image: _imageToShow),
+                                          borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            padding: EdgeInsets.all(8),
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.lightGreenAccent,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.check_circle_outlined,
+                                                  color: Colors.black,
+                                                  size: MediaQuery.of(context).size.height * 0.05,
+                                                ),
+                                                SizedBox(
+                                                    height: MediaQuery.of(context).size.height * 0.01
+                                                ),
+                                                Expanded(child:
+                                                AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            width: MediaQuery.of(context).size.width * 0.15,
+                                            height: MediaQuery.of(context).size.height * 0.10,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: IconButton(
+                                                icon: Icon(
+                                                  Icons.arrow_forward_sharp,
+                                                  size: MediaQuery.of(context).size.width * 0.07,
+                                                  color: Colors.black,
+                                                ),
+                                                onPressed: () {
+                                                  progressSafer.update(stored, (value) => [1,0]);
+                                                  checkForHelp();
+                                                  changeHelpNumberforProgress();
+                                                  addWord(
+                                                      context.read<SettingsController>().schwierigkeit.value,
+                                                      context.read<SettingsController>().frequency.value,
+                                                      widget.category,
+                                                      randomWord,
+                                                      "richtig",
+                                                      h1,
+                                                      h2,
+                                                      h3,
+                                                      h4);
+                                                  newGame();
+                                                  Navigator.of(context).pop();
+                                                })
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                            );
+                          });
+                    }
+                  }
+                } else {                        //Wenn Buchstabe im Wort NICHT vorhanden
+                  if (index == 11) {                                                                              //und keine Münzen mehr verfügbar..
+                    index = index + 1;
+                    lives -= 1;
+                    if(lives == 0){                                                                               //und dadurch Leben auf 0 geht
+                      showDialog(
+                          barrierDismissible: true,
                           context: context,
                           builder: (BuildContext context) {
 
@@ -2316,7 +1948,7 @@ void getVerbleibendeWorter(){
                                     MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        height: MediaQuery.of(context).size.height * 0.5,
+                                        height: MediaQuery.of(context).size.height * 0.3,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                               fit: BoxFit.scaleDown, image: _imageToShow),
@@ -2364,6 +1996,743 @@ void getVerbleibendeWorter(){
                                       Material(
                                         color: Colors.transparent,
                                         child: Ink(
+                                            padding: EdgeInsets.all(8),
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                const Expanded(child:
+                                                AutoSizeText("ENDE",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                const Expanded(child:
+                                                AutoSizeText("Alle Herzen aufgebraucht!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: MediaQuery.of(context).size.width * 0.15,
+                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: Icon(
+                                                      const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
+                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE2', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
+                                                      });
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "falschV",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
+                                                      Navigator.pushNamed(context, Routes.categories);
+                                                    })
+                                            ),
+                                          ),
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: MediaQuery.of(context).size.width * 0.15,
+                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: Icon(
+                                                      const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
+                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE2', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
+                                                      });
+                                                      checkForHelp();
+                                                      getMissingWords();
+                                                      addCategoryInfoforInfopage();
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "falschV",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
+                                                      print(progressSafer);
+                                                      Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                    })
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ]),
+                              ),
+                            );
+                          });
+                    }
+                    else {
+                      if(wordListCounter == wordList.length){                                                   //oder es das letzte Wort ist auch wenn man noch Leben hat
+                        showDialog(
+                            barrierDismissible: true,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return WillPopScope(
+                                onWillPop: () async => false,
+                                child:
+                                AlertDialog(
+                                  backgroundColor: Colors.lightBlueAccent,
+                                  shape: const RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          width: 3,
+                                          color: Colors.black)),
+                                  content: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          height: MediaQuery.of(context).size.height * 0.3,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                fit: BoxFit.scaleDown, image: _imageToShow),
+                                            borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              padding: EdgeInsets.all(8),
+                                              width: MediaQuery.of(context).size.width * 0.6,
+                                              height: MediaQuery.of(context).size.height * 0.2,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.redAccent,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.remove_circle_outline_rounded,
+                                                    color: Colors.black,
+                                                    size: MediaQuery.of(context).size.height * 0.05,
+                                                  ),
+                                                  SizedBox(
+                                                      height: MediaQuery.of(context).size.height * 0.01
+                                                  ),
+                                                  Expanded(child:
+                                                  AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                ],
+                                              )
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              padding: EdgeInsets.all(8),
+                                              width: MediaQuery.of(context).size.width * 0.6,
+                                              height: MediaQuery.of(context).size.height * 0.2,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  const Expanded(child:
+                                                  AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                  const Expanded(child:
+                                                  AutoSizeText("Alle Wörter durchgespielt.",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                ],
+                                              )
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Material(
+                                              color: Colors.transparent,
+                                              child: Ink(
+                                                  width: MediaQuery.of(context).size.width * 0.15,
+                                                  height: MediaQuery.of(context).size.height * 0.10,
+                                                  decoration: const ShapeDecoration(
+                                                      color: Colors.white,
+                                                      shape: CircleBorder(
+                                                          side: BorderSide(
+                                                              width: 3,
+                                                              color: Colors.black)
+                                                      )
+                                                  ),
+                                                  child: IconButton(
+                                                      icon: Icon(
+                                                        const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
+                                                        size: MediaQuery.of(context).size.width * 0.07,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onPressed: () {
+                                                        DBHelper.insert('SCORE2', {
+                                                          'date': context.read<SettingsController>().playerName.value,
+                                                          'score': score,
+                                                          'diff': context.read<SettingsController>().schwierigkeit.value
+                                                        });
+                                                        changeHelpNumberforProgress();
+                                                        addWord(
+                                                            context.read<SettingsController>().schwierigkeit.value,
+                                                            context.read<SettingsController>().frequency.value,
+                                                            widget.category,
+                                                            randomWord,
+                                                            "falschG",
+                                                            h1,
+                                                            h2,
+                                                            h3,
+                                                            h4);
+                                                        Navigator.pushNamed(context, Routes.categories);
+                                                      })
+                                              ),
+                                            ),
+                                            Material(
+                                              color: Colors.transparent,
+                                              child: Ink(
+                                                  width: MediaQuery.of(context).size.width * 0.15,
+                                                  height: MediaQuery.of(context).size.height * 0.10,
+                                                  decoration: const ShapeDecoration(
+                                                      color: Colors.white,
+                                                      shape: CircleBorder(
+                                                          side: BorderSide(
+                                                              width: 3,
+                                                              color: Colors.black)
+                                                      )
+                                                  ),
+                                                  child: IconButton(
+                                                      icon: Icon(
+                                                        const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
+                                                        size: MediaQuery.of(context).size.width * 0.07,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onPressed: () {
+                                                        DBHelper.insert('SCORE2', {
+                                                          'date': context.read<SettingsController>().playerName.value,
+                                                          'score': score,
+                                                          'diff': context.read<SettingsController>().schwierigkeit.value
+                                                        });
+                                                        checkForHelp();
+                                                        addCategoryInfoforInfopage();
+                                                        print(progressSafer);
+                                                        changeHelpNumberforProgress();
+                                                        addWord(
+                                                            context.read<SettingsController>().schwierigkeit.value,
+                                                            context.read<SettingsController>().frequency.value,
+                                                            widget.category,
+                                                            randomWord,
+                                                            "falschG",
+                                                            h1,
+                                                            h2,
+                                                            h3,
+                                                            h4);
+                                                        Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                      })
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ]),
+                                ),
+                              );
+                            });
+                      }
+                      else{
+                        showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (BuildContext context) {
+
+                              return WillPopScope(
+                                onWillPop: () async => false,
+                                child:
+                                AlertDialog(
+                                  backgroundColor: Colors.lightBlueAccent,
+                                  shape: const RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          width: 3,
+                                          color: Colors.black)),
+                                  content: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          height: MediaQuery.of(context).size.height * 0.5,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                fit: BoxFit.scaleDown, image: _imageToShow),
+                                            borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              padding: EdgeInsets.all(8),
+                                              width: MediaQuery.of(context).size.width * 0.6,
+                                              height: MediaQuery.of(context).size.height * 0.2,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.redAccent,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.remove_circle_outline_rounded,
+                                                    color: Colors.black,
+                                                    size: MediaQuery.of(context).size.height * 0.05,
+                                                  ),
+                                                  SizedBox(
+                                                      height: MediaQuery.of(context).size.height * 0.01
+                                                  ),
+                                                  Expanded(child:
+                                                  AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                ],
+                                              )
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              width: MediaQuery.of(context).size.width * 0.15,
+                                              height: MediaQuery.of(context).size.height * 0.10,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: CircleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: IconButton(
+                                                  icon: Icon(
+                                                    Icons.arrow_forward_sharp,
+                                                    size: MediaQuery.of(context).size.width * 0.07,
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPressed: () {
+                                                    checkForHelp();
+                                                    changeHelpNumberforProgress();
+                                                    addWord(
+                                                        context.read<SettingsController>().schwierigkeit.value,
+                                                        context.read<SettingsController>().frequency.value,
+                                                        widget.category,
+                                                        randomWord,
+                                                        "falsch",
+                                                        h1,
+                                                        h2,
+                                                        h3,
+                                                        h4);
+                                                    newGame();
+                                                    Navigator.of(context).pop();
+                                                  })
+                                          ),
+                                        ),
+                                      ]),
+                                ),
+                              );
+                            });
+                      }
+                    }
+                  } else {
+                    index += 1;
+                  }
+                }
+                alphabets[name] = 1;
+              }
+            });
+          },
+          child: alphaContainer(
+            name,
+            Colors.lightBlueAccent,
+            orientation
+          ))
+          : alphaContainer(name, Colors.blueGrey, orientation);
+    }
+    else {
+      return alphabets[name] == 0
+          ? InkWell(
+          onTap: () {
+            setState(() {
+              if (alphabets[name] == 0) {
+                var chr = name.toString().toLowerCase();
+                var chrUP = name.toString();
+                print(chr);
+                print(chrUP);
+                if (randomWord.contains(chr) || randomWord.contains(chrUP)) {                 //Wenn Buchstabe im Wort vorhanden..
+                  while (randomWord.contains(chr)) {
+                    int getIndex = randomWord.indexOf((chr));
+                    randomWord = randomWord.replaceFirst(chr, '_');
+                    sword[getIndex] = chr;
+                  }
+                  while (randomWord.contains(chrUP)) {
+                    int getIndex = randomWord.indexOf((chrUP));
+                    randomWord = randomWord.replaceFirst(chrUP, '_');
+                    sword[getIndex] = chrUP;
+                  }
+                  if (!randomWord.contains(RegExp(r'[a-z]')) && !randomWord.contains(RegExp(r'[A-Z]'))) {                             //und dieser Buchstabe der letzte Buchstabe der Wortes ist..
+                    if(wordListCounter == wordList.length){                                 //und dieses Wort das letzte Wort aus der Liste ist..
+                      showDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return WillPopScope(
+                              onWillPop: () async => false,
+                              child:
+                              AlertDialog(
+                                backgroundColor: Colors.lightBlueAccent,
+                                shape: const RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        width: 3,
+                                        color: Colors.black)),
+                                content: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        height: MediaQuery.of(context).size.height * 0.3,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.scaleDown, image: _imageToShow),
+                                          borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            padding: EdgeInsets.all(8),
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.lightGreenAccent,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.check_circle_outlined,
+                                                  color: Colors.black,
+                                                  size: MediaQuery.of(context).size.height * 0.05,
+                                                ),
+                                                SizedBox(
+                                                    height: MediaQuery.of(context).size.height * 0.01
+                                                ),
+                                                Expanded(child:
+                                                AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            padding: EdgeInsets.all(8),
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                const Expanded(child:
+                                                AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                const Expanded(child:
+                                                AutoSizeText("Alle Wörter durchgespielt.",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: MediaQuery.of(context).size.width * 0.15,
+                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: Icon(
+                                                      const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
+                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE2', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
+                                                      });
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "richtigG",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
+                                                      Navigator.pushNamed(context, Routes.categories);
+                                                    })
+                                            ),
+                                          ),
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: MediaQuery.of(context).size.width * 0.15,
+                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: Icon(
+                                                      const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
+                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE2', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
+                                                      });
+                                                      progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
+                                                      checkForHelp();                                    //check wie viele Hilfen benötigt
+                                                      addCategoryInfoforInfopage();
+                                                      print(progressSafer);
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "richtigG",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
+                                                      Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                    })
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ]),
+                              ),
+                            );
+                          });
+                    }
+                    else{                                                                   //und diseses Wort NICHT das letzte Wort aus der Liste ist..
+                      score = score + 1;
+                      showDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return WillPopScope(
+                              onWillPop: () async => false,
+                              child:
+                              AlertDialog(
+                                backgroundColor: Colors.lightBlueAccent,
+                                shape: const RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        width: 3,
+                                        color: Colors.black)),
+                                content: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        height: MediaQuery.of(context).size.height * 0.5,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.scaleDown, image: _imageToShow),
+                                          borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            padding: EdgeInsets.all(8),
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.lightGreenAccent,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.check_circle_outlined,
+                                                  color: Colors.black,
+                                                  size: MediaQuery.of(context).size.height * 0.05,
+                                                ),
+                                                SizedBox(
+                                                    height: MediaQuery.of(context).size.height * 0.01
+                                                ),
+                                                Expanded(child:
+                                                AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
                                             width: MediaQuery.of(context).size.width * 0.15,
                                             height: MediaQuery.of(context).size.height * 0.10,
                                             decoration: const ShapeDecoration(
@@ -2381,6 +2750,7 @@ void getVerbleibendeWorter(){
                                                   color: Colors.black,
                                                 ),
                                                 onPressed: () {
+                                                  progressSafer.update(stored, (value) => [1,0]);
                                                   checkForHelp();
                                                   changeHelpNumberforProgress();
                                                   addWord(
@@ -2388,7 +2758,7 @@ void getVerbleibendeWorter(){
                                                       context.read<SettingsController>().frequency.value,
                                                       widget.category,
                                                       randomWord,
-                                                      "falsch",
+                                                      "richtig",
                                                       h1,
                                                       h2,
                                                       h3,
@@ -2404,19 +2774,528 @@ void getVerbleibendeWorter(){
                           });
                     }
                   }
-                } else {
-                  index += 1;
+                } else {                        //Wenn Buchstabe im Wort NICHT vorhanden
+                  if (index == 11) {                                                                              //und keine Münzen mehr verfügbar..
+                    index = index + 1;
+                    lives -= 1;
+                    if(lives == 0){                                                                               //und dadurch Leben auf 0 geht
+                      showDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (BuildContext context) {
+
+                            return WillPopScope(
+                              onWillPop: () async => false,
+                              child:
+                              AlertDialog(
+                                backgroundColor: Colors.lightBlueAccent,
+                                shape: const RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        width: 3,
+                                        color: Colors.black)),
+                                content: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        height: MediaQuery.of(context).size.height * 0.3,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.scaleDown, image: _imageToShow),
+                                          borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            padding: EdgeInsets.all(8),
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.redAccent,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.remove_circle_outline_rounded,
+                                                  color: Colors.black,
+                                                  size: MediaQuery.of(context).size.height * 0.05,
+                                                ),
+                                                SizedBox(
+                                                    height: MediaQuery.of(context).size.height * 0.01
+                                                ),
+                                                Expanded(child:
+                                                AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        child: Ink(
+                                            padding: EdgeInsets.all(8),
+                                            width: MediaQuery.of(context).size.width * 0.6,
+                                            height: MediaQuery.of(context).size.height * 0.2,
+                                            decoration: const ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                    side: BorderSide(
+                                                        width: 3,
+                                                        color: Colors.black)
+                                                )
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                const Expanded(child:
+                                                AutoSizeText("ENDE",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                const Expanded(child:
+                                                AutoSizeText("Alle Herzen aufgebraucht!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                  Shadow(
+                                                    offset: Offset(0.0, 0.0),
+                                                    blurRadius: 0.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: MediaQuery.of(context).size.width * 0.15,
+                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: Icon(
+                                                      const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
+                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE2', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
+                                                      });
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "falschV",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
+                                                      Navigator.pushNamed(context, Routes.categories);
+                                                    })
+                                            ),
+                                          ),
+                                          Material(
+                                            color: Colors.transparent,
+                                            child: Ink(
+                                                width: MediaQuery.of(context).size.width * 0.15,
+                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                decoration: const ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: CircleBorder(
+                                                        side: BorderSide(
+                                                            width: 3,
+                                                            color: Colors.black)
+                                                    )
+                                                ),
+                                                child: IconButton(
+                                                    icon: Icon(
+                                                      const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
+                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      color: Colors.black,
+                                                    ),
+                                                    onPressed: () {
+                                                      DBHelper.insert('SCORE2', {
+                                                        'date': context.read<SettingsController>().playerName.value,
+                                                        'score': score,
+                                                        'diff': context.read<SettingsController>().schwierigkeit.value
+                                                      });
+                                                      checkForHelp();
+                                                      getMissingWords();
+                                                      addCategoryInfoforInfopage();
+                                                      changeHelpNumberforProgress();
+                                                      addWord(
+                                                          context.read<SettingsController>().schwierigkeit.value,
+                                                          context.read<SettingsController>().frequency.value,
+                                                          widget.category,
+                                                          randomWord,
+                                                          "falschV",
+                                                          h1,
+                                                          h2,
+                                                          h3,
+                                                          h4);
+                                                      print(progressSafer);
+                                                      Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                    })
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ]),
+                              ),
+                            );
+                          });
+                    }
+                    else {
+                      if(wordListCounter == wordList.length){                                                   //oder es das letzte Wort ist auch wenn man noch Leben hat
+                        showDialog(
+                            barrierDismissible: true,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return WillPopScope(
+                                onWillPop: () async => false,
+                                child:
+                                AlertDialog(
+                                  backgroundColor: Colors.lightBlueAccent,
+                                  shape: const RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          width: 3,
+                                          color: Colors.black)),
+                                  content: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          height: MediaQuery.of(context).size.height * 0.3,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                fit: BoxFit.scaleDown, image: _imageToShow),
+                                            borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              padding: EdgeInsets.all(8),
+                                              width: MediaQuery.of(context).size.width * 0.6,
+                                              height: MediaQuery.of(context).size.height * 0.2,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.redAccent,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.remove_circle_outline_rounded,
+                                                    color: Colors.black,
+                                                    size: MediaQuery.of(context).size.height * 0.05,
+                                                  ),
+                                                  SizedBox(
+                                                      height: MediaQuery.of(context).size.height * 0.01
+                                                  ),
+                                                  Expanded(child:
+                                                  AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                ],
+                                              )
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              padding: EdgeInsets.all(8),
+                                              width: MediaQuery.of(context).size.width * 0.6,
+                                              height: MediaQuery.of(context).size.height * 0.2,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  const Expanded(child:
+                                                  AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                  const Expanded(child:
+                                                  AutoSizeText("Alle Wörter durchgespielt.",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                ],
+                                              )
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Material(
+                                              color: Colors.transparent,
+                                              child: Ink(
+                                                  width: MediaQuery.of(context).size.width * 0.15,
+                                                  height: MediaQuery.of(context).size.height * 0.10,
+                                                  decoration: const ShapeDecoration(
+                                                      color: Colors.white,
+                                                      shape: CircleBorder(
+                                                          side: BorderSide(
+                                                              width: 3,
+                                                              color: Colors.black)
+                                                      )
+                                                  ),
+                                                  child: IconButton(
+                                                      icon: Icon(
+                                                        const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
+                                                        size: MediaQuery.of(context).size.width * 0.07,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onPressed: () {
+                                                        DBHelper.insert('SCORE2', {
+                                                          'date': context.read<SettingsController>().playerName.value,
+                                                          'score': score,
+                                                          'diff': context.read<SettingsController>().schwierigkeit.value
+                                                        });
+                                                        changeHelpNumberforProgress();
+                                                        addWord(
+                                                            context.read<SettingsController>().schwierigkeit.value,
+                                                            context.read<SettingsController>().frequency.value,
+                                                            widget.category,
+                                                            randomWord,
+                                                            "falschG",
+                                                            h1,
+                                                            h2,
+                                                            h3,
+                                                            h4);
+                                                        Navigator.pushNamed(context, Routes.categories);
+                                                      })
+                                              ),
+                                            ),
+                                            Material(
+                                              color: Colors.transparent,
+                                              child: Ink(
+                                                  width: MediaQuery.of(context).size.width * 0.15,
+                                                  height: MediaQuery.of(context).size.height * 0.10,
+                                                  decoration: const ShapeDecoration(
+                                                      color: Colors.white,
+                                                      shape: CircleBorder(
+                                                          side: BorderSide(
+                                                              width: 3,
+                                                              color: Colors.black)
+                                                      )
+                                                  ),
+                                                  child: IconButton(
+                                                      icon: Icon(
+                                                        const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
+                                                        size: MediaQuery.of(context).size.width * 0.07,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onPressed: () {
+                                                        DBHelper.insert('SCORE2', {
+                                                          'date': context.read<SettingsController>().playerName.value,
+                                                          'score': score,
+                                                          'diff': context.read<SettingsController>().schwierigkeit.value
+                                                        });
+                                                        checkForHelp();
+                                                        addCategoryInfoforInfopage();
+                                                        print(progressSafer);
+                                                        changeHelpNumberforProgress();
+                                                        addWord(
+                                                            context.read<SettingsController>().schwierigkeit.value,
+                                                            context.read<SettingsController>().frequency.value,
+                                                            widget.category,
+                                                            randomWord,
+                                                            "falschG",
+                                                            h1,
+                                                            h2,
+                                                            h3,
+                                                            h4);
+                                                        Navigator.pushNamed(context, Routes.infopage, arguments: progressSafer);
+                                                      })
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ]),
+                                ),
+                              );
+                            });
+                      }
+                      else{
+                        showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (BuildContext context) {
+
+                              return WillPopScope(
+                                onWillPop: () async => false,
+                                child:
+                                AlertDialog(
+                                  backgroundColor: Colors.lightBlueAccent,
+                                  shape: const RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          width: 3,
+                                          color: Colors.black)),
+                                  content: Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          height: MediaQuery.of(context).size.height * 0.5,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                fit: BoxFit.scaleDown, image: _imageToShow),
+                                            borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              padding: EdgeInsets.all(8),
+                                              width: MediaQuery.of(context).size.width * 0.6,
+                                              height: MediaQuery.of(context).size.height * 0.2,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.redAccent,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.remove_circle_outline_rounded,
+                                                    color: Colors.black,
+                                                    size: MediaQuery.of(context).size.height * 0.05,
+                                                  ),
+                                                  SizedBox(
+                                                      height: MediaQuery.of(context).size.height * 0.01
+                                                  ),
+                                                  Expanded(child:
+                                                  AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 0.0,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                ],
+                                              )
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: Ink(
+                                              width: MediaQuery.of(context).size.width * 0.15,
+                                              height: MediaQuery.of(context).size.height * 0.10,
+                                              decoration: const ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: CircleBorder(
+                                                      side: BorderSide(
+                                                          width: 3,
+                                                          color: Colors.black)
+                                                  )
+                                              ),
+                                              child: IconButton(
+                                                  icon: Icon(
+                                                    Icons.arrow_forward_sharp,
+                                                    size: MediaQuery.of(context).size.width * 0.07,
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPressed: () {
+                                                    checkForHelp();
+                                                    changeHelpNumberforProgress();
+                                                    addWord(
+                                                        context.read<SettingsController>().schwierigkeit.value,
+                                                        context.read<SettingsController>().frequency.value,
+                                                        widget.category,
+                                                        randomWord,
+                                                        "falsch",
+                                                        h1,
+                                                        h2,
+                                                        h3,
+                                                        h4);
+                                                    newGame();
+                                                    Navigator.of(context).pop();
+                                                  })
+                                          ),
+                                        ),
+                                      ]),
+                                ),
+                              );
+                            });
+                      }
+                    }
+                  } else {
+                    index += 1;
+                  }
                 }
+                alphabets[name] = 1;
               }
-              alphabets[name] = 1;
-            }
-          });
-        },
-        child: alphaContainer(
-          name,
-          Colors.lightBlueAccent,
-        ))
-        : alphaContainer(name, Colors.blueGrey);
+            });
+          },
+          child: alphaContainer(
+            name,
+            Colors.lightBlueAccent,
+            orientation
+          ))
+          : alphaContainer(name, Colors.blueGrey, orientation);
+    }
   }
 
   //Haupt build Widget
@@ -2989,8 +3868,562 @@ void getVerbleibendeWorter(){
               }
               else {
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                  child: SizedBox(
+                  padding: EdgeInsets.zero,
+                  child:
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Tooltip(message: "zurück zu den Kategorien",
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                gradient:
+                                const LinearGradient(colors: <Color>[Colors.white, Colors.white]),
+                              ),
+                              height: MediaQuery.of(context).size.height*0.05,
+                              padding: EdgeInsets.all(8),
+                              textStyle:  TextStyle(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width*0.07,
+                              ),
+                              child: IconButton(
+                                iconSize: MediaQuery.of(context).size.width*0.05,
+                                onPressed: (() {
+                                  Navigator.pushNamed(context, Routes.categories);
+                                }),
+                                icon: const Icon(
+                                  Icons.arrow_back_ios_new,
+                                  color: Colors.black,
+                                ),
+                              )),
+                          Tooltip(message: "verbleibende Wörter",
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                gradient:
+                                const LinearGradient(colors: <Color>[Colors.white, Colors.white]),
+                              ),
+                              height: MediaQuery.of(context).size.height*0.05,
+                              padding: EdgeInsets.all(8),
+                              textStyle:  TextStyle(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width*0.07,
+                              ),
+                              child: Text(verbleibendeWorter.toString(),style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 1.0,
+                                  color: Colors.black,
+                                ),
+                              ], color: Colors.lightBlueAccent),maxLines: 1, overflow: TextOverflow.ellipsis)),
+                          Tooltip(message: "Punktestand",
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                gradient:
+                                const LinearGradient(colors: <Color>[Colors.white, Colors.white]),
+                              ),
+                              height: MediaQuery.of(context).size.height*0.05,
+                              padding: EdgeInsets.all(8),
+                              textStyle:  TextStyle(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width*0.07,
+                              ),
+                              child: Text(score.toString(),style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 1.0,
+                                  color: Colors.green,
+                                ),
+                              ], color: Colors.green),maxLines: 1, overflow: TextOverflow.ellipsis)),
+                          Tooltip(message: "Tipps",
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                gradient:
+                                const LinearGradient(colors: <Color>[Colors.white, Colors.white]),
+                              ),
+                              height: MediaQuery.of(context).size.height*0.05,
+                              padding: EdgeInsets.all(8),
+                              textStyle:  TextStyle(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width*0.07,
+                              ),
+                              child: IconButton(
+                                onPressed: (() {
+                                  showDialog(
+                                      barrierDismissible: true,
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return WillPopScope(
+                                          onWillPop: () async => false,
+                                          child: AlertDialog(
+                                            contentPadding: EdgeInsets.fromLTRB(0, 2, 0, 2),
+                                            backgroundColor: Colors.lightBlueAccent,
+                                            shape: RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    width: MediaQuery.of(context).size.width*0.01,
+                                                    color: Colors.black)),
+                                            title: Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Icon(
+                                                  Icons.lightbulb,
+                                                  size: MediaQuery.of(context).size.width*0.1,
+                                                  shadows: const <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 10.0,
+                                                      color: Colors.black,
+                                                    )],
+                                                  color: Colors.yellow,
+                                                ),Text(
+                                                  "Tipps",
+                                                  style: TextStyle(
+                                                      shadows: const <Shadow>[
+                                                        Shadow(
+                                                          offset: Offset(0.0, 0.0),
+                                                          blurRadius: 2.0,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ],
+                                                      color: Colors.black,
+                                                      fontSize: MediaQuery.of(context).size.width*0.1,
+                                                      fontFamily: "Qaz"),
+                                                ),Icon(
+                                                  Icons.lightbulb,
+                                                  size: MediaQuery.of(context).size.width*0.1,
+                                                  shadows: const <Shadow>[
+                                                    Shadow(
+                                                      offset: Offset(0.0, 0.0),
+                                                      blurRadius: 10.0,
+                                                      color: Colors.black,
+                                                    )],
+                                                  color: Colors.yellow,
+                                                )
+                                              ],
+                                            ),
+                                            content: StatefulBuilder(
+                                              builder: (BuildContext context, StateSetter setState){
+                                                return  SizedBox(
+                                                    height: MediaQuery.of(context).size.height*0.9,
+                                                    width: MediaQuery.of(context).size.width*0.9,
+                                                    child: Column(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment.spaceAround,
+                                                        children: <Widget>[
+                                                          Row(
+                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                              children: [
+                                                                Column(
+                                                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                    children: [
+                                                                      _isButtonAufgeklappt1 ?
+                                                                      Material(
+                                                                        color: Colors.transparent,
+                                                                        child: Ink(
+                                                                            width: MediaQuery.of(context).size.width * 0.7,
+                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            decoration: const ShapeDecoration(
+                                                                                color: Colors.yellow,
+                                                                                shape: RoundedRectangleBorder(
+                                                                                    side: BorderSide(
+                                                                                        width: 3,
+                                                                                        color: Colors.black)
+                                                                                )
+                                                                            ),
+                                                                            child:
+                                                                            Column(
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [Flexible(child:
+                                                                                AutoSizeText(entryList[randomIndex].value[0],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                                                                  Shadow(
+                                                                                    offset: Offset(0.0, 0.0),
+                                                                                    blurRadius: 0.0,
+                                                                                    color: Colors.black,
+                                                                                  ),
+                                                                                ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines: 2, overflow: TextOverflow.ellipsis))])
+                                                                        ),
+                                                                      ): const SizedBox.shrink(),
+                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                                      _isButtonAufgeklappt2 ?
+                                                                      Material(
+                                                                        color: Colors.transparent,
+                                                                        child: Ink(
+                                                                            width: MediaQuery.of(context).size.width * 0.7,
+                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            decoration: const ShapeDecoration(
+                                                                                color: Colors.yellow,
+                                                                                shape: RoundedRectangleBorder(
+                                                                                    side: BorderSide(
+                                                                                        width: 3,
+                                                                                        color: Colors.black)
+                                                                                )
+                                                                            ),
+                                                                            child:
+                                                                            Column(
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [
+                                                                                  Flexible(child:
+                                                                                  AutoSizeText(entryList[randomIndex].value[1],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                                                                    Shadow(
+                                                                                      offset: Offset(0.0, 0.0),
+                                                                                      blurRadius: 0.0,
+                                                                                      color: Colors.black,
+                                                                                    ),
+                                                                                  ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center, minFontSize: 10, maxLines: 2, overflow: TextOverflow.ellipsis))
+                                                                                ]
+                                                                            )
+                                                                        ),
+                                                                      ) : const SizedBox.shrink(),
+                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                                      _isButtonAufgeklappt3 ?
+                                                                      Material(
+                                                                        color: Colors.transparent,
+                                                                        child: Ink(
+                                                                            width: MediaQuery.of(context).size.width * 0.7,
+                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            decoration: const ShapeDecoration(
+                                                                                color: Colors.yellow,
+                                                                                shape: RoundedRectangleBorder(
+                                                                                    side: BorderSide(
+                                                                                        width: 3,
+                                                                                        color: Colors.black)
+                                                                                )
+                                                                            ),
+                                                                            child:
+                                                                            Column(
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [
+                                                                                  Flexible(child:
+                                                                                  AutoSizeText(entryList[randomIndex].value[2],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                                                                    Shadow(
+                                                                                      offset: Offset(0.0, 0.0),
+                                                                                      blurRadius: 0.0,
+                                                                                      color: Colors.black,
+                                                                                    ),
+                                                                                  ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines: 2, overflow: TextOverflow.ellipsis))
+                                                                                ])
+                                                                        ),
+                                                                      ) : const SizedBox.shrink(),
+                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                                      _isButtonAufgeklappt4 ?
+                                                                      Material(
+                                                                        color: Colors.transparent,
+                                                                        child: Ink(
+                                                                            width: MediaQuery.of(context).size.width * 0.7,
+                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            decoration: const ShapeDecoration(
+                                                                                color: Colors.yellow,
+                                                                                shape: RoundedRectangleBorder(
+                                                                                    side: BorderSide(
+                                                                                        width: 3,
+                                                                                        color: Colors.black)
+                                                                                )
+                                                                            ),
+                                                                            child:
+                                                                            Column(
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [Flexible(child:
+                                                                                AutoSizeText(entryList[randomIndex].value[3],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                                                                  Shadow(
+                                                                                    offset: Offset(0.0, 0.0),
+                                                                                    blurRadius: 0.0,
+                                                                                    color: Colors.black,
+                                                                                  ),
+                                                                                ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines:2, overflow: TextOverflow.ellipsis))])
+                                                                        ),
+                                                                      ) : const SizedBox.shrink(),
+                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                                      _isButtonAufgeklappt4 == false && _isButtonAufgeklappt1 == false ?
+                                                                      Material(
+                                                                        color: Colors.transparent,
+                                                                        child: Ink(
+                                                                            width: MediaQuery.of(context).size.width * 0.6,
+                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            decoration: ShapeDecoration(color: Colors.white,
+                                                                                shape: RoundedRectangleBorder(
+                                                                                    side: BorderSide(width: MediaQuery.of(context).size.width*0.01, color: Colors.black))),
+                                                                            child: ElevatedButton(
+                                                                              onPressed: () {
+                                                                                setState(() {
+                                                                                  if (_isButtonAufgeklappt1 == true &&
+                                                                                      _isButtonAufgeklappt2 ==
+                                                                                          true &&
+                                                                                      _isButtonAufgeklappt3 ==
+                                                                                          true &&
+                                                                                      _isButtonAufgeklappt4 ==
+                                                                                          false) {
+                                                                                    _isButtonAufgeklappt4 =
+                                                                                    true;
+                                                                                  }
+                                                                                  if (_isButtonAufgeklappt1 == true &&
+                                                                                      _isButtonAufgeklappt2 ==
+                                                                                          true &&
+                                                                                      _isButtonAufgeklappt3 ==
+                                                                                          false) {
+                                                                                    _isButtonAufgeklappt3 =
+                                                                                    true;
+                                                                                  }
+                                                                                  if (_isButtonAufgeklappt1 ==
+                                                                                      true &&
+                                                                                      _isButtonAufgeklappt2 ==
+                                                                                          false) {
+                                                                                    _isButtonAufgeklappt2 =
+                                                                                    true;
+                                                                                  }
+                                                                                  if (_isButtonAufgeklappt1 ==
+                                                                                      false) {
+                                                                                    _isButtonAufgeklappt1 =
+                                                                                    true;
+                                                                                  }
+                                                                                });
+                                                                              },
+                                                                              style: ButtonStyle(
+                                                                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                                                                                      borderRadius: BorderRadius.circular(
+                                                                                          10.0),
+                                                                                      side: const BorderSide(color: Colors.black))),
+                                                                                  alignment: Alignment.center,
+                                                                                  backgroundColor: MaterialStateProperty.resolveWith(
+                                                                                          (state) {
+                                                                                        if (state
+                                                                                            .contains(MaterialState.pressed)) {
+                                                                                          return Colors.grey;
+                                                                                        }
+                                                                                        return Colors
+                                                                                            .white;
+                                                                                      }),
+                                                                                  shadowColor:
+                                                                                  MaterialStateProperty.all(Colors
+                                                                                      .transparent),
+                                                                                  side: MaterialStateProperty.all(
+                                                                                      const BorderSide(width: 1))),
+                                                                              child:
+                                                                              AutoSizeText('Tipp anzeigen', style: TextStyle(fontSize: 70,fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                                                            )),
+                                                                      ) : const SizedBox.shrink(),
+                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                                      _isButtonAufgeklappt1 == true && _isButtonAufgeklappt4 == false ?
+                                                                      Material(
+                                                                        color: Colors.transparent,
+                                                                        child: Ink(
+                                                                            width: MediaQuery.of(context).size.width * 0.6,
+                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            decoration: ShapeDecoration(color: Colors.white,
+                                                                                shape: RoundedRectangleBorder(
+                                                                                    side: BorderSide(width: MediaQuery.of(context).size.width*0.01, color: Colors.black))),
+                                                                            child: ElevatedButton(
+                                                                              onPressed: () {
+                                                                                setState((){
+                                                                                  if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt4 == false){
+                                                                                    _isButtonAufgeklappt4 = true;
+                                                                                  }
+                                                                                  if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
+                                                                                    _isButtonAufgeklappt3 = true;
+                                                                                  }
+                                                                                  if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
+                                                                                    _isButtonAufgeklappt2 = true;
+                                                                                  }
+                                                                                  if (_isButtonAufgeklappt1 == false){
+                                                                                    _isButtonAufgeklappt1 = true;
+                                                                                  }
+                                                                                });
+                                                                              },
+                                                                              style: ButtonStyle(
+                                                                                  alignment: Alignment.center,
+                                                                                  backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                                                    if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                                                    return Colors.white;
+                                                                                  }),
+                                                                                  shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                                                  side: MaterialStateProperty.all(const BorderSide(width: 1))),
+                                                                              child: const AutoSizeText('nächster Tipp', style: TextStyle(fontSize: 70,fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                                                            )),
+                                                                      ) : const SizedBox.shrink()]),
+                                                                SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                              ]),
+                                                          Row(
+                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                              children: [Material(
+                                                                color: Colors.transparent,
+                                                                child: Ink(
+                                                                    width: MediaQuery.of(context).size.width * 0.2,
+                                                                    height: MediaQuery.of(context).size.height * 0.1,
+                                                                    decoration: const ShapeDecoration(
+                                                                        color: Colors.white,
+                                                                        shape: CircleBorder(
+                                                                            side: BorderSide(
+                                                                                width: 3,
+                                                                                color: Colors.black)
+                                                                        )
+                                                                    ),
+                                                                    child: IconButton(
+                                                                        style: ButtonStyle(
+                                                                            alignment: Alignment.center,
+                                                                            backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                                              if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                                              return Colors.black;
+                                                                            }),
+                                                                            shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                                            side: MaterialStateProperty.all(const BorderSide(width: 2))),
+                                                                        icon: Icon(
+                                                                          Icons.cancel_outlined,
+                                                                          size: MediaQuery.of(context).size.height*0.05,
+                                                                          color: Colors.black,
+                                                                        ),
+                                                                        onPressed: () {
+                                                                          Navigator.of(context).pop();
+                                                                        })
+                                                                ),
+                                                              )]),
+                                                        ])
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        );
+                                      });
+                                }),
+                                iconSize: MediaQuery.of(context).size.width*0.05,
+                                icon: const Icon(
+                                  Icons.lightbulb,
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 10.0,
+                                      color: Colors.black,
+                                    )],
+                                  color: Colors.yellow,
+                                ),
+                              )),
+                          Tooltip(message: "verbleibende Versuche",
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                gradient:
+                                const LinearGradient(colors: <Color>[Colors.white, Colors.white]),
+                              ),
+                              height: MediaQuery.of(context).size.height*0.05,
+                              padding: EdgeInsets.all(8),
+                              textStyle:  TextStyle(
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width*0.07,
+                              ),
+                              child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      shadows: const <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.0, 0.0),
+                                          blurRadius: 10.0,
+                                          color: Colors.black,
+                                        )],
+                                      size: MediaQuery.of(context).size.width*0.05,
+                                      color: Colors.red,
+                                    ),
+                                    Text(
+                                      lives.toString(),
+                                      style: TextStyle(
+                                          shadows: const <Shadow>[
+                                            Shadow(
+                                              offset: Offset(0.0, 0.0),
+                                              blurRadius: 0.0,
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                          color: Colors.black,
+                                          fontFamily: "Qaz",
+                                          fontSize: MediaQuery.of(context).size.width*0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+
+                                  ]))
+                        ],
+                      ),
+                      Row(children: [
+                        Flexible(
+                            child:
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                  Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(width: MediaQuery
+                                            .of(context)
+                                            .size
+                                            .width * 0.01),
+                                    Flexible(child:
+                                    AutoSizeText("Kategorie:",group: mySizeGRP_V2,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 1.0,
+                                        color: Colors.lightBlueAccent,
+                                      ),
+                                    ],fontFamily: "Qaz",color: Colors.lightBlueAccent),textAlign: TextAlign.center, minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                    Flexible(child:
+                                    AutoSizeText((widget.category),group: mySizeGRP_V2,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 0.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center, minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                    Icon(
+                                        shadows: const <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],
+                                        size: MediaQuery
+                                            .of(context)
+                                            .size
+                                            .width * 0.05,
+                                        color: Colors.black,
+                                        IconData(getIcon(), fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
+                                    ),
+                                    SizedBox(width: MediaQuery.of(context).size.height*0.01),
+                                  ]),
+                                  Container(
+                                    height: MediaQuery.of(context).size.height * 0.6,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          fit: BoxFit.fitHeight, image: AssetImage(images_coins[index])),
+                                      borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [...sword.map((e) => underscore(e,orientation))],
+                                    ),
+                                  ),
+                                ]),
+                            ),
+                        Flexible(child:
+                            GridView.builder(
+                              shrinkWrap: true,
+                            itemCount: 30,
+                            gridDelegate:
+                            SliverGridDelegateWithFixedCrossAxisCount(
+                                mainAxisExtent: MediaQuery.of(context).size.height*0.13,
+                                mainAxisSpacing: MediaQuery.of(context).size.height*0.010, crossAxisCount: 5),
+                            itemBuilder: (context, index) {
+                              return Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    createButton(alphabets.keys.toList()[index],orientation)
+                                  ]);
+                            },
+                          )
+                        )
+                      ])
+                    ],
                   ),
                 );
               }
