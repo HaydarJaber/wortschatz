@@ -3968,7 +3968,7 @@ void getVerbleibendeWorter(){
                                               children: [
                                                 Icon(
                                                   Icons.lightbulb,
-                                                  size: MediaQuery.of(context).size.width*0.1,
+                                                  size: MediaQuery.of(context).size.width*0.05,
                                                   shadows: const <Shadow>[
                                                     Shadow(
                                                       offset: Offset(0.0, 0.0),
@@ -3987,11 +3987,11 @@ void getVerbleibendeWorter(){
                                                         ),
                                                       ],
                                                       color: Colors.black,
-                                                      fontSize: MediaQuery.of(context).size.width*0.1,
+                                                      fontSize: MediaQuery.of(context).size.width*0.05,
                                                       fontFamily: "Qaz"),
                                                 ),Icon(
                                                   Icons.lightbulb,
-                                                  size: MediaQuery.of(context).size.width*0.1,
+                                                  size: MediaQuery.of(context).size.width*0.05,
                                                   shadows: const <Shadow>[
                                                     Shadow(
                                                       offset: Offset(0.0, 0.0),
@@ -4009,7 +4009,7 @@ void getVerbleibendeWorter(){
                                                     width: MediaQuery.of(context).size.width*0.9,
                                                     child: Column(
                                                         mainAxisAlignment:
-                                                        MainAxisAlignment.spaceAround,
+                                                        MainAxisAlignment.center,
                                                         children: <Widget>[
                                                           Row(
                                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -4021,8 +4021,8 @@ void getVerbleibendeWorter(){
                                                                       Material(
                                                                         color: Colors.transparent,
                                                                         child: Ink(
-                                                                            width: MediaQuery.of(context).size.width * 0.7,
-                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            width: MediaQuery.of(context).size.width * 0.35,
+                                                                            height: MediaQuery.of(context).size.height * 0.15,
                                                                             decoration: const ShapeDecoration(
                                                                                 color: Colors.yellow,
                                                                                 shape: RoundedRectangleBorder(
@@ -4049,8 +4049,8 @@ void getVerbleibendeWorter(){
                                                                       Material(
                                                                         color: Colors.transparent,
                                                                         child: Ink(
-                                                                            width: MediaQuery.of(context).size.width * 0.7,
-                                                                            height: MediaQuery.of(context).size.height * 0.12,
+                                                                            width: MediaQuery.of(context).size.width * 0.35,
+                                                                            height: MediaQuery.of(context).size.height * 0.15,
                                                                             decoration: const ShapeDecoration(
                                                                                 color: Colors.yellow,
                                                                                 shape: RoundedRectangleBorder(
@@ -4076,179 +4076,183 @@ void getVerbleibendeWorter(){
                                                                         ),
                                                                       ) : const SizedBox.shrink(),
                                                                       SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                                                                      _isButtonAufgeklappt3 ?
-                                                                      Material(
-                                                                        color: Colors.transparent,
-                                                                        child: Ink(
-                                                                            width: MediaQuery.of(context).size.width * 0.7,
-                                                                            height: MediaQuery.of(context).size.height * 0.12,
-                                                                            decoration: const ShapeDecoration(
-                                                                                color: Colors.yellow,
-                                                                                shape: RoundedRectangleBorder(
-                                                                                    side: BorderSide(
-                                                                                        width: 3,
-                                                                                        color: Colors.black)
-                                                                                )
-                                                                            ),
-                                                                            child:
-                                                                            Column(
-                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                children: [
-                                                                                  Flexible(child:
-                                                                                  AutoSizeText(entryList[randomIndex].value[2],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
-                                                                                    Shadow(
-                                                                                      offset: Offset(0.0, 0.0),
-                                                                                      blurRadius: 0.0,
-                                                                                      color: Colors.black,
-                                                                                    ),
-                                                                                  ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines: 2, overflow: TextOverflow.ellipsis))
-                                                                                ])
+                                                                      ]),
+                                                                SizedBox(width: MediaQuery.of(context).size.width*0.03),
+                                                                Column(children: [
+                                                                  _isButtonAufgeklappt3 ?
+                                                                  Material(
+                                                                    color: Colors.transparent,
+                                                                    child: Ink(
+                                                                        width: MediaQuery.of(context).size.width * 0.35,
+                                                                        height: MediaQuery.of(context).size.height * 0.15,
+                                                                        decoration: const ShapeDecoration(
+                                                                            color: Colors.yellow,
+                                                                            shape: RoundedRectangleBorder(
+                                                                                side: BorderSide(
+                                                                                    width: 3,
+                                                                                    color: Colors.black)
+                                                                            )
                                                                         ),
-                                                                      ) : const SizedBox.shrink(),
-                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                                                                      _isButtonAufgeklappt4 ?
-                                                                      Material(
-                                                                        color: Colors.transparent,
-                                                                        child: Ink(
-                                                                            width: MediaQuery.of(context).size.width * 0.7,
-                                                                            height: MediaQuery.of(context).size.height * 0.12,
-                                                                            decoration: const ShapeDecoration(
-                                                                                color: Colors.yellow,
-                                                                                shape: RoundedRectangleBorder(
-                                                                                    side: BorderSide(
-                                                                                        width: 3,
-                                                                                        color: Colors.black)
-                                                                                )
-                                                                            ),
-                                                                            child:
-                                                                            Column(
-                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                children: [Flexible(child:
-                                                                                AutoSizeText(entryList[randomIndex].value[3],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
-                                                                                  Shadow(
-                                                                                    offset: Offset(0.0, 0.0),
-                                                                                    blurRadius: 0.0,
-                                                                                    color: Colors.black,
-                                                                                  ),
-                                                                                ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines:2, overflow: TextOverflow.ellipsis))])
+                                                                        child:
+                                                                        Column(
+                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                            children: [
+                                                                              Flexible(child:
+                                                                              AutoSizeText(entryList[randomIndex].value[2],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                                                                Shadow(
+                                                                                  offset: Offset(0.0, 0.0),
+                                                                                  blurRadius: 0.0,
+                                                                                  color: Colors.black,
+                                                                                ),
+                                                                              ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines: 2, overflow: TextOverflow.ellipsis))
+                                                                            ])
+                                                                    ),
+                                                                  ) : const SizedBox.shrink(),
+                                                                  SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                                  _isButtonAufgeklappt4 ?
+                                                                  Material(
+                                                                    color: Colors.transparent,
+                                                                    child: Ink(
+                                                                        width: MediaQuery.of(context).size.width * 0.35,
+                                                                        height: MediaQuery.of(context).size.height * 0.15,
+                                                                        decoration: const ShapeDecoration(
+                                                                            color: Colors.yellow,
+                                                                            shape: RoundedRectangleBorder(
+                                                                                side: BorderSide(
+                                                                                    width: 3,
+                                                                                    color: Colors.black)
+                                                                            )
                                                                         ),
-                                                                      ) : const SizedBox.shrink(),
-                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                                                                      _isButtonAufgeklappt4 == false && _isButtonAufgeklappt1 == false ?
-                                                                      Material(
-                                                                        color: Colors.transparent,
-                                                                        child: Ink(
-                                                                            width: MediaQuery.of(context).size.width * 0.6,
-                                                                            height: MediaQuery.of(context).size.height * 0.12,
-                                                                            decoration: ShapeDecoration(color: Colors.white,
-                                                                                shape: RoundedRectangleBorder(
-                                                                                    side: BorderSide(width: MediaQuery.of(context).size.width*0.01, color: Colors.black))),
-                                                                            child: ElevatedButton(
-                                                                              onPressed: () {
-                                                                                setState(() {
-                                                                                  if (_isButtonAufgeklappt1 == true &&
-                                                                                      _isButtonAufgeklappt2 ==
-                                                                                          true &&
-                                                                                      _isButtonAufgeklappt3 ==
-                                                                                          true &&
-                                                                                      _isButtonAufgeklappt4 ==
-                                                                                          false) {
-                                                                                    _isButtonAufgeklappt4 =
-                                                                                    true;
-                                                                                  }
-                                                                                  if (_isButtonAufgeklappt1 == true &&
-                                                                                      _isButtonAufgeklappt2 ==
-                                                                                          true &&
-                                                                                      _isButtonAufgeklappt3 ==
-                                                                                          false) {
-                                                                                    _isButtonAufgeklappt3 =
-                                                                                    true;
-                                                                                  }
-                                                                                  if (_isButtonAufgeklappt1 ==
-                                                                                      true &&
-                                                                                      _isButtonAufgeklappt2 ==
-                                                                                          false) {
-                                                                                    _isButtonAufgeklappt2 =
-                                                                                    true;
-                                                                                  }
-                                                                                  if (_isButtonAufgeklappt1 ==
-                                                                                      false) {
-                                                                                    _isButtonAufgeklappt1 =
-                                                                                    true;
-                                                                                  }
-                                                                                });
-                                                                              },
-                                                                              style: ButtonStyle(
-                                                                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                                                                                      borderRadius: BorderRadius.circular(
-                                                                                          10.0),
-                                                                                      side: const BorderSide(color: Colors.black))),
-                                                                                  alignment: Alignment.center,
-                                                                                  backgroundColor: MaterialStateProperty.resolveWith(
-                                                                                          (state) {
-                                                                                        if (state
-                                                                                            .contains(MaterialState.pressed)) {
-                                                                                          return Colors.grey;
-                                                                                        }
-                                                                                        return Colors
-                                                                                            .white;
-                                                                                      }),
-                                                                                  shadowColor:
-                                                                                  MaterialStateProperty.all(Colors
-                                                                                      .transparent),
-                                                                                  side: MaterialStateProperty.all(
-                                                                                      const BorderSide(width: 1))),
-                                                                              child:
-                                                                              AutoSizeText('Tipp anzeigen', style: TextStyle(fontSize: 70,fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
-                                                                            )),
-                                                                      ) : const SizedBox.shrink(),
-                                                                      SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                                                                      _isButtonAufgeklappt1 == true && _isButtonAufgeklappt4 == false ?
-                                                                      Material(
-                                                                        color: Colors.transparent,
-                                                                        child: Ink(
-                                                                            width: MediaQuery.of(context).size.width * 0.6,
-                                                                            height: MediaQuery.of(context).size.height * 0.12,
-                                                                            decoration: ShapeDecoration(color: Colors.white,
-                                                                                shape: RoundedRectangleBorder(
-                                                                                    side: BorderSide(width: MediaQuery.of(context).size.width*0.01, color: Colors.black))),
-                                                                            child: ElevatedButton(
-                                                                              onPressed: () {
-                                                                                setState((){
-                                                                                  if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt4 == false){
-                                                                                    _isButtonAufgeklappt4 = true;
-                                                                                  }
-                                                                                  if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
-                                                                                    _isButtonAufgeklappt3 = true;
-                                                                                  }
-                                                                                  if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
-                                                                                    _isButtonAufgeklappt2 = true;
-                                                                                  }
-                                                                                  if (_isButtonAufgeklappt1 == false){
-                                                                                    _isButtonAufgeklappt1 = true;
-                                                                                  }
-                                                                                });
-                                                                              },
-                                                                              style: ButtonStyle(
-                                                                                  alignment: Alignment.center,
-                                                                                  backgroundColor: MaterialStateProperty.resolveWith((state) {
-                                                                                    if (state.contains(MaterialState.pressed)) return Colors.grey;
-                                                                                    return Colors.white;
-                                                                                  }),
-                                                                                  shadowColor: MaterialStateProperty.all(Colors.transparent),
-                                                                                  side: MaterialStateProperty.all(const BorderSide(width: 1))),
-                                                                              child: const AutoSizeText('nächster Tipp', style: TextStyle(fontSize: 70,fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
-                                                                            )),
-                                                                      ) : const SizedBox.shrink()]),
-                                                                SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                                                              ]),
+                                                                        child:
+                                                                        Column(
+                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                            children: [Flexible(child:
+                                                                            AutoSizeText(entryList[randomIndex].value[3],group: mySizeGRP_V3,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                                                              Shadow(
+                                                                                offset: Offset(0.0, 0.0),
+                                                                                blurRadius: 0.0,
+                                                                                color: Colors.black,
+                                                                              ),
+                                                                            ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines:2, overflow: TextOverflow.ellipsis))])
+                                                                    ),
+                                                                  ) : const SizedBox.shrink(),
+                                                                  SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                                                                ])
+                                                              ]
+                                                          ),
+                                                          _isButtonAufgeklappt4 == false && _isButtonAufgeklappt1 == false ?
+                                                          Material(
+                                                            color: Colors.transparent,
+                                                            child: Ink(
+                                                                width: MediaQuery.of(context).size.width * 0.3,
+                                                                height: MediaQuery.of(context).size.height * 0.15,
+                                                                decoration: ShapeDecoration(color: Colors.white,
+                                                                    shape: RoundedRectangleBorder(
+                                                                        side: BorderSide(width: MediaQuery.of(context).size.width*0.005, color: Colors.black))),
+                                                                child: ElevatedButton(
+                                                                  onPressed: () {
+                                                                    setState(() {
+                                                                      if (_isButtonAufgeklappt1 == true &&
+                                                                          _isButtonAufgeklappt2 ==
+                                                                              true &&
+                                                                          _isButtonAufgeklappt3 ==
+                                                                              true &&
+                                                                          _isButtonAufgeklappt4 ==
+                                                                              false) {
+                                                                        _isButtonAufgeklappt4 =
+                                                                        true;
+                                                                      }
+                                                                      if (_isButtonAufgeklappt1 == true &&
+                                                                          _isButtonAufgeklappt2 ==
+                                                                              true &&
+                                                                          _isButtonAufgeklappt3 ==
+                                                                              false) {
+                                                                        _isButtonAufgeklappt3 =
+                                                                        true;
+                                                                      }
+                                                                      if (_isButtonAufgeklappt1 ==
+                                                                          true &&
+                                                                          _isButtonAufgeklappt2 ==
+                                                                              false) {
+                                                                        _isButtonAufgeklappt2 =
+                                                                        true;
+                                                                      }
+                                                                      if (_isButtonAufgeklappt1 ==
+                                                                          false) {
+                                                                        _isButtonAufgeklappt1 =
+                                                                        true;
+                                                                      }
+                                                                    });
+                                                                  },
+                                                                  style: ButtonStyle(
+                                                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.circular(
+                                                                              10.0),
+                                                                          side: const BorderSide(color: Colors.black))),
+                                                                      alignment: Alignment.center,
+                                                                      backgroundColor: MaterialStateProperty.resolveWith(
+                                                                              (state) {
+                                                                            if (state
+                                                                                .contains(MaterialState.pressed)) {
+                                                                              return Colors.grey;
+                                                                            }
+                                                                            return Colors
+                                                                                .white;
+                                                                          }),
+                                                                      shadowColor:
+                                                                      MaterialStateProperty.all(Colors
+                                                                          .transparent),
+                                                                      side: MaterialStateProperty.all(
+                                                                          const BorderSide(width: 1))),
+                                                                  child:
+                                                                  AutoSizeText('Tipp anzeigen', style: TextStyle(fontSize: 70,fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                                                )),
+                                                          ) : const SizedBox.shrink(),
+                                                          _isButtonAufgeklappt1 == true && _isButtonAufgeklappt4 == false ?
+                                                          Material(
+                                                            color: Colors.transparent,
+                                                            child: Ink(
+                                                                width: MediaQuery.of(context).size.width * 0.3,
+                                                                height: MediaQuery.of(context).size.height * 0.15,
+                                                                decoration: ShapeDecoration(color: Colors.white,
+                                                                    shape: RoundedRectangleBorder(
+                                                                        side: BorderSide(width: MediaQuery.of(context).size.width*0.005, color: Colors.black))),
+                                                                child: ElevatedButton(
+                                                                  onPressed: () {
+                                                                    setState((){
+                                                                      if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == true && _isButtonAufgeklappt4 == false){
+                                                                        _isButtonAufgeklappt4 = true;
+                                                                      }
+                                                                      if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == true && _isButtonAufgeklappt3 == false){
+                                                                        _isButtonAufgeklappt3 = true;
+                                                                      }
+                                                                      if (_isButtonAufgeklappt1 == true && _isButtonAufgeklappt2 == false){
+                                                                        _isButtonAufgeklappt2 = true;
+                                                                      }
+                                                                      if (_isButtonAufgeklappt1 == false){
+                                                                        _isButtonAufgeklappt1 = true;
+                                                                      }
+                                                                    });
+                                                                  },
+                                                                  style: ButtonStyle(
+                                                                      alignment: Alignment.center,
+                                                                      backgroundColor: MaterialStateProperty.resolveWith((state) {
+                                                                        if (state.contains(MaterialState.pressed)) return Colors.grey;
+                                                                        return Colors.white;
+                                                                      }),
+                                                                      shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                                                      side: MaterialStateProperty.all(const BorderSide(width: 1))),
+                                                                  child: const AutoSizeText('nächster Tipp', style: TextStyle(fontSize: 70,fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center,minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                                                )),
+                                                          ) : const SizedBox.shrink(),
+                                                          SizedBox(height: MediaQuery.of(context).size.height*0.01),
                                                           Row(
                                                               mainAxisAlignment: MainAxisAlignment.center,
                                                               children: [Material(
                                                                 color: Colors.transparent,
                                                                 child: Ink(
-                                                                    width: MediaQuery.of(context).size.width * 0.2,
-                                                                    height: MediaQuery.of(context).size.height * 0.1,
+                                                                    width: MediaQuery.of(context).size.width * 0.1,
+                                                                    height: MediaQuery.of(context).size.height * 0.12,
                                                                     decoration: const ShapeDecoration(
                                                                         color: Colors.white,
                                                                         shape: CircleBorder(
@@ -4268,7 +4272,7 @@ void getVerbleibendeWorter(){
                                                                             side: MaterialStateProperty.all(const BorderSide(width: 2))),
                                                                         icon: Icon(
                                                                           Icons.cancel_outlined,
-                                                                          size: MediaQuery.of(context).size.height*0.05,
+                                                                          size: MediaQuery.of(context).size.height*0.04,
                                                                           color: Colors.black,
                                                                         ),
                                                                         onPressed: () {
