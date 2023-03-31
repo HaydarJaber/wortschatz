@@ -423,17 +423,17 @@ final Map hfAutoteileMAP = {
   'Dach': ['direkt sichtbar','Metall und Stoff','oben','verhindert das Hineinregnen'],
   'Motor': ['direkt sichtbar','Metall und Kunststoff','vorne','bewegt das Auto'],
   'Rad': ['direkt sichtbar','Stahl oder Aluminium','vorne und hinten je zwei','besteht aus Felge und Reifen'],
-  'Achse':['nicht direkt sichtbar','Metall','eine ist vorne und eine hinten','bewegliche Verbindung zwischen Fahrzeug und Rädern'],
-  'Batterie': ['nicht direkt sichtbar','Blei','im Motorraum','wenn sie leer ist, braucht man Starthilfe'],
-  'Reifen':['direkt sichtbar','Gummi','vorne und hinten je zwei','werden auf die Räder aufgezogen'],
-  'Scheinwerfer':['direkt sichtbar','Lampe und Glas','vorne rechts und links','sorgen für Licht auf der Straße'],
-  'Lenkrad':['direkt sichtbar','Metall mit Kunststoff oder Leder','vorne links','ringförmiges Objekt zur Drehung der Vorderräder'],
-  'Kupplung':['teilweise sichtbar','Metall','verbindet Motor und Getriebe','damit kann man die Gänge schalten'],
-  'Zündung':['teilweise sichtbar','Metall','im Motorraum mit Verbindung zum Innenraum','wird mit Autoschlüssel oder Knopf betätigt'],
-  'Kofferraum': ['direkt sichtbar','Metall mit Stoff','hinten','zum Transport größerer Gegenstände',],
-  'Rückspiegel': ['direkt sichtbar','Glas mit Aluminium oder Silber','vorne oben in der Mitte','zum Beobachten des Verkehrsgeschehens hinter dem Auto'],
-  'Handbremse': ['direkt sichtbar','Metall mit Kunststoff oder Leder','rechts vom Fahrer','zur Sicherung des Autos v.a. auf schräger Fläche'],
-  'Felge':['direkt sichtbar','Stahl oder Aluminium','vorne und hinten je zwei','äußerer Ring des Rades']
+  //'Achse':['nicht direkt sichtbar','Metall','eine ist vorne und eine hinten','bewegliche Verbindung zwischen Fahrzeug und Rädern'],
+  //'Batterie': ['nicht direkt sichtbar','Blei','im Motorraum','wenn sie leer ist, braucht man Starthilfe'],
+  //'Reifen':['direkt sichtbar','Gummi','vorne und hinten je zwei','werden auf die Räder aufgezogen'],
+  //'Scheinwerfer':['direkt sichtbar','Lampe und Glas','vorne rechts und links','sorgen für Licht auf der Straße'],
+ // 'Lenkrad':['direkt sichtbar','Metall mit Kunststoff oder Leder','vorne links','ringförmiges Objekt zur Drehung der Vorderräder'],
+  //'Kupplung':['teilweise sichtbar','Metall','verbindet Motor und Getriebe','damit kann man die Gänge schalten'],
+  //'Zündung':['teilweise sichtbar','Metall','im Motorraum mit Verbindung zum Innenraum','wird mit Autoschlüssel oder Knopf betätigt'],
+ // 'Kofferraum': ['direkt sichtbar','Metall mit Stoff','hinten','zum Transport größerer Gegenstände',],
+ // 'Rückspiegel': ['direkt sichtbar','Glas mit Aluminium oder Silber','vorne oben in der Mitte','zum Beobachten des Verkehrsgeschehens hinter dem Auto'],
+//  'Handbremse': ['direkt sichtbar','Metall mit Kunststoff oder Leder','rechts vom Fahrer','zur Sicherung des Autos v.a. auf schräger Fläche'],
+ // 'Felge':['direkt sichtbar','Stahl oder Aluminium','vorne und hinten je zwei','äußerer Ring des Rades']
 };
 
 final Map hfBadezimmerMAP = {
@@ -456,20 +456,20 @@ final Map hfBadezimmerMAP = {
 
 final Map hfBauernhofMAP = {
   'Hund': ['Tier','vier Pfoten','bewacht und hütet','bellt und knurrt'],
-  'Milch': ['Nahrungsmittel','Getränk','weiß','von der Kuh'],
-  'Pferd': ['Tier','vier Beine und Hufe','wiehert','wird geritten'],
-  'Bauer': ['Mensch','füttert Tiere','betreibt Ackerbau','Landwirt'],
-  'Eier': ['Nahrungsmittel','von Hühnern','mit Schale','innen weiß und gelb'],
-  'Hahn': ['Tier','kräht','bunter Kamm','männliches Huhn'],
-  'Wiese': ['Nutzfläche','grün','aus Gras','wird gemäht'],
-  'Katze': ['Tier','vier Pfoten','jagt Mäuse','schnurrt und miaut'],
-  'Getreide': ['Nahrungsmittel','hat Ähren und Körner','wird auf dem Feld angebaut','Gerste, Weizen, Roggen'],
+//  'Milch': ['Nahrungsmittel','Getränk','weiß','von der Kuh'],
+ // 'Pferd': ['Tier','vier Beine und Hufe','wiehert','wird geritten'],
+ // 'Bauer': ['Mensch','füttert Tiere','betreibt Ackerbau','Landwirt'],
+ // 'Eier': ['Nahrungsmittel','von Hühnern','mit Schale','innen weiß und gelb'],
+ // 'Hahn': ['Tier','kräht','bunter Kamm','männliches Huhn'],
+ // 'Wiese': ['Nutzfläche','grün','aus Gras','wird gemäht'],
+//  'Katze': ['Tier','vier Pfoten','jagt Mäuse','schnurrt und miaut'],
+ // 'Getreide': ['Nahrungsmittel','hat Ähren und Körner','wird auf dem Feld angebaut','Gerste, Weizen, Roggen'],
   'Stall': ['Gebäude','für Tiere','oft in Boxen unterteilt','Schlafplatz'],
-  'Käse': ['Nahrungsmittel','meist gelb','aus Milch','Gouda, Appenzeller'],
-  'Futter': ['Nahrungsmittel','für Tiere','Getreide und Gemüse','Tiernahrung'],
-  'Schwein': ['Tier','meist rosa','Ringelschwanz','grunzt'],
-  'Zaun': ['Begrenzung','Trennung von Grundstücken und Feldern','mit Pfosten oder Latten','aus Holz oder Draht'],
-  'Kuh': ['Tier','oft schwarz-weiß','hat einen Euter','gibt Milch'],
+ // 'Käse': ['Nahrungsmittel','meist gelb','aus Milch','Gouda, Appenzeller'],
+ // 'Futter': ['Nahrungsmittel','für Tiere','Getreide und Gemüse','Tiernahrung'],
+ // 'Schwein': ['Tier','meist rosa','Ringelschwanz','grunzt'],
+  //'Zaun': ['Begrenzung','Trennung von Grundstücken und Feldern','mit Pfosten oder Latten','aus Holz oder Draht'],
+  //'Kuh': ['Tier','oft schwarz-weiß','hat einen Euter','gibt Milch'],
 };
 
 final Map hfBerufeMAP = {

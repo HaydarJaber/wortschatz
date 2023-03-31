@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -147,6 +148,9 @@ class _InfopageState extends State<Infopage> {
           category = "Werkzeuge";
           break;
     }}
+    var mySizeGRP_V1 = AutoSizeGroup();
+    var mySizeGRP_V2 = AutoSizeGroup();
+    var mySizeGRP_V3 = AutoSizeGroup();
 
     return SafeArea(
         child: Scaffold(
@@ -157,117 +161,102 @@ class _InfopageState extends State<Infopage> {
             image: AssetImage("assets/images/Hintergrund.jpg"),
             fit: BoxFit.cover),
       ),
-      padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
       child: OrientationBuilder(builder: (context, orientation) {
         if (orientation == Orientation.portrait) {
-          return Column(mainAxisSize: MainAxisSize.max, children: [
+          return Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
+                    iconSize: MediaQuery.of(context).size.width*0.1,
                     onPressed: () => Navigator.pushNamed(context, Routes.home),
                     icon: const Icon(
                       shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 2.0,
-                          color: Colors.black,
-                        ),
                       ],
                       Icons.home,
                       color: Colors.black,
-                      size: 35,
                     )),
-                const SizedBox(width: 50),
-                const Text(
-                  'Spielübersicht',
-                  style: TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 2.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.black),
-                )
-              ],
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children:const [
-                Text(
-                  'Richtig',
-                  style: TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 1.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.green),
-                ),
-                _gap,
-                Text("Falsch",
-                  style: TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 1.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.red),
-                ),
-                _gap,
-                Text("Offen",
-                  style: TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 1.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.grey),
-                ),
+                SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                Text('Spielübersicht',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.1, shadows: const <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 1.0,
+                    color: Colors.black,
+                  ),
+                ]), maxLines: 1, overflow: TextOverflow.ellipsis)
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children:[
-                Text(
-                  richtig.toString(),
-                  style: const TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 1.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.green),
-                ),
-                _gap,
-                Text(falsch.toString(),
-                  style: const TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 1.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.red),
-                ),
-                _gap,
-                Text(offen.toString(),
-                  style: const TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 1.0,
-                      color: Colors.black,
-                    ),
-                  ], fontFamily: "Qaz", fontSize: 35, color: Colors.grey),
-                ),
+                Flexible(child:
+                AutoSizeText('Richtig', group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 0.0,
+                    color: Colors.black,
+                  ),
+                ],fontFamily: "Qaz",color: Colors.green),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                   SizedBox(width: MediaQuery.of(context).size.width*0.1),
+                   Flexible(child:
+                  AutoSizeText('Falsch', group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 0.0,
+                    color: Colors.black,
+                  ),
+                ],fontFamily: "Qaz",color: Colors.redAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                SizedBox(width: MediaQuery.of(context).size.width*0.1),
+                Flexible(child:
+                AutoSizeText('Offen', group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 0.0,
+                    color: Colors.black,
+                  ),
+                ],fontFamily: "Qaz",color: Colors.grey),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
               ],
             ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children:[
+                    Flexible(child:
+                    AutoSizeText(richtig.toString(), group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.green),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.1),
+                    Flexible(child:
+                    AutoSizeText(falsch.toString(), group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.redAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.1),
+                    Flexible(child:
+                    AutoSizeText(offen.toString(), group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.grey),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                  ],
+                ),
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: ProgresMap.entries.toList().length-1,
                 itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -277,40 +266,28 @@ class _InfopageState extends State<Infopage> {
                         color: Colors.green[600],
                         child: Card(
                               child: ListTile(
-                              title: Text(
-                                ProgresMap.entries.toList()[index].key,
-                                style: const TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
-                                    fontFamily: "Qaz",
-                                    fontSize: 40,
-                                    color: Colors.green),
-                              ),
-                              subtitle: Text(
-                                "Hilfen: ${ProgresMap.entries
-                                        .toList()[index]
-                                        .value[1]}",
-                                style: const TextStyle(
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        offset: Offset(0.0, 0.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black,
-                                      ),
-                                    ],
-                                    fontFamily: "Qaz",
-                                    fontSize: 30,
-                                    color: Colors.black),
-                              ),
+                              title:
+                              Text(ProgresMap.entries.toList()[index].key, style:  TextStyle(fontSize: MediaQuery.of(context).size.height*0.05, shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 0.0,
+                                  color: Colors.black,
+                                ),
+                              ],fontFamily: "Qaz",color: Colors.green),maxLines: 1, overflow: TextOverflow.ellipsis),
+                              subtitle:
+                              Text("Hilfen: ${ProgresMap.entries
+                                  .toList()[index]
+                                  .value[1]}", style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.032, shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 0.0,
+                                  color: Colors.black,
+                                ),
+                              ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis),
                               leading: CircleAvatar(
                                   backgroundImage: AssetImage(
                                       'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
-                                  radius: 40),
+                                  radius: 30),
                               // trailing: Icon(Icons.star)
                             )))
                           : (ProgresMap.entries.toList()[index].value[0].toString() == "0") ?
@@ -318,76 +295,50 @@ class _InfopageState extends State<Infopage> {
                                   color: Colors.red[600],
                                   child: Card(
                                       child: ListTile(
-                                    title: Text(
-                                      ProgresMap.entries.toList()[index].key,
-                                      style: const TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 40,
-                                          color: Colors.red),
-                                    ),
-                                    subtitle: Text(
-                                      "Hilfen: ${ProgresMap.entries
-                                              .toList()[index]
-                                              .value[1]}",
-                                      style: const TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.0, 0.0),
-                                              blurRadius: 2.0,
-                                              color: Colors.black,
-                                            ),
-                                          ],
-                                          fontFamily: "Qaz",
-                                          fontSize: 30,
-                                          color: Colors.black),
-                                    ),
+                                    title:
+                                    Text(ProgresMap.entries.toList()[index].key, style:  TextStyle(fontSize: MediaQuery.of(context).size.height*0.05, shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 0.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],fontFamily: "Qaz",color: Colors.redAccent),maxLines: 1, overflow: TextOverflow.ellipsis),
+                                    subtitle: Text("Hilfen: ${ProgresMap.entries
+                                        .toList()[index]
+                                        .value[1]}", style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.032, shadows: const <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 0.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis),
                                     leading: CircleAvatar(
                                         backgroundImage: AssetImage(
                                             'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
-                                        radius: 40),
+                                        radius: 30),
                                     // trailing: Icon(Icons.star)
                                   )))
                               : Card(
                           child: ListTile(
-                            title: Text(
-                              ProgresMap.entries.toList()[index].key,
-                              style: const TextStyle(
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      offset: Offset(0.0, 0.0),
-                                      blurRadius: 2.0,
-                                      color: Colors.black,
-                                    ),
-                                  ],
-                                  fontFamily: "Qaz",
-                                  fontSize: 40,
-                                  color: Colors.grey),
-                            ),
-                            subtitle: const Text(
-                              "WORT NICHT BEHANDELT",
-                              style: TextStyle(
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      offset: Offset(0.0, 0.0),
-                                      blurRadius: 2.0,
-                                      color: Colors.black,
-                                    ),
-                                  ],
-                                  fontFamily: "Qaz",
-                                  fontSize: 20,
-                                  color: Colors.grey),
-                            ),
+                            title:
+                            Text(ProgresMap.entries.toList()[index].key, style:  TextStyle(fontSize: MediaQuery.of(context).size.height*0.05, shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 0.0,
+                                color: Colors.black,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.grey),maxLines: 1, overflow: TextOverflow.ellipsis),
+                            subtitle: Text("WORT NICHT BEHANDELT", style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.032, shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 0.0,
+                                color: Colors.black,
+                              ),
+                            ],fontFamily: "Qaz",color: Colors.black), maxLines: 1, overflow: TextOverflow.ellipsis),
                             leading: CircleAvatar(
                                 backgroundImage: AssetImage(
                                     'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
-                                radius: 40),
+                                radius: 30),
                             // trailing: Icon(Icons.star)
                           ))
                     ],
@@ -395,7 +346,7 @@ class _InfopageState extends State<Infopage> {
                 ),
               ),
             ),
-            Container(height: MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             Row(
               mainAxisAlignment:
               MainAxisAlignment.spaceAround,
@@ -403,8 +354,8 @@ class _InfopageState extends State<Infopage> {
                 Material(
                   color: Colors.transparent,
                   child: Ink(
-                      width: 50,
-                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.15,
+                      height: MediaQuery.of(context).size.height * 0.10,
                       decoration: const ShapeDecoration(
                           color: Colors.white,
                           shape: CircleBorder(
@@ -414,9 +365,9 @@ class _InfopageState extends State<Infopage> {
                           )
                       ),
                       child: IconButton(
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.autorenew,
-                            size: 30,
+                            size: MediaQuery.of(context).size.width * 0.07,
                             color: Colors.black,
                           ),
                           onPressed: () {
@@ -433,8 +384,8 @@ class _InfopageState extends State<Infopage> {
                 Material(
                   color: Colors.transparent,
                   child: Ink(
-                      width: 50,
-                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.15,
+                      height: MediaQuery.of(context).size.height * 0.10,
                       decoration: const ShapeDecoration(
                           color: Colors.white,
                           shape: CircleBorder(
@@ -444,9 +395,9 @@ class _InfopageState extends State<Infopage> {
                           )
                       ),
                       child: IconButton(
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.home,
-                            size: 30,
+                            size: MediaQuery.of(context).size.width * 0.07,
                             color: Colors.black,
                           ),
                           onPressed: () {
