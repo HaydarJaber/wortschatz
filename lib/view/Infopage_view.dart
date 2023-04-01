@@ -415,27 +415,284 @@ class _InfopageState extends State<Infopage> {
             ),
           ]);
         } else {
-          return Row(
-            children: [
-              /*  Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                    iconSize: 35,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              ),*/
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          return Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(),
+                    IconButton(
+                        iconSize: MediaQuery.of(context).size.width*0.05,
+                        onPressed: () => Navigator.pushNamed(context, Routes.home),
+                        icon: const Icon(
+                          shadows: <Shadow>[
+                          ],
+                          Icons.home,
+                          color: Colors.black,
+                        )),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                    Text('Spielübersicht',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, shadows: const <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 1.0,
+                        color: Colors.black,
+                      ),
+                    ]), maxLines: 1, overflow: TextOverflow.ellipsis)
                   ],
                 ),
-              ),
-            ],
-          );
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children:[
+                    SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                    Flexible(child:
+                    AutoSizeText('Richtig', group: mySizeGRP_V1,style: const TextStyle(fontSize: 50, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.green),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.3),
+                    Flexible(child:
+                    AutoSizeText('Falsch', group: mySizeGRP_V1,style: const TextStyle(fontSize: 50, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.redAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.3),
+                    Flexible(child:
+                    AutoSizeText('Offen', group: mySizeGRP_V1,style: const TextStyle(fontSize: 50, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.grey),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                    ,SizedBox(width: MediaQuery.of(context).size.width*0.02),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children:[
+                    Flexible(child:
+                    AutoSizeText(richtig.toString(), group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.green),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.1),
+                    Flexible(child:
+                    AutoSizeText(falsch.toString(), group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.redAccent),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.1),
+                    Flexible(child:
+                    AutoSizeText(offen.toString(), group: mySizeGRP_V1,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        color: Colors.black,
+                      ),
+                    ],fontFamily: "Qaz",color: Colors.grey),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                  ],
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: ProgresMap.entries.toList().length-1,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          (ProgresMap.entries.toList()[index].value[0].toString() == "1")
+                              ?
+                          Container(
+                              color: Colors.green[600],
+                              child: Card(
+                                  child: ListTile(
+                                    title:
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Flexible(child:
+                                        AutoSizeText(ProgresMap.entries.toList()[index].key,group: mySizeGRP_V2,style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.0,
+                                            color: Colors.green,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.green),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                        SizedBox(width: MediaQuery.of(context).size.width*0.05),
+                                        Flexible(child:
+                                        AutoSizeText("Hilfen: ${ProgresMap.entries
+                                            .toList()[index]
+                                            .value[1]}",group: mySizeGRP_V3,style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                      ],
+                                    ),
+                                    leading: CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                            'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
+                                        radius: 30),
+                                    // trailing: Icon(Icons.star)
+                                  )))
+                              : (ProgresMap.entries.toList()[index].value[0].toString() == "0") ?
+                          Container(
+                              color: Colors.red[600],
+                              child: Card(
+                                  child: ListTile(
+                                    title:
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Flexible(child:
+                                        AutoSizeText(ProgresMap.entries.toList()[index].key,group: mySizeGRP_V2,style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.0,
+                                            color: Colors.red,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.red),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                        SizedBox(width: MediaQuery.of(context).size.width*0.05),
+                                        Flexible(child:
+                                        AutoSizeText("Hilfen: ${ProgresMap.entries
+                                            .toList()[index]
+                                            .value[1]}",group: mySizeGRP_V3,style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                      ],
+                                    ),
+                                    leading: CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                            'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
+                                        radius: 30),
+                                    // trailing: Icon(Icons.star)
+                                  )))
+                              : Card(
+                              child: ListTile(
+                                title:
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(child:
+                                    AutoSizeText(ProgresMap.entries.toList()[index].key,group: mySizeGRP_V2,style: const TextStyle(fontSize: 70, shadows: <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 0.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ],fontFamily: "Qaz",color: Colors.grey),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                    SizedBox(width: MediaQuery.of(context).size.width*0.05),
+                                    Flexible(child:
+                                    AutoSizeText("OFFEN",group: mySizeGRP_V3,style: const TextStyle(fontSize: 40, shadows: <Shadow>[
+                                      Shadow(
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 0.0,
+                                        color: Colors.black,
+                                      ),
+                                    ],fontFamily: "Qaz",color: Colors.grey),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                  ],
+                                ),
+                                leading: CircleAvatar(
+                                    backgroundImage: AssetImage(
+                                        'assets/images/Wörter/${ProgresMap.entries.toList()[index].key}.jpg'),
+                                    radius: 30),
+                                // trailing: Icon(Icons.star)
+                              ))
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                Row(
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceAround,
+                  children: [
+                    Material(
+                      color: Colors.transparent,
+                      child: Ink(
+                          width: MediaQuery.of(context).size.width * 0.15,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          decoration: const ShapeDecoration(
+                              color: Colors.white,
+                              shape: CircleBorder(
+                                  side: BorderSide(
+                                      width: 3,
+                                      color: Colors.black)
+                              )
+                          ),
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.autorenew,
+                                size: MediaQuery.of(context).size.width * 0.035,
+                                color: Colors.black,
+                              ),
+                              onPressed: () {
+                                //  DBHelper.insert('SCORE', {
+                                //    'date': context.read<SettingsController>().playerName.value,
+                                //   'score': score
+                                //  });
+                                getCategoryFromNumber();
+                                print("Kategorie"+category);
+                                Navigator.pushNamed(context, Routes.newGame,arguments: category);
+                              })
+                      ),
+                    ),
+                    Material(
+                      color: Colors.transparent,
+                      child: Ink(
+                          width: MediaQuery.of(context).size.width * 0.15,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          decoration: const ShapeDecoration(
+                              color: Colors.white,
+                              shape: CircleBorder(
+                                  side: BorderSide(
+                                      width: 3,
+                                      color: Colors.black)
+                              )
+                          ),
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.home,
+                                size: MediaQuery.of(context).size.width * 0.035,
+                                color: Colors.black,
+                              ),
+                              onPressed: () {
+                                //   DBHelper.insert('SCORE', {
+                                //    'date': context.read<SettingsController>().playerName.value,
+                                //    'score': score
+                                //  });
+                                //   progressSafer.update(stored, (value) => [1,0]);    //für korrektes Wort
+                                //   checkForHelp();                                    //check wie viele Hilfen benötigt
+                                Navigator.pushNamed(context, Routes.home);
+                              })
+                      ),
+                    ),
+                  ],
+                ),
+              ]);
         }
       }),
     )));

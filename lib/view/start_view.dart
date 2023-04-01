@@ -2484,92 +2484,109 @@ void getVerbleibendeWorter(){
                                         color: Colors.black)),
                                 content: Column(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceAround,
                                     children: [
-                                      Container(
-                                        height: MediaQuery.of(context).size.height * 0.3,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              fit: BoxFit.scaleDown, image: _imageToShow),
-                                          borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                          color: Colors.transparent,
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: Ink(
-                                            padding: EdgeInsets.all(8),
-                                            width: MediaQuery.of(context).size.width * 0.6,
-                                            height: MediaQuery.of(context).size.height * 0.2,
-                                            decoration: const ShapeDecoration(
-                                                color: Colors.lightGreenAccent,
-                                                shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                        width: 3,
-                                                        color: Colors.black)
-                                                )
-                                            ),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.check_circle_outlined,
-                                                  color: Colors.black,
-                                                  size: MediaQuery.of(context).size.height * 0.05,
+                                      Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Flexible(child:
+                                            Column(children: [
+                                              Container(
+                                                height: MediaQuery.of(context).size.height * 0.5,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.scaleDown, image: _imageToShow),
+                                                  borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                                  color: Colors.transparent,
                                                 ),
-                                                SizedBox(
-                                                    height: MediaQuery.of(context).size.height * 0.01
-                                                ),
-                                                Expanded(child:
-                                                AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                              ],
-                                            )
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: Ink(
-                                            padding: EdgeInsets.all(8),
-                                            width: MediaQuery.of(context).size.width * 0.6,
-                                            height: MediaQuery.of(context).size.height * 0.2,
-                                            decoration: const ShapeDecoration(
-                                                color: Colors.white,
-                                                shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                        width: 3,
-                                                        color: Colors.black)
-                                                )
+                                              ),
+                                            ])
                                             ),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                const Expanded(child:
-                                                AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
+                                            SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                                            Flexible(child:
+                                            Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children:
+                                                [
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        padding: EdgeInsets.all(8),
+                                                        width: MediaQuery.of(context).size.width * 0.4,
+                                                        height: MediaQuery.of(context).size.height * 0.25,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.lightGreenAccent,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children: [
+                                                            Icon(
+                                                              Icons.check_circle_outlined,
+                                                              color: Colors.black,
+                                                              size: MediaQuery.of(context).size.height * 0.075,
+                                                            ),
+                                                            SizedBox(
+                                                                height: MediaQuery.of(context).size.height * 0.005
+                                                            ),
+                                                            Flexible(child:
+                                                            AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                              Shadow(
+                                                                offset: Offset(0.0, 0.0),
+                                                                blurRadius: 0.0,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                          ],
+                                                        )
+                                                    ),
                                                   ),
-                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                                const Expanded(child:
-                                                AutoSizeText("Alle Wörter durchgespielt.",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
+                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        padding: EdgeInsets.all(8),
+                                                        width: MediaQuery.of(context).size.width * 0.4,
+                                                        height: MediaQuery.of(context).size.height * 0.25,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.white,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children: [
+                                                            const Expanded(child:
+                                                            AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                              Shadow(
+                                                                offset: Offset(0.0, 0.0),
+                                                                blurRadius: 0.0,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                            const Expanded(child:
+                                                            AutoSizeText("Alle Wörter durchgespielt",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                              Shadow(
+                                                                offset: Offset(0.0, 0.0),
+                                                                blurRadius: 0.0,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                          ],
+                                                        )
+                                                    ),
                                                   ),
-                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                              ],
+                                                ])
                                             )
-                                        ),
-                                      ),
+                                          ]),
                                       Row(
                                         mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
@@ -2578,7 +2595,7 @@ void getVerbleibendeWorter(){
                                             color: Colors.transparent,
                                             child: Ink(
                                                 width: MediaQuery.of(context).size.width * 0.15,
-                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                height: MediaQuery.of(context).size.height * 0.15,
                                                 decoration: const ShapeDecoration(
                                                     color: Colors.white,
                                                     shape: CircleBorder(
@@ -2590,7 +2607,7 @@ void getVerbleibendeWorter(){
                                                 child: IconButton(
                                                     icon: Icon(
                                                       const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
-                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      size: MediaQuery.of(context).size.width * 0.035,
                                                       color: Colors.black,
                                                     ),
                                                     onPressed: () {
@@ -2618,7 +2635,7 @@ void getVerbleibendeWorter(){
                                             color: Colors.transparent,
                                             child: Ink(
                                                 width: MediaQuery.of(context).size.width * 0.15,
-                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                height: MediaQuery.of(context).size.height * 0.15,
                                                 decoration: const ShapeDecoration(
                                                     color: Colors.white,
                                                     shape: CircleBorder(
@@ -2630,7 +2647,7 @@ void getVerbleibendeWorter(){
                                                 child: IconButton(
                                                     icon: Icon(
                                                       const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
-                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      size: MediaQuery.of(context).size.width * 0.035,
                                                       color: Colors.black,
                                                     ),
                                                     onPressed: () {
@@ -2659,7 +2676,7 @@ void getVerbleibendeWorter(){
                                             ),
                                           )
                                         ],
-                                      ),
+                                      )
                                     ]),
                               ),
                             );
@@ -2682,92 +2699,108 @@ void getVerbleibendeWorter(){
                                         color: Colors.black)),
                                 content: Column(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceAround,
                                     children: [
-                                      Container(
-                                        height: MediaQuery.of(context).size.height * 0.5,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              fit: BoxFit.scaleDown, image: _imageToShow),
-                                          borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                          color: Colors.transparent,
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: Ink(
-                                            padding: EdgeInsets.all(8),
-                                            width: MediaQuery.of(context).size.width * 0.6,
-                                            height: MediaQuery.of(context).size.height * 0.2,
-                                            decoration: const ShapeDecoration(
-                                                color: Colors.lightGreenAccent,
-                                                shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                        width: 3,
-                                                        color: Colors.black)
-                                                )
+                                      Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Flexible(child:
+                                            Column(children: [
+                                              Container(
+                                                height: MediaQuery.of(context).size.height * 0.5,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.scaleDown, image: _imageToShow),
+                                                  borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                                  color: Colors.transparent,
+                                                ),
+                                              ),
+                                            ])
                                             ),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.check_circle_outlined,
-                                                  color: Colors.black,
-                                                  size: MediaQuery.of(context).size.height * 0.05,
-                                                ),
-                                                SizedBox(
-                                                    height: MediaQuery.of(context).size.height * 0.01
-                                                ),
-                                                Expanded(child:
-                                                AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
+                                            SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                                            Flexible(child:
+                                            Material(
+                                              color: Colors.transparent,
+                                              child: Ink(
+                                                  padding: EdgeInsets.all(8),
+                                                  width: MediaQuery.of(context).size.width * 0.4,
+                                                  height: MediaQuery.of(context).size.height * 0.5,
+                                                  decoration: const ShapeDecoration(
+                                                      color: Colors.lightGreenAccent,
+                                                      shape: RoundedRectangleBorder(
+                                                          side: BorderSide(
+                                                              width: 3,
+                                                              color: Colors.black)
+                                                      )
                                                   ),
-                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                              ],
-                                            )
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: Ink(
-                                            width: MediaQuery.of(context).size.width * 0.15,
-                                            height: MediaQuery.of(context).size.height * 0.10,
-                                            decoration: const ShapeDecoration(
-                                                color: Colors.white,
-                                                shape: CircleBorder(
-                                                    side: BorderSide(
-                                                        width: 3,
-                                                        color: Colors.black)
-                                                )
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.check_circle_outlined,
+                                                        color: Colors.black,
+                                                        size: MediaQuery.of(context).size.height * 0.15,
+                                                      ),
+                                                      SizedBox(
+                                                          height: MediaQuery.of(context).size.height * 0.01
+                                                      ),
+                                                      Flexible(child:
+                                                      AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                        Shadow(
+                                                          offset: Offset(0.0, 0.0),
+                                                          blurRadius: 0.0,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                    ],
+                                                  )
+                                              ),
                                             ),
-                                            child: IconButton(
-                                                icon: Icon(
-                                                  Icons.arrow_forward_sharp,
-                                                  size: MediaQuery.of(context).size.width * 0.07,
-                                                  color: Colors.black,
-                                                ),
-                                                onPressed: () {
-                                                  progressSafer.update(stored, (value) => [1,0]);
-                                                  checkForHelp();
-                                                  changeHelpNumberforProgress();
-                                                  addWord(
-                                                      context.read<SettingsController>().schwierigkeit.value,
-                                                      context.read<SettingsController>().frequency.value,
-                                                      widget.category,
-                                                      randomWord,
-                                                      "richtig",
-                                                      h1,
-                                                      h2,
-                                                      h3,
-                                                      h4);
-                                                  newGame();
-                                                  Navigator.of(context).pop();
-                                                })
-                                        ),
-                                      ),
+                                            )
+                                          ]),
+                                      Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Material(
+                                              color: Colors.transparent,
+                                              child: Ink(
+                                                  width: MediaQuery.of(context).size.width * 0.15,
+                                                  height: MediaQuery.of(context).size.height * 0.15,
+                                                  decoration: const ShapeDecoration(
+                                                      color: Colors.white,
+                                                      shape: CircleBorder(
+                                                          side: BorderSide(
+                                                              width: 3,
+                                                              color: Colors.black)
+                                                      )
+                                                  ),
+                                                  child: IconButton(
+                                                      icon: Icon(
+                                                        Icons.arrow_forward_sharp,
+                                                        size: MediaQuery.of(context).size.width * 0.035,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onPressed: () {
+                                                        progressSafer.update(stored, (value) => [1,0]);
+                                                        checkForHelp();
+                                                        changeHelpNumberforProgress();
+                                                        addWord(
+                                                            context.read<SettingsController>().schwierigkeit.value,
+                                                            context.read<SettingsController>().frequency.value,
+                                                            widget.category,
+                                                            randomWord,
+                                                            "richtig",
+                                                            h1,
+                                                            h2,
+                                                            h3,
+                                                            h4);
+                                                        newGame();
+                                                        Navigator.of(context).pop();
+                                                      })
+                                              ),
+                                            ),
+                                          ]
+                                      )
                                     ]),
                               ),
                             );
@@ -2783,7 +2816,6 @@ void getVerbleibendeWorter(){
                           barrierDismissible: true,
                           context: context,
                           builder: (BuildContext context) {
-
                             return WillPopScope(
                               onWillPop: () async => false,
                               child:
@@ -2795,92 +2827,109 @@ void getVerbleibendeWorter(){
                                         color: Colors.black)),
                                 content: Column(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceAround,
                                     children: [
-                                      Container(
-                                        height: MediaQuery.of(context).size.height * 0.3,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              fit: BoxFit.scaleDown, image: _imageToShow),
-                                          borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                          color: Colors.transparent,
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: Ink(
-                                            padding: EdgeInsets.all(8),
-                                            width: MediaQuery.of(context).size.width * 0.6,
-                                            height: MediaQuery.of(context).size.height * 0.2,
-                                            decoration: const ShapeDecoration(
-                                                color: Colors.redAccent,
-                                                shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                        width: 3,
-                                                        color: Colors.black)
-                                                )
-                                            ),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.remove_circle_outline_rounded,
-                                                  color: Colors.black,
-                                                  size: MediaQuery.of(context).size.height * 0.05,
+                                      Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Flexible(child:
+                                            Column(children: [
+                                              Container(
+                                                height: MediaQuery.of(context).size.height * 0.5,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.scaleDown, image: _imageToShow),
+                                                  borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                                  color: Colors.transparent,
                                                 ),
-                                                SizedBox(
-                                                    height: MediaQuery.of(context).size.height * 0.01
-                                                ),
-                                                Expanded(child:
-                                                AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                              ],
-                                            )
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: Ink(
-                                            padding: EdgeInsets.all(8),
-                                            width: MediaQuery.of(context).size.width * 0.6,
-                                            height: MediaQuery.of(context).size.height * 0.2,
-                                            decoration: const ShapeDecoration(
-                                                color: Colors.white,
-                                                shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                        width: 3,
-                                                        color: Colors.black)
-                                                )
+                                              ),
+                                            ])
                                             ),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                const Expanded(child:
-                                                AutoSizeText("ENDE",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
+                                            SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                                            Flexible(child:
+                                            Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children:
+                                                [
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        padding: EdgeInsets.all(8),
+                                                        width: MediaQuery.of(context).size.width * 0.4,
+                                                        height: MediaQuery.of(context).size.height * 0.25,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.redAccent,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children: [
+                                                            Icon(
+                                                              Icons.remove_circle_outline_rounded,
+                                                              color: Colors.black,
+                                                              size: MediaQuery.of(context).size.height * 0.075,
+                                                            ),
+                                                            SizedBox(
+                                                                height: MediaQuery.of(context).size.height * 0.005
+                                                            ),
+                                                            Flexible(child:
+                                                            AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                              Shadow(
+                                                                offset: Offset(0.0, 0.0),
+                                                                blurRadius: 0.0,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                          ],
+                                                        )
+                                                    ),
                                                   ),
-                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                                const Expanded(child:
-                                                AutoSizeText("Alle Herzen aufgebraucht!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                  Shadow(
-                                                    offset: Offset(0.0, 0.0),
-                                                    blurRadius: 0.0,
-                                                    color: Colors.black,
+                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    child: Ink(
+                                                        padding: EdgeInsets.all(8),
+                                                        width: MediaQuery.of(context).size.width * 0.4,
+                                                        height: MediaQuery.of(context).size.height * 0.25,
+                                                        decoration: const ShapeDecoration(
+                                                            color: Colors.white,
+                                                            shape: RoundedRectangleBorder(
+                                                                side: BorderSide(
+                                                                    width: 3,
+                                                                    color: Colors.black)
+                                                            )
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children: [
+                                                            const Expanded(child:
+                                                            AutoSizeText("ENDE",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                              Shadow(
+                                                                offset: Offset(0.0, 0.0),
+                                                                blurRadius: 0.0,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                            const Expanded(child:
+                                                            AutoSizeText("Alle Herzen aufgebraucht!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                              Shadow(
+                                                                offset: Offset(0.0, 0.0),
+                                                                blurRadius: 0.0,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                          ],
+                                                        )
+                                                    ),
                                                   ),
-                                                ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                              ],
+                                                ])
                                             )
-                                        ),
-                                      ),
+                                          ]),
                                       Row(
                                         mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
@@ -2889,7 +2938,7 @@ void getVerbleibendeWorter(){
                                             color: Colors.transparent,
                                             child: Ink(
                                                 width: MediaQuery.of(context).size.width * 0.15,
-                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                height: MediaQuery.of(context).size.height * 0.15,
                                                 decoration: const ShapeDecoration(
                                                     color: Colors.white,
                                                     shape: CircleBorder(
@@ -2901,7 +2950,7 @@ void getVerbleibendeWorter(){
                                                 child: IconButton(
                                                     icon: Icon(
                                                       const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
-                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      size: MediaQuery.of(context).size.width * 0.035,
                                                       color: Colors.black,
                                                     ),
                                                     onPressed: () {
@@ -2929,7 +2978,7 @@ void getVerbleibendeWorter(){
                                             color: Colors.transparent,
                                             child: Ink(
                                                 width: MediaQuery.of(context).size.width * 0.15,
-                                                height: MediaQuery.of(context).size.height * 0.10,
+                                                height: MediaQuery.of(context).size.height * 0.15,
                                                 decoration: const ShapeDecoration(
                                                     color: Colors.white,
                                                     shape: CircleBorder(
@@ -2941,7 +2990,7 @@ void getVerbleibendeWorter(){
                                                 child: IconButton(
                                                     icon: Icon(
                                                       const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
-                                                      size: MediaQuery.of(context).size.width * 0.07,
+                                                      size: MediaQuery.of(context).size.width * 0.035,
                                                       color: Colors.black,
                                                     ),
                                                     onPressed: () {
@@ -2993,92 +3042,109 @@ void getVerbleibendeWorter(){
                                           color: Colors.black)),
                                   content: Column(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceAround,
                                       children: [
-                                        Container(
-                                          height: MediaQuery.of(context).size.height * 0.3,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                fit: BoxFit.scaleDown, image: _imageToShow),
-                                            borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                            color: Colors.transparent,
-                                          ),
-                                        ),
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              padding: EdgeInsets.all(8),
-                                              width: MediaQuery.of(context).size.width * 0.6,
-                                              height: MediaQuery.of(context).size.height * 0.2,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.redAccent,
-                                                  shape: RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.remove_circle_outline_rounded,
-                                                    color: Colors.black,
-                                                    size: MediaQuery.of(context).size.height * 0.05,
+                                        Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Flexible(child:
+                                              Column(children: [
+                                                Container(
+                                                  height: MediaQuery.of(context).size.height * 0.5,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        fit: BoxFit.scaleDown, image: _imageToShow),
+                                                    borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                                    color: Colors.transparent,
                                                   ),
-                                                  SizedBox(
-                                                      height: MediaQuery.of(context).size.height * 0.01
-                                                  ),
-                                                  Expanded(child:
-                                                  AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 0.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                                ],
-                                              )
-                                          ),
-                                        ),
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              padding: EdgeInsets.all(8),
-                                              width: MediaQuery.of(context).size.width * 0.6,
-                                              height: MediaQuery.of(context).size.height * 0.2,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.white,
-                                                  shape: RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
+                                                ),
+                                              ])
                                               ),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  const Expanded(child:
-                                                  AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 0.0,
-                                                      color: Colors.black,
+                                              SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                                              Flexible(child:
+                                                  Column(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children:
+                                                    [
+                                                      Material(
+                                                      color: Colors.transparent,
+                                                      child: Ink(
+                                                          padding: EdgeInsets.all(8),
+                                                          width: MediaQuery.of(context).size.width * 0.4,
+                                                          height: MediaQuery.of(context).size.height * 0.25,
+                                                          decoration: const ShapeDecoration(
+                                                              color: Colors.redAccent,
+                                                              shape: RoundedRectangleBorder(
+                                                                  side: BorderSide(
+                                                                      width: 3,
+                                                                      color: Colors.black)
+                                                              )
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              Icon(
+                                                                Icons.remove_circle_outline_rounded,
+                                                                color: Colors.black,
+                                                                size: MediaQuery.of(context).size.height * 0.075,
+                                                              ),
+                                                              SizedBox(
+                                                                  height: MediaQuery.of(context).size.height * 0.005
+                                                              ),
+                                                              Flexible(child:
+                                                              AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                                Shadow(
+                                                                  offset: Offset(0.0, 0.0),
+                                                                  blurRadius: 0.0,
+                                                                  color: Colors.black,
+                                                                ),
+                                                              ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                            ],
+                                                          )
+                                                      ),
                                                     ),
-                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                                  const Expanded(child:
-                                                  AutoSizeText("Alle Wörter durchgespielt.",style: TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 0.0,
-                                                      color: Colors.black,
-                                                    ),
-                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                                ],
+                                                      SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                                                      Material(
+                                                  color: Colors.transparent,
+                                                  child: Ink(
+                                                      padding: EdgeInsets.all(8),
+                                                      width: MediaQuery.of(context).size.width * 0.4,
+                                                      height: MediaQuery.of(context).size.height * 0.25,
+                                                      decoration: const ShapeDecoration(
+                                                          color: Colors.white,
+                                                          shape: RoundedRectangleBorder(
+                                                              side: BorderSide(
+                                                                  width: 3,
+                                                                  color: Colors.black)
+                                                          )
+                                                      ),
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          const Expanded(child:
+                                                          AutoSizeText("Glückwunsch!",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                            Shadow(
+                                                              offset: Offset(0.0, 0.0),
+                                                              blurRadius: 0.0,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
+                                                          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                                          const Expanded(child:
+                                                          AutoSizeText("Alle Wörter durchgespielt",style: TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                            Shadow(
+                                                              offset: Offset(0.0, 0.0),
+                                                              blurRadius: 0.0,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                        ],
+                                                      )
+                                                  ),
+                                                ),
+                                                ])
                                               )
-                                          ),
-                                        ),
+                                            ]),
                                         Row(
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
@@ -3087,7 +3153,7 @@ void getVerbleibendeWorter(){
                                               color: Colors.transparent,
                                               child: Ink(
                                                   width: MediaQuery.of(context).size.width * 0.15,
-                                                  height: MediaQuery.of(context).size.height * 0.10,
+                                                  height: MediaQuery.of(context).size.height * 0.15,
                                                   decoration: const ShapeDecoration(
                                                       color: Colors.white,
                                                       shape: CircleBorder(
@@ -3099,7 +3165,7 @@ void getVerbleibendeWorter(){
                                                   child: IconButton(
                                                       icon: Icon(
                                                         const IconData(0xe4cb, fontFamily: 'MaterialIcons'),
-                                                        size: MediaQuery.of(context).size.width * 0.07,
+                                                        size: MediaQuery.of(context).size.width * 0.035,
                                                         color: Colors.black,
                                                       ),
                                                       onPressed: () {
@@ -3127,7 +3193,7 @@ void getVerbleibendeWorter(){
                                               color: Colors.transparent,
                                               child: Ink(
                                                   width: MediaQuery.of(context).size.width * 0.15,
-                                                  height: MediaQuery.of(context).size.height * 0.10,
+                                                  height: MediaQuery.of(context).size.height * 0.15,
                                                   decoration: const ShapeDecoration(
                                                       color: Colors.white,
                                                       shape: CircleBorder(
@@ -3139,7 +3205,7 @@ void getVerbleibendeWorter(){
                                                   child: IconButton(
                                                       icon: Icon(
                                                         const IconData(0xe7ca, fontFamily: 'MaterialIcons'),
-                                                        size: MediaQuery.of(context).size.width * 0.07,
+                                                        size: MediaQuery.of(context).size.width * 0.035,
                                                         color: Colors.black,
                                                       ),
                                                       onPressed: () {
@@ -3168,6 +3234,7 @@ void getVerbleibendeWorter(){
                                             )
                                           ],
                                         ),
+
                                       ]),
                                 ),
                               );
@@ -3178,7 +3245,6 @@ void getVerbleibendeWorter(){
                             barrierDismissible: false,
                             context: context,
                             builder: (BuildContext context) {
-
                               return WillPopScope(
                                 onWillPop: () async => false,
                                 child:
@@ -3190,91 +3256,107 @@ void getVerbleibendeWorter(){
                                           color: Colors.black)),
                                   content: Column(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceAround,
                                       children: [
-                                        Container(
-                                          height: MediaQuery.of(context).size.height * 0.5,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                fit: BoxFit.scaleDown, image: _imageToShow),
-                                            borderRadius: const BorderRadius.all(Radius.circular(0)),
-                                            color: Colors.transparent,
-                                          ),
-                                        ),
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              padding: EdgeInsets.all(8),
-                                              width: MediaQuery.of(context).size.width * 0.6,
-                                              height: MediaQuery.of(context).size.height * 0.2,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.redAccent,
-                                                  shape: RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
+                                        Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                          Flexible(child:
+                                          Column(children: [
+                                            Container(
+                                              height: MediaQuery.of(context).size.height * 0.5,
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    fit: BoxFit.scaleDown, image: _imageToShow),
+                                                borderRadius: const BorderRadius.all(Radius.circular(0)),
+                                                color: Colors.transparent,
                                               ),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.remove_circle_outline_rounded,
-                                                    color: Colors.black,
-                                                    size: MediaQuery.of(context).size.height * 0.05,
+                                            ),
+                                          ])
+                                          ),
+                                          SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                                          Flexible(child:
+                                                Material(
+                                                  color: Colors.transparent,
+                                                  child: Ink(
+                                                      padding: EdgeInsets.all(8),
+                                                      width: MediaQuery.of(context).size.width * 0.4,
+                                                      height: MediaQuery.of(context).size.height * 0.5,
+                                                      decoration: const ShapeDecoration(
+                                                          color: Colors.redAccent,
+                                                          shape: RoundedRectangleBorder(
+                                                              side: BorderSide(
+                                                                  width: 3,
+                                                                  color: Colors.black)
+                                                          )
+                                                      ),
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons.remove_circle_outline_rounded,
+                                                            color: Colors.black,
+                                                            size: MediaQuery.of(context).size.height * 0.15,
+                                                          ),
+                                                          SizedBox(
+                                                              height: MediaQuery.of(context).size.height * 0.01
+                                                          ),
+                                                          Flexible(child:
+                                                          AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                                            Shadow(
+                                                              offset: Offset(0.0, 0.0),
+                                                              blurRadius: 0.0,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
+                                                        ],
+                                                      )
                                                   ),
-                                                  SizedBox(
-                                                      height: MediaQuery.of(context).size.height * 0.01
-                                                  ),
-                                                  Expanded(child:
-                                                  AutoSizeText(stored.toString(),style: const TextStyle(fontSize: 100, shadows: <Shadow>[
-                                                    Shadow(
-                                                      offset: Offset(0.0, 0.0),
-                                                      blurRadius: 0.0,
-                                                      color: Colors.black,
+                                                ),
+                                          )
+                                        ]),
+                                        Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Material(
+                                                color: Colors.transparent,
+                                                child: Ink(
+                                                    width: MediaQuery.of(context).size.width * 0.15,
+                                                    height: MediaQuery.of(context).size.height * 0.15,
+                                                    decoration: const ShapeDecoration(
+                                                        color: Colors.white,
+                                                        shape: CircleBorder(
+                                                            side: BorderSide(
+                                                                width: 3,
+                                                                color: Colors.black)
+                                                        )
                                                     ),
-                                                  ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
-                                                ],
-                                              )
-                                          ),
-                                        ),
-                                        Material(
-                                          color: Colors.transparent,
-                                          child: Ink(
-                                              width: MediaQuery.of(context).size.width * 0.15,
-                                              height: MediaQuery.of(context).size.height * 0.10,
-                                              decoration: const ShapeDecoration(
-                                                  color: Colors.white,
-                                                  shape: CircleBorder(
-                                                      side: BorderSide(
-                                                          width: 3,
-                                                          color: Colors.black)
-                                                  )
+                                                    child: IconButton(
+                                                        icon: Icon(
+                                                          Icons.arrow_forward_sharp,
+                                                          size: MediaQuery.of(context).size.width * 0.035,
+                                                          color: Colors.black,
+                                                        ),
+                                                        onPressed: () {
+                                                          checkForHelp();
+                                                          changeHelpNumberforProgress();
+                                                          addWord(
+                                                              context.read<SettingsController>().schwierigkeit.value,
+                                                              context.read<SettingsController>().frequency.value,
+                                                              widget.category,
+                                                              randomWord,
+                                                              "falsch",
+                                                              h1,
+                                                              h2,
+                                                              h3,
+                                                              h4);
+                                                          newGame();
+                                                          Navigator.of(context).pop();
+                                                        })
+                                                ),
                                               ),
-                                              child: IconButton(
-                                                  icon: Icon(
-                                                    Icons.arrow_forward_sharp,
-                                                    size: MediaQuery.of(context).size.width * 0.07,
-                                                    color: Colors.black,
-                                                  ),
-                                                  onPressed: () {
-                                                    checkForHelp();
-                                                    changeHelpNumberforProgress();
-                                                    addWord(
-                                                        context.read<SettingsController>().schwierigkeit.value,
-                                                        context.read<SettingsController>().frequency.value,
-                                                        widget.category,
-                                                        randomWord,
-                                                        "falsch",
-                                                        h1,
-                                                        h2,
-                                                        h3,
-                                                        h4);
-                                                    newGame();
-                                                    Navigator.of(context).pop();
-                                                  })
-                                          ),
-                                        ),
+                                            ]
+                                        )
                                       ]),
                                 ),
                               );
