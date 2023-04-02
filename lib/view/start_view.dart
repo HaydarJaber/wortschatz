@@ -1598,6 +1598,7 @@ void getVerbleibendeWorter(){
 
   //erstelle Buttons
   Widget createButton(var name, Orientation orientation) {
+    bool isNeedSafeArea = MediaQuery.of(context).viewPadding.bottom > 0;
     if (orientation == Orientation.portrait) {
       return alphabets[name] == 0
           ? InkWell(
@@ -1639,7 +1640,7 @@ void getVerbleibendeWorter(){
                                     MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        height: MediaQuery.of(context).size.height * 0.3,
+                                        height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.25: MediaQuery.of(context).size.height * 0.3,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                               fit: BoxFit.scaleDown, image: _imageToShow),
@@ -1837,7 +1838,7 @@ void getVerbleibendeWorter(){
                                     MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        height: MediaQuery.of(context).size.height * 0.5,
+                                        height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.45 : MediaQuery.of(context).size.height * 0.5,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                               fit: BoxFit.scaleDown, image: _imageToShow),
@@ -1950,7 +1951,7 @@ void getVerbleibendeWorter(){
                                     MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        height: MediaQuery.of(context).size.height * 0.3,
+                                        height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.25 : MediaQuery.of(context).size.height * 0.3,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                               fit: BoxFit.scaleDown, image: _imageToShow),
@@ -2148,7 +2149,7 @@ void getVerbleibendeWorter(){
                                       MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          height: MediaQuery.of(context).size.height * 0.3,
+                                          height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.25:MediaQuery.of(context).size.height * 0.3,
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 fit: BoxFit.scaleDown, image: _imageToShow),
@@ -2345,7 +2346,7 @@ void getVerbleibendeWorter(){
                                       MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          height: MediaQuery.of(context).size.height * 0.5,
+                                          height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.45 : MediaQuery.of(context).size.height * 0.5,
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 fit: BoxFit.scaleDown, image: _imageToShow),
