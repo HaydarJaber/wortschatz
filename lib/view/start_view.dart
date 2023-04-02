@@ -1548,6 +1548,7 @@ void getVerbleibendeWorter(){
   //Buchstaben-Buttons
   Widget alphaContainer(var name, Color color, Orientation orientation) {
   var mySizeGRP_Buchstaben = AutoSizeGroup();
+  bool isNeedSafeArea = MediaQuery.of(context).viewPadding.bottom > 0;
   if (orientation == Orientation.portrait) {
     return Container(
         decoration:
@@ -1581,7 +1582,7 @@ void getVerbleibendeWorter(){
           ),
         ],),
         alignment: Alignment.center,
-        width: MediaQuery.of(context).size.width*0.09,
+        width: isNeedSafeArea ? MediaQuery.of(context).size.width*0.08: MediaQuery.of(context).size.width*0.09,
         child:
         AutoSizeText(name, group: mySizeGRP_Buchstaben, style: const TextStyle(fontSize: 100, shadows: <Shadow>[
           Shadow(
@@ -3389,11 +3390,12 @@ void getVerbleibendeWorter(){
     var mySizeGRP_V3 = AutoSizeGroup();
     bool isNeedSafeArea = MediaQuery.of(context).viewPadding.bottom > 0;
     return SafeArea(
+      top: true,
+      bottom: true,
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           body: Container(
-            height: isNeedSafeArea ? MediaQuery.of(context).size.height* 0.8 : MediaQuery.of(context).size.height,
             constraints: const BoxConstraints.expand(),
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -3937,7 +3939,7 @@ void getVerbleibendeWorter(){
                           itemCount: 30,
                           gridDelegate:
                           SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisExtent: MediaQuery.of(context).size.height*0.073,
+                            mainAxisExtent: isNeedSafeArea ? MediaQuery.of(context).size.height*0.065: MediaQuery.of(context).size.height*0.073,
                               mainAxisSpacing: MediaQuery.of(context).size.height*0.01, crossAxisCount: 6),
                           itemBuilder: (context, index) {
                             return Row(
@@ -3953,7 +3955,7 @@ void getVerbleibendeWorter(){
               }
               else {
                 return Padding(
-                  padding: EdgeInsets.zero,
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child:
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -4477,7 +4479,7 @@ void getVerbleibendeWorter(){
                                     SizedBox(width: MediaQuery.of(context).size.height*0.01),
                                   ]),
                                   Container(
-                                    height: MediaQuery.of(context).size.height * 0.6,
+                                    height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.5:MediaQuery.of(context).size.height * 0.6,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                           fit: BoxFit.fitHeight, image: AssetImage(images_coins[index])),
@@ -4500,7 +4502,7 @@ void getVerbleibendeWorter(){
                             itemCount: 30,
                             gridDelegate:
                             SliverGridDelegateWithFixedCrossAxisCount(
-                                mainAxisExtent: MediaQuery.of(context).size.height*0.13,
+                                mainAxisExtent: isNeedSafeArea ? MediaQuery.of(context).size.height*0.10: MediaQuery.of(context).size.height*0.13,
                                 mainAxisSpacing: MediaQuery.of(context).size.height*0.010, crossAxisCount: 5),
                             itemBuilder: (context, index) {
                               return Row(
