@@ -60,6 +60,7 @@ class _StartScreenState extends State<StartScreen> {
   late int wordListCounter = 0;
   int iconCode = 0xf144;
 
+
 void getVerbleibendeWorter(){
   if(context.read<SettingsController>().frequency.value == "Alle Wörter"){
     verbleibendeWorter = 31;
@@ -3386,11 +3387,13 @@ void getVerbleibendeWorter(){
     var mySizeGRP_V1 = AutoSizeGroup();
     var mySizeGRP_V2 = AutoSizeGroup();
     var mySizeGRP_V3 = AutoSizeGroup();
+    bool isNeedSafeArea = MediaQuery.of(context).viewPadding.bottom > 0;
     return SafeArea(
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           body: Container(
+            height: isNeedSafeArea ? MediaQuery.of(context).size.height* 0.8 : MediaQuery.of(context).size.height,
             constraints: const BoxConstraints.expand(),
             decoration: const BoxDecoration(
               image: DecorationImage(
