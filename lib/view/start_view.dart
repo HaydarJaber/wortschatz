@@ -4442,7 +4442,7 @@ void getVerbleibendeWorter(){
                                   Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        SizedBox(width: MediaQuery
+                                    SizedBox(width: MediaQuery
                                             .of(context)
                                             .size
                                             .width * 0.01),
@@ -4480,7 +4480,7 @@ void getVerbleibendeWorter(){
                                     SizedBox(width: MediaQuery.of(context).size.height*0.01),
                                   ]),
                                   Container(
-                                    height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.5:MediaQuery.of(context).size.height * 0.6,
+                                    height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.5:MediaQuery.of(context).size.height * 0.60,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                           fit: BoxFit.fitHeight, image: AssetImage(images_coins[index])),
