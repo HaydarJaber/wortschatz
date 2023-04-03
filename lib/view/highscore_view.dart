@@ -573,7 +573,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                       children: [
                         // first tab bar view widget
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
+                          padding: const EdgeInsets.fromLTRB(8,8,8,0),
                           child: Column(children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -634,6 +634,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                       itemCount: highscore.item.length,
                                       itemBuilder: (context, index) =>
                                       highscore.item[index].diff == 'Leicht' ?
+                                      rank1 < 3 ?
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 8, 0, 0),
@@ -667,7 +668,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                             ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                           ],
                                         ),
-                                      ): const SizedBox.shrink(),
+                                      ): const SizedBox.shrink() :const SizedBox.shrink(),
                                     ),
                                   );
                                 }
@@ -677,7 +678,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                         ),
                         // second tab bar view widget
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
+                          padding: const EdgeInsets.fromLTRB(8,8,8,0),
                           child: Column(children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -738,6 +739,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                       itemCount: highscore.item.length,
                                       itemBuilder: (context, index) =>
                                       highscore.item[index].diff == 'Normal' ?
+                                      rank1 < 3 ?
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 8, 0, 0),
@@ -771,7 +773,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                             ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                           ],
                                         ),
-                                      ): const SizedBox.shrink(),
+                                      ): const SizedBox.shrink(): const SizedBox.shrink(),
                                     ),
                                   );
                                 }
@@ -780,7 +782,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                           ]),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(8,8,8,8),
+                          padding: const EdgeInsets.fromLTRB(8,8,8,0),
                           child: Column(children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -841,6 +843,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                       itemCount: highscore.item.length,
                                       itemBuilder: (context, index) =>
                                       highscore.item[index].diff == 'Schwer' ?
+                                          rank1 < 3 ?
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 8, 0, 0),
@@ -874,7 +877,7 @@ class _HighScoreScreenState extends State<HighScoreScreen> with TickerProviderSt
                                             ],fontFamily: "Qaz",color: Colors.black),minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)
                                           ],
                                         ),
-                                      ): const SizedBox.shrink(),
+                                      ): const SizedBox.shrink(): const SizedBox.shrink(),
                                     ),
                                   );
                                 }
