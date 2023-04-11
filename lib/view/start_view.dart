@@ -3879,12 +3879,12 @@ void getVerbleibendeWorter(){
                                     ]))
                           ],
                         ),
+                        Flexible(child:
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(width: MediaQuery.of(context).size.width*0.02),
-                                Flexible(child:
-                                AutoSizeText("Kategorie:",group: mySizeGRP_V2,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                const Flexible(child:
+                                AutoSizeText("Kategorie:",style: TextStyle(fontSize: 300, shadows: <Shadow>[
                                   Shadow(
                                     offset: Offset(0.0, 0.0),
                                     blurRadius: 1.0,
@@ -3893,7 +3893,7 @@ void getVerbleibendeWorter(){
                                 ],fontFamily: "Qaz",color: Colors.lightBlueAccent),textAlign: TextAlign.center, minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis))
                                 ,SizedBox(width: MediaQuery.of(context).size.width*0.02),
                                 Flexible(child:
-                                AutoSizeText((widget.category),group: mySizeGRP_V2,style: const TextStyle(fontSize: 300, shadows: <Shadow>[
+                                AutoSizeText((widget.category),style: const TextStyle(fontSize: 300, shadows: <Shadow>[
                                   Shadow(
                                     offset: Offset(0.0, 0.0),
                                     blurRadius: 0.0,
@@ -3916,9 +3916,8 @@ void getVerbleibendeWorter(){
                                     color: Colors.black,
                                     IconData(getIcon(), fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                                 ),
-                                SizedBox(width: MediaQuery.of(context).size.width*0.02)
                               ]
-                          ),
+                          ),),
                         Container(
                           height: MediaQuery.of(context).size.height * 0.3,
                           decoration: BoxDecoration(
@@ -4442,27 +4441,35 @@ void getVerbleibendeWorter(){
                                   Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                    SizedBox(width: MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width * 0.01),
-                                    Flexible(child:
-                                    AutoSizeText("Kategorie:",group: mySizeGRP_V2,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                        SizedBox(width: MediaQuery.of(context).size.width*0.01),
+                                   Flexible(child:
+                                    AutoSizeText("Kategorie:",style: TextStyle(fontSize: 200, shadows: <Shadow>[
                                       Shadow(
                                         offset: Offset(0.0, 0.0),
                                         blurRadius: 1.0,
                                         color: Colors.lightBlueAccent,
                                       ),
                                     ],fontFamily: "Qaz",color: Colors.lightBlueAccent),textAlign: TextAlign.center, minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                    Flexible(child:
-                                    AutoSizeText((widget.category),group: mySizeGRP_V2,style: const TextStyle(fontSize: 100, shadows: <Shadow>[
+                                    SizedBox(width: MediaQuery.of(context).size.width*0.01),
+                                        widget.category.length < 5 ? Flexible(child:
+                                    AutoSizeText((widget.category),style: const TextStyle(fontSize: 50, shadows: <Shadow>[
                                       Shadow(
                                         offset: Offset(0.0, 0.0),
                                         blurRadius: 0.0,
                                         color: Colors.black,
                                       ),
-                                    ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center, minFontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                    Icon(
+                                    ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center, minFontSize: 10,  maxLines: 1, overflow: TextOverflow.ellipsis))
+                                            : Flexible(child:
+                                        AutoSizeText((widget.category),style: const TextStyle(fontSize: 200, shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(0.0, 0.0),
+                                            blurRadius: 0.0,
+                                            color: Colors.black,
+                                          ),
+                                        ],fontFamily: "Qaz",color: Colors.black),textAlign: TextAlign.center, minFontSize: 10,  maxLines: 1, overflow: TextOverflow.ellipsis))
+                                        ,
+                                        SizedBox(width: MediaQuery.of(context).size.width*0.01),
+                                        Icon(
                                         shadows: const <Shadow>[
                                           Shadow(
                                             offset: Offset(0.0, 0.0),
@@ -4477,10 +4484,10 @@ void getVerbleibendeWorter(){
                                         color: Colors.black,
                                         IconData(getIcon(), fontFamily: 'FontAwesomeSolid', fontPackage: 'font_awesome_flutter')
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.height*0.01),
+                                    SizedBox(width: MediaQuery.of(context).size.width*0.01),
                                   ]),
                                   Container(
-                                    height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.5:MediaQuery.of(context).size.height * 0.60,
+                                    height: isNeedSafeArea ? MediaQuery.of(context).size.height * 0.5:MediaQuery.of(context).size.height * 0.55,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                           fit: BoxFit.fitHeight, image: AssetImage(images_coins[index])),
