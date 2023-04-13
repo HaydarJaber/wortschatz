@@ -286,7 +286,7 @@ void getVerbleibendeWorter(){
       case Category.Pflanzen:
         progressSafer["Kategorie"] = [20];
         break;
-      case Category.Resteraunt:
+      case Category.Restaurant:
         progressSafer["Kategorie"] = [21];
         break;
       case Category.Sportarten:
@@ -1177,42 +1177,42 @@ void getVerbleibendeWorter(){
           break;
         }
         break;
-      case Category.Resteraunt:
+      case Category.Restaurant:
         if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == resterauntMAP.length)){
+          if(!(wordList.length == restaurantMAP.length)){
             getVerbleibendeWorter();
-            wordList = List<int>.generate(resterauntMAP.length, (int index) => index);
+            wordList = List<int>.generate(restaurantMAP.length, (int index) => index);
             wordList.shuffle();
           }
           verbleibendeWorter--;
           randomIndex = wordList[wordListCounter];
-          entryList = resterauntMAP.entries.toList();
+          entryList = restaurantMAP.entries.toList();
           randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Häufige Wörter'){
-          if(!(wordList.length == hfResterauntMAP.length)){
+          if(!(wordList.length == hfRestaurantMAP.length)){
             getVerbleibendeWorter();
-            wordList = List<int>.generate(hfResterauntMAP.length, (int index) => index);
+            wordList = List<int>.generate(hfRestaurantMAP.length, (int index) => index);
             wordList.shuffle();
           }
           verbleibendeWorter--;
           randomIndex = wordList[wordListCounter];
-          entryList = hfResterauntMAP.entries.toList();
+          entryList = hfRestaurantMAP.entries.toList();
           randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
         }
         if(settings.value == 'Seltene Wörter'){
-          if(!(wordList.length == nfResterauntMAP.length)){
+          if(!(wordList.length == nfRestaurantMAP.length)){
             getVerbleibendeWorter();
-            wordList = List<int>.generate(nfResterauntMAP.length, (int index) => index);
+            wordList = List<int>.generate(nfRestaurantMAP.length, (int index) => index);
             wordList.shuffle();
           }
           verbleibendeWorter--;
           randomIndex = wordList[wordListCounter];
-          entryList = nfResterauntMAP.entries.toList();
+          entryList = nfRestaurantMAP.entries.toList();
           randomWord = entryList[randomIndex].key;
           wordListCounter++;
           break;
@@ -1492,7 +1492,7 @@ void getVerbleibendeWorter(){
         case Category.Pflanzen:
           iconCode = 0xe5aa;
           return iconCode;
-        case Category.Resteraunt:
+        case Category.Restaurant:
           iconCode = 0xf2e7;
           return iconCode;
         case Category.Sportarten:

@@ -1498,7 +1498,7 @@ final Map pflanzenMAP = {
 };
 
 
-final Map resterauntMAP = {
+final Map restaurantMAP = {
   'Geld': ['Finanzen','aus Papier oder Metall','im Portemonnaie','wird zum Bezahlen genutzt'],
   'Musik': ['Inventar','verschiedene Stilrichtungen','läuft im Hintergrund','manchmal live zu hören'],
   'Tisch': ['Inventar','meist aus Holz','eckig oder rund','daran wird gesessen'],

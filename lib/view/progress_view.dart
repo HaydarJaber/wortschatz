@@ -79,7 +79,7 @@ class _ProgressState extends State<ProgressScreen> with TickerProviderStateMixin
     "Musikinstrumente":[Category.Musikinstrumente,0xf001,0],
     "Obst":[Category.Obst,0xf5d1,0],
     "Pflanzen":[Category.Pflanzen,0xe5aa,0],
-    "Resteraunt":[Category.Resteraunt,0xf2e7,0],
+    "Restaurant":[Category.Restaurant,0xf2e7,0],
     "Sportarten":[Category.Sportarten,0xf1e3,0],
     "Strassenverkehr":[Category.Strassenverkehr,0xf018,0],
     "Supermarkt":[Category.Supermarkt,0xf54f,0],

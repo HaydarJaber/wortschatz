@@ -115,7 +115,7 @@ class _ProgressEinzelState extends State<ProgressEinzel> with TickerProviderStat
       case Category.Pflanzen:
         iconCode = 0xe5aa;
         return iconCode;
-      case Category.Resteraunt:
+      case Category.Restaurant:
         iconCode = 0xf2e7;
         return iconCode;
       case Category.Sportarten:

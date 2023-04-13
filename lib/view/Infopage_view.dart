@@ -130,7 +130,7 @@ class _InfopageState extends State<Infopage> {
           category = "Pflanzen";
           break;
         case "[21]":
-          category = "Resteraunt";
+          category = "Restaurant";
           break;
         case "[22]":
           category = "Sportarten";

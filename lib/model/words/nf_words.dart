@@ -794,7 +794,7 @@ final Map nfPflanzenMAP = {
 };
 
 
-final Map nfResterauntMAP = {
+final Map nfRestaurantMAP = {
   'Trinkgeld': ['Finanzen',	'aus Papier oder Metall', 'wenn man zufrieden war', 'erhält der Kellner'],
   'Besteck': ['Inventar',	'aus Silber oder Edelstahl',	'liegt neben dem Teller',	'wird zum Essen benötigt'],
   'Menü': ['Inventar',	'hat mehrere Gänge',	'ist meist günstiger',	'mittags besondere Angebote'],

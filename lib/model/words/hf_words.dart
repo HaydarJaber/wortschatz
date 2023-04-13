@@ -782,7 +782,7 @@ final Map hfPflanzenMAP = {
 };
 
 
-final Map hfResterauntMAP = {
+final Map hfRestaurantMAP = {
   'Geld': ['Finanzen','aus Papier oder Metall','im Portemonnaie','wird zum Bezahlen genutzt'],
   'Musik': ['Inventar','verschiedene Stilrichtungen','läuft im Hintergrund','manchmal live zu hören'],
   'Tisch': ['Inventar','meist aus Holz','eckig oder rund','daran wird gesessen'],

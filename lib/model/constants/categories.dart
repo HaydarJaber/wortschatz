@@ -20,7 +20,7 @@ class Category {
   static const String Musikinstrumente = 'Musikinstrumente';
   static const String Obst = 'Obst';
   static const String Pflanzen = 'Pflanzen';
-  static const String Resteraunt = 'Resteraunt';
+  static const String Restaurant = 'Restaurant';
   static const String Sportarten = 'Sportarten';
   static const String Strassenverkehr = 'Straßenverkehr';
   static const String Supermarkt = 'Supermarkt';
