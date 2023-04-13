@@ -33,7 +33,7 @@ class _TermsState extends State<Terms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const AutoSizeText('Nutzungsbedinungen',style: TextStyle(fontSize: 30),minFontSize: 5, overflow: TextOverflow.ellipsis),foregroundColor: Colors.black,),
+        appBar: AppBar(title: const AutoSizeText('Nutzungsbedingungen',style: TextStyle(fontSize: 30),minFontSize: 5, overflow: TextOverflow.ellipsis),foregroundColor: Colors.black,),
         body:
             Padding(
               padding: const EdgeInsets.all(8.0),
