@@ -78,11 +78,17 @@ Im Spiel stehen den Spielern für jedes Wort bis zu vier Tipps zur Verfügung. Z
 Die Wortkategorien werden im Fortschritt hervorgehoben, sobald sie einmal gewonnen wurden. Außerdem kann der Schwierigkeitsgrad des Spiels in den Einstellungen für zukünftige Spiele festgelegt werden.
 
 ## Technische Merkmale
+
 Zielplattform: iOS, Android 
+<br/>
 verwendete Entwicklungsumgebung:  [Android Studio](https://developer.android.com/studio)
+<br/>
 Programmiersprache: [Flutter (Dart)](https://flutter.dev/)
+<br/>
 Desgin Pattern: Model-View-ViewModel
+<br/>
 Datenhaltung: [Hive](https://pub.dev/packages/hive)
+<br/>
 Packagerepository: [pub.dev](https://pub.dev/)
 
 
