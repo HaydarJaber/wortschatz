@@ -29,6 +29,11 @@ Die <strong>Wortschatz-App</strong> ist ein Serious Game, das Menschen mit Aphas
 <br/>
 <br/>
 <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Motivation & Ziel 
 
