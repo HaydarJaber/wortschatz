@@ -77,5 +77,13 @@ Eine vollständige und ausführliche Spielanleitung kann hier eingesehen werden:
 Im Spiel stehen den Spielern für jedes Wort bis zu vier Tipps zur Verfügung. Zusätzlich können Spieler und Therapeuten den Fortschritt der gespielten Wortkategorien einsehen.
 Die Wortkategorien werden im Fortschritt hervorgehoben, sobald sie einmal gewonnen wurden. Außerdem kann der Schwierigkeitsgrad des Spiels in den Einstellungen für zukünftige Spiele festgelegt werden.
 
+## Technische Merkmale
+Zielplattform: iOS, Android 
+verwendete Entwicklungsumgebung:  [Android Studio](https://developer.android.com/studio)
+Programmiersprache: [Flutter (Dart)](https://flutter.dev/)
+Desgin Pattern: Model-View-ViewModel
+Datenhaltung: [Hive](https://pub.dev/packages/hive)
+Packagerepository: [pub.dev](https://pub.dev/)
+
 
 
