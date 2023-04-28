@@ -27,6 +27,8 @@ Als Grundlage wurde ein vorhandenes Mockup, welches von einer Absolventin des Ba
 
 <br/>
 <br/>
+<br/>
+<br/>
 
 ## Motivation & Ziel 
 
@@ -34,17 +36,6 @@ Mit der klassischen Sprachtherapie allein kann die für einen positiven Therapie
 Betroffenen ein individuelles Wortfindungstraining zu ermöglichen und damit die Therapieintensität zu steigern. Entscheidend für den Einsatz der App ist die Akzeptanz durch die Betroffenen. Sie entscheiden letztendlich, ob die App genutzt wird oder nicht. 
 Daher war es wichtig, die App so benutzerfreundlich wie möglich zu gestalten. 
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <br/>
 <br/>
 <br/>
