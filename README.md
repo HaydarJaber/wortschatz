@@ -18,9 +18,9 @@ Haydar Hamed-Jaber
 <img align="left" width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235228889-328f03dc-40da-4f97-bd61-32da1120af14.png">
 Die <strong>Wortschatz-App</strong> ist ein Serious Game, das Menschen mit Aphasie als ergänzendes Training zu herkömmlichen Therapiesitzungen dient.
 <br/>
-- <strong>Serious Game?..</strong> Bei einem Serious Game handelt es sich um ein Spiel, das nicht zur reinen Unterhaltung entwickelt wurde, sondern mit dem Ziel, bestimmte Inhalte zu vermitteln.
+* <strong>Serious Game?..</strong> Bei einem Serious Game handelt es sich um ein Spiel, das nicht zur reinen Unterhaltung entwickelt wurde, sondern mit dem Ziel, bestimmte Inhalte zu vermitteln.
 <br/>
-- <strong>Aphasie?..</strong> Aphasie ist eine erworbene Sprachstörung, die nach einer Hirnschädigung auftreten kann (z.B nach einem Schlaganfall). Betroffene haben Schwierigkeiten, Sprache zu produzieren, zu verstehen, zu lesen oder zu schreiben.
+* <strong>Aphasie?..</strong> Aphasie ist eine erworbene Sprachstörung, die nach einer Hirnschädigung auftreten kann (z.B nach einem Schlaganfall). Betroffene haben Schwierigkeiten, Sprache zu produzieren, zu verstehen, zu lesen oder zu schreiben.
 <br/>
 <br/>
 <br/>
