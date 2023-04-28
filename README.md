@@ -74,6 +74,7 @@ Eine vollständige und ausführliche Spielanleitung kann hier eingesehen werden:
   <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235269523-21b523e0-03cc-4c5c-bdca-a49f85ba4b28.png" /></a>
 </p>
 
-Im Spiel stehen den Spielern für jedes Wort bis zu vier Tipps zur Verfügung. 
+Im Spiel stehen den Spielern für jedes Wort bis zu vier Tipps zur Verfügung. Zudem können Spieler und auch Therapeuten den Fortschritt der gespielten Wortkategorien einsehen.
+Wortkategorien werden im Fortschritt hervorgehoben, sobald sie einmalig gewonnen wurden. 
 
 
