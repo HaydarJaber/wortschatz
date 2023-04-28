@@ -43,10 +43,14 @@ Daher war es wichtig, die App so benutzerfreundlich wie möglich zu gestalten.
 <br/>
 
 ## Das Spiel
-<img align="left" width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235264351-6f025296-5752-4617-a656-175396a702b6.png">
-<img align="left" width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235265495-caf2828e-4547-4386-8f73-d9cd075b0da4.png">
-<img align="left" width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235265539-079e71fd-9be1-4f97-a022-e4d760fe6d31.png">
-<img align="left" width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235268082-9c470433-8e9f-440a-8696-b507329014ea.png">
+<p align="center">
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235264351-6f025296-5752-4617-a656-175396a702b6.png" /></a>
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235265495-caf2828e-4547-4386-8f73-d9cd075b0da4.png" /></a>
+</p>
+<p align="center">
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235265539-079e71fd-9be1-4f97-a022-e4d760fe6d31.png" /></a>
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235268082-9c470433-8e9f-440a-8696-b507329014ea.png" /></a>
+</p>
 
 
 Die App basiert auf dem Spielprinzip des Galgenmännchens. Menschen mit einer Aphasie sollen durch die Eingabe der richtigen Buchstaben ein Wort erraten und auf diese Weise das Wort über einen längeren Zeitraum hinweg trainieren.
