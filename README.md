@@ -62,3 +62,5 @@ Als Grundlage wurde ein vorhandenes Mockup, welches von einer Absolventin des Ba
 <br/>
 
 Eine vollständige und ausführliche Spielanleitung kann hier eingesehen werden: <a href="https://github.com/HaydarJaber/wortschatz/blob/master/assets/Spieler_Anleitung.pdf"><strong>Spielanleitung</strong></a>
+
+## weitere Features der App
