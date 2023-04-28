@@ -23,9 +23,13 @@ Die <strong>Wortschatz-App</strong> ist ein Serious Game, das Menschen mit Aphas
 - <strong>Aphasie?..</strong> Aphasie ist eine erworbene Sprachstörung, die nach einer Hirnschädigung auftreten kann (z.B nach einem Schlaganfall). Betroffene haben Schwierigkeiten, Sprache zu produzieren, zu verstehen, zu lesen oder zu schreiben.
 <br/><br/>
 Die App basiert auf dem Spielprinzip des Galgenmännchens. Menschen mit einer Aphasie sollen durch die Eingabe der richtigen Buchstaben ein Wort erraten und auf diese Weise das Wort über einen längeren Zeitraum hinweg trainieren.
-Die App wurde so gestaltet, dass Betroffene sie selbstständig und intuitiv bedienen können. Daher wurde einen großen Wert auf eine für Menschen mit Aphasie freundliche Benutzeroberfläche gelegt. 
 Als Grundlage wurde ein vorhandenes Mockup, welches von einer Absolventin des Bachelor-Studiengangs Logopädie an der Hochschule Fresenius entworfen wurde, herangezogen.
-Aufgrund der notwendigen Fähigkeit, ein mobiles Endgerät bedienen zu können, ist die geplante App nur für Betroffene mit leichter bis mittelschwerer Aphasie geeignet.
+
+### Motivation & Ziel 
+
+Mit der klassischen Sprachtherapie allein kann die für einen positiven Therapieerfolg notwendige Therapieintensität nicht erreicht werden. Um dieser Problematik entgegenzuwirken, wurde die App konzipiert und realisiert. Ziel ist es, den
+Betroffenen ein individuelles Wortfindungstraining zu ermöglichen und damit die Therapieintensität zu steigern. Entscheidend für den Einsatz der App ist die Akzeptanz durch die Betroffenen. Sie entscheiden letztendlich, ob die App genutzt wird oder nicht. 
+Daher war es wichtig, die App so benutzerfreundlich wie möglich zu gestalten. 
 
 <br/>
 <br/>
@@ -43,6 +47,6 @@ Aufgrund der notwendigen Fähigkeit, ein mobiles Endgerät bedienen zu können, 
 <br/>
 <br/>
 <br/>
-<br/>
 
-
+## Das Spiel
+<img align="left" width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235255357-d9415436-00b8-40a3-aeb2-82c716e6b735.png">
