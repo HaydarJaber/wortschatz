@@ -53,11 +53,10 @@ Daher war es wichtig, die App so benutzerfreundlich wie möglich zu gestalten.
 </p>
 
 
-Die App basiert auf dem Spielprinzip des Galgenmännchens. Gestartet wird das spiel indem zunächst eine zu trainierende/spielende Wortkategorie ausgewählt wird. 
+Die App basiert auf dem Spielprinzip des Galgenmännchens. Zum Start des Spiels muss zunächst eine Wortkategorie ausgewählt werden, die trainiert/gespielt werden soll.
 Menschen mit einer Aphasie sollen durch die Eingabe der richtigen Buchstaben ein Wort erraten und auf diese Weise das Wort über einen längeren Zeitraum hinweg trainieren.
 Nach jedem gespielten Wort wird den Spielenden ein sofortiges Feedback in Form eines Bildes und der schriftlichen Benennung des gesuchten Wortes gegeben. 
 Sind alle Wörter einer Wortkategorie und damit das Spiel durchgespielt, erscheint eine Spielübersicht. Hier werden die gefundenen und die nicht gefundenen Wörter noch einmal angezeigt.
-
 Als Grundlage wurde ein vorhandenes Mockup, welches von einer Absolventin des Bachelor-Studiengangs Logopädie an der Hochschule Fresenius entworfen wurde, herangezogen.
 
 <br/>
