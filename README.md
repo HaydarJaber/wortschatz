@@ -50,3 +50,5 @@ Daher war es wichtig, die App so benutzerfreundlich wie möglich zu gestalten.
 
 Die App basiert auf dem Spielprinzip des Galgenmännchens. Menschen mit einer Aphasie sollen durch die Eingabe der richtigen Buchstaben ein Wort erraten und auf diese Weise das Wort über einen längeren Zeitraum hinweg trainieren.
 Als Grundlage wurde ein vorhandenes Mockup, welches von einer Absolventin des Bachelor-Studiengangs Logopädie an der Hochschule Fresenius entworfen wurde, herangezogen.
+
+<a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
