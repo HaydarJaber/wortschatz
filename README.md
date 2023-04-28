@@ -81,7 +81,7 @@ Die Wortkategorien werden im Fortschritt hervorgehoben, sobald sie einmal gewonn
 
 Zielplattform: iOS, Android 
 <br/>
-verwendete Entwicklungsumgebung:  [Android Studio](https://developer.android.com/studio)
+verwendete Entwicklungsumgebung:  [Android Studio Electric Eel | 2022.1.1 Patch 1](https://developer.android.com/studio/releases/past-releases/as-electric-eel-release-notes#android-studio-electric-eel-|-2022.1.1-patch-1-february-2023) 
 <br/>
 Programmiersprache: [Flutter (Dart)](https://flutter.dev/)
 <br/>
