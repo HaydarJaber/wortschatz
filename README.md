@@ -64,3 +64,15 @@ Als Grundlage wurde ein vorhandenes Mockup, welches von einer Absolventin des Ba
 Eine vollständige und ausführliche Spielanleitung kann hier eingesehen werden: <a href="https://github.com/HaydarJaber/wortschatz/blob/master/assets/Spieler_Anleitung.pdf"><strong>Spielanleitung</strong></a>
 
 ## Zusätzliche Features der App
+
+<p align="center">
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235269459-379007d4-cb7e-4e88-8f76-7047b058c53f.png" /></a>
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235269486-c6a6c363-94ad-41dc-8648-ff2ba89964fe.png" /></a>
+</p>
+<p align="center">
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235269504-51a5b21d-fbdc-4882-abba-ecb1bf32b715.png" /></a>
+  <img width="300" height="500" src="https://user-images.githubusercontent.com/37445336/235269523-21b523e0-03cc-4c5c-bdca-a49f85ba4b28.png" /></a>
+</p>
+
+
+
