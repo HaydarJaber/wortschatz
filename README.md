@@ -95,9 +95,19 @@ Packagerepository: [pub.dev](https://pub.dev/)
 Die folgenden Schritte sind erforderlich, um das Repository lokal zum Laufen zu bringen:
 
 ### Vorbedingungen
-1. [Android Studio](https://developer.android.com/studio) (empfohlen) oder Visual Studio muss installiert sein.
+1. [Android Studio](https://developer.android.com/studio) (empfohlen) oder Visual Studio muss installiert sein. 
 2. [Flutter Version 3.7.0](https://flutter.dev/) oder höher muss installiert werden. (Hinweis: Dart SDK ist in der Flutter Installation enthalten und muss nicht sperat installiert werden.)
+
+Für Mac: Zusätzlich noch [Xcode](https://developer.apple.com/xcode/) installieren. Wird benötigt um die App auf einen iOS Emulator zu kompilieren.
+
 ### Installation
+1. Repository clonen
+git clone TODO
+2. Packages importieren 
+> pubspec.yaml öffnen, dann auf "Pub get" klicken (empfohlen) oder 'flutter pub get' im Terminal 
+3. Emulator Starten
+> Device Manager öffnen, dann einen gewünschten Emualtor starten.
+> Dann in der main.dart die Funktion Future<void> main() async{} starten (via grünen Start-Icon)
 
 
 
