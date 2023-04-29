@@ -91,5 +91,13 @@ Datenhaltung: [Hive](https://pub.dev/packages/hive)
 <br/>
 Packagerepository: [pub.dev](https://pub.dev/)
 
+## Getting Started
+Die folgenden Schritte sind erforderlich, um das Repository lokal zum Laufen zu bringen:
+
+### Vorbedingungen
+1. [Android Studio](https://developer.android.com/studio) (empfohlen) oder Visual Studio muss installiert sein.
+2. [Flutter Version 3.7.0](https://flutter.dev/) oder höher muss gedownloadet werden.
+### Installation
+
 
 
