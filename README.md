@@ -96,7 +96,7 @@ Die folgenden Schritte sind erforderlich, um das Repository lokal zum Laufen zu 
 
 ### Vorbedingungen
 1. [Android Studio](https://developer.android.com/studio) (empfohlen) oder Visual Studio muss installiert sein.
-2. [Flutter Version 3.7.0](https://flutter.dev/) oder höher muss gedownloadet werden.
+2. [Flutter Version 3.7.0](https://flutter.dev/) oder höher muss installiert werden. (Hinweis: Dart SDK ist in der Flutter Installation enthalten und muss nicht sperat installiert werden.)
 ### Installation
 
 
