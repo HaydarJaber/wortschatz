@@ -5,8 +5,8 @@
 
 ## Beteiligte Labore
 <p align="center">
-  <a target="_blank" href="https://rchst.de/en/"><img width="400" height="200" src="https://user-images.githubusercontent.com/37445336/235238270-a98ce06f-c806-4aec-b557-a34d21146239.png" /></a>
-  <a target="_blank" href="https://ehealth.rcbe.de/"><img width="400" height="200" src="https://user-images.githubusercontent.com/37445336/235239104-2f23caf0-cc65-4b82-bd1e-d464a368b878.png" /></a>
+  <a target="_blank" href="https://rchst.de/en/"><img width="500" height="100" src="https://user-images.githubusercontent.com/37445336/235238270-a98ce06f-c806-4aec-b557-a34d21146239.png" /></a>
+  <a target="_blank" href="https://ehealth.rcbe.de/"><img width="500" height="100" src="https://user-images.githubusercontent.com/37445336/235239104-2f23caf0-cc65-4b82-bd1e-d464a368b878.png" /></a>
 </p>
 
 ## Teammitglieder
