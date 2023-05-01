@@ -38,7 +38,7 @@ Haydar Hamed-Jaber
 
 Mit der klassischen Sprachtherapie allein kann die für einen positiven Therapieerfolg notwendige Therapieintensität nicht erreicht werden. Um dieser Problematik entgegenzuwirken, wurde die App konzipiert und realisiert. Ziel ist es, den
 Betroffenen ein individuelles Wortfindungstraining zu ermöglichen und damit die Therapieintensität zu steigern. Entscheidend für den Einsatz der App ist die Akzeptanz durch die Betroffenen. Sie entscheiden letztendlich, ob die App genutzt wird oder nicht. 
-Daher war es wichtig, die App so benutzerfreundlich und übersichtlich wie möglich zu gestalten. Bei der Umsetzung der App wurde besonders darauf geachtet, Frustrationen zu vermeiden und Motivationsmechanismen zu schaffen.
+Bei der Umsetzung der App wurde besonders darauf geachtet, Frustrationen zu vermeiden und Motivationsmechanismen zu schaffen.
 
 <br/>
 
