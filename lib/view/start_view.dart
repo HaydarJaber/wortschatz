@@ -316,47 +316,6 @@ void getVerbleibendeWorter(){
   void getCategory(){
     final settings = context.read<SettingsController>().frequency;
     switch(widget.category){
-      case Category.All:
-        if(settings.value == 'Alle Wörter'){
-          if(!(wordList.length == allMAP.length)){
-            getVerbleibendeWorter();
-            wordList = List<int>.generate(allMAP.length, (int index) => index);
-            wordList.shuffle();
-          }
-          verbleibendeWorter--;
-          randomIndex = wordList[wordListCounter];
-          entryList = allMAP.entries.toList();
-          randomWord = entryList[randomIndex].key;
-          wordListCounter++;
-          break;
-        }
-        if(settings.value == 'Häufige Wörter'){
-          if(!(wordList.length == hfallMAP.length)){
-            getVerbleibendeWorter();
-            wordList = List<int>.generate(hfallMAP.length, (int index) => index);
-            wordList.shuffle();
-          }
-          verbleibendeWorter--;
-          randomIndex = wordList[wordListCounter];
-          entryList = hfallMAP.entries.toList();
-          randomWord = entryList[randomIndex].key;
-          wordListCounter++;
-          break;
-        }
-        if(settings.value == 'Seltene Wörter'){
-          if(!(wordList.length == nfallMAP.length)){
-            getVerbleibendeWorter();
-            wordList = List<int>.generate(nfallMAP.length, (int index) => index);
-            wordList.shuffle();
-          }
-          verbleibendeWorter--;
-          randomIndex = wordList[wordListCounter];
-          entryList = nfallMAP.entries.toList();
-          randomWord = entryList[randomIndex].key;
-          wordListCounter++;
-          break;
-        }
-        break;
       case Category.Autoteile:
         if(settings.value == 'Alle Wörter'){
           if(!(wordList.length == autoteileMAP.length)){
