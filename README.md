@@ -5,8 +5,8 @@
 
 ## Beteiligte Labore
 <p align="center">
-  <a target="_blank" href="https://rchst.de/en/"><img width="500" height="200" src="https://user-images.githubusercontent.com/37445336/235238270-a98ce06f-c806-4aec-b557-a34d21146239.png" /></a>
-  <a target="_blank" href="https://ehealth.rcbe.de/"><img width="500" height="200" src="https://user-images.githubusercontent.com/37445336/235239104-2f23caf0-cc65-4b82-bd1e-d464a368b878.png" /></a>
+  <a target="_blank" href="https://rchst.de/en/"><img width="500" height="150" src="https://user-images.githubusercontent.com/37445336/235238270-a98ce06f-c806-4aec-b557-a34d21146239.png" /></a>
+  <a target="_blank" href="https://ehealth.rcbe.de/"><img width="500" height="150" src="https://user-images.githubusercontent.com/37445336/235239104-2f23caf0-cc65-4b82-bd1e-d464a368b878.png" /></a>
 </p>
 
 ## Teammitglieder
@@ -38,7 +38,7 @@ Haydar Hamed-Jaber
 
 Mit der klassischen Sprachtherapie allein kann die für einen positiven Therapieerfolg notwendige Therapieintensität nicht erreicht werden. Um dieser Problematik entgegenzuwirken, wurde die App konzipiert und realisiert. Ziel ist es, den
 Betroffenen ein individuelles Wortfindungstraining zu ermöglichen und damit die Therapieintensität zu steigern. Entscheidend für den Einsatz der App ist die Akzeptanz durch die Betroffenen. Sie entscheiden letztendlich, ob die App genutzt wird oder nicht. 
-Daher war es wichtig, die App so benutzerfreundlich und übersichtlich wie möglich zu gestalten. Bei der Umsetzung der App wurde besonders darauf geachtet, Frustrationen zu vermeiden und Motivationsmechanismen zu schaffen.
+Bei der Umsetzung der App wurde besonders darauf geachtet, Frustrationen zu vermeiden und Motivationsmechanismen zu schaffen.
 
 <br/>
 
@@ -81,15 +81,33 @@ Die Wortkategorien werden im Fortschritt hervorgehoben, sobald sie einmal gewonn
 
 Zielplattform: iOS, Android 
 <br/>
-verwendete Entwicklungsumgebung:  [Android Studio](https://developer.android.com/studio)
+verwendete Entwicklungsumgebung:  [Android Studio Electric Eel | 2022.1.1 Patch 1](https://developer.android.com/studio/releases/past-releases/as-electric-eel-release-notes#android-studio-electric-eel-|-2022.1.1-patch-1-february-2023) 
 <br/>
-Programmiersprache: [Flutter (Dart)](https://flutter.dev/)
+Programmiersprache: [Flutter 3.7.0 (Dart)](https://docs.flutter.dev/release/archive)
 <br/>
 Desgin Pattern: Model-View-ViewModel
 <br/>
 Datenhaltung: [Hive](https://pub.dev/packages/hive)
 <br/>
 Packagerepository: [pub.dev](https://pub.dev/)
+
+## Getting Started
+Die folgenden Schritte sind erforderlich, um das Repository lokal zum Laufen zu bringen:
+
+### Vorbedingungen
+1. [Android Studio](https://developer.android.com/studio) (empfohlen) oder Visual Studio muss installiert sein. 
+2. [Flutter Version 3.7.0](https://flutter.dev/) oder höher muss installiert werden. (Hinweis: Dart SDK ist in der Flutter Installation enthalten und muss nicht sperat installiert werden.)
+
+Für Mac: Zusätzlich noch [Xcode](https://developer.apple.com/xcode/) installieren. Wird benötigt um die App auf einen iOS Emulator zu kompilieren.
+
+### Installation
+1. Repository clonen
+git clone TODO
+2. Packages importieren 
+> pubspec.yaml öffnen, dann auf "Pub get" klicken (empfohlen) oder 'flutter pub get' im Terminal 
+3. Emulator Starten
+> Device Manager öffnen, dann einen gewünschten Emualtor starten.
+> Dann in der main.dart die Funktion Future<void> main() async{} starten (via grünen Start-Icon)
 
 
 
