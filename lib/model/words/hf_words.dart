@@ -54,19 +54,19 @@ final Map hfBauernhofMAP = {
 
 final Map hfBerufeMAP = {
   'Arzt': ['arbeitet viel mit Menschen','erfordert ein Studium','stellt Diagnosen','wird oft bei Schmerzen aufgesucht'],
-  //'Lehrer': ['arbeitet viel mit Menschen','erfordert ein Studium','korrigiert Arbeiten oder Tests','unterrichtet eine Klasse'],
-  //'Maler': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','streicht Wände','arbeitet mit Farbe und Pinsel'],
-  //'Politiker': ['arbeitet viel mit Menschen','ohne Ausbildung möglich','hält Reden','wird gewählt'],
-  //'Sekretär': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','schreibt Briefe und plant Termine','nimmt stellvertretend Anrufe entgegen'],
- // 'Schauspieler': ['arbeitet viel mit Menschen','erfordert ein Studium/eine Ausbildung','auf der Bühne oder im Fernsehen','spielt verschiedene Rollen'],
- // 'Sänger': ['arbeitet viel mit Menschen','erfordert ein Studium/eine Ausbildung','auf der Bühne oder im Radio','benutzt die Stimme zum Arbeiten'],
+  'Lehrer': ['arbeitet viel mit Menschen','erfordert ein Studium','korrigiert Arbeiten oder Tests','unterrichtet eine Klasse'],
+  'Maler': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','streicht Wände','arbeitet mit Farbe und Pinsel'],
+  'Politiker': ['arbeitet viel mit Menschen','ohne Ausbildung möglich','hält Reden','wird gewählt'],
+  'Sekretär': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','schreibt Briefe und plant Termine','nimmt stellvertretend Anrufe entgegen'],
+  'Schauspieler': ['arbeitet viel mit Menschen','erfordert ein Studium/eine Ausbildung','auf der Bühne oder im Fernsehen','spielt verschiedene Rollen'],
+  'Sänger': ['arbeitet viel mit Menschen','erfordert ein Studium/eine Ausbildung','auf der Bühne oder im Radio','benutzt die Stimme zum Arbeiten'],
   'Koch': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','bereitet Gerichte zu','arbeitet in der Küche'],
   'Anwalt': ['arbeitet viel mit Menschen','erfordert ein Studium','berät bei Rechtsfragen','Verteidiger oder Ankläger im Gericht'],
-//  'Erzieher': ['arbeitet viel mit Menschen','erfordert eine Ausbildung','spielt oder bastelt oft','fördert Kinder'],
- // 'Gärtner': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','streut Samen in die Erde','kümmert sich um Pflanzen'],
- // 'Dolmetscher': ['arbeitet viel mit Menschen','erfordert ein Studium','hilft bei der Verständigung zwischen Personen','übersetzt Texte in andere Sprachen'],
- // 'Polizist': ['arbeitet viel mit Menschen','erfordert eine Ausbildung','ermittelt bei einem Gesetzesbruch','kann Personen verhaften'],
- // 'Bäcker': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','bereitet Teig für den Ofen vor','stellt Brötchen und Brot her'],
+  'Erzieher': ['arbeitet viel mit Menschen','erfordert eine Ausbildung','spielt oder bastelt oft','fördert Kinder'],
+ 'Gärtner': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','streut Samen in die Erde','kümmert sich um Pflanzen'],
+ 'Dolmetscher': ['arbeitet viel mit Menschen','erfordert ein Studium','hilft bei der Verständigung zwischen Personen','übersetzt Texte in andere Sprachen'],
+ 'Polizist': ['arbeitet viel mit Menschen','erfordert eine Ausbildung','ermittelt bei einem Gesetzesbruch','kann Personen verhaften'],
+ 'Bäcker': ['arbeitet viel mit Materialien','erfordert eine Ausbildung','bereitet Teig für den Ofen vor','stellt Brötchen und Brot her'],
   'Friseur': ['arbeitet viel mit Menschen','erfordert eine Ausbildung','verändert etwas am Aussehen','schneidet Haare']
 };
 
