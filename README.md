@@ -32,7 +32,10 @@ Haydar Hamed-Jaber
 <br/>
 <br/>
 <br/>
-
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Motivation & Ziel 
 
@@ -61,7 +64,7 @@ Als Grundlage wurde ein vorhandenes Mockup, welches von einer Absolventin des Ba
 
 <br/>
 
-Eine vollständige und ausführliche Spielanleitung kann hier eingesehen werden: <a href="https://github.com/HaydarJaber/wortschatz/blob/master/assets/Spieler_Anleitung.pdf"><strong>Spielanleitung</strong></a>
+Eine vollständige und ausführliche Spielanleitung kann hier eingesehen werden: <a href="https://gitlab.oth-regensburg.de/RCHST/EHEALTH/abschlussarbeiten/ma_hamed/-/blob/master/assets/Spieler_Anleitung.pdf"><strong>Spielanleitung</strong></a>
 
 ## Zusätzliche Features der App
 
@@ -102,12 +105,57 @@ Für Mac: Zusätzlich noch [Xcode](https://developer.apple.com/xcode/) installie
 
 ### Installation
 1. Repository clonen
-git clone TODO
+git clone https://gitlab.oth-regensburg.de/RCHST/EHEALTH/abschlussarbeiten/ma_hamed.git
 2. Packages importieren 
 > pubspec.yaml öffnen, dann auf "Pub get" klicken (empfohlen) oder 'flutter pub get' im Terminal 
 3. Emulator Starten
 > Device Manager öffnen, dann einen gewünschten Emualtor starten.
 > Dann in der main.dart die Funktion Future<void> main() async{} starten (via grünen Start-Icon)
+
+
+## Wie kann man...
+
+### ...neue Wörter hinzufügen?
+Im [Model der App](https://gitlab.oth-regensburg.de/RCHST/EHEALTH/abschlussarbeiten/ma_hamed/-/tree/master/lib/model/words), sind die verwendeten Wörter zu finden. 
+> Ein Wort muss zugeordnet werden: Die Wortfrequenz (hochfrequent oder niederfrequent), 4 Hilfestellungen und die entsprechende Wortkategorie 
+Je nach Wortfrequenz des neuen Wortes, muss die entsprechende Datei ('hf_words.dart' oder 'nf_words.dart') ausgewählt werden. 
+Darin kann unter der entsprechenden Wortkategorie das Wort samt den vier Hilfen hinzugefügt werden.
+Zusätzlich muss das Wort in 'all_words.dart' angefügt werden, um für alle Frequenzen zur Verfügung zu stehen.
+
+### ...neue Wortkategorien hinzufügen?
+In allen drei genannten Datein ('all_words.dart','hf_words.dart','nf_words.dart') muss eine Map für die Wortkategorie erstellt werden.
+Darin werden die einzelnen Wörter angelegt.
+
+### ...ein Bild für ein Wort ändern oder für ein neues Wort hinzufügen?
+Die Bilder sind in den [assets](https://gitlab.oth-regensburg.de/RCHST/EHEALTH/abschlussarbeiten/ma_hamed/-/tree/master/assets/images/W%C3%B6rter) gespeichert. 
+Damit die Bilder von der App wahrgenommen werden, müssen diese in der [pubspec.yaml](https://gitlab.oth-regensburg.de/RCHST/EHEALTH/abschlussarbeiten/ma_hamed/-/blob/master/pubspec.yaml) hintergelegt werden.
+
+Unter der entsprechende Wortkategorie (markiert als Kommentar) sind die einzelnen Pfade der Bilder gespeichert.
+Es ist zu beachten, dass die Bilder unter den selben Namen gespeichert werden müssen wie die Wörter. Da sonst eine zuordnung zwischen Wort und Bild fehlschlägt.
+
+## Lizenz
+MIT License
+
+Copyright (c) 2023 Haydar Hamed-Jaber
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 
 
 
