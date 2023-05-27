@@ -112,27 +112,7 @@ git clone https://gitlab.oth-regensburg.de/RCHST/EHEALTH/abschlussarbeiten/ma_ha
 > Device Manager öffnen, dann einen gewünschten Emualtor starten.
 > Dann in der main.dart die Funktion Future<void> main() async{} starten (via grünen Start-Icon)
 
-
-## Wie kann man...
-
-### ...neue Wörter hinzufügen?
-Im [Model der App](https://github.com/HaydarJaber/wortschatz/tree/master/lib/model/words), sind die verwendeten Wörter zu finden. 
-> Ein Wort muss zugeordnet werden: Die Wortfrequenz (hochfrequent oder niederfrequent), 4 Hilfestellungen und die entsprechende Wortkategorie 
-Je nach Wortfrequenz des neuen Wortes, muss die entsprechende Datei ('hf_words.dart' oder 'nf_words.dart') ausgewählt werden. 
-Darin kann unter der entsprechenden Wortkategorie das Wort samt den vier Hilfen hinzugefügt werden.
-Zusätzlich muss das Wort in 'all_words.dart' angefügt werden, um für alle Frequenzen zur Verfügung zu stehen.
-
-### ...neue Wortkategorien hinzufügen?
-In allen drei genannten Datein ('all_words.dart','hf_words.dart','nf_words.dart') muss eine Map für die Wortkategorie erstellt werden.
-Darin werden die einzelnen Wörter angelegt.
-
-### ...ein Bild für ein Wort ändern oder für ein neues Wort hinzufügen?
-Die Bilder sind in den [assets](https://github.com/HaydarJaber/wortschatz/tree/master/assets/images/W%C3%B6rter) gespeichert. 
-Damit die Bilder von der App wahrgenommen werden, müssen diese in der [pubspec.yaml](https://github.com/HaydarJaber/wortschatz/blob/master/pubspec.yaml) hintergelegt werden.
-
-Unter der entsprechende Wortkategorie (markiert als Kommentar) sind die einzelnen Pfade der Bilder gespeichert.
-Es ist zu beachten, dass die Bilder unter den selben Namen gespeichert werden müssen wie die Wörter. Da sonst eine zuordnung zwischen Wort und Bild fehlschlägt.
-
+  
 ## Lizenz
 MIT License
 
